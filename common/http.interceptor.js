@@ -61,8 +61,16 @@ const install = (Vue, vm) => {
 			return false;
 		}
 	}
+	
+	//增加patch
+	vm.$u.patch = (url) => {
+		const  _params = {
+		_method:'PATCH',
+		}
+		return vm.$u.post(url,_params)
+	}
 }
 
 export default {
 	install
-}
+} 

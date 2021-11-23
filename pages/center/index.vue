@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-	 个人中心
+	 这里是个人中心
 	</view>
 </template>
 

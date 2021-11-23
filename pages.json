@@ -7,15 +7,48 @@
 			"path": "pages/index/index",
 			"style": {
 				// "navigationBarTitleText": "首页"
+				"app-plus":{"titleNView":false}
 			}
 		},
 		{
 			"path": "pages/center/index",
 			"style": {
-				"navigationBarTitleText": "个人中心"
+				// "navigationBarTitleText": "首页"
+				"app-plus":{"titleNView":false}
 			}
 		}
-	],
+	    
+        ,{
+            "path" : "pages/consult/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus":{"titleNView":false}
+            }
+            
+        }
+        ,{
+            "path" : "pages/learnning/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus":{"titleNView":false}
+            }
+            
+        }
+        ,{
+            "path" : "pages/action/action",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus":{"titleNView":false}
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
@@ -23,20 +56,37 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
-	    "color": "#909399",
-	    "selectedColor": "#303133",
+	    "color": "#000000",
+	    "selectedColor": "#f34a0d",
 	    "borderStyle": "black",
 	    "backgroundColor": "#ffffff",
 	    "list": [{
 	        "pagePath": "pages/index/index",
-	        "iconPath": "static/index.png",
-	        "selectedIconPath": "static/index-selected.png",
+	        "iconPath": "static/tabbarIcon/i.png",
+	        "selectedIconPath": "static/tabbarIcon/ic.png",
 	        "text": "首页"
-	    }, {
+	    },{
+	        "pagePath": "pages/consult/index",
+	        "iconPath": "static/tabbarIcon/x.png",
+	        "selectedIconPath": "static/tabbarIcon/xc.png",
+	        "text": "课程学习"
+	    },{
+	        "pagePath": "pages/learnning/index",
+	        "iconPath": "static/tabbarIcon/l.png",
+	        "selectedIconPath": "static/tabbarIcon/lc.png",
+	        "text": "大练兵"
+	    },
+		{
+		    "pagePath": "pages/action/action",
+		    "iconPath": "static/tabbarIcon/f.png",
+		    "selectedIconPath": "static/tabbarIcon/fc.png",
+		    "text": "办案大全"
+		},{
 	        "pagePath": "pages/center/index",
-	        "iconPath": "static/center.png",
-	        "selectedIconPath": "static/center-selected.png",
-	        "text": "我"
-	    }]
+	        "iconPath": "static/tabbarIcon/c.png",
+	        "selectedIconPath": "static/tabbarIcon/cc.png",
+	        "text": "个人中心"
+	    }
+		]
 	}
 }
