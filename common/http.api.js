@@ -18,6 +18,11 @@ const install = (Vue, vm) => {
 	//登录
 	let authLogin = (params = {} ) => vm.$u.post('/api/auth/login',params)
 	
+	
+	let getVideo = (params = {} ) => vm.$u.get('/course/video?id='+params)
+	
+	let getCourse = (params = {} ) => vm.$u.get('/course/get?id='+params)
+	
 	//订单相关
 	
 	// 此处使用了传入的params参数，一切自定义即可
@@ -25,7 +30,9 @@ const install = (Vue, vm) => {
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
 		index,
-		authLogin
+		authLogin,
+		getVideo,
+		getCourse
 	};
 }
 
