@@ -31,9 +31,7 @@
 		</view>
 		
 		<view class="u-m-t-20">
-			<u-cell-group>
-				<u-cell-item icon="setting" title="退出登录"></u-cell-item>
-			</u-cell-group>
+			<u-button class="exitButton" type="error" @click="exit">退出登录</u-button>
 		</view>
 	</view>
 </template>
@@ -52,6 +50,17 @@
 		methods: {
 			updateName(){
 				this.$u.route('pages/center/updateName')
+			},
+			//退出登录
+			exit(){
+				//清空cookie
+				this.$u.vuex('vuex_cookies','');
+				//页面跳转
+				this.$u.route({
+					type:'redirect',
+					url:'pages/auth/login'
+				})
+				
 			}
 		}
 	}
@@ -61,7 +70,9 @@
 page{
 	background-color: #ededed;
 }
-
+.exitButton{
+	width: 300rpx;
+}
 .camera{
 	width: 54px;
 	height: 44px;

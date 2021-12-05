@@ -1,10 +1,10 @@
 <template>
 	<view>
-		<text>这里是课程学习</text>
+		<u-navbar :is-back="false" title="课程学习" title-color="#000000"></u-navbar>
 		<u-cell-group>
 			<u-cell-item v-for="(item,id) in courseArry" :name="id" :title="item.name" :arrow="true" arrow-direction="right" ></u-cell-item>
 		</u-cell-group>
-		<button type="default" @click="getCourse()">test</button>
+		<!-- <button type="default" @click="getCourse()">test</button> -->
 	</view>
 </template>
 

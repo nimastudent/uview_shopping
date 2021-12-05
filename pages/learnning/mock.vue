@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="办案大全" title-color="#000000"></u-navbar>
+		123123123
 	</view>
 </template>
 

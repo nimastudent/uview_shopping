@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-	 这里是主页
+		<u-navbar :is-back="false" title="主页" title-color="#000000"></u-navbar>	
 	</view>
 </template>
 
@@ -8,10 +8,21 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				
 			}
 		},
 		async onLoad() {
+			const cookie = this.vuex_cookies;
+			console.log(cookie)
+			if(!cookie){
+				this.$u.toast('请登录！')
+				setTimeout(() => {
+					this.$u.route({
+						type:'redirect',
+						url:'pages/auth/login'
+					})
+				})
+			}
 			// this.$u.get('/api/index').then(res => {
 			// 	console.log(res)
 			// }).catch(e => {
@@ -26,8 +37,8 @@
 			// const res = await this.$u.api.authLogin(data)
 			// console.log(res)
 			
-			console.log(this.vuex_version)
-			console.log(this.vuex_user.name)
+			// console.log(this.vuex_version)
+			// console.log(this.vuex_user.name)
 			// this.$u.vuex('vuex_user.name', '史诗')
 			// console.log(this.vuex_user.name)
 		},

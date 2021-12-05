@@ -37,7 +37,16 @@
 				"app-plus":{"titleNView":false}
             }
             
-        }
+        },
+		{
+		    "path" : "pages/auth/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false,
+				"app-plus":{"titleNView":false}
+		    }
+		}
         ,{
             "path" : "pages/action/action",
             "style" :                                                                                    
@@ -49,16 +58,17 @@
             
         }
         ,{
-            "path" : "pages/auth/login",
+            "path" : "pages/center/updateName",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
+				
             }
             
         }
         ,{
-            "path" : "pages/center/updateName",
+            "path" : "pages/learnning/mock",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
@@ -69,7 +79,7 @@
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "",
+		"navigationBarTitleText": "学习强警",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

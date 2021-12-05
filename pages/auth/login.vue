@@ -7,7 +7,7 @@
 				<u-input class="username"  :type="username" :border="border" placeholder="请输入用户名" />
 				<u-input class="password" :type="password" :border="border" placeholder="请输入密码" />
 				<text>如密码遗忘，请联系管理员</text>
-				<u-button class="loginButton" type="primary">登录</u-button>
+				<button class="loginButton" type="primary" @click="login">登录</button>
 			
 		</view>
 	</view>
@@ -33,15 +33,16 @@ export default {
 		}
 	},
 	methods: {
-		submit() {
-			if(this.$u.test.mobile(this.tel)) {
-				this.$u.route({
-					url: 'pages/template/login/code'
-				})
-			}
-		},
 		login(){
-			
+			//保存cookie
+			this.$u.vuex('vuex_cookies','123123');
+			//uni-app首次跳转到tabbar页面需要用switchTab
+			// uni.switchTab({
+			// })
+			this.$u.route({
+				type:'switchTab',
+				url:'/pages/index/index'
+			})
 		}
 	}
 };
