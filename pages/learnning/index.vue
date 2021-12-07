@@ -22,7 +22,7 @@
 		methods: {
 			goMock(){
 				this.$u.route({
-					type:'redirect',
+					type:'navigateTo',
 					url:'/pages/learnning/mock'
 				})
 				console.log(1)

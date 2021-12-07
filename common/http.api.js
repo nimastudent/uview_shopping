@@ -23,7 +23,12 @@ const install = (Vue, vm) => {
 	
 	let getCourse = (params = {} ) => vm.$u.get('/course/get?id='+params)
 	
-	//订单相关
+	//获取模拟考试题 
+	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample?single=5&multiple=5&judgment=5')
+	
+	//获取法律目录
+	let getLaw = params => vm.$u.get('/law')
+	
 	
 	// 此处使用了传入的params参数，一切自定义即可
 	
@@ -32,7 +37,9 @@ const install = (Vue, vm) => {
 		index,
 		authLogin,
 		getVideo,
-		getCourse
+		getCourse,
+		getMockQuestion,
+		getLaw
 	};
 }
 
