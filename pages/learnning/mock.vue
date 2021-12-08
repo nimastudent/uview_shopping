@@ -42,35 +42,36 @@
 							<text></text>{{index+1}}.{{question.problem}}
 						</view>
 					</view>
+					<!-- 判断 -->
+					
 					
 					<!-- 单选 -->
 						
-						<!-- <view class="">
-								<u-radio-group v-model="value" @change="radioGroupChange">
+						<view class="" v-if="currentType===1">
+								<u-radio-group @change="radioGroupChange" :wrap="true">
 									<u-radio 
-										@change="radioChange" 
-										v-for="(item, index) in list" :key="index" 
-										:name="item.name"
-										:disabled="item.disabled"
+										@change="radioChangeSingle"
+										v-for="(item, index) in question.option" :key="index" 
+										:name="item.content"
+										:value="item.id"
 									>
-										{{item.name}}
+										{{item.id}}.{{item.content}}
 									</u-radio>
 								</u-radio-group>
-							</view> -->
+							</view>
 					
 					<!-- 多选 -->
 					
-					<!-- <view class="">
-							<u-checkbox-group @change="checkboxGroupChange">
+					<view class="" v-else-if="currentType===2">
+							<u-checkbox-group  :wrap="true">
 								<u-checkbox 
-									@change="checkboxChange" 
-									v-model="item.checked" 
-									v-for="(item, index) in list" :key="index" 
-									:name="item.name"
-								>{{item.name}}</u-checkbox>
+									v-for="(item, index) in question.option" :key="index" 
+									:name="item.id"
+									@change="checkboxGroupChange"
+								>{{item.id}} .{{item.content}}</u-checkbox>
 							</u-checkbox-group>
-							<u-button @click="checkedAll">全选</u-button>
-						</view> -->
+							<!-- <u-button @click="checkedAll">全选</u-button> -->
+						</view>
 				</swiper-item>
 			</swiper>
 			
@@ -94,6 +95,11 @@
 				questionIndex:0, //跳转问题索引
 				swiperHeight:'850rpx',
 				questionList:[], //题目列表
+				singleAnsList:[],
+				judgmentAnsList:[],
+				multipleAnsList:[],
+				multiple:{},
+				autoRadioNext: true, //单选题，自动移下一题
 				
 			}
 		},
@@ -132,6 +138,9 @@
 			}
 		},
 		methods: {
+			radioChangeSingle(e){
+				// console.log(e)
+			},
 			swiperChange(e){ //滑动事件
 				let index = e.target.current;
 				if (index != undefined) {
@@ -156,6 +165,30 @@
 					console.log(this.questionList)
 				}
 			},
+			radioGroupChange(e){//单选选中
+				// e为选项内容
+				//获取问题列表中当前元素
+				var item = this.questionList[this.questionIndex]
+				var singleAns = {id:item.id,answer:e}
+				var flag = true
+				for(let i = 0;i < this.singleAnsList.length;i++){
+					if(this.singleAnsList[i].id == singleAns.id){
+						this.singleAnsList[i].answer = e
+						flag = false
+						break
+					}
+				}
+				if(flag){
+					this.singleAnsList.push(singleAns)
+				}
+				if (this.autoRadioNext && this.questionIndex < this.questionList.length - 1) {
+					this.questionIndex += 1;
+				};
+			},
+			checkboxGroupChange(e){
+				var item = this.questionList[this.questionIndex]
+				console.log(e)
+			}
 			
 		}
 	}
