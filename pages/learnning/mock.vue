@@ -28,13 +28,50 @@
 				</view>	
 			</view>
 			<!-- 滑块视图  题目 -->
+			<u-divider></u-divider>
+
 			<swiper
 			:current="questionIndex"
 			class="swiper-box"
 			@change="swiperChange"
 			:style="{'height':swiperHeight}"
 			>
-				
+				<swiper-item v-for="(question,index) in questionList" :key="index">
+					<view class="">
+						<view class="action">
+							<text></text>{{index+1}}.{{question.problem}}
+						</view>
+					</view>
+					
+					<!-- 单选 -->
+						
+						<!-- <view class="">
+								<u-radio-group v-model="value" @change="radioGroupChange">
+									<u-radio 
+										@change="radioChange" 
+										v-for="(item, index) in list" :key="index" 
+										:name="item.name"
+										:disabled="item.disabled"
+									>
+										{{item.name}}
+									</u-radio>
+								</u-radio-group>
+							</view> -->
+					
+					<!-- 多选 -->
+					
+					<!-- <view class="">
+							<u-checkbox-group @change="checkboxGroupChange">
+								<u-checkbox 
+									@change="checkboxChange" 
+									v-model="item.checked" 
+									v-for="(item, index) in list" :key="index" 
+									:name="item.name"
+								>{{item.name}}</u-checkbox>
+							</u-checkbox-group>
+							<u-button @click="checkedAll">全选</u-button>
+						</view> -->
+				</swiper-item>
 			</swiper>
 			
 		</view>
@@ -55,7 +92,9 @@
 				totalQuestionNumber:1, //总题数
 				showModal:false, //模态框
 				questionIndex:0, //跳转问题索引
-				swiperHeight:'850rpx'
+				swiperHeight:'850rpx',
+				questionList:[], //题目列表
+				
 			}
 		},
 		onReady() {
@@ -83,6 +122,9 @@
 		},
 		onLoad() {
 			this.getMockQuestion()
+			// this.currentType = this.questionList[0].type;
+			uni.hideLoading();
+			
 		},
 		computed:{
 			content(){
@@ -90,9 +132,13 @@
 			}
 		},
 		methods: {
-			
-			swiperChange(){ //滑动事件
-				
+			swiperChange(e){ //滑动事件
+				let index = e.target.current;
+				if (index != undefined) {
+					this.questionIndex = index;
+					this.currentType = this.questionList[index].type;
+				}
+				// console.log(this.questionList[index].type)
 			},
 			timeUp(){
 				console.log('时间到了')
@@ -104,9 +150,13 @@
 				const res = await this.$u.api.getMockQuestion()
 				console.log(res)
 				if(res.code === 200){
-					console.log(res.body)
+					// [this.questionList...,res.body.judgment...]
+					this.questionList = []
+					this.questionList = [...this.questionList,...res.body.judgment,...res.body.single,...res.body.multiple]
+					console.log(this.questionList)
 				}
-			}
+			},
+			
 		}
 	}
 </script>
