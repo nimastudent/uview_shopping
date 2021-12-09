@@ -31,8 +31,13 @@
 				console.log(this.lawArray)
 			},
 			goLaw(item){
-				console.log(item)
-				console.log(1111)
+				this.$u.route({
+					type:'navigateTo',
+					url:'pages/action/law',
+					params:{
+						lawtype:item
+					}
+				})
 			}
 		}
 	}

@@ -29,8 +29,15 @@ const install = (Vue, vm) => {
 	//获取法律目录
 	let getLaw = params => vm.$u.get('/law')
 	
-	
+	//获取指定法律类别的具体法律
+	let getLawCatalogue = (param = {}) => vm.$u.get('/law/catalogue?lawtype='+param)
 	// 此处使用了传入的params参数，一切自定义即可
+	
+	//获取指定法律的内容
+	let getlawContent = param => vm.$u.get('/law/content?title='+param)
+	
+	//根据id切换查看法律
+	let stepLawId = param => vm.$u.get('/law/content/id?id='+param)
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
@@ -39,7 +46,10 @@ const install = (Vue, vm) => {
 		getVideo,
 		getCourse,
 		getMockQuestion,
-		getLaw
+		getLaw,
+		getLawCatalogue,
+		getlawContent,
+		stepLawId,
 	};
 }
 

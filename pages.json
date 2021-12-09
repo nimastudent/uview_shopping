@@ -82,7 +82,16 @@
             "path" : "pages/action/law",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/action/lawContent",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
                 "enablePullDownRefresh": false
             }
             
