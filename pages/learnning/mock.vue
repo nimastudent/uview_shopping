@@ -47,7 +47,7 @@
 					
 					<!-- 单选 -->
 						
-						<view class="" v-if="currentType===1">
+						<view class="u-m-t-20" v-if="currentType===1">
 								<u-radio-group @change="radioGroupChange" :wrap="true">
 									<u-radio 
 										@change="radioChangeSingle"
@@ -62,7 +62,7 @@
 					
 					<!-- 多选 -->
 					
-					<view class="" v-else-if="currentType===2">
+					<view class="u-m-t-20" v-else-if="currentType===2">
 							<u-checkbox-group  :wrap="true">
 								<u-checkbox 
 									v-for="(item, index) in question.option" :key="index" 
@@ -71,6 +71,19 @@
 								>{{item.id}} .{{item.content}}</u-checkbox>
 							</u-checkbox-group>
 							<!-- <u-button @click="checkedAll">全选</u-button> -->
+						</view>
+						
+						<view class="u-m-t-20" v-else-if="currentType === 3" >
+							<u-radio-group @change="judgmentRadioGroupChange" :wrap="true">
+								<u-radio 
+									@change="judgmentRadioChange"
+									v-for="(item, index) in question.option" :key="index" 
+									:name="item.content"
+									:value="item.id"
+								>
+									{{item.id}}.{{item.content}}
+								</u-radio>
+							</u-radio-group>
 						</view>
 				</swiper-item>
 			</swiper>
@@ -187,7 +200,8 @@
 			},
 			checkboxGroupChange(e){
 				var item = this.questionList[this.questionIndex]
-				console.log(e)
+				var params = {id:1,answer:"A"}
+				this.$u.pai.sendm
 			}
 			
 		}
