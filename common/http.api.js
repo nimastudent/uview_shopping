@@ -16,7 +16,7 @@ const install = (Vue, vm) => {
 	//认证相关
 	// vm.$u.api.authLogin = params => vm.$u.api.post('/api/auth/login',params)
 	//登录
-	let authLogin = (params = {} ) => vm.$u.post('/api/auth/login',params)
+	let authLogin = (params = {} ) => vm.$u.post('/user/login',params)
 	
 	//首页咨询
 	let getConsult = (params = {} ) => vm.$u.get('/information/all?start=0&len=2')
@@ -32,6 +32,10 @@ const install = (Vue, vm) => {
 	//获取法律目录
 	let getLaw = params => vm.$u.get('/law')
 	
+	let getLawCatalogue = parmas => vm.$u.get('/law/catalogue?lawtype='+parmas)
+	
+	
+	let getlawContent = parmas => vm.$u.get('/law/content?title='+parmas)
 	
 	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
 	
@@ -44,6 +48,8 @@ const install = (Vue, vm) => {
 		getConsult,
 		getVideo,
 		getCourse,
+		getLawCatalogue,
+		getlawContent,
 		getMockQuestion,
 		getLaw
 	};

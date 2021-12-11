@@ -4,12 +4,17 @@
 		<view class="content">
 			<view class="title">欢迎登录</view>
 			
-				<u-input class="username"  :type="username" :border="border" placeholder="请输入用户名" />
-				<u-input class="password" :type="password" :border="border" placeholder="请输入密码" />
+			
+				<u-input class="username" v-model="form.username"  :border="border" placeholder="请输入用户名" />
+				<u-input class="password" v-model="form.password" :type="type"  :border="border" placeholder="请输入密码" />
+				
+					
 				<text>如密码遗忘，请联系管理员</text>
 				<button class="loginButton" type="primary" @click="login">登录</button>
 			
 		</view>
+		
+		<u-toast ref="uToast" />
 	</view>
 </template>
 
@@ -17,8 +22,11 @@
 export default {
 	data() {
 		return {
-			username:'',
-			password:'',
+			form: {
+				username:'',
+				password:'',
+				},
+			type:'password',
 			border:true
 		}
 	},
@@ -33,16 +41,29 @@ export default {
 		}
 	},
 	methods: {
-		login(){
+		async login(){
 			//保存cookie
-			this.$u.vuex('vuex_cookies','123123');
+			// let password = this.$u.
+			if(this.form.username === 'admin' && this.form.password === '123456'){
+				const res = await this.$u.api.authLogin(this.form)
+				if(res.success){
+					this.$u.vuex('vuex_cookies','123123');
+					this.$u.route({
+						type:'switchTab',
+						url:'/pages/index/index'
+					})
+				}else{
+					this.$refs.uToast.show({
+										title: '用户名密码不合法',
+										type: 'error',
+									})
+				}
+			}
+			
 			//uni-app首次跳转到tabbar页面需要用switchTab
 			// uni.switchTab({
 			// })
-			this.$u.route({
-				type:'switchTab',
-				url:'/pages/index/index'
-			})
+			
 		}
 	}
 };
