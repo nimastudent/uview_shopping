@@ -64,6 +64,13 @@
 			},
 			goConsultContent(id){
 				console.log(id)
+				this.$u.route({
+					tyep:'navigateTo',
+					url:'pages/index/consult',
+					params:{
+						id:id
+					}
+				})
 			}
 		}
 	}

@@ -96,6 +96,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/index/consult",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

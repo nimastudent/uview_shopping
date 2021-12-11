@@ -2,12 +2,12 @@
 	<view class="box">
 		<u-navbar back-text="返回" title="法律内容" class="navbar-top">
 			<u-icon class="u-m-r-20" id="navbar-iocn" name="list" color="#2979ff" size="36" slot="right" @click="navbarListShow"></u-icon>
-			<view class="navbar-list" v-show="navbarShow">
-				<view class="u-m-10 ">上一条</view>
-				<view class="u-m-10">下一条</view>
-			</view>
+			
 		</u-navbar>
-		
+		<view class="navbar-list" v-show="navbarShow">
+			<view class="u-m-10">上一条</view>
+			<view class="u-m-10">下一条</view>
+		</view>
 		<u-back-top :scroll-top="scrollTop" top=0></u-back-top>
 		<view class="content-box u-m-t-20">
 			<view class="content-item">法律名称：{{title}}</view>

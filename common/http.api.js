@@ -13,18 +13,19 @@ const install = (Vue, vm) => {
 	//登陆
 	let index = (params = {}) => vm.$u.get('/api/index',params);
 	
-	//认证相关
-	// vm.$u.api.authLogin = params => vm.$u.api.post('/api/auth/login',params)
-	//登录
+	
 	let authLogin = (params = {} ) => vm.$u.post('/user/login',params)
 	
 	//首页咨询
 	let getConsult = (params = {} ) => vm.$u.get('/information/all?start=0&len=2')
 	
+	let getConsultContent = params => vm.$u.get('/information/content?id='+params)
+	
 	
 	let getVideo = (params = {} ) => vm.$u.get('/course/video?id='+params)
 	
 	let getCourse = (params = {} ) => vm.$u.get('/course/get?id='+params)
+	
 	
 	//获取模拟考试题 
 	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample?single=5&multiple=5&judgment=5')
@@ -46,6 +47,7 @@ const install = (Vue, vm) => {
 		index,
 		authLogin,
 		getConsult,
+		getConsultContent,
 		getVideo,
 		getCourse,
 		getLawCatalogue,
