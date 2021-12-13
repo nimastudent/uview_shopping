@@ -39,6 +39,8 @@
 
 <style lang="scss" scoped>
 	.container{
+		width: 90%;
+		margin: 0 auto;
 		position: relative;
 	}
 .title{
@@ -53,6 +55,7 @@
 	right: 20rpx;
 }
 .content{
+	
 	margin-top: 50rpx;
 	text-indent: 1.5rem;
 }
