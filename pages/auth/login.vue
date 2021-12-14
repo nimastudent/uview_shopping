@@ -5,13 +5,25 @@
 			<view class="title">欢迎登录</view>
 			
 			
-				<u-input class="username" v-model="form.username"  :border="border" placeholder="请输入用户名" />
+				<u-input clas<!-- s="username" v-model="form.username"  :border="border" placeholder="请输入用户名" />
 				<u-input class="password" v-model="form.password" :type="type"  :border="border" placeholder="请输入密码" />
+				 -->
 				
+				<u-form :model="form" ref="uForm">
+							<u-form-item  prop="username">
+								<u-input :border="border" v-model="form.username" placeholder="请输入用户名" />
+							</u-form-item>
+							<u-form-item  prop="password">
+								<u-input :border="border" :type="type" v-model="form.password" placeholder="请输入密码" />
+							</u-form-item>
+						</u-form>
 					
 				<text>如密码遗忘，请联系管理员</text>
-				<button class="loginButton" type="primary" @click="login">登录</button>
+				<button class="loginButton" type="primary" @click="submit">登录</button>
 			
+
+		
+			<!-- <u-button @click="submit">提交</u-button> -->
 		</view>
 		
 		<u-toast ref="uToast" />
@@ -22,13 +34,34 @@
 export default {
 	data() {
 		return {
-			form: {
-				username:'',
-				password:'',
-				},
 			type:'password',
-			border:true
+			border:true,
+			form: {
+							username: '',
+							password: '',
+						},
+			rules: {
+							username: [
+								{ 
+									required: true, 
+									message: '请输入用户名', 
+									// 可以单个或者同时写两个触发验证方式 
+									trigger: ['change','blur'],
+								}
+							],
+							password: [
+								{
+									required: true,
+									min: 5, 
+									message: '请输入密码', 
+									trigger: 'change'
+								}
+							]
+						}
 		}
+	},
+	onReady() {
+			this.$refs.uForm.setRules(this.rules);
 	},
 	computed: {
 		inputStyle() {
@@ -44,27 +77,42 @@ export default {
 		async login(){
 			//保存cookie
 			// let password = this.$u.
-			if(this.form.username === 'admin' && this.form.password === '123456'){
+				console.log(this.form)
 				const res = await this.$u.api.authLogin(this.form)
 				if(res.success){
-					this.$u.vuex('vuex_cookies','123123');
-					this.$u.route({
-						type:'switchTab',
-						url:'/pages/index/index'
-					})
+					console.log(res)
+					this.getHeader()
+					// this.$u.vuex('vuex_cookies','123123');
+					// this.$u.route({
+					// 	type:'switchTab',
+					// 	url:'/pages/index/index'
+					// })
 				}else{
 					this.$refs.uToast.show({
-										title: '用户名密码不合法',
-										type: 'error',
-									})
+						title:'用户名或密码错误',
+						type: 'error',
+					})
 				}
-			}
-			
-			//uni-app首次跳转到tabbar页面需要用switchTab
-			// uni.switchTab({
-			// })
-			
-		}
+		},
+		test(){
+			this.$u.api.authLogin(this.form).then( (res) => {
+				console.log(res)
+			})
+		},
+		getHeader(){
+			this.$u.api.getUserheader().then((res) => {
+				console.log(res)
+			})
+		},
+		submit() {
+			 this.$refs.uForm.validate(valid => {
+					if (valid) {
+						 this.login()
+						} else {
+							
+						}
+					});
+				}
 	}
 };
 </script>
