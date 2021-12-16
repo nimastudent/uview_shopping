@@ -25,7 +25,7 @@
 			}
 		},
 		async onLoad() {
-			const cookie = this.vuex_cookies;
+			const cookie = this.vuex_token;
 			console.log(cookie)
 			if(!cookie){
 				this.$u.toast('请登录！')

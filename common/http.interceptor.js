@@ -28,10 +28,15 @@ const install = (Vue, vm) => {
 		// 所以哪怕您重新登录修改了Storage，下一次的请求将会是最新值
 		// const token = uni.getStorageSync('token');
 		// config.header.token = token;
-		config.header.Token = 'xxxxxx';
+		// config.header.Token = 'xxxxxx';
+		config.header['Content-Type'] = 'application/x-www-form-urlencoded';
 		
+		config.header.token = vm.$store.state.vuex_token;
 		// 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
 		if(config.url == '/user/login') config.header.noToken = true;
+		if(config.url == '/multipleChoice/check') config.header['Content-Type'] = 'application/json';
+		
+		if(config.url == '/user/headPortrait/upload') config.header['Content-Type'] = 'multipart/form-data';
 		// 最后需要将config进行return
 		return config;
 		// 如果return一个false值，则会取消本次请求
@@ -41,20 +46,28 @@ const install = (Vue, vm) => {
 	// 响应拦截，判断状态码是否通过
 	Vue.prototype.$u.http.interceptor.response = (res) => {
 		
-		const {statusCode,data} = res
+		const {statusCode,data,code} = res
 		
 		if(statusCode < 400) {
 			// res为服务端返回值，可能有code，result等字段
 			// 这里对res.result进行返回，将会在this.$u.post(url).then(res => {})的then回调中的res的到
 			// 如果配置了originalData为true，请留意这里的返回值
+			if(data.code == -1){
+				vm.$u.toast('验证失败，请重新登录');
+				setTimeout(() => {
+					// 此为uView的方法，详见路由相关文档
+					vm.$u.route({
+						type:'redirectTo',
+						url:'pages/auth/login'
+					})
+				}, 1500)
+			}else if(data.code == 501){
+				// vm.$u.toast('服务器错误，请稍后尝试');
+			}
 			return data;
-		} else if(statusCode == 401) {
+		} else if(statusCode == 501) {
 			// 假设201为token失效，这里跳转登录
-			vm.$u.toast('验证失败，请重新登录');
-			setTimeout(() => {
-				// 此为uView的方法，详见路由相关文档
-				vm.$u.route('/pages/user/login')
-			}, 1500)
+			
 			return false;
 		} else {
 			// 如果返回false，则会调用Promise的reject回调，

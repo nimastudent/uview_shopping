@@ -45,7 +45,7 @@
 			}
 		},
 		onLoad() {
-			
+			this.getAvatar()
 		},
 		methods: {
 			updateName(){
@@ -59,6 +59,14 @@
 				this.$u.route({
 					type:'redirect',
 					url:'pages/auth/login'
+				})
+				
+			},
+			//获取用户头像
+			async getAvatar(){
+				console.log(1)
+				await this.$u.api.getAvatar().then((res) => {
+					console.log(res)
 				})
 				
 			}

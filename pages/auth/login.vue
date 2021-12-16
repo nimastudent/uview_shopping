@@ -37,8 +37,8 @@ export default {
 			type:'password',
 			border:true,
 			form: {
-							username: '',
-							password: '',
+							username: 'admin',
+							password: '123456',
 						},
 			rules: {
 							username: [
@@ -63,6 +63,9 @@ export default {
 	onReady() {
 			this.$refs.uForm.setRules(this.rules);
 	},
+	onLoad(){
+		
+	},
 	computed: {
 		inputStyle() {
 			let style = {};
@@ -77,16 +80,15 @@ export default {
 		async login(){
 			//保存cookie
 			// let password = this.$u.
-				console.log(this.form)
 				const res = await this.$u.api.authLogin(this.form)
 				if(res.success){
-					console.log(res)
-					this.getHeader()
+					this.$u.vuex('vuex_token',res.body.token)
+					// this.getHeader()
 					// this.$u.vuex('vuex_cookies','123123');
-					// this.$u.route({
-					// 	type:'switchTab',
-					// 	url:'/pages/index/index'
-					// })
+					this.$u.route({
+						type:'switchTab',
+						url:'/pages/index/index'
+					})
 				}else{
 					this.$refs.uToast.show({
 						title:'用户名或密码错误',
@@ -112,7 +114,7 @@ export default {
 							
 						}
 					});
-				}
+			}
 	}
 };
 </script>

@@ -5,9 +5,9 @@
 			<view id="top-box" class="top-box">
 				<view class="action text-black">
 					<!-- 题型判断 -->
-					<text v-if="currentType===1">单选题</text>
-					<text v-else-if="currentType===2">多选题</text>
-					<text v-else-if="currentType===3">判断题</text>
+					<text v-if="currentType===1">判断题</text>
+					<text v-else-if="currentType===2">单选题</text>
+					<text v-else-if="currentType===3">多选题</text>
 				</view>
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime">
@@ -37,7 +37,8 @@
 			:style="{'height':swiperHeight}"
 			>
 				<swiper-item v-for="(question,index) in questionList" :key="index">
-					<view class="">
+					
+					<view class="problem">
 						<view class="action">
 							<text></text>{{index+1}}.{{question.problem}}
 						</view>
@@ -46,9 +47,9 @@
 					
 					
 					<!-- 单选 -->
-						
-						<view class="u-m-t-20" v-if="currentType===1">
+						<view class="u-m-t-20" v-if="currentType===2">
 								<u-radio-group @change="radioGroupChange" :wrap="true">
+									<text>单选</text>
 									<u-radio 
 										@change="radioChangeSingle"
 										v-for="(item, index) in question.option" :key="index" 
@@ -62,18 +63,19 @@
 					
 					<!-- 多选 -->
 					
-					<view class="u-m-t-20" v-else-if="currentType===2">
+					<view class="u-m-t-20" v-else-if="currentType===3">
 							<u-checkbox-group  :wrap="true">
 								<u-checkbox 
 									v-for="(item, index) in question.option" :key="index" 
 									:name="item.id"
+									v-model="item.check"
 									@change="checkboxGroupChange"
 								>{{item.id}} .{{item.content}}</u-checkbox>
 							</u-checkbox-group>
 							<!-- <u-button @click="checkedAll">全选</u-button> -->
 						</view>
 						
-						<view class="u-m-t-20" v-else-if="currentType === 3" >
+						<view class="u-m-t-20" v-else-if="currentType === 1" >
 							<u-radio-group @change="judgmentRadioGroupChange" :wrap="true">
 								<u-radio 
 									@change="judgmentRadioChange"
@@ -142,6 +144,7 @@
 		onLoad() {
 			this.getMockQuestion()
 			// this.currentType = this.questionList[0].type;
+			
 			uni.hideLoading();
 			
 		},
@@ -172,12 +175,18 @@
 				const res = await this.$u.api.getMockQuestion()
 				console.log(res)
 				if(res.code === 200){
+					console.log(res.body.multiple)
 					// [this.questionList...,res.body.judgment...]
 					this.questionList = []
+					var check = {check:false}
+					
 					this.questionList = [...this.questionList,...res.body.judgment,...res.body.single,...res.body.multiple]
-					console.log(this.questionList)
+					// console.log(this.questionList)
+		
+					// console.log(this.questionList)
 				}
 			},
+			
 			radioGroupChange(e){//单选选中
 				// e为选项内容
 				//获取问题列表中当前元素
@@ -200,8 +209,13 @@
 			},
 			checkboxGroupChange(e){
 				var item = this.questionList[this.questionIndex]
-				var params = {id:1,answer:"A"}
-				this.$u.pai.sendm
+				console.log(e)
+				// var params = {id:1,answer:"AB"}
+				console.log(item)
+				// this.$u.pai.sendm
+				// this.$u.api.sendMultipleAns(params).then(res => {
+				// 	console.log(res)
+				// })
 			}
 			
 		}

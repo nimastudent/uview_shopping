@@ -11,9 +11,6 @@ const install = (Vue, vm) => {
 	// vm.$u.api = {}
 	
 	//登陆
-	let index = (params = {}) => vm.$u.get('/api/index',params);
-	
-	
 	let authLogin = (params = {} ) => vm.$u.post('/user/login',params)
 	
 	//首页咨询
@@ -35,16 +32,19 @@ const install = (Vue, vm) => {
 	
 	let getLawCatalogue = parmas => vm.$u.get('/law/catalogue?lawtype='+parmas)
 	
-	
 	let getlawContent = parmas => vm.$u.get('/law/content?title='+parmas)
 	
 	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
 	
+	//个人中心
+	let getAvatar = params => vm.$u.get('/user/headPortrait/get')
+	
+	let uploadAvatar = params => vm.$u.post('/user/headPortrait/upload',params)
 	// 此处使用了传入的params参数，一切自定义即可
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
-		index,
+	
 		authLogin,
 		getConsult,
 		getConsultContent,
@@ -53,7 +53,10 @@ const install = (Vue, vm) => {
 		getLawCatalogue,
 		getlawContent,
 		getMockQuestion,
-		getLaw
+		sendMultipleAns,
+		getLaw,
+		getAvatar,
+		uploadAvatar
 	};
 }
 

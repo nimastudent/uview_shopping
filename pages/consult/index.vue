@@ -1,9 +1,17 @@
 <template>
 	<view>
 		<u-navbar :is-back="false" title="课程学习" title-color="#000000"></u-navbar>
-		<u-cell-group>
-			<u-cell-item v-for="(item,id) in courseArry" :name="id" :title="item.name" :arrow="true" arrow-direction="right" ></u-cell-item>
+		<!-- <u-cell-group>
+			<u-cell-item v-for="(item,id) in courseArry" :key="id" :title="item.name" :arrow="true" arrow-direction="right" ></u-cell-item>
 		</u-cell-group>
+		 -->
+		<u-collapse>
+				<u-collapse-item class="cell" :title="item.name" v-for="(item, id) in courseArry" :key="id" :open="item.open">
+					<u-cell-group>
+						<u-cell-item v-for="(name,index) in item.catalogue" :key="index" :title="name.name" :arrow="true" arrow-direction="right" @click="goCourse(item)"></u-cell-item>
+					</u-cell-group>
+				</u-collapse-item>
+			</u-collapse>
 		<!-- <button type="default" @click="getCourse()">test</button> -->
 	</view>
 </template>
@@ -13,6 +21,7 @@
 		data() {
 			return {
 				courseArry:[],
+				
 			}
 		},
 		onLoad(){
@@ -22,6 +31,7 @@
 			async getCourse(){
 				var id = 1;
 				var resSucc = true
+				const temp = {open:false}
 				while(resSucc){
 				     await this.$u.api.getCourse(id).then((res) => {
 						if(res.success) this.courseArry.push(res.body)
@@ -29,13 +39,24 @@
 					})
 					id++;
 				}
+				for (let item in this.courseArry) {
+					
+					this.courseArry[item] = {...this.courseArry[item],...temp}
+				}
 				console.log(this.courseArry)
+			},
+			goCourse(item){
+				console.log(item)
 			}
 			
 		}
 	}
 </script>
 
-<style>
- 
+<style lang="scss" scoped>
+	.cell{
+		width: 95%;
+		margin: 0 auto;
+		padding: 5rpx;
+	}
 </style>
