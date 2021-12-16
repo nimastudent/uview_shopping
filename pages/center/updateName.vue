@@ -7,6 +7,9 @@
 			<u-cell-item :title-style="style" title="昵称" :arrow="true" :value="nickName" @click="uploadtest"></u-cell-item>
 			
 		</u-cell-group>
+		
+				<u-toast ref="uToast" />
+
 	</view>
 </template>
 
@@ -28,16 +31,35 @@
 				})
 			},
 			uploadtest(){
-				uni.chooseImage({
+				var a = this.vuex_token
+				var _this = this
+				 uni.chooseImage({
 					  count: 1, //默认9
 					    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
 					    sourceType: ['album'], //从相册选择
 					    success: function (res) {
 					        // console.log(JSON.stringify(res.tempFilePaths));
-							let avatar = JSON.stringify(res.tempFilePaths[0])
-							let test = new Blob(res.tempFilePaths[0])
-							console.log(test)
-					    }
+							// var a = this.$u.vuex_token
+							console.log(res.tempFiles[0].type)
+							if(res.tempFiles[0].type == 'image/jpeg'){
+								// console.log('yes')
+								uni.uploadFile({
+									url:'http://ldqc.xyz:5880/user/headPortrait/upload',
+									file:res.tempFiles[0],
+									header:{
+										'token':a,
+									},
+									success:(res) => {
+										console.log(res)
+										var test = JSON.stringify(res.body)
+									}
+								})
+							}else{
+								console.log(_this.$u.toast("lalalalla"))
+							}
+							
+					    },
+						
 				})
 			}
 		}

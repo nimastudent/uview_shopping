@@ -46,6 +46,7 @@
 		},
 		onLoad() {
 			this.getAvatar()
+			this.getErrorBook()
 		},
 		methods: {
 			updateName(){
@@ -69,6 +70,11 @@
 					console.log(res)
 				})
 				
+			},
+			getErrorBook(){
+				this.$u.api.getErrorBook().then((res) => {
+					console.log(res)
+				})
 			}
 		}
 	}

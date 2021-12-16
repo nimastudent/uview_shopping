@@ -76,9 +76,9 @@
 						</view>
 						
 						<view class="u-m-t-20" v-else-if="currentType === 1" >
-							<u-radio-group @change="judgmentRadioGroupChange" :wrap="true">
+							<u-radio-group :wrap="true">
 								<u-radio 
-									@change="judgmentRadioChange"
+									@change="judgmentRadioChange(item)"
 									v-for="(item, index) in question.option" :key="index" 
 									:name="item.content"
 									:value="item.id"
@@ -185,6 +185,26 @@
 		
 					// console.log(this.questionList)
 				}
+			},
+			judgmentRadioChange(item){//判断选中
+				// console.log(e)
+				var problem = this.questionList[this.questionIndex]
+				let judegment = {id:problem.id,answer:item.id}
+				var flag = true
+				for(let i = 0;i < this.judgmentAnsList.length;i++){
+					if(this.judgmentAnsList[i].id == judegment.id){
+						this.judgmentAnsList[i].answer = item.id
+						flag = false
+						break
+					}
+				}
+				if(flag){
+					this.judgmentAnsList.push(judegment)
+				}
+				console.log(this.judgmentAnsList)
+				if (this.autoRadioNext && this.questionIndex < this.questionList.length - 1) {
+					this.questionIndex += 1;
+				};
 			},
 			
 			radioGroupChange(e){//单选选中
