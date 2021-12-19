@@ -14,9 +14,11 @@ const install = (Vue, vm) => {
 	let authLogin = (params = {} ) => vm.$u.post('/user/login',params)
 	
 	//首页咨询
-	let getConsult = (params = {} ) => vm.$u.get('/information/all?start=0&len=2')
+	let getConsult = (params = {} ) => vm.$u.get('/information/all?start=0&len=4')
 	
 	let getConsultContent = params => vm.$u.get('/information/content?id='+params)
+	
+	let getIndexSwiper = params => vm.$u.get('/information/getPicture')
 	
 	
 	let getVideo = (params = {} ) => vm.$u.get('/course/video?id='+params)
@@ -27,6 +29,11 @@ const install = (Vue, vm) => {
 	//获取模拟考试题 
 	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample?single=5&multiple=5&judgment=5')
 	
+	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
+	
+	let sendSingleAns = (params = {}) => vm.$u.post('/singleChoice/check',params)
+	
+	let sendJudgmentAns = (params = {}) => vm.$u.post('/judgment/check',params)
 	//获取法律目录
 	let getLaw = params => vm.$u.get('/law')
 	
@@ -34,33 +41,35 @@ const install = (Vue, vm) => {
 	
 	let getlawContent = parmas => vm.$u.get('/law/content?title='+parmas)
 	
-	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
+	let getNewRule = params => vm.$u.get('/rule/all?start=0&len=3')
+	
+	let getNewRuleContent = params => vm.$u.get('/rule/content?id='+params)
 	
 	//个人中心
 	let getAvatar = params => vm.$u.get('/user/headPortrait/get')
 	
 	let uploadAvatar = params => vm.$u.post('/user/headPortrait/upload',params)
-	
-	
-	let getErrorBook = () => vm.$u.get('/errorBook/all')
 	// 此处使用了传入的params参数，一切自定义即可
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
-	
 		authLogin,
 		getConsult,
 		getConsultContent,
+		getIndexSwiper,
 		getVideo,
 		getCourse,
 		getLawCatalogue,
 		getlawContent,
 		getMockQuestion,
 		sendMultipleAns,
+		sendSingleAns,
+		sendJudgmentAns,
 		getLaw,
+		getNewRule,
+		getNewRuleContent,
 		getAvatar,
-		uploadAvatar,
-		getErrorBook
+		uploadAvatar
 	};
 }
 

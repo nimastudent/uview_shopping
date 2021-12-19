@@ -6,9 +6,11 @@
 		<view class="date">
 			{{consultRes.date}}
 		</view>
-		
+		<view class="img">
+			<image :src="consultRes.picture" mode=""></image>
+		</view>
 		<view class="content">
-			{{consultRes.content}}
+			<u-parse :html="consultRes.content"></u-parse>
 		</view>
 	</view>
 </template>
@@ -30,6 +32,7 @@
 				const res = await this.$u.api.getConsultContent(this.consultId)
 				console.log(res)
 				if(res.success){
+					res.body.picture = 'data:image/jpeg;base64,' + res.body.picture
 					this.consultRes = res.body
 				}
 			}
@@ -50,13 +53,17 @@
 	text-align: center;
 }
 .date{
+	float: right;
+	height: 40rpx;
 	color: #676767;
-	position: absolute;
 	right: 20rpx;
 }
+image{
+	padding: 20rpx;
+}
 .content{
-	
-	margin-top: 50rpx;
-	text-indent: 1.5rem;
+	text-indent: 1rem;
+	line-height: 45rpx;
+	letter-spacing: 1.5rpx;
 }
 </style>

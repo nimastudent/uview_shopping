@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<u-cell-group>
-			<u-cell-item :title-style="style" title="头像" :arrow="true" arrow-direction="right" @click="goUploadAvatar">
-				<image src="../../static/center-avatar.png" mode=""></image>
+			<u-cell-item :title-style="style" title="头像" :arrow="true" arrow-direction="right" @click="uploadtest">
+				<image :src="imgUrl" mode=""></image>
 			</u-cell-item>
-			<u-cell-item :title-style="style" title="昵称" :arrow="true" :value="nickName" @click="uploadtest"></u-cell-item>
+			<u-cell-item :title-style="style" title="昵称" :arrow="true" :value="nickName" ></u-cell-item>
 			
 		</u-cell-group>
 		
@@ -20,14 +20,20 @@
 				style:{
 					'color':'#000000',
 				},
-				nickName:'lalala',				
+				nickName:'lalala',
+				imgUrl:'',
 			}
 		},
+		onLoad() {
+			this.getImgUrl()
+		},
 		methods: {
-			goUploadAvatar(){
-				this.$u.route({
-					tyep:'navigateTo',
-					url:'pages/center/uploadAvatar',
+			async getImgUrl(){
+				await this.$u.api.getAvatar().then((res) => {
+					if(res.success){
+						let arrayBuffer = res.body
+						this.imgUrl = 'data:image/jpeg;base64,' + arrayBuffer
+					}
 				})
 			},
 			uploadtest(){
@@ -55,7 +61,7 @@
 									}
 								})
 							}else{
-								console.log(_this.$u.toast("lalalalla"))
+								_this.$u.toast("请上传文件格式为jpg/jpeg的图片")
 							}
 							
 					    },

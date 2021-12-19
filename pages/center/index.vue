@@ -46,7 +46,6 @@
 		},
 		onLoad() {
 			this.getAvatar()
-			this.getErrorBook()
 		},
 		methods: {
 			updateName(){
@@ -68,6 +67,10 @@
 				console.log(1)
 				await this.$u.api.getAvatar().then((res) => {
 					console.log(res)
+					if(res.success){
+						let arrayBuffer = res.body
+						this.pic = 'data:image/jpeg;base64,' + arrayBuffer
+					}
 				})
 				
 			},

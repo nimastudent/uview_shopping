@@ -3,14 +3,19 @@
 		<u-navbar :is-back="false" title="主页" title-color="#000000"></u-navbar>	
 		
 		<view class="wrap">
-				<u-swiper ></u-swiper>
+				<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperTest"></u-swiper>
 		</view>
 			
 		<view class="item u-border-bottom" v-for="(item,index) in consultList" :key="item.id">
 						<!-- <image mode="aspectFill" :src="item.images" /> -->
 						<!-- 此层wrap在此为必写的，否则可能会出现标题定位错误 -->
 						<view class="title-wrap" @click="goConsultContent(item.id)">
-							<text class="title u-line-2">{{ item.title }}</text>
+							<view class="title">
+								{{ item.title }}
+							</view>
+							<view class="img-continar">
+								<image :src="item.picture" mode=""></image>
+							</view>
 						</view>
 					</view>
 		
@@ -22,11 +27,13 @@
 		data() {
 			return {
 				consultList:[],
+				swiperList:[],
+				swiperHeight:350,
+				
 			}
 		},
-		async onLoad() {
+		 onLoad() {
 			const cookie = this.vuex_token;
-			console.log(cookie)
 			if(!cookie){
 				this.$u.toast('请登录！')
 				setTimeout(() => {
@@ -37,6 +44,7 @@
 				})
 			}
 			this.indexGetConsult()
+			this.getSwiper()
 			// this.$u.get('/api/index').then(res => {
 			// 	console.log(res)
 			// }).catch(e => {
@@ -57,9 +65,14 @@
 		methods: {
 			async indexGetConsult(){
 				const res = await this.$u.api.getConsult()
-				console.log(res)
 				if(res.success){
+					// console.log(res.body)
+					res.body.forEach((item) => {
+						item.picture = 'data:image/jpeg;base64,' + item.picture
+						// console.log(item)
+					})
 					this.consultList = res.body
+					// console.log(this.consultList)
 				}
 			},
 			goConsultContent(id){
@@ -71,6 +84,19 @@
 						id:id
 					}
 				})
+			},
+			async getSwiper(){
+				const res = await this.$u.api.getIndexSwiper()
+				if(res.success){
+					res.body.forEach((item) => {
+						item.picture = 'data:image/jpeg;base64,' + item.picture
+					})
+					this.swiperList = res.body
+				}
+			},
+			swiperTest(e){
+				let id = this.swiperList[e].id
+				this.goConsultContent(id)
 			}
 		}
 	}
@@ -89,11 +115,19 @@ image {
 	margin-right: 20rpx;
 	border-radius: 12rpx;
 }
-
-.title {
-	text-align: left;
-	font-size: 28rpx;
-	color: $u-content-color;
-	margin-top: 20rpx;
+.wrap{
+	margin: 30rpx;
+}
+.title-wrap{
+	width: 95%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.title{
+	width: 75%;
+}
+.img-continar{
+	width: 20%;
 }
 </style>

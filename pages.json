@@ -61,7 +61,7 @@
             "path" : "pages/center/updateName",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "用户设置",
                 "enablePullDownRefresh": false
 				
             }
@@ -119,6 +119,24 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/action/newRule",
+            "style" :                                                                                    
+            {
+                "navigationStyle": "custom" ,// 隐藏系统导航栏
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/action/newRuleContent",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
                 "enablePullDownRefresh": false
             }
             

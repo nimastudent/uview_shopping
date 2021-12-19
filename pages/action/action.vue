@@ -2,6 +2,11 @@
 	<view>
 		<u-navbar :is-back="false" title="办案大全" title-color="#000000"></u-navbar>
 		<u-cell-group>
+			<u-cell-item
+			title="新规"
+			@click="goNewRule"
+			>
+			</u-cell-item>
 			<u-cell-item 
 			v-for="(item,index) in lawArray"
 			 :name="index" 
@@ -37,6 +42,12 @@
 					params:{
 						lawtype:item
 					}
+				})
+			},
+			goNewRule(){
+				this.$u.route({
+					type:'navigateTo',
+					url:'pages/action/newRule',
 				})
 			}
 		}

@@ -24,10 +24,10 @@
 			}
 		},
 		onLoad(e){
-			if(e!=null){
+			if(e.lawtype!=''){
 				this.lawtype = e.lawtype
+				this.getLawCatalogue()
 			}
-			this.getLawCatalogue()
 		},
 		methods: {
 			async getLawCatalogue(){
@@ -46,7 +46,8 @@
 						title:e
 					}
 				})
-			}
+			},
+			
 		}
 	}
 </script>
