@@ -5,7 +5,7 @@
 				
 		<view class="u-flex u-m-t-30">
 			<button class="button-class u-flex" type="default" @click="goMock()">模拟考</button>
-			<button class="button-class u-flex" type="default">大练兵</button>
+			<button class="button-class u-flex" type="default">学法考试</button>
 		</view>
 	</view>
 </template>
