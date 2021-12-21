@@ -24,7 +24,7 @@
 		<view class="u-m-t-20">
 			<u-cell-group>
 				<u-cell-item icon="setting" title="账号设置" @click="updateName"></u-cell-item>
-				<u-cell-item icon="file-text" title="我的评论"></u-cell-item>
+				<u-cell-item icon="file-text" title="我的评论" @click="goComment"></u-cell-item>
 				<u-cell-item icon="star" title="我的收藏"></u-cell-item>
 				<u-cell-item icon="order" title="我的错题集"></u-cell-item>
 			</u-cell-group>
@@ -64,7 +64,6 @@
 			},
 			//获取用户头像
 			async getAvatar(){
-				console.log(1)
 				await this.$u.api.getAvatar().then((res) => {
 					console.log(res)
 					if(res.success){
@@ -78,6 +77,9 @@
 				this.$u.api.getErrorBook().then((res) => {
 					console.log(res)
 				})
+			},
+			goComment(){
+				this.$u.route('pages/center/comment')
 			}
 		}
 	}

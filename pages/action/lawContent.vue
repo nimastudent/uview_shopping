@@ -1,15 +1,18 @@
 <template>
-	<view class="box">
-		<u-navbar back-text="返回" title="法律内容" class="navbar-top">
-			<u-icon class="u-m-r-20" id="navbar-iocn" name="list" color="#2979ff" size="36" slot="right" @click="navbarListShow"></u-icon>
+	<view class="box"  >
+		<u-navbar id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
+			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
 			
 		</u-navbar>
-		<view class="navbar-list" v-show="navbarShow">
-			<view class="u-m-10">上一条</view>
-			<view class="u-m-10">下一条</view>
+		
+		
+		
+		<view class="navbar-list" :style="listStyle" v-show="navbarShow">
+			<button type="primary" size="mini" @click="goLast">上一条</button>
+			<button type="primary" size="mini">下一条</button>
 		</view>
 		<u-back-top :scroll-top="scrollTop" top=0></u-back-top>
-		<view class="content-box u-m-t-20">
+		<view class="content-box u-m-t-20" @touchstart="navbarListShow">
 			<view class="content-item">法律名称：{{title}}</view>
 			
 			<view class="content-item">法律类型：{{lawContent.lawtype}}</view>
@@ -44,6 +47,9 @@
 	export default {
 		data() {
 			return {
+				listStyle:{
+					top:''
+				},
 				title:'', //上一层传入法律名称
 				lawContent:{}, //法律条文
 				show: false, //模态框是否展示
@@ -54,13 +60,18 @@
 				navbarShow:false
 			}
 		},
-		onPageScroll(e) {
-				this.scrollTop = e.scrollTop;
-			},
+		onReady() {
+			uni.createSelectorQuery().select("#mynavbar").fields({
+				size:true
+			}, (data) => {
+				this.listStyle.top = data.height
+			}).exec()
+		},
 		onLoad(e){
 			console.log(e)
 			this.title = e.title
-			this.getLawContent()
+			this.getLawContent();
+			
 		},
 		methods: {
 			async getLawContent(){//获取法律条文
@@ -90,6 +101,26 @@
 			},
 			navbarListShow(){
 				this.navbarShow = !this.navbarShow
+			},
+			goLast(){
+				console.log(this.lawContent)
+				if(this.lawContent.id == 1){
+					this.$u.toast('已是第一条')
+				}else{
+					this.$u.api.golawContent(this.lawContent.id+=1).then((res) => {
+						if(res.success){
+							this.title = res.title
+							this.lawContent = res.body
+							let keyWord = res.body.keyWord
+							for(let key in keyWord){
+								// console.log(keyWord[key])
+								for(let item in keyWord[key]){
+									this.keyWord.push(item)
+								}
+							}
+						}
+					})
+				}
 			}
 		}
 	}
@@ -99,8 +130,9 @@
 .navbar-list{
 	overflow: hidden;
 	position: fixed;
+	display: flex;
+	flex-direction: column;
 	right: 0;
-	top: 45px;
 	background-color: #2979ff;
 	color: #fff;
 }
@@ -127,5 +159,8 @@
 }
 .content-item{
 	margin-top: 15rpx;
+}
+.test{
+	height: 200rpx;
 }
 </style>

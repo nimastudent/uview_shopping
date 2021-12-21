@@ -41,6 +41,8 @@ const install = (Vue, vm) => {
 	
 	let getlawContent = parmas => vm.$u.get('/law/content?title='+parmas)
 	
+	let golawContent = params => vm.$u.get('/law/content/id?id='+params)
+	
 	let getNewRule = params => vm.$u.get('/rule/all?start=0&len=3')
 	
 	let getNewRuleContent = params => vm.$u.get('/rule/content?id='+params)
@@ -49,6 +51,13 @@ const install = (Vue, vm) => {
 	let getAvatar = params => vm.$u.get('/user/headPortrait/get')
 	
 	let uploadAvatar = params => vm.$u.post('/user/headPortrait/upload',params)
+	
+	let getErrorBook = () => vm.$u.get('/errorBook/all')
+	
+	let getComment = () => vm.$u.get('/comment/all')
+	
+	
+	
 	// 此处使用了传入的params参数，一切自定义即可
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
@@ -61,6 +70,7 @@ const install = (Vue, vm) => {
 		getCourse,
 		getLawCatalogue,
 		getlawContent,
+		golawContent,
 		getMockQuestion,
 		sendMultipleAns,
 		sendSingleAns,
@@ -69,7 +79,9 @@ const install = (Vue, vm) => {
 		getNewRule,
 		getNewRuleContent,
 		getAvatar,
-		uploadAvatar
+		uploadAvatar,
+		getErrorBook,
+		getComment
 	};
 }
 
