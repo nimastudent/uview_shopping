@@ -47,6 +47,9 @@
 			},
 			goCourse(item){
 				console.log(item)
+				this.$u.api.getVideo(1).then((res) => {
+					console.log(res)
+				})
 			}
 			
 		}

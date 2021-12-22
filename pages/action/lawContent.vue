@@ -1,19 +1,19 @@
 <template>
 	<view class="box"  >
 		<u-navbar id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
+			<u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw"></u-icon>
 			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
-			
 		</u-navbar>
 		
 		
 		
 		<view class="navbar-list" :style="listStyle" v-show="navbarShow">
-			<button type="primary" size="mini" @click="goLast">上一条</button>
-			<button type="primary" size="mini">下一条</button>
+			<button type="primary" size="mini" @click="goLast(-1)">上一条</button>
+			<button type="primary" size="mini" @click="goLast(+1)">下一条</button>
 		</view>
 		<u-back-top :scroll-top="scrollTop" top=0></u-back-top>
-		<view class="content-box u-m-t-20" @touchstart="navbarListShow">
-			<view class="content-item">法律名称：{{title}}</view>
+		<view class="content-box u-m-t-20" @touchstart="closeListShow">
+			<view class="content-item">法律名称：{{lawContent.title}}</view>
 			
 			<view class="content-item">法律类型：{{lawContent.lawtype}}</view>
 			<view class="content-item">关键词：
@@ -57,7 +57,8 @@
 				content: '', //模态框内容
 				keyTitle:'', //模态框标题
 				scrollTop:1,
-				navbarShow:false
+				navbarShow:false,
+				notLast:true, //下一条判断是否为最后一条
 			}
 		},
 		onReady() {
@@ -102,12 +103,39 @@
 			navbarListShow(){
 				this.navbarShow = !this.navbarShow
 			},
-			goLast(){
-				console.log(this.lawContent)
-				if(this.lawContent.id == 1){
+			closeListShow(){
+				this.navbarShow = false
+			},
+			goLast(id){
+				this.navbarShow = false
+				// console.log(this.lawContent)
+				if(this.lawContent.id == 1&&id == -1){
 					this.$u.toast('已是第一条')
-				}else{
-					this.$u.api.golawContent(this.lawContent.id+=1).then((res) => {
+				}else if(id == +1){
+					if(this.notLast){
+						this.keyWord = []
+						this.$u.api.golawContent(this.lawContent.id+=1).then((res) => {
+							if(res.success){
+								if(res.body.id == undefined){
+									this.notLast = false
+									this.$u.toast('已是最后一条')
+									return
+								}
+								this.title = res.title
+								this.lawContent = res.body
+								let keyWord = res.body.keyWord
+								for(let key in keyWord){
+									// console.log(keyWord[key])
+									for(let item in keyWord[key]){
+										this.keyWord.push(item)
+									}
+								}
+							}
+						})
+					}
+				}else if(id == -1){
+					this.keyWord = []
+					this.$u.api.golawContent(this.lawContent.id-=1).then((res) => {
 						if(res.success){
 							this.title = res.title
 							this.lawContent = res.body
@@ -121,6 +149,9 @@
 						}
 					})
 				}
+			},
+			starLaw(){
+				console.log(this.lawContent)
 			}
 		}
 	}

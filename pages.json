@@ -145,7 +145,7 @@
             "path" : "pages/center/comment",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "我的评论",
                 "enablePullDownRefresh": false
             }
             

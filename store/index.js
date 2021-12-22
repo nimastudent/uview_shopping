@@ -37,6 +37,7 @@ const store = new Vuex.Store({
 		vuex_user: lifeData.vuex_user ? lifeData.vuex_user : {name: '明月'},
 		vuex_token: lifeData.vuex_token ? lifeData.vuex_token : '',
 		vuex_cookies: '',
+		vuex_avatar:'',
 		// 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
 		vuex_version: '1.0.1',
 	},

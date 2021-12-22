@@ -6,12 +6,13 @@
 		<view class="date">
 			{{consultRes.date}}
 		</view>
-		<view class="img">
+		<view class="img" v-if="this.picShow">
 			<image :src="consultRes.picture" mode=""></image>
 		</view>
 		<view class="content">
 			<u-parse :html="consultRes.content"></u-parse>
 		</view>
+
 	</view>
 </template>
 
@@ -20,7 +21,9 @@
 		data() {
 			return {
 				consultId:0,
+				picShow:true,
 				consultRes:{},
+				pinglun:'',
 			}
 		},
 		onLoad(e){
@@ -33,6 +36,10 @@
 				console.log(res)
 				if(res.success){
 					res.body.picture = 'data:image/jpeg;base64,' + res.body.picture
+					if(res.body.picture.length < 50){
+						this.picShow = false
+					}
+					// console.log(res.body.picture.length)
 					this.consultRes = res.body
 				}
 			}
@@ -62,8 +69,9 @@ image{
 	padding: 20rpx;
 }
 .content{
-	text-indent: 1rem;
-	line-height: 45rpx;
+	// text-indent: 1rem;
+	margin-top: 40rpx;
+	line-height: 40rpx;
 	letter-spacing: 1.5rpx;
 }
 </style>

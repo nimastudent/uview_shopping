@@ -69,6 +69,7 @@
 					if(res.success){
 						let arrayBuffer = res.body
 						this.pic = 'data:image/jpeg;base64,' + arrayBuffer
+						this.$u.vuex('vuex_avatar',this.pic)
 					}
 				})
 				
