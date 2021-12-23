@@ -70,7 +70,8 @@
 					type:'navigateTo',
 					url:'pages/action/lawContent',
 					params:{
-						title:e
+						title:e,
+						isCollection:false
 					}
 				})
 			},

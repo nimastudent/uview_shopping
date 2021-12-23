@@ -6,9 +6,7 @@
 				<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperTest"></u-swiper>
 		</view>
 			
-		<view class="item u-border-bottom" v-for="(item,index) in consultList" :key="item.id">
-						<!-- <image mode="aspectFill" :src="item.images" /> -->
-						<!-- 此层wrap在此为必写的，否则可能会出现标题定位错误 -->
+		<!-- <view class="item u-border-bottom" v-for="(item,index) in consultList" :key="item.id">
 						<view class="title-wrap" @click="goConsultContent(item.id)">
 							<view class="title">
 								{{ item.title }}
@@ -17,12 +15,15 @@
 								<image :src="item.picture" mode=""></image>
 							</view>
 						</view>
-					</view>
+		</view> -->
+		
+		<consult :consultList="consultList"></consult>
 		
 	</view>
 </template>
 
 <script>
+	import consult from '../../components/consult'
 	export default {
 		data() {
 			return {
@@ -31,6 +32,9 @@
 				swiperHeight:350,
 				
 			}
+		},
+		components:{
+			consult
 		},
 		 onLoad() {
 			const cookie = this.vuex_token;
@@ -70,9 +74,10 @@
 					res.body.forEach((item) => {
 						item.picture = 'data:image/jpeg;base64,' + item.picture
 						// console.log(item)
+						this.consultList.push(item)
 					})
-					this.consultList = res.body
-					// console.log(this.consultList)
+					
+					console.log(this.consultList)
 				}
 			},
 			goConsultContent(id){

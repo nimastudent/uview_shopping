@@ -1,6 +1,6 @@
 <template>
 	<view class="box"  >
-		<u-navbar :custom-back="goLaw" id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
+		<u-navbar  id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
 			<u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw"></u-icon>
 			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
 		</u-navbar>
@@ -59,6 +59,7 @@
 				scrollTop:1,
 				navbarShow:false,
 				notLast:true, //下一条判断是否为最后一条
+				iscollection:false,
 			}
 		},
 		onReady() {
@@ -71,6 +72,7 @@
 		onLoad(e){
 			console.log(e)
 			this.title = e.title
+			this.iscollection = e.iscollection
 			this.getLawContent();
 			
 		},
@@ -150,8 +152,12 @@
 				}
 			},
 			goLaw(){
-				let lawtype = this.lawContent.lawtype
-				this.$u.route('pages/action/law?lawtype='+lawtype)
+				if(this.iscollection){
+					this.$u.route('pages/center/collection')
+				}else{
+					let lawtype =  this.lawContent.lawtype
+					this.$u.route('pages/action/law?lawtype?='+lawtype)
+				}
 			},
 			starLaw(){
 				console.log(this.lawContent)

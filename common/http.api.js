@@ -56,7 +56,11 @@ const install = (Vue, vm) => {
 	
 	let getComment = () => vm.$u.get('/comment/all')
 	
+	let getColleCunsult = () => vm.$u.get('/collect/myInformation')
 	
+	let getColleLaw = () => vm.$u.get('/collect/myLaw')
+	
+	let getColleNewRule = () => vm.$u.get('/collect/myRule')
 	
 	// 此处使用了传入的params参数，一切自定义即可
 	
@@ -81,7 +85,10 @@ const install = (Vue, vm) => {
 		getAvatar,
 		uploadAvatar,
 		getErrorBook,
-		getComment
+		getComment,
+		getColleCunsult,
+		getColleLaw,
+		getColleNewRule
 	};
 }
 

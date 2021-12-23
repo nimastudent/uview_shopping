@@ -12,8 +12,8 @@
 				<u-avatar :src="pic" size="140"></u-avatar>
 			</view>
 			<view class="u-flex-1">
-				<view class="u-font-18 u-p-b-20">昵称</view>
-				<view class="u-font-14 u-tips-color">学员姓名:helang_uView</view>
+				<view class="u-font-18 u-p-b-20">{{nickName}}</view>
+				<view class="u-font-14 u-tips-color">学员姓名:{{userName}}</view>
 			</view>
 			
 			<!-- <view class="u-m-l-10 u-p-10">
@@ -46,6 +46,14 @@
 		},
 		onLoad() {
 			this.getAvatar()
+		},
+		computed:{
+			userName(){
+				return this.vuex_userName
+			},
+			nickName(){
+				return this.vuex_nickName
+			}
 		},
 		methods: {
 			updateName(){

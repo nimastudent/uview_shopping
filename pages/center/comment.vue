@@ -41,7 +41,7 @@
 				return this.vuex_avatar
 			},
 			username(){
-				return '用户名'
+				return this.vuex_nickName
 			}
 		},
 		onLoad(){

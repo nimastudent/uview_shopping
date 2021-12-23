@@ -83,6 +83,9 @@ export default {
 				const res = await this.$u.api.authLogin(this.form)
 				if(res.success){
 					this.$u.vuex('vuex_token',res.body.token)
+					this.$u.vuex('vuex_userName',res.body.userName)
+					this.$u.vuex('vuex_nickName',res.body.nickName)
+					
 					// this.getHeader()
 					// this.$u.vuex('vuex_cookies','123123');
 					this.$u.route({

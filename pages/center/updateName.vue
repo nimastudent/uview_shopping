@@ -20,8 +20,12 @@
 				style:{
 					'color':'#000000',
 				},
-				nickName:'lalala',
 				imgUrl:'',
+			}
+		},
+		computed:{
+			nickName(){
+				return this.vuex_nickName
 			}
 		},
 		onLoad() {
