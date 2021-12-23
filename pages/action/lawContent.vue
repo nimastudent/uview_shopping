@@ -1,6 +1,6 @@
 <template>
 	<view class="box"  >
-		<u-navbar id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
+		<u-navbar :custom-back="goLaw" id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
 			<u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw"></u-icon>
 			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
 		</u-navbar>
@@ -108,12 +108,10 @@
 			},
 			goLast(id){
 				this.navbarShow = false
-				// console.log(this.lawContent)
 				if(this.lawContent.id == 1&&id == -1){
 					this.$u.toast('已是第一条')
 				}else if(id == +1){
 					if(this.notLast){
-						this.keyWord = []
 						this.$u.api.golawContent(this.lawContent.id+=1).then((res) => {
 							if(res.success){
 								if(res.body.id == undefined){
@@ -121,6 +119,7 @@
 									this.$u.toast('已是最后一条')
 									return
 								}
+								this.keyWord = []
 								this.title = res.title
 								this.lawContent = res.body
 								let keyWord = res.body.keyWord
@@ -149,6 +148,10 @@
 						}
 					})
 				}
+			},
+			goLaw(){
+				let lawtype = this.lawContent.lawtype
+				this.$u.route('pages/action/law?lawtype='+lawtype)
 			},
 			starLaw(){
 				console.log(this.lawContent)

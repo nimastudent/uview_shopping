@@ -8,11 +8,10 @@
 	export default {
 		data() {
 			return {
-				
+				list:[
+					{}
+				]
 			}
-		},
-		onLoad(e) {
-			console.log(e)
 		},
 		methods: {
 			

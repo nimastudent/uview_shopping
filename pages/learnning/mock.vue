@@ -23,7 +23,8 @@
 					 <u-modal v-model="showModal" 
 					 :content="content"
 					 :show-cancel-button="true"
-					 
+					 :async-close="true"
+					 @confirm="submit"
 					 ></u-modal>
 				</view>	
 			</view>
@@ -50,10 +51,10 @@
 						<view class="u-m-t-20" v-if="currentType===2">
 								<u-radio-group @change="radioGroupChange" :wrap="true">
 									<u-radio 
-										@change="radioChangeSingle"
+									
 										v-for="(item, index) in question.option" :key="index" 
-										:name="item.content"
-										:value="item.id"
+										:name="item.id"
+										
 									>
 										{{item.id}}.{{item.content}}
 									</u-radio>
@@ -104,7 +105,7 @@
 				<text>下一题</text>
 			</view>
 			<view class="qusetionCard">
-				<u-button type="success" @click="showTika">题卡</u-button>
+				<u-button type="success" @click="showTika" >题卡</u-button>
 				<u-modal v-model="tikaModalShow"
 				 width="85%"
 				:show-title="false" 
@@ -189,7 +190,7 @@
 		},
 		onLoad() {
 			this.getMockQuestion()
-			
+			console.log(this.questionList)
 		},
 		computed:{
 			content(){
@@ -202,6 +203,10 @@
 			}
 		},
 		methods: {
+			submit(){
+				var ansList = [...this.singleAnsList,...this.multipleAnsList,...this.judgmentAnsList]
+				console.log(ansList)
+			},
 			radioChangeSingle(e){
 				// console.log(e)
 			},
@@ -237,7 +242,7 @@
 			judgmentRadioChange(item){//判断选中
 				var problem = this.questionList[this.questionIndex]
 				problem.checked = true
-				let judegment = {id:problem.id,answer:item.id}
+				let judegment = {id:problem.id,answer:item.id,type:3}
 				var flag = true
 				for(let i = 0;i < this.judgmentAnsList.length;i++){
 					if(this.judgmentAnsList[i].id == judegment.id){
@@ -253,12 +258,18 @@
 					this.questionIndex += 1;
 				};
 			},
+			// test(e){
+			// 	console.log(e)
+			// },
 			radioGroupChange(e){//单选选中
 				// e为选项内容
 				//获取问题列表中当前元素
+				// let aa = e
+				// console.log(e)
+				// return
 				var item = this.questionList[this.questionIndex]
 				item.checked = true
-				var singleAns = {id:item.id,answer:e}
+				var singleAns = {id:item.id,answer:e,type:1}
 				var flag = true
 				for(let i = 0;i < this.singleAnsList.length;i++){
 					if(this.singleAnsList[i].id == singleAns.id){
@@ -289,7 +300,8 @@
 				if(flag){
 					this.multipleAnsList.push({
 						id:item.id,
-						answer:ans
+						answer:ans,
+						type:2
 					})
 				}
 			},
@@ -309,7 +321,6 @@
 				this.questionIndex = index
 			},
 			async sendSingleQuestion(){
-				
 				const res = await this.$u.api.sendMultipleAns(this.multipleAnsList[0])
 				console.log(res)
 			},

@@ -25,7 +25,7 @@
 			<u-cell-group>
 				<u-cell-item icon="setting" title="账号设置" @click="updateName"></u-cell-item>
 				<u-cell-item icon="file-text" title="我的评论" @click="goComment"></u-cell-item>
-				<u-cell-item icon="star" title="我的收藏"></u-cell-item>
+				<u-cell-item icon="star" title="我的收藏"@click="goCollection"></u-cell-item>
 				<u-cell-item icon="order" title="我的错题集"></u-cell-item>
 			</u-cell-group>
 		</view>
@@ -81,6 +81,9 @@
 			},
 			goComment(){
 				this.$u.route('pages/center/comment')
+			},
+			goCollection(){
+				this.$u.route('pages/center/collection')
 			}
 		}
 	}
