@@ -1,6 +1,6 @@
 <template>
 	<view class="mockContinar">
-		<u-navbar  title="考试页面"></u-navbar>
+		<u-navbar  title="模拟考"></u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
 				<view class="action text-black u-flex">
@@ -10,7 +10,7 @@
 					<text v-else-if="currentType===3">多选题</text>
 				</view>
 				<!-- 时间显示 -->
-				<view id="time" v-if="hiddeBtnAndTime" class="u-flex">
+				<view id="time" v-if="hiddeBtnAndTime" class="u-flex" v-show="false">
 					<u-count-down 
 						:timestamp="timestamp"
 						separator="zh"
@@ -28,8 +28,6 @@
 					 ></u-modal>
 				</view>	
 			</view>
-			<!-- 滑块视图  题目 -->
-			<u-divider></u-divider>
 
 			<swiper
 			:current="questionIndex"
@@ -65,14 +63,15 @@
 					
 					<view class="u-m-t-20" v-else-if="currentType===3">
 							<u-checkbox-group  :wrap="true" @change="checkboxGroupChange">
+								
 								<u-checkbox 
 									v-for="(item, index) in question.option" :key="index" 
 									:name="item.id"
 									v-model="item.check"
 									
 								>{{item.id}} .{{item.content}}</u-checkbox>
+								
 							</u-checkbox-group>
-							<!-- <u-button @click="checkedAll">全选</u-button> -->
 						</view>
 						
 						<view class="u-m-t-20" v-else-if="currentType === 1" >
@@ -145,7 +144,7 @@
 				second:0,
 				hiddeBtnAndTime: true, //隐藏时间和提交按钮
 				currentType: 1, //题型
-				timestamp:10, //倒计时单位秒
+				timestamp:2700, //倒计时单位秒
 				hiddeBtnAndTime:true, //隐藏时间和提交按钮
 				totalQuestionNumber:1, //总题数
 				showModal:false, //模态框
@@ -161,7 +160,8 @@
 				fengexian:'50%',
 				customStyle:{
 					borderRadius:'50%'
-				}
+				},
+				scroe:0,
 			}
 		},
 		onReady() {
@@ -203,8 +203,13 @@
 			}
 		},
 		methods: {
-			submit(){
+			async submit(){
 				var ansList = [...this.singleAnsList,...this.multipleAnsList,...this.judgmentAnsList]
+				// console.log(JSON.stringify(ansList))
+				const res = await this.$u.api.computedScore({"infos":ansList})
+				if(res.success){
+					this.scroe = res.body.total
+				}
 				console.log(ansList)
 			},
 			radioChangeSingle(e){
@@ -239,14 +244,21 @@
 					console.log(this.questionList)
 				}
 			},
+			getExam(){
+				
+			},
 			judgmentRadioChange(item){//判断选中
 				var problem = this.questionList[this.questionIndex]
 				problem.checked = true
-				let judegment = {id:problem.id,answer:item.id,type:3}
+				var ans = "1"
+				if(item.id == 'B'){
+					ans = "0"
+				}
+				let judegment = {id:problem.id,userAnswer:ans,type:1}
 				var flag = true
 				for(let i = 0;i < this.judgmentAnsList.length;i++){
 					if(this.judgmentAnsList[i].id == judegment.id){
-						this.judgmentAnsList[i].answer = item.id
+						this.judgmentAnsList[i].userAnswer = ans
 						flag = false
 						break
 					}
@@ -269,11 +281,11 @@
 				// return
 				var item = this.questionList[this.questionIndex]
 				item.checked = true
-				var singleAns = {id:item.id,answer:e,type:1}
+				var singleAns = {id:item.id,userAnswer:e,type:2}
 				var flag = true
 				for(let i = 0;i < this.singleAnsList.length;i++){
 					if(this.singleAnsList[i].id == singleAns.id){
-						this.singleAnsList[i].answer = e
+						this.singleAnsList[i].userAnswer = e
 						flag = false
 						break
 					}
@@ -292,7 +304,7 @@
 				var flag = true
 				for (var i = 0; i < this.multipleAnsList.length; i++) {
 					if(this.multipleAnsList[i].id == item.id){
-						this.multipleAnsList[i].answer = ans
+						this.multipleAnsList[i].userAnswer = ans
 						flag = false
 						break
 					}
@@ -300,8 +312,8 @@
 				if(flag){
 					this.multipleAnsList.push({
 						id:item.id,
-						answer:ans,
-						type:2
+						userAnswer:ans,
+						type:3
 					})
 				}
 			},

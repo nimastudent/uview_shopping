@@ -50,6 +50,10 @@
 			},
 			goCourse(item){
 				console.log(item)
+				this.$u.route({
+					url:'pages/consult/course',
+					params:item
+				})
 				// this.$u.api.getVideo(1).then((res) => {
 				// 	console.log(res)
 				// })

@@ -159,6 +159,24 @@
 		    }
 		    
 		}
+        ,{
+            "path" : "pages/center/errorBool",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的错题集",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/learnning/exam",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

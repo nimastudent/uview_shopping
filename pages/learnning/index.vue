@@ -4,8 +4,8 @@
 		
 				
 		<view class="u-flex u-m-t-30">
-			<button class="button-class u-flex" type="default" @click="goMock()">模拟考</button>
-			<button class="button-class u-flex" type="default">学法考试</button>
+			<button class="button-class u-flex" type="default" @click="goMock">模拟考</button>
+			<button class="button-class u-flex" type="default" @click="goExam">学法考试</button>
 		</view>
 	</view>
 </template>
@@ -25,7 +25,12 @@
 					type:'navigateTo',
 					url:'/pages/learnning/mock'
 				})
-				console.log(1)
+			},
+			goExam(){
+				this.$u.route({
+					type:'navigateTo',
+					url:'/pages/learnning/exam'
+				})
 			}
 		}
 	}

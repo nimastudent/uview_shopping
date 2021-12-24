@@ -21,19 +21,26 @@ const install = (Vue, vm) => {
 	let getIndexSwiper = params => vm.$u.get('/information/getPicture')
 	
 	
+	
+	
 	let getVideo = (params = {} ) => vm.$u.get('/course/video?id='+params)
 	
 	let getCourse = (params = {} ) => vm.$u.get('/course/get?id='+params)
 	
-	
+	let getCourseIntroduce = params => vm.$u.get('/course/introduce?id='+params)
 	//获取模拟考试题 
 	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample?single=5&multiple=5&judgment=5')
+	
+	let getExamQuestion = (params = {} ) => vm.$u.get('/exam/getExam?single=5&multiple=5&judgment=5')
 	
 	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
 	
 	let sendSingleAns = (params = {}) => vm.$u.post('/singleChoice/check',params)
 	
 	let sendJudgmentAns = (params = {}) => vm.$u.post('/judgment/check',params)
+	
+	let computedScore = params => vm.$u.post('/exam/getExam/calculate',params)
+	
 	//获取法律目录
 	let getLaw = params => vm.$u.get('/law')
 	
@@ -72,6 +79,7 @@ const install = (Vue, vm) => {
 		getIndexSwiper,
 		getVideo,
 		getCourse,
+		getCourseIntroduce,
 		getLawCatalogue,
 		getlawContent,
 		golawContent,
@@ -79,6 +87,8 @@ const install = (Vue, vm) => {
 		sendMultipleAns,
 		sendSingleAns,
 		sendJudgmentAns,
+		getExamQuestion,
+		computedScore,
 		getLaw,
 		getNewRule,
 		getNewRuleContent,

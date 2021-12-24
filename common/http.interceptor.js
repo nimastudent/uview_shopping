@@ -37,6 +37,11 @@ const install = (Vue, vm) => {
 		if(config.url == '/multipleChoice/check') config.header['Content-Type'] = 'application/json';
 		
 		if(config.url == '/user/headPortrait/upload') config.header['Content-Type'] = 'multipart/form-data';
+		
+		if(config.url == '/exam/getExam/calculate') {
+			config.header['Content-Type'] = 'application/json';
+		}
+		
 		// 最后需要将config进行return
 		return config;
 		// 如果return一个false值，则会取消本次请求
