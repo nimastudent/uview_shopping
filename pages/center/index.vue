@@ -27,6 +27,7 @@
 				<u-cell-item icon="file-text" title="我的评论" @click="goComment"></u-cell-item>
 				<u-cell-item icon="star" title="我的收藏"@click="goCollection"></u-cell-item>
 				<u-cell-item icon="order" title="我的错题集"@click="goErrorBook"></u-cell-item>
+				<u-cell-item  title="关于我们"@click="goAboutUs"></u-cell-item>
 			</u-cell-group>
 		</view>
 		
@@ -95,6 +96,9 @@
 			},
 			goErrorBook(){
 				this.$u.route('pages/center/errorBool')
+			},
+			goAboutUs(){
+				this.$u.route('pages/center/aboutUs')
 			}
 		}
 	}

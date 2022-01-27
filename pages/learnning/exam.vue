@@ -205,10 +205,13 @@
 		methods: {
 			async submit(){
 				var ansList = [...this.singleAnsList,...this.multipleAnsList,...this.judgmentAnsList]
-				// console.log(JSON.stringify(ansList))
 				const res = await this.$u.api.computedScore({"infos":ansList})
 				if(res.success){
 					this.scroe = res.body.total
+					this.$u.route({
+						type:'switchBar',
+						utl:'pages/learnning/index',
+					})
 				}
 				console.log(ansList)
 			},
