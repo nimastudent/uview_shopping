@@ -1,7 +1,8 @@
 <template>
 	<view class="box"  >
 		<u-navbar  id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
-			<u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw" ></u-icon>
+			<!-- <u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw" ></u-icon> -->
+			<collect class="u-m-r-40" :collectType="collectType"   :curentId="curentId"></collect>
 			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
 		</u-navbar>
 		
@@ -40,9 +41,12 @@
 </template>
 
 <script>
+	import collect from '../../components/collect.vue'
 export default {
+	components:{collect},
   data() {
     return {
+		collectType:2,
       listStyle: {
         top: "",
       },
@@ -56,10 +60,7 @@ export default {
       navbarShow: false,
       notLast: true, //下一条判断是否为最后一条
       iscollection: false,
-	  collectData:{
-		  type:2,
-		  
-	  }
+	  curentId:0,
     };
   },
   onReady() {
@@ -86,8 +87,8 @@ export default {
     async getLawContent() {
       //获取法律条文
       const res = await this.$u.api.getlawContent(this.title);
-      console.log(res);
       if (res.success) {
+		  this.curentId = res.body.id;
         this.lawContent = res.body;
         let keyWord = res.body.keyWord;
         for (let key in keyWord) {

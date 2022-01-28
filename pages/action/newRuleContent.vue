@@ -10,7 +10,10 @@
 			</view>
 			<view class="content">
 				<u-parse :html="ruleContent.content"></u-parse>
+				
+				
 			</view>
+			<collect :collectType="collectType" :curentId="consultId"></collect>
 			<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult"></comment>
 		</view>
 
@@ -18,13 +21,15 @@
 </template>
 
 <script>
+	import collect from '../../components/collect.vue'
 	import comment from '../../components/comment.vue'
 	export default {
 		components: {
-			comment
+			comment,collect
 		},
 		data() {
 			return {
+				collectType: 3,
 				consultId: 0,
 				isConsult: false,
 				ruleContent: [],
