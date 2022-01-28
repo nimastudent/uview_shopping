@@ -1,7 +1,7 @@
 <template>
 	<view class="box"  >
 		<u-navbar  id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
-			<u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw"></u-icon>
+			<u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw" ></u-icon>
 			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
 		</u-navbar>
 		
@@ -56,6 +56,10 @@ export default {
       navbarShow: false,
       notLast: true, //下一条判断是否为最后一条
       iscollection: false,
+	  collectData:{
+		  type:2,
+		  
+	  }
     };
   },
   onReady() {
@@ -162,7 +166,7 @@ export default {
       }
     },
     starLaw() {
-      console.log(this.lawContent);
+      // this.$u.api.collect()
     },
   },
 };
