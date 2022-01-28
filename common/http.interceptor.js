@@ -29,11 +29,14 @@ const install = (Vue, vm) => {
 		// const token = uni.getStorageSync('token');
 		// config.header.token = token;
 		// config.header.Token = 'xxxxxx';
-		config.header['Content-Type'] = 'application/x-www-form-urlencoded';
+		// config.header['Content-Type'] = 'application/x-www-form-urlencoded';
 		
 		config.header.token = vm.$store.state.vuex_token;
 		// 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
-		if(config.url == '/user/login') config.header.noToken = true;
+		if(config.url == '/user/login') {
+			config.header.noToken = true;
+			config.header['Content-Type'] = 'application/x-www-form-urlencoded';
+		}
 		if(config.url == '/multipleChoice/check') config.header['Content-Type'] = 'application/json';
 		
 		if(config.url == '/user/headPortrait/upload') config.header['Content-Type'] = 'multipart/form-data';
@@ -66,8 +69,8 @@ const install = (Vue, vm) => {
 						url:'pages/auth/login'
 					})
 				}, 1500)
-			}else if(data.code == 501){
-				// vm.$u.toast('服务器错误，请稍后尝试');
+			}else if(data.code == 500){
+				vm.$u.toast(data.body);
 			}
 			return data;
 		} else if(statusCode == 501) {

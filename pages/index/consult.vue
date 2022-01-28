@@ -12,8 +12,10 @@
 		<view class="content">
 			<u-parse :html="consultRes.content"></u-parse>
 		</view>
-		<u-divider>以下是评论</u-divider>
-		<comment :commentList="commentList" ></comment>
+		
+		
+		
+		<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult"></comment>
 
 	</view>
 </template>
@@ -25,10 +27,10 @@
 		data() {
 			
 			return {
+				isConsult:true,
 				consultId:0,
 				picShow:true,
 				consultRes:{},
-				pinglun:'',
 				commentList:[],
 			}
 		},
@@ -86,8 +88,9 @@ image{
 }
 .content{
 	// text-indent: 1rem;
-	margin-top: 40rpx;
+	margin: 40rpx 0;
 	line-height: 40rpx;
 	letter-spacing: 1.5rpx;
+	
 }
 </style>

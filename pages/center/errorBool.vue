@@ -65,16 +65,21 @@
 				</view>
 			</view>
 		</view>
+		
+		
 	</view>
 </template>
 
 <script>
+	// import errorBook from '../../components/errorBook.vue'
 	export default {
+		components:{},
 		data() {
 			return {
 				judgement:{},
 				single:[],
-				mutiple:[]
+				mutiple:[],
+				questionList:[],
 			}
 		},
 		onLoad() {
@@ -88,8 +93,19 @@
 					this.judgement = res.body[0]
 					this.single = res.body[1]
 					this.mutiple = res.body[2]
-					console.log(this.mutiple)
+					console.log(this.judgement)
 				}
+			},
+			change(res){
+				this.questionList = []
+				this.questionList = [...this.questionList, ...res.body.judgment, ...res.body.single, ...res.body
+					.multiple
+				]
+				for (var i = 0; i < this.questionList.length; i++) {
+					this.$set(this.questionList[i], 'checked', false)
+				}
+				
+				console.log(this.questionList)
 			}
 		}
 	}

@@ -85,9 +85,6 @@ export default {
 					this.$u.vuex('vuex_token',res.body.token)
 					this.$u.vuex('vuex_userName',res.body.userName)
 					this.$u.vuex('vuex_nickName',res.body.nickName)
-					
-					// this.getHeader()
-					// this.$u.vuex('vuex_cookies','123123');
 					this.$u.route({
 						type:'switchTab',
 						url:'/pages/index/index'
