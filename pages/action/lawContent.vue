@@ -2,7 +2,7 @@
 	<view class="box"  >
 		<u-navbar  id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
 			<!-- <u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw" ></u-icon> -->
-			<collect class="u-m-r-40" :collectType="collectType"   :curentId="curentId"></collect>
+			<collect class="u-m-r-40" :collectType="collectType"  slot="right"  :curentId="curentId"></collect>
 			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
 		</u-navbar>
 		

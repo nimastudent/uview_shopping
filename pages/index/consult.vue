@@ -47,7 +47,6 @@
 			if (e) {
 				this.consultId = e.id;
 				this.curentId = e.id;
-				this.collectData.articleId = e.id;
 				console.log(e)
 				this.getConsultContent()
 				this.getConsultInfo()

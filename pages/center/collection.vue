@@ -11,14 +11,15 @@
 			<swiper-item>
 				<scroll-view scroll-y style="height: 100%;width: 100%;">
 					<view class="swiper-item">
-						<consult :consultList="consultArr"></consult>
+						<consult :consultList="consultArr" ></consult>
+						
 					</view>
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
 				<view class="swiper-item">
 					<u-cell-group>
-						<u-cell-item v-for="(item,index) in newRuleArr" :key="item.id" :title="item.title" :arrow="true"
+						<u-cell-item  v-for="(item,index) in newRuleArr" :key="item.id" :title="item.title" :arrow="true"
 							arrow-direction="right" @click="goNewRuleContent(item.id)"></u-cell-item>
 					</u-cell-group>
 				</view>
@@ -62,7 +63,7 @@
 			}
 		},
 		onLoad() {
-			this.getConsult(),
+				this.getConsult(),
 				this.getNewRule(),
 				this.getLaw()
 		},
@@ -121,7 +122,7 @@
 			swiperChange(e) {
 				console.log(e)
 				this.current = e.detail.current;
-			}
+			},
 		}
 	}
 </script>

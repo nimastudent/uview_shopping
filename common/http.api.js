@@ -84,6 +84,7 @@ const install = (Vue, vm) => {
 	let getErrorBook = () => vm.$u.get('/errorBook/all')
 	// 获取所有评论
 	let getComment = () => vm.$u.get('/comment/all')
+	
 	// 获取收藏资讯
 	let getColleCunsult = () => vm.$u.get('/collect/myInformation')
 	// 获取收藏法律
