@@ -14,7 +14,7 @@
 				
 			</view>
 			<collect :collectType="collectType" :curentId="consultId"></collect>
-			<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult"></comment>
+			<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getNewRuleComment"></comment>
 		</view>
 
 	</view>
@@ -51,7 +51,8 @@
 				}
 			},
 			async getNewRuleComment(id) {
-				const res = await this.$u.api.fetchNewRuleComment(id)
+				
+				const res = await this.$u.api.fetchNewRuleComment(this.consultId)
 				if (res.success) {
 					this.commentList = res.body;
 				}

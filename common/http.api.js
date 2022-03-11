@@ -80,6 +80,9 @@ const install = (Vue, vm) => {
 	let getAvatar = params => vm.$u.get('/user/headPortrait/get')
 	// 上传头像
 	let uploadAvatar = params => vm.$u.post('/user/headPortrait/upload',params)
+	// 更细昵称
+	let updateNickname = params => vm.$u.post('/user/manage/update/nickname',params)
+	
 	// 查看错题集
 	let getErrorBook = () => vm.$u.get('/errorBook/all')
 	// 获取所有评论
@@ -127,7 +130,8 @@ const install = (Vue, vm) => {
 		fetchExamQuestion,
 		colllectQuestion,
 		fetchNewRuleComment,
-		collect
+		collect,
+		updateNickname
 	};
 }
 

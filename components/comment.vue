@@ -70,12 +70,14 @@
 		},
 		methods: {
 			showPop() {
+				this.data.content = "";
 				this.data.parentId = null;
 				this.data.hostId = this.testId;
 				this.show = true;
 				console.log(this.data)
 			},
 			reply(userId, consultId) {
+				this.data.content = "";
 				this.data.parentId = userId;
 				this.data.hostId = consultId;
 				this.show = true;
@@ -85,21 +87,24 @@
 				console.log(this.data)
 				
 				// 资讯评论
-				// if(this.isConsultComment){
-				// 	const res = await this.$u.api.commentConsult(this.data)
-				// 	if (res.success) {
-				// 		this.$u.toast('评论成功！');
-				// 		this.show = false;
-				// 	}
-				// }else{
+				if(this.isConsultComment){
+					console.log(123)
+					const res = await this.$u.api.commentConsult(this.data)
+					if (res.success) {
+						this.$u.toast('评论成功！');
+						this.show = false;
+						this.$emit("update")
+					}
+				}else{
 				// 新规评论
-				// 	this.$u.api.commentNewRule(this.data).then(res => {
-				// 		if (res.success) {
-				// 			this.$u.toast('评论成功！');
-				// 			this.show = false;
-				// 		}
-				// 	})
-				// }
+					this.$u.api.commentNewRule(this.data).then(res => {
+						if (res.success) {
+							this.$u.toast('评论成功！');
+							this.show = false;
+							this.$emit("update")
+						}
+					})
+				}
 				
 			},
 			test(){

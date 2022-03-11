@@ -7,6 +7,7 @@
         :arrow="true"
         arrow-direction="right"
         @click="uploadtest"
+		
       >
         <image :src="imgUrl" mode=""></image>
       </u-cell-item>
@@ -15,8 +16,15 @@
         title="昵称"
         :arrow="true"
         :value="nickName"
+		@click="showNicknamePop"
       ></u-cell-item>
     </u-cell-group>
+	
+	<u-popup v-model="nickNameShow" mode="bottom">
+		<u-field label-width="0" v-model="content" type="text" placeholder="请填写昵称" focus maxlength="10">
+			<button size="mini" type="primary" slot="right" @click="submintNickName">提交</button>
+		</u-field>
+	</u-popup>
 
     <u-toast ref="uToast" />
   </view>
@@ -29,7 +37,9 @@ export default {
       style: {
         color: "#000000",
       },
+	  content:'',
       imgUrl: "",
+	  nickNameShow:false
     };
   },
   computed: {
@@ -66,15 +76,49 @@ export default {
               },
               success: (res) => {
                 console.log(res);
-                var test = JSON.stringify(res.body);
+				_this.getImgUrl()
+				if(res.statusCode === 200){
+					_this.$refs.uToast.show({
+						title: '上传成功',
+						type: 'success',
+					})
+				}
+				
               },
             });
           } else {
-            _this.$u.toast("请上传文件格式为jpg/jpeg的图片");
+            _this.$u.toast(res.body);
           }
         },
       });
     },
+	async submintNickName(){
+		let str = this.content;
+		let username = this.vuex_userName;
+		let obj = {
+			username,
+			nickname:str
+		}
+		 var patrn = /[`~!@#$%^&*()\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、]/im; 
+		   if(!patrn.test(str)){
+			const res = await this.$u.api.updateNickname(obj)
+			if(res.success){
+				this.$u.vuex('vuex_nickName', str);
+				this.nickNameShow = false;
+				this.$refs.uToast.show({
+					title: '更新成功',
+					type: 'success',
+				})
+			}
+				
+		   }else{
+			   this.$u.toast("请输入正确的昵称（不能有特殊字符）")
+		   }
+	},
+	showNicknamePop(){
+		this.nickNameShow = true;
+		this.content = '';
+	}
   },
 };
 </script>

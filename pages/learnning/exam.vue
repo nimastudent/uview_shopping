@@ -176,9 +176,11 @@
 		},
 		methods: {
 			async submit() {
+				let username = this.vuex_userName;
 				var ansList = [...this.singleAnsList, ...this.multipleAnsList, ...this.judgmentAnsList]
 				const res = await this.$u.api.computedScore({
-					"infos": ansList
+					"infos": ansList,
+					"username":username
 				})
 				if (res.success) {
 					this.scroe = res.body.total
@@ -220,7 +222,7 @@
 				}
 			},
 			timeUp() {
-				console.log('时间到了')
+				this.submit()
 			},
 			openModal() { //开启模态框
 				this.showModal = true
@@ -342,12 +344,6 @@
 				const res = await this.$u.api.sendMultipleAns(this.multipleAnsList[0])
 				console.log(res)
 			},
-			sendJudgementQuestion() {
-
-			},
-			sendMutipledQuestion() {
-
-			}
 		}
 	}
 </script>

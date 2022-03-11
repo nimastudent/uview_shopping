@@ -19,7 +19,7 @@
 		<u-toast ref="uToast" />
 
 
-		<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult"></comment>
+		<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getConsultInfo"></comment>
 
 	</view>
 </template>

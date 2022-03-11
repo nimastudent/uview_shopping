@@ -4,11 +4,14 @@
       ref="uUpload"
       :action="action"
       :before-upload="beforeUpload"
-      :auto-upload="false"
+      :auto-upload="true"
       max-count="1"
       :header="header"
+	  @on-error="successUpload"
     ></u-upload>
     <u-button @click="submit">提交</u-button>
+	
+	<u-toast ref="uToast" />
   </view>
 </template>
 
@@ -32,10 +35,13 @@ export default {
       this.file = list[0].file;
       console.log(list[0].file);
     },
-
     submit() {
-      this.$refs.uUpload.upload();
+     const res =  this.$refs.uUpload.upload();
+	
     },
+	successUpload(data, index, lists, name){
+		console.log(123)
+	}
   },
 };
 </script>

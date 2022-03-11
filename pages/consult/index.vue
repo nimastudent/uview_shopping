@@ -5,6 +5,10 @@
 			<u-cell-item v-for="(item,id) in courseArry" :key="id" :title="item.name" :arrow="true" arrow-direction="right" ></u-cell-item>
 		</u-cell-group>
 		 -->
+		 <u-mask :show="show" @click="show = false">
+			 
+			 <u-loading mode="circle"></u-loading>
+		 </u-mask>
 		<u-collapse :item-style="style">
 			<u-collapse-item class="cell" :title="item.name" v-for="(item, id) in courseArry" :key="id"
 				:open="item.open">
@@ -22,6 +26,7 @@
 	export default {
 		data() {
 			return {
+				show:true,
 				courseArry: [],
 				style: {
 					'font-weight': 600,

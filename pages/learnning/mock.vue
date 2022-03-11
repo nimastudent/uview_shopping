@@ -1,5 +1,5 @@
 <template>
-	<view class="mockContinar">
+	<view class="mockContinar"> 
 		<u-navbar title="模拟考"></u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
@@ -7,7 +7,7 @@
 					<!-- 题型判断 -->
 					<text v-if="currentType===1">判断题</text>
 					<text v-else-if="currentType===2">单选题</text>
-					<text v-else-if="currentType===3">多选题</text>
+					<text v-else-if="currentType===3">多选题 </text>
 				</view>
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime" class="u-flex" v-show="false">
@@ -74,7 +74,7 @@
 		</view>
 
 
-
+		
 
 
 		<view id="foot-box" class="foot-box">
@@ -93,6 +93,9 @@
 			<view class="">
 				<u-button @click="collectQuestion">收藏</u-button>
 			</view>
+			<!-- 多选题 确定按钮 -->
+			<view><u-button type="primary" v-show="currentType===3"  @click="confirmMutiplid">确定</u-button></view>
+			
 			<view class="qusetionCard">
 				<u-button type="success" @click="showTika">题卡</u-button>
 				<u-modal v-model="tikaModalShow" width="85%" :show-title="false" :mask-close-able="true"
@@ -382,11 +385,12 @@
 				const res = await this.$u.api.sendMultipleAns(this.multipleAnsList[0])
 				console.log(res)
 			},
-			sendJudgementQuestion() {
-
-			},
-			sendMutipledQuestion() {
-
+			// 多选题确定
+			confirmMutiplid(){
+				console.log(this.questionList[this.questionIndex])
+				let ques = this.questionList[this.questionIndex]
+				ques.checked = true
+				
 			}
 		}
 	}
