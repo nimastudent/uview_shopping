@@ -29,7 +29,7 @@
 			goExam(){
 				this.$u.route({
 					type:'navigateTo',
-					url:'/pages/learnning/exam'
+					url:'/pages/learnning/examList'
 				})
 			}
 		}

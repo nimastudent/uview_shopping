@@ -10,7 +10,7 @@
 			</view>
 			<view class="right">
 				<view class="top">
-					<view class="name">{{ res.comment.id }}</view>
+					<view class="name">{{ res.comment.nickName }}</view>
 					<!-- <view class="like" :class="{ highlight: res.isLike }">
    					<view class="num">{{ res.likeNum }}</view>
    					<u-icon v-if="!res.isLike" name="thumb-up" :size="30" color="#9a9a9a" @click="getLike(index)"></u-icon>
@@ -20,7 +20,7 @@
 				<view class="content">{{ res.comment.content }}</view>
 				<view class="reply-box" v-if="res.secondComment.length > 0">
 					<view class="item" v-for="item in res.secondComment" :key="item.id">
-						<view class="username">{{ item.id }}</view>
+						<view class="username">{{ item.nickName }}</view>
 						<view class="text">{{ item.content }}</view>
 					</view>
 					<!-- <view class="all-reply" @tap="toAllReply" v-if="res.replyList != undefined">
@@ -30,7 +30,7 @@
 				</view>
 				<view class="bottom">
 					{{ res.comment.date }}
-					<view class="reply" @click="reply(res.comment.id,res.comment.hostId)">回复</view>
+					<view class="reply" @click="reply(res.comment)">回复</view>
 				</view>
 			</view>
 		</view>
@@ -76,16 +76,14 @@
 				this.show = true;
 				console.log(this.data)
 			},
-			reply(userId, consultId) {
+			reply(data) {
 				this.data.content = "";
-				this.data.parentId = userId;
-				this.data.hostId = consultId;
+				this.data.parentId = data.userId;
+				this.data.hostId = data.hostId;
 				this.show = true;
+				console.log(data)
 			},
 			async submintComment() {
-				
-				console.log(this.data)
-				
 				// 资讯评论
 				if(this.isConsultComment){
 					console.log(123)

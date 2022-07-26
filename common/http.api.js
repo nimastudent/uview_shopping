@@ -13,8 +13,12 @@ const install = (Vue, vm) => {
 	//登陆
 	let authLogin = (params = {} ) => vm.$u.post('/user/login',params)
 	
+	// i闽警登录
+	let iLogin = params => vm.$u.post('/user/login/app',params)
+	
+	
 	//首页咨询
-	let getConsult = (params = {} ) => vm.$u.get('/information/all?start=0&len=4')
+	let getConsult = params  => vm.$u.get(`/information/all`)
 	// 获取资讯内容
 	let getConsultContent = params => vm.$u.get('/information/content?id='+params)
 	// 获取首页轮播图
@@ -31,6 +35,11 @@ const install = (Vue, vm) => {
 	let getCourse = (params = {} ) => vm.$u.get('/course/get?id='+params)
 	// 获取课程介绍
 	let getCourseIntroduce = params => vm.$u.get('/course/introduce?id='+params)
+	// 根据id获取课程
+	let getCourseById = id => vm.$u.get(`/teach/getById?id=${id}`)
+	
+	
+	// exam start----------------------------------------------------
 	//获取模拟考试题 
 	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample?single=5&multiple=5&judgment=5')
 	
@@ -50,6 +59,16 @@ const install = (Vue, vm) => {
 	let sendJudgmentAns = (params = {}) => vm.$u.post('/judgment/check',params)
 	
 	let computedScore = params => vm.$u.post('/exam/getExam/calculate',params)
+	
+	// 获取所有考试列表
+	let getExamList = params => vm.$u.get('/paper/select/user/all')
+	
+	// 根据id获取考试题目 
+	let getExamById = id => vm.$u.get(`/paper/get/user/${id}`)
+	
+	// 提交试卷 要id的
+	let submitExamById = params => vm.$u.post('/paper/exam/submit',params)
+	// exam end ----------------------------------------------------
 	
 	
 	// 收藏资讯 type=1 法律 type = 2 新规 type = 3
@@ -100,6 +119,7 @@ const install = (Vue, vm) => {
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
 		authLogin,
+		iLogin,
 		getConsult,
 		getConsultContent,
 		getIndexSwiper,
@@ -131,7 +151,11 @@ const install = (Vue, vm) => {
 		colllectQuestion,
 		fetchNewRuleComment,
 		collect,
-		updateNickname
+		updateNickname,
+		getExamList,
+		getExamById,
+		getCourseById,
+		submitExamById
 	};
 }
 

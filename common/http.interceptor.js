@@ -1,8 +1,14 @@
 // 这里的vm，就是我们在vue文件里面的this，所以我们能在这里获取vuex的变量，比如存放在里面的token变量
+
+
 const install = (Vue, vm) => {
 	// 此为自定义配置参数，具体参数见上方说明
+	Vue.prototype.$u.baseUrl = 'http://ldqc.xyz:5880'
+	
 	Vue.prototype.$u.http.setConfig({
-		// baseUrl: 'https://api.shop.eduwork.cn',
+		
+		// http://20.105.0.113:84/xlfjxxqjxt/police
+		// http://ldqc.xyz:5880
 		baseUrl:'http://ldqc.xyz:5880',
 		loadingText: '努力加载中~',
 		loadingTime: 800,
@@ -26,11 +32,6 @@ const install = (Vue, vm) => {
 		
 		// 方式四，如果token放在了Storage本地存储中，拦截是每次请求都执行的
 		// 所以哪怕您重新登录修改了Storage，下一次的请求将会是最新值
-		// const token = uni.getStorageSync('token');
-		// config.header.token = token;
-		// config.header.Token = 'xxxxxx';
-		// config.header['Content-Type'] = 'application/x-www-form-urlencoded';
-		
 		config.header.token = vm.$store.state.vuex_token;
 		// 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
 		if(config.url == '/user/login') {

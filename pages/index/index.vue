@@ -37,34 +37,19 @@
 			consult
 		},
 		 onLoad() {
-			const cookie = this.vuex_token;
+			 console.log(this.$u.baseUrl)
+			var cookie = this.vuex_token;
 			if(!cookie){
 				this.$u.toast('请登录！')
 				setTimeout(() => {
 					this.$u.route({
 						type:'redirect',
-						url:'pages/auth/login'
+						url:'/pages/auth/login'
 					})
 				})
 			}
 			this.indexGetConsult()
 			this.getSwiper()
-			// this.$u.get('/api/index').then(res => {
-			// 	console.log(res)
-			// }).catch(e => {
-			// 	// console.log(e)
-			// })
-			//集中管理api
-			// const  data = {
-			// 	email:'test@a.com',
-			// 	password:'123123'
-			// }
-			// const res = await this.$u.api.authLogin(data)
-			// console.log(res)
-			// console.log(this.vuex_version)
-			// console.log(this.vuex_user.name)
-			// this.$u.vuex('vuex_user.name', '史诗')
-			// console.log(this.vuex_user.name)
 		},
 		methods: {
 			async indexGetConsult(){

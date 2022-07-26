@@ -1,45 +1,38 @@
 <template>
-	<view>
-		<view class="video-continar">
-			<video :src="url" controls></video>
-		</view>
-		<view class="introduce-continar">
-			<text>{{ introduce }}</text>
-		</view>
+	<view >
+		<u-parse :content="content" >
+		</u-parse>
 		<u-toast ref="uToast" />
 	</view>
 </template>
 
 <script>
+	import uParse from '@/components/u-parse/u-parse.vue'
 	export default {
 		data() {
 			return {
-				item: {},
-				introduce: "",
+				content:""
 			};
 		},
-		computed: {
-			url() {
-				let id = this.item.courseId;
-				let url = `http://ldqc.xyz:5880/course/video?id=${id}`
-				return url
-			}
+		components:{
+			uParse
 		},
 		onLoad(e) {
-			this.item = e;
-
-			this.getCourseIntroduce();
-		},
-		mounted() {
-			if(!this.item.courseId){
-				this.show()
-			}
+			console.log(e);
+			this.getCourseByid(e.id)
 		},
 		methods: {
 			async getCourseIntroduce() {
 				const res = await this.$u.api.getCourseIntroduce(this.item.id);
 				if (res.success) {
 					this.introduce = res.body;
+				}
+			},
+			async getCourseByid(id){
+				const res = await this.$u.api.getCourseById(id)
+				if(res){
+					console.log(res);
+					this.content = res.body.content
 				}
 			},
 			show() {
@@ -54,22 +47,5 @@
 </script>
 
 <style lang="scss" scoped>
-	.video-continar {
-		width: 100%;
-		margin: 0 auto;
-		padding: 15rpx;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	text {}
-
-	.introduce-continar {
-		text-align: center;
-	}
-
-	video {
-		// margin-left: 100rpx;
-	}
+	
 </style>

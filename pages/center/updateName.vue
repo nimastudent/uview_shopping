@@ -62,14 +62,17 @@ export default {
     uploadtest() {
       var a = this.vuex_token;
       var _this = this;
+	  var baseUrl = this.$u.baseUrl
       uni.chooseImage({
         count: 1, //默认9
         sizeType: ["original", "compressed"], //可以指定是原图还是压缩图，默认二者都有
         sourceType: ["album"], //从相册选择
         success: function (res) {
           if (res.tempFiles[0].type == "image/jpeg") {
+			  
             uni.uploadFile({
-              url: "http://ldqc.xyz:5880/user/headPortrait/upload",
+				// "http://20.105.0.113:84/xlfjxxqjxt/police/user/headPortrait/upload"
+              url: `${baseUrl}/user/headPortrait/upload`,
               file: res.tempFiles[0],
               header: {
                 token: a,

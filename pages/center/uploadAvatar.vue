@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      action: "http://ldqc.xyz:5880/user/headPortrait/upload",
+      action: "http://20.105.0.113:84/xlfjxxqjxt/police/user/headPortrait/upload",
       header: { "Content-Type": "multipart/form-data" },
       file: {},
       token: "",
@@ -29,6 +29,7 @@ export default {
     let token = "token";
     let atoken = this.vuex_token;
     this.header[token] = atoken;
+	this.action = this.$u.baseUrl + '/user/headPortrait/upload'
   },
   methods: {
     beforeUpload(index, list) {

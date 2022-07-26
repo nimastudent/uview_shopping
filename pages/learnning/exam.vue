@@ -54,6 +54,7 @@
 						</u-checkbox-group>
 					</view>
 
+					<!-- 判断 -->
 					<view class="u-m-t-20" v-else-if="currentType === 1">
 						<u-radio-group :wrap="true">
 							<u-radio @change="judgmentRadioChange(item)" v-for="(item, index) in question.option"
@@ -133,6 +134,7 @@
 				},
 				scroe: 0,
 				scoreContent: '',
+				examId: undefined //试卷ID
 			}
 		},
 		onReady() {
@@ -159,57 +161,87 @@
 				}
 			})
 		},
-		onLoad() {
+		onLoad(options) {
+			console.log(options);
 			this.getMockQuestion()
+			this.getExamById(options.id)
+			this.examId = options.id
 		},
 		computed: {
+			finishNum(){
+				return this.questionList.length - (this.judgmentAnsList.length + this.multipleAnsList.length + this.singleAnsList.length)
+			},
 			content() {
-				let num = this.questionList.length - (this.judgmentAnsList.length + this.multipleAnsList.length + this
-					.singleAnsList.length)
+				let num = this.finishNum
 				if (num == 0) {
 					return '请确认是否提交'
 				} else {
-					return '还有' + num + '题没做, 请确认是否提交'
+					return '还有' + num + '题没做, 无法提交'
 				}
 			},
 
 		},
 		methods: {
 			async submit() {
+				if(this.finishNum > 0){
+					this.showModal = false
+					return
+				}
 				let username = this.vuex_userName;
 				var ansList = [...this.singleAnsList, ...this.multipleAnsList, ...this.judgmentAnsList]
-				const res = await this.$u.api.computedScore({
-					"infos": ansList,
-					"username":username
+				ansList.sort((a, b) => a.index - b.index) //根据index 排序
+				let finalPostList = []
+				ansList.forEach(item => finalPostList.push(item.userAnswer)) //加到 list中
+				console.log(finalPostList);
+				console.log(ansList);
+				const res = await this.$u.api.submitExamById({
+					"inputs": finalPostList,
+					"paper_id": this.examId
 				})
+				console.log(res);
 				if (res.success) {
-					this.scroe = res.body.total
-					this.scoreContent = "您的分数为"+this.scroe;
-					this.showSocreModal = true;
-					setTimeout(()=>{
-						uni.navigateBack({
-						    delta: 2
-						});
-					},3000)
-					
+					if (res.body === 'user already finished exam') { //用户已经做过该试卷
+						this.scoreContent = "您已完成该试卷！无法再次提交"
+						this.showSocreModal = true
+						setTimeout(() => {
+							uni.navigateBack({
+								delta: 2
+							});
+						}, 2000)
+					} else {
+						this.scroe = res.body
+						this.scoreContent = "您的分数为" + parseInt(this.scroe);
+						this.showSocreModal = true;
+						setTimeout(() => {
+							uni.navigateBack({
+								delta: 2
+							});
+						}, 2000)
+
+					}
+
 				}
+				// const res = await this.$u.api.computedScore({
+				// 	"infos": ansList,
+				// 	"username": username
+				// })
+				// if (res.success) {
+				// 	this.scroe = res.body.total
+				// 	this.scoreContent = "您的分数为" + this.scroe;
+				// 	this.showSocreModal = true;
+				// 	setTimeout(() => {
+				// 		uni.navigateBack({
+				// 			delta: 2
+				// 		});
+				// 	}, 3000)
 
-
+				// }
 			},
 			// 路由跳转回主页
 			routerGo() {
-				// this.$u.route({
-				// 	type: 'switchBar',
-				// 	utl: 'pages/learnning/index',
-				// })
-
 				uni.redirectTo({
 					url: 'pages/learnning/index'
 				});
-				// uni.navigateBack({
-				//     delta: 2
-				// });
-				// uni.navigateBack();
 			},
 			radioChangeSingle(e) {
 				// console.log(e)
@@ -227,15 +259,40 @@
 			openModal() { //开启模态框
 				this.showModal = true
 			},
-			async getMockQuestion() { //获取模拟考试题
+			//已经 弃用  start ============================================
+			async getMockQuestion() { //获取模拟考试题 (没有id 先前方法)
 				const res = await this.$u.api.fetchExamQuestion()
 				console.log(res)
-				if (res.code === 200) {
+				// if (res.code === 200) {
+				// 	// [this.questionList...,res.body.judgment...]
+				// 	this.questionList = []
+
+				// 	this.questionList = [...this.questionList, ...res.body.judgment, ...res.body.single, ...res.body
+				// 		.multiple
+				// 	]
+				// 	for (var i = 0; i < this.questionList.length; i++) {
+				// 		this.$set(this.questionList[i], 'checked', false)
+				// 	}
+
+				// 	console.log(this.questionList)
+				// }
+			},
+			//已经 弃用  end ============================================
+			async getExamById(id) { //需要id 后的 考试列表方法
+				const res = await this.$u.api.getExamById(id)
+				console.log(res);
+				const {
+					question
+				} = res.body
+				if (res.success) {
 					// [this.questionList...,res.body.judgment...]
 					this.questionList = []
-
-					this.questionList = [...this.questionList, ...res.body.judgment, ...res.body.single, ...res.body
-						.multiple
+					console.log(question);
+					this.addType(question.j, 1)
+					this.addType(question.s, 2)
+					this.addType(question.m, 3)
+					this.questionList = [...this.questionList, ...question.j, ...question.s, ...question
+						.m
 					]
 					for (var i = 0; i < this.questionList.length; i++) {
 						this.$set(this.questionList[i], 'checked', false)
@@ -244,8 +301,10 @@
 					console.log(this.questionList)
 				}
 			},
-			getExam() {
-
+			addType(arr, type) {
+				arr.forEach(item => {
+					item.type = type
+				})
 			},
 			judgmentRadioChange(item) { //判断选中
 				var problem = this.questionList[this.questionIndex]
@@ -257,6 +316,7 @@
 				let judegment = {
 					id: problem.id,
 					userAnswer: ans,
+					index: problem.index,
 					type: 1
 				}
 				var flag = true
@@ -274,9 +334,6 @@
 					this.questionIndex += 1;
 				};
 			},
-			// test(e){
-			// 	console.log(e)
-			// },
 			radioGroupChange(e) { //单选选中
 				// e为选项内容
 				//获取问题列表中当前元素
@@ -288,9 +345,11 @@
 				var singleAns = {
 					id: item.id,
 					userAnswer: e,
+					index: item.index,
 					type: 2
 				}
 				var flag = true
+				// 更改单选答案
 				for (let i = 0; i < this.singleAnsList.length; i++) {
 					if (this.singleAnsList[i].id == singleAns.id) {
 						this.singleAnsList[i].userAnswer = e
@@ -298,6 +357,7 @@
 						break
 					}
 				}
+				// 添加到单选答案
 				if (flag) {
 					this.singleAnsList.push(singleAns)
 				}
@@ -321,6 +381,7 @@
 					this.multipleAnsList.push({
 						id: item.id,
 						userAnswer: ans,
+						index: item.index,
 						type: 3
 					})
 				}

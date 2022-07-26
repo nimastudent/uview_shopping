@@ -3,12 +3,6 @@
 		<view class="top"></view>
 		<view class="content">
 			<view class="title">欢迎登录</view>
-			
-			
-				<u-input clas<!-- s="username" v-model="form.username"  :border="border" placeholder="请输入用户名" />
-				<u-input class="password" v-model="form.password" :type="type"  :border="border" placeholder="请输入密码" />
-				 -->
-				
 				<u-form :model="form" ref="uForm">
 							<u-form-item  prop="username">
 								<u-input :border="border" v-model="form.username" placeholder="请输入用户名" />
@@ -20,10 +14,19 @@
 					
 				<text>如密码遗忘，请联系管理员</text>
 				<button class="loginButton" type="primary" @click="submit">登录</button>
-			
-
-		
-			<!-- <u-button @click="submit">提交</u-button> -->
+				<!-- <svg t="1647412313253" @click="pkiLogin" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4066"><path d="M418.133333 499.2c-21.333333-34.133333-29.866667-72.533333-29.866666-115.2 0-119.466667 93.866667-213.333333 213.333333-213.333333s213.333333 93.866667 213.333333 213.333333-93.866667 213.333333-213.333333 213.333333c-46.933333 0-85.333333-12.8-123.733333-38.4l-98.133334 98.133334 46.933334 46.933333-59.733334 59.733333-46.933333-46.933333-29.866667 29.866667 46.933334 46.933333L277.333333 853.333333 170.666667 746.666667l247.466666-247.466667zM601.6 256c-72.533333 0-128 55.466667-128 128s55.466667 128 128 128 128-55.466667 128-128-59.733333-128-128-128z" fill="#444444" p-id="4067"></path></svg>
+				
+				
+				<p style="margin-left:250rpx;">PKI登录</p>
+				
+				<svg t="1647412313253" @click="dcloudLogin" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4066"><path d="M418.133333 499.2c-21.333333-34.133333-29.866667-72.533333-29.866666-115.2 0-119.466667 93.866667-213.333333 213.333333-213.333333s213.333333 93.866667 213.333333 213.333333-93.866667 213.333333-213.333333 213.333333c-46.933333 0-85.333333-12.8-123.733333-38.4l-98.133334 98.133334 46.933334 46.933333-59.733334 59.733333-46.933333-46.933333-29.866667 29.866667 46.933334 46.933333L277.333333 853.333333 170.666667 746.666667l247.466666-247.466667zM601.6 256c-72.533333 0-128 55.466667-128 128s55.466667 128 128 128 128-55.466667 128-128-59.733333-128-128-128z" fill="#444444" p-id="4067"></path></svg>
+				
+				<p style="margin-left:250rpx;">直接登录</p> -->
+				
+				<!-- <button type="default" @click="pkiLogin">pki</button> -->
+				
+				<button type="default" @click="getUserInfor">i闽警直接登录</button>
+				
 		</view>
 		
 		<u-toast ref="uToast" />
@@ -31,9 +34,13 @@
 </template>
 
 <script>
+
 export default {
 	data() {
 		return {
+			content:{},
+			show:false,
+			webUrl:'',
 			type:'password',
 			border:true,
 			form: {
@@ -64,7 +71,6 @@ export default {
 			this.$refs.uForm.setRules(this.rules);
 	},
 	onLoad(){
-		
 	},
 	computed: {
 		inputStyle() {
@@ -76,10 +82,12 @@ export default {
 			return style;
 		}
 	},
+	onShow() {
+
+	},
 	methods: {
 		async login(){
 			//保存cookie
-			// let password = this.$u.
 				const res = await this.$u.api.authLogin(this.form)
 				if(res.success){
 					this.$u.vuex('vuex_token',res.body.token)
@@ -96,25 +104,42 @@ export default {
 					})
 				}
 		},
-		test(){
-			this.$u.api.authLogin(this.form).then( (res) => {
-				console.log(res)
-			})
-		},
-		getHeader(){
-			this.$u.api.getUserheader().then((res) => {
-				console.log(res)
-			})
-		},
 		submit() {
 			 this.$refs.uForm.validate(valid => {
 					if (valid) {
 						 this.login()
 						} else {
-							
 						}
 					});
-			}
+		},
+		pkiLogin() {
+			// http://localhost:8080/pages/auth/pki
+			let redirect_uri = 'http://localhost:8080/pages/auth/pki'
+			let test_redirect_url = 'test://'
+			let response_type = 'code id_token'
+			let client_id = 'clientId'
+			let ssoServerUrl = 'http://110.90.116.74:8088/sso'
+			let loginUrl = ssoServerUrl + "/oauth2/authorize?response_type="+response_type+"&client_id="+client_id+"&redirect_uri="+redirect_uri
+			let testUrl = `${ssoServerUrl}/oauth2/authorize?response_type=${response_type}&client_id=${client_id}&redirect_uri=${test_redirect_url}`
+			 // h5
+			window.location.href = loginUrl
+			// app端
+			// plus.runtime.openURL(testUrl)
+		},
+		getUserInfor(){
+			window.app.link.getLoginInfo(function(result){
+				uni.setStorage({
+					key:"userInfo",
+					data:result,
+					success: function(){
+						console.log("信息存储成功")
+						uni.reLaunch({
+										url:'/pages/auth/step'
+									})
+					}
+				})
+			});
+		},
 	}
 };
 </script>
@@ -144,5 +169,14 @@ export default {
 .loginButton{
 	margin-top: 40rpx;
 	width: 300rpx;
+}
+
+.icon {
+	width: 100rpx;
+	height: 100rpx;
+	border: 3px solid gray;
+	border-radius: 50px;
+	margin-top: 120rpx;
+	margin-left:  250rpx;
 }
 </style>

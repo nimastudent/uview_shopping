@@ -13,7 +13,7 @@
 			</view>
 			<view class="u-flex-1">
 				<view class="u-font-18 u-p-b-20">{{nickName}}</view>
-				<view class="u-font-14 u-tips-color">用户名us:{{userName}}</view>
+				<view class="u-font-14 u-tips-color">用户名:{{userName}}</view>
 			</view>
 			
 			<!-- <view class="u-m-l-10 u-p-10">
@@ -50,9 +50,11 @@
 		},
 		computed:{
 			userName(){
+				console.log(this.vuex_userName)
 				return this.vuex_userName
 			},
 			nickName(){
+				console.log(this.vuex_nickName)
 				return this.vuex_nickName
 			}
 		},

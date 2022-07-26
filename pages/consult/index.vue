@@ -5,16 +5,16 @@
 			<u-cell-item v-for="(item,id) in courseArry" :key="id" :title="item.name" :arrow="true" arrow-direction="right" ></u-cell-item>
 		</u-cell-group>
 		 -->
-		 <u-mask :show="show" @click="show = false">
+		 <!-- <u-mask :show="show" @click="show = false">
 			 
 			 <u-loading mode="circle"></u-loading>
-		 </u-mask>
+		 </u-mask> -->
 		<u-collapse :item-style="style">
 			<u-collapse-item class="cell" :title="item.name" v-for="(item, id) in courseArry" :key="id"
 				:open="item.open">
 				<u-cell-group>
 					<u-cell-item v-for="(name,index) in item.catalogue" :key="index" :title="name.name" :arrow="true"
-						arrow-direction="right" @click="goCourse(item,name)"></u-cell-item>
+						arrow-direction="right" @click="goCourse(name)"></u-cell-item>
 				</u-cell-group>
 			</u-collapse-item>
 		</u-collapse>
@@ -26,7 +26,7 @@
 	export default {
 		data() {
 			return {
-				show:true,
+				// show:true,
 				courseArry: [],
 				style: {
 					'font-weight': 600,
@@ -60,13 +60,17 @@
 				}
 				console.log(this.courseArry)
 			},
-			goCourse(item,name) {
-				let obj = {id:item.id,courseId:name.id};
+			goCourse(item) {
+				console.log(item);
+				// let obj = {id:item.id,courseId:name.id};
 				
 				this.$u.route({
 					url: 'pages/consult/course',
-					params: obj
+					params: {
+						id:item.id
+					}
 				})
+				
 				// this.$u.api.getVideo(1).then((res) => {
 				// 	console.log(res)
 				// })

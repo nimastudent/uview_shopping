@@ -9,7 +9,6 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 
 
-
 Vue.use(uView);
 
 const app = new Vue({

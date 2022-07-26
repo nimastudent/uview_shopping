@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<view v-if="comment.length === 0">
+			暂无内容
+		</view>
 		<view class="item-comtinar" v-for="(comment,index) in comment" :key="index">
 			<view class="top-item" >
 				<u-avatar class="u-m-r-20" size="60" :src="avatar"></u-avatar>
