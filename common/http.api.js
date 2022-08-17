@@ -37,6 +37,8 @@ const install = (Vue, vm) => {
 	let getCourseIntroduce = params => vm.$u.get('/course/introduce?id='+params)
 	// 根据id获取课程
 	let getCourseById = id => vm.$u.get(`/teach/getById?id=${id}`)
+	// 获取课程id
+	let getAllCourseId = () => vm.$u.get('/course/all')
 	
 	
 	// exam start----------------------------------------------------
@@ -68,11 +70,16 @@ const install = (Vue, vm) => {
 	
 	// 提交试卷 要id的
 	let submitExamById = params => vm.$u.post('/paper/exam/submit',params)
+	
+	// 获取已经考过试卷的分数 id
+	let getscoreById = id => vm.$u.get(`/paper/exam/score/${id}`)
 	// exam end ----------------------------------------------------
 	
 	
 	// 收藏资讯 type=1 法律 type = 2 新规 type = 3
 	let collect = params => vm.$u.post('/collect/add ',params)
+	// 删除收藏 type=1 法律 type = 2 新规 type = 3
+	let cancleCollect = params => vm.$u.get('/collect/delete',params)
 	
 	
 	//获取法律目录
@@ -85,7 +92,7 @@ const install = (Vue, vm) => {
 	let golawContent = params => vm.$u.get('/law/content/id?id='+params)
 	
 	// _**************************新规获取可以在完善下**********************************
-	let getNewRule = params => vm.$u.get('/rule/all?start=0&len=4')
+	let getNewRule = params => vm.$u.get(`/rule/all`)
 	// _************************************************************
 	
 	let getNewRuleContent = params => vm.$u.get('/rule/content?id='+params)
@@ -155,7 +162,10 @@ const install = (Vue, vm) => {
 		getExamList,
 		getExamById,
 		getCourseById,
-		submitExamById
+		submitExamById,
+		getscoreById,
+		getAllCourseId,
+		cancleCollect
 	};
 }
 

@@ -1,15 +1,11 @@
 <template>
 	<view>
 		<u-navbar :is-back="false" title="　" :border-bottom="false">
-			<view class="u-flex u-row-right" style="width: 100%;">
-				<view class="camera u-flex u-row-center">
-					<u-icon name="camera-fill" color="#000000" size="48"></u-icon>
-				</view>
-			</view>
+			
 		</u-navbar>
 		<view class="u-flex user-box u-p-l-30 u-p-r-20 u-p-b-30">
 			<view class="u-m-r-10">
-				<u-avatar :src="pic" size="140"></u-avatar>
+				<u-avatar :src="avatar" size="140"></u-avatar>
 			</view>
 			<view class="u-flex-1">
 				<view class="u-font-18 u-p-b-20">{{nickName}}</view>
@@ -47,15 +43,24 @@
 		},
 		onLoad() {
 			this.getAvatar()
+			const _this = this
+						uni.addInterceptor('navigateBack', {//监听返回
+							success(e) {
+								console.log(e);
+								console.log(4);
+							}
+						})
+			
 		},
 		computed:{
 			userName(){
-				console.log(this.vuex_userName)
 				return this.vuex_userName
 			},
 			nickName(){
-				console.log(this.vuex_nickName)
 				return this.vuex_nickName
+			},
+			avatar(){
+				return this.vuex_avatar
 			}
 		},
 		methods: {

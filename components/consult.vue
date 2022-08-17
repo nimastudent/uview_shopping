@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="item u-border-bottom" v-for="(item,index) in list" :key="item.id">
-						<view class="title-wrap" @click="goConsultContent(item.id)">
+						<view class="title-wrap" @click="goConsultContent(item.id)" >
 							<view class="title">
 								{{ item.title }}
 							</view>
@@ -34,6 +34,7 @@
 					}
 				})
 			},
+			
 		}
 	}
 </script>

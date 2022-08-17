@@ -22,11 +22,37 @@
 				
 			</view>
 			
-			<view class="bottom-icon">
+			<!-- <view class="bottom-icon">
 				<u-icon name="chat" size="40">分享</u-icon>
 				<u-icon name="chat" size="40">评论</u-icon>
 				<u-icon name="star" size="40">点赞</u-icon>
+			</view> -->
+			<!-- <u-line color="blur" /> -->
+		</view>
+		
+		<view class="item-comtinar" v-for="(comment,index) in reply" :key="index">
+			<view class="top-item" >
+				<u-avatar class="u-m-r-20" size="60" :src="avatar"></u-avatar>
+				<view class="text"> {{username}}
+				<view class="date">
+					{{comment.date}}
+				</view>
+				</view>
 			</view>
+			<view class="mid-content">
+				{{comment.content}}
+			</view>
+			
+			<view class="mid-title u-line-1">
+				{{comment.title}}
+				
+			</view>
+			
+			<!-- <view class="bottom-icon">
+				<u-icon name="chat" size="40">分享</u-icon>
+				<u-icon name="chat" size="40">评论</u-icon>
+				<u-icon name="star" size="40">点赞</u-icon>
+			</view> -->
 			<!-- <u-line color="blur" /> -->
 		</view>
 	</view>
@@ -36,7 +62,8 @@
 	export default {
 		data() {
 			return {
-				comment:[]
+				comment:[],
+				reply:[]
 			}
 		},
 		computed:{
@@ -55,6 +82,7 @@
 				const res = await this.$u.api.getComment()
 				if(res != null){
 					this.comment = res.comment
+					this.reply = res.reply
 					console.log(this.comment)
 				}
 			},
@@ -68,8 +96,8 @@
 	padding: 25rpx;
 	border-radius: 24rpx;
 	margin: 10rpx;
-	// border: 1rpx solid black;
-	box-shadow: #848484 2rpx 1rpx 2rpx 0rpx;
+	border: 1rpx solid black;
+	// box-shadow: #848484 2rpx 1rpx 2rpx 0rpx;
 		.top-item{
 			display: flex;
 			.text{

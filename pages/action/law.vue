@@ -32,7 +32,6 @@
 								 ></u-cell-item>
 							</u-cell-group>
 						</scroll-view>
-						
 					</view>
 				</u-popup>
 	</view>

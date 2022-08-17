@@ -1,6 +1,6 @@
 <template>
 	<view class="mockContinar">
-		<u-navbar title="学法考试" title-color="#000000"></u-navbar>
+		<u-navbar title="学法考试" title-color="#000000" :custom-back="handleCustomBack"></u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
 				<view class="action text-black u-flex">
@@ -23,7 +23,7 @@
 				</view>
 			</view>
 
-			<swiper :current="questionIndex" class="swiper-box" @change="swiperChange" :style="{'height':'850rpx'}">
+			<swiper :current="questionIndex" class="swiper-box" :style="{'height':'850rpx'}" :disable-touch="true">
 				<swiper-item class="u-m-10" v-for="(question,index) in questionList" :key="index">
 
 					<view class="problem">
@@ -101,6 +101,7 @@
 			</view>
 		</view>
 
+<u-toast ref="uToast" />
 
 	</view>
 </template>
@@ -112,7 +113,6 @@
 				hour: 0,
 				minute: 30,
 				second: 0,
-				hiddeBtnAndTime: true, //隐藏时间和提交按钮
 				currentType: 1, //题型
 				timestamp: 2700, //倒计时单位秒
 				hiddeBtnAndTime: true, //隐藏时间和提交按钮
@@ -162,8 +162,6 @@
 			})
 		},
 		onLoad(options) {
-			console.log(options);
-			this.getMockQuestion()
 			this.getExamById(options.id)
 			this.examId = options.id
 		},
@@ -183,6 +181,7 @@
 		},
 		methods: {
 			async submit() {
+				// 判断是否做完所有题目
 				if(this.finishNum > 0){
 					this.showModal = false
 					return
@@ -192,13 +191,11 @@
 				ansList.sort((a, b) => a.index - b.index) //根据index 排序
 				let finalPostList = []
 				ansList.forEach(item => finalPostList.push(item.userAnswer)) //加到 list中
-				console.log(finalPostList);
-				console.log(ansList);
+				// 上传题目
 				const res = await this.$u.api.submitExamById({
 					"inputs": finalPostList,
 					"paper_id": this.examId
 				})
-				console.log(res);
 				if (res.success) {
 					if (res.body === 'user already finished exam') { //用户已经做过该试卷
 						this.scoreContent = "您已完成该试卷！无法再次提交"
@@ -221,63 +218,26 @@
 					}
 
 				}
-				// const res = await this.$u.api.computedScore({
-				// 	"infos": ansList,
-				// 	"username": username
-				// })
-				// if (res.success) {
-				// 	this.scroe = res.body.total
-				// 	this.scoreContent = "您的分数为" + this.scroe;
-				// 	this.showSocreModal = true;
-				// 	setTimeout(() => {
-				// 		uni.navigateBack({
-				// 			delta: 2
-				// 		});
-				// 	}, 3000)
-
-				// }
 			},
 			// 路由跳转回主页
 			routerGo() {
 				uni.redirectTo({
-					url: 'pages/learnning/index'
+					url: '/pages/learnning/examList'
 				});
 			},
-			radioChangeSingle(e) {
-				// console.log(e)
-			},
-			swiperChange(e) { //滑动事件
-				let index = e.target.current;
-				if (index != undefined) {
-					this.questionIndex = index;
-					this.currentType = this.questionList[index].type;
-				}
-			},
+			// swiperChange(e) { //滑动事件
+			// 	let index = e.target.current;
+			// 	if (index != undefined) {
+			// 		this.questionIndex = index;
+			// 		this.currentType = this.questionList[index].type;
+			// 	}
+			// },
 			timeUp() {
 				this.submit()
 			},
 			openModal() { //开启模态框
 				this.showModal = true
 			},
-			//已经 弃用  start ============================================
-			async getMockQuestion() { //获取模拟考试题 (没有id 先前方法)
-				const res = await this.$u.api.fetchExamQuestion()
-				console.log(res)
-				// if (res.code === 200) {
-				// 	// [this.questionList...,res.body.judgment...]
-				// 	this.questionList = []
-
-				// 	this.questionList = [...this.questionList, ...res.body.judgment, ...res.body.single, ...res.body
-				// 		.multiple
-				// 	]
-				// 	for (var i = 0; i < this.questionList.length; i++) {
-				// 		this.$set(this.questionList[i], 'checked', false)
-				// 	}
-
-				// 	console.log(this.questionList)
-				// }
-			},
-			//已经 弃用  end ============================================
 			async getExamById(id) { //需要id 后的 考试列表方法
 				const res = await this.$u.api.getExamById(id)
 				console.log(res);
@@ -366,10 +326,14 @@
 				};
 			},
 			checkboxGroupChange(e) { //多选选中
+			// 获取当前题目
 				var item = this.questionList[this.questionIndex]
+				// 获取选择
 				var ans = e.toString().replace(/,/g, "");
+				
 				ans.length == 0 ? item.checked = false : item.checked = true
 				var flag = true
+				// 首次答题 加入答案
 				for (var i = 0; i < this.multipleAnsList.length; i++) {
 					if (this.multipleAnsList[i].id == item.id) {
 						this.multipleAnsList[i].userAnswer = ans
@@ -377,6 +341,7 @@
 						break
 					}
 				}
+				// 修改选择
 				if (flag) {
 					this.multipleAnsList.push({
 						id: item.id,
@@ -386,25 +351,45 @@
 					})
 				}
 			},
+			// 上一题 下一题
 			moveQuestion(e) {
+				// 上一题
 				if (e === -1 && this.questionIndex != 0) {
 					this.questionIndex -= 1;
 				}
+				// 下一题
 				if (e === 1 && this.questionIndex < this.questionList.length - 1) {
-					this.questionIndex += 1;
+					// 判断用户是否答题
+					if(this.questionList[this.questionIndex].checked){
+						this.questionIndex += 1;
+					}else{
+						this.$refs.uToast.show({
+											title: '请答题',
+											type: 'warning',
+											
+										})
+					}
 				}
 			},
 			showTika() { //题卡
 				this.tikaModalShow = true
 			},
+			// 题卡跳转题目
 			goIndexQuestion(index) {
 				this.tikaModalShow = false
 				this.questionIndex = index
 			},
-			async sendSingleQuestion() {
-				const res = await this.$u.api.sendMultipleAns(this.multipleAnsList[0])
-				console.log(res)
-			},
+			// 处理单击右上角返回图标
+			handleCustomBack(){
+				// /pages/learnning/examList
+				console.log(this.finishNum);
+				if(this.finishNum > 0){
+					
+				}else{
+					this.$u.route('/pages/learnning/examList');
+				}
+				// this.$u.route('/pages/learnning/examList');
+			}
 		}
 	}
 </script>
@@ -436,7 +421,7 @@
 	.qusetion {
 		padding: 10rpx;
 		font-weight: 600;
-		font-size: 0.8rem;
+		font-size: 30rpx;
 	}
 
 	.foot-btn {

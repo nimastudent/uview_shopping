@@ -56,6 +56,7 @@ export default {
         if (res.success) {
           let arrayBuffer = res.body;
           this.imgUrl = "data:image/jpeg;base64," + arrayBuffer;
+		  this.$u.vuex('vuex_avatar',this.imgUrl)
         }
       });
     },

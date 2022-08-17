@@ -4,214 +4,204 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-		    "path" : "pages/auth/login",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false,
-				"app-plus":{"titleNView":false}
-		    }
+			"path": "pages/auth/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
 		},
 		{
 			"path": "pages/index/index",
 			"style": {
 				// "navigationBarTitleText": "首页"
-				"app-plus":{"titleNView":false}
+				"app-plus": {
+					"titleNView": false
+				}
 			}
 		},
 		{
 			"path": "pages/center/index",
 			"style": {
 				// "navigationBarTitleText": "首页"
-				"app-plus":{"titleNView":false}
+				"app-plus": {
+					"titleNView": false
+				}
 			}
 		}
-	    
-        ,{
-            "path" : "pages/consult/index",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"app-plus":{"titleNView":false}
-            }
-            
-        }
-        ,{
-            "path" : "pages/learnning/index",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"app-plus":{"titleNView":false}
-            }
-            
-        },
+
+		, {
+			"path": "pages/consult/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+
+		}, {
+			"path": "pages/learnning/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+
+		},
 		{
-            "path" : "pages/action/action",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"app-plus":{"titleNView":false}
-            }
-            
-        }
-        ,{
-            "path" : "pages/center/updateName",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "用户设置",
-                "enablePullDownRefresh": false
-				
-            }
-            
-        }
-        ,{
-            "path" : "pages/learnning/mock",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
+			"path": "pages/action/action",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+
+		}, {
+			"path": "pages/center/updateName",
+			"style": {
+				"navigationBarTitleText": "用户设置",
+				"enablePullDownRefresh": false
+
+			}
+
+		}, {
+			"path": "pages/learnning/mock",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
 				"navigationBarTextStyle": "black"
-            }
-            
-        }
-        ,{
-            "path" : "pages/action/law",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom" ,// 隐藏系统导航栏
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/action/lawContent",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom" ,// 隐藏系统导航栏
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/index/consult",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/center/uploadAvatar",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/consult/course",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/action/newRule",
-            "style" :                                                                                    
-            {
-                "navigationStyle": "custom" ,// 隐藏系统导航栏
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/action/newRuleContent",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom" ,// 隐藏系统导航栏
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/center/comment",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的评论",
-                "enablePullDownRefresh": false
-            }
-            
-        },
+			}
+
+		}, {
+			"path": "pages/action/law",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/action/lawContent",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/consult",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/center/uploadAvatar",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/consult/course",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/action/newRule",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/action/newRuleContent",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/center/comment",
+			"style": {
+				"navigationBarTitleText": "我的评论",
+				"enablePullDownRefresh": false
+			}
+
+		},
 		{
-		    "path" : "pages/center/collection",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "我的收藏",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/center/collection",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/center/errorBool",
+			"style": {
+				"navigationBarTitleText": "我的错题集",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/learnning/exam",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/center/aboutUs",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/auth/pki",
+			"style": {
+				"navigationBarTextStyle": "pki",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/auth/step",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/learnning/examList",
+			"style": {
+				"navigationBarTitleText": "考试列表",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/action/lawList",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/learnning/errorBook",
+			"style": {
+				"navigationBarTitleText": "我的错题",
+				"enablePullDownRefresh": false
+			}
+
 		}
-        ,{
-            "path" : "pages/center/errorBool",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的错题集",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/learnning/exam",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom" ,// 隐藏系统导航栏
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/center/aboutUs",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "关于我们",
-                "enablePullDownRefresh": false
-            }
-        },
-        {
-            "path" : "pages/auth/pki",
-            "style" : 
-            {
-                "navigationBarTextStyle": "pki",
-                "enablePullDownRefresh": false
-            }
-        }
-        ,{
-            "path" : "pages/auth/step",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/learnning/examList",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "考试列表",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "学习强警",
@@ -219,37 +209,37 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
-	    "color": "#000000",
-	    "selectedColor": "#f34a0d",
-	    "borderStyle": "black",
-	    "backgroundColor": "#ffffff",
-	    "list": [{
-	        "pagePath": "pages/index/index",
-	        "iconPath": "static/tabbarIcon/i.png",
-	        "selectedIconPath": "static/tabbarIcon/ic.png",
-	        "text": "首页"
-	    },{
-	        "pagePath": "pages/consult/index",
-	        "iconPath": "static/tabbarIcon/x.png",
-	        "selectedIconPath": "static/tabbarIcon/xc.png",
-	        "text": "课程学习"
-	    },{
-	        "pagePath": "pages/learnning/index",
-	        "iconPath": "static/tabbarIcon/l.png",
-	        "selectedIconPath": "static/tabbarIcon/lc.png",
-	        "text": "大练兵"
-	    },
-		{
-		    "pagePath": "pages/action/action",
-		    "iconPath": "static/tabbarIcon/f.png",
-		    "selectedIconPath": "static/tabbarIcon/fc.png",
-		    "text": "办案大全"
-		},{
-	        "pagePath": "pages/center/index",
-	        "iconPath": "static/tabbarIcon/c.png",
-	        "selectedIconPath": "static/tabbarIcon/cc.png",
-	        "text": "个人中心"
-	    }
+		"color": "#000000",
+		"selectedColor": "#f34a0d",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabbarIcon/i.png",
+				"selectedIconPath": "static/tabbarIcon/ic.png",
+				"text": "首页"
+			}, {
+				"pagePath": "pages/consult/index",
+				"iconPath": "static/tabbarIcon/x.png",
+				"selectedIconPath": "static/tabbarIcon/xc.png",
+				"text": "课程学习"
+			}, {
+				"pagePath": "pages/learnning/index",
+				"iconPath": "static/tabbarIcon/l.png",
+				"selectedIconPath": "static/tabbarIcon/lc.png",
+				"text": "大练兵"
+			},
+			{
+				"pagePath": "pages/action/action",
+				"iconPath": "static/tabbarIcon/f.png",
+				"selectedIconPath": "static/tabbarIcon/fc.png",
+				"text": "办案大全"
+			}, {
+				"pagePath": "pages/center/index",
+				"iconPath": "static/tabbarIcon/c.png",
+				"selectedIconPath": "static/tabbarIcon/cc.png",
+				"text": "个人中心"
+			}
 		]
 	}
 }

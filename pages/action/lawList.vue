@@ -1,25 +1,16 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="办案大全" title-color="#000000"></u-navbar>
+		<u-navbar back-text="返回" title="法律条目"></u-navbar>
 		<u-cell-group>
-			<u-cell-item
-			title="新规"
-			@click="goNewRule"
-			>
-			</u-cell-item>
-			<u-cell-item
-			title="法律"
-			@click="goRuleList"
-			>
-			</u-cell-item>
-			<!-- <u-cell-item 
+			
+			<u-cell-item 
 			v-for="(item,index) in lawArray"
 			 :name="index" 
-			 :title="item" 
+			 :title="item.lawtype" 
 			 :arrow="true" 
 			 arrow-direction="right"
-			 @click="goLaw(item)"
-			 ></u-cell-item> -->
+			 @click="goLaw(item.lawtype)"
+			 ></u-cell-item>
 		</u-cell-group>
 	</view>
 </template>
@@ -31,7 +22,8 @@
 				lawArray:[],
 			}
 		},
-		onLoad(){
+		created() {
+		this.getLaw()	
 		},
 		methods: {
 			async getLaw(){
@@ -48,18 +40,6 @@
 					}
 				})
 			},
-			goNewRule(){
-				this.$u.route({
-					type:'navigateTo',
-					url:'pages/action/newRule',
-				})
-			},
-			goRuleList(){
-				this.$u.route({
-					type:'navigateTo',
-					url:'pages/action/lawList',
-				})
-			}
 		}
 	}
 </script>

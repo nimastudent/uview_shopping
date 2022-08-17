@@ -13,7 +13,7 @@
 				
 				
 			</view>
-			<collect :collectType="collectType" :curentId="consultId"></collect>
+			<collect :collectType="collectType" :curentId="consultId" :isCollect="ruleContent.isCollect" @update="getNewRuleContent" ></collect>
 			<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getNewRuleComment"></comment>
 		</view>
 
@@ -39,18 +39,18 @@
 		onLoad(e) {
 			if (e.id != '') {
 				this.consultId = e.id;
-				this.getNewRuleContent(e.id);
-				this.getNewRuleComment(e.id);
+				this.getNewRuleContent();
+				this.getNewRuleComment();
 			}
 		},
 		methods: {
-			async getNewRuleContent(id) {
-				const res = await this.$u.api.getNewRuleContent(id)
+			async getNewRuleContent() {
+				const res = await this.$u.api.getNewRuleContent(this.consultId)
 				if (res.success) {
 					this.ruleContent = res.body
 				}
 			},
-			async getNewRuleComment(id) {
+			async getNewRuleComment() {
 				
 				const res = await this.$u.api.fetchNewRuleComment(this.consultId)
 				if (res.success) {

@@ -28,7 +28,7 @@
 			async getNewRule(){
 				const res = await this.$u.api.getNewRule()
 				if(res.success){
-					this.ruleList = res.body.rule;
+					this.ruleList = res.body;
 				}
 				console.log(res)
 			},

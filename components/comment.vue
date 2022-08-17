@@ -78,7 +78,7 @@
 			},
 			reply(data) {
 				this.data.content = "";
-				this.data.parentId = data.userId;
+				this.data.parentId = data.id;
 				this.data.hostId = data.hostId;
 				this.show = true;
 				console.log(data)

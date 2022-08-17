@@ -66,14 +66,31 @@
 				this.getConsult(),
 				this.getNewRule(),
 				this.getLaw()
+				const _this = this
+							
+							uni.addInterceptor('navigateBack', {//监听返回
+								success(e) {
+									_this.getConsult(),
+									_this.getNewRule(),
+									_this.getLaw()
+								}
+							})
+				
+		},
+		onLaunch() {
+			
 		},
 		methods: {
+			test(){
+				console.log('test');
+			},
 			tabsChange(index) {
 				console.log(index)
 				this.current = index
 				this.swiperCurrent = index
 			},
 			async getConsult() {
+				this.consultArr = []
 				const res = await this.$u.api.getColleCunsult()
 				console.log("资讯")
 				console.log(res)
@@ -85,6 +102,7 @@
 				}
 			},
 			async getNewRule() {
+				this.newRuleArr = []
 				const res = await this.$u.api.getColleNewRule()
 				console.log("新规")
 				console.log(res)
@@ -93,6 +111,7 @@
 				}
 			},
 			async getLaw() {
+				this.lawArr = []
 				const res = await this.$u.api.getColleLaw()
 				console.log("法律")
 				console.log(res)

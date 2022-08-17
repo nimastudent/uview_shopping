@@ -12,15 +12,11 @@
 		<view class="content">
 			<u-parse :html="consultRes.content"></u-parse>
 			<view class="collect-contianer">
-				<collect :collectType="collectType" :curentId="curentId"></collect>
+				<collect :collectType="collectType" :curentId="curentId" :isCollect.sync="consultRes.isCollect" @update="getConsultContent" ></collect>
 			</view>
 		</view>
-
 		<u-toast ref="uToast" />
-
-
 		<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getConsultInfo"></comment>
-
 	</view>
 </template>
 
@@ -47,16 +43,13 @@
 			if (e) {
 				this.consultId = e.id;
 				this.curentId = e.id;
-				console.log(e)
 				this.getConsultContent()
 				this.getConsultInfo()
 			}
-
 		},
 		methods: {
 			async getConsultContent() {
 				const res = await this.$u.api.getConsultContent(this.consultId)
-				console.log(res)
 				if (res.success) {
 					res.body.picture = 'data:image/jpeg;base64,' + res.body.picture
 					if (res.body.picture.length < 50) {
@@ -68,7 +61,6 @@
 			// 获取资讯评论
 			async getConsultInfo() {
 				const res = await this.$u.api.getConsultInf(this.consultId)
-				console.log(res)
 				if (res.success) {
 					this.commentList = res.body;
 					console.log(this.commentList)

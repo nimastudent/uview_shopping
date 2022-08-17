@@ -2,22 +2,19 @@
 	<view class="box"  >
 		<u-navbar  id="mynavbar" back-text="返回" title="法律内容" class="navbar-top">
 			<!-- <u-icon class="u-m-r-40" name="star" slot="right" size="38" @click="starLaw" ></u-icon> -->
-			<collect class="u-m-r-40" :collectType="collectType"  slot="right"  :curentId="curentId"></collect>
-			<u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon>
+			<collect class="u-m-r-40" :collectType="collectType"  slot="right"  :curentId="curentId" :isCollect="isCollect" @update="getLawContent"></collect>
+			<!-- <u-icon class="u-m-r-30" name="list" slot="right" color="#2979ff" size="38" @click="navbarListShow"></u-icon> -->
 		</u-navbar>
 		
 		
 		
-		<view class="navbar-list" :style="listStyle" v-show="navbarShow">
-			<button type="primary" size="mini" @click="goLast(-1)">上一条</button>
-			<button type="primary" size="mini" @click="goLast(+1)">下一条</button>
-		</view>
+		
 		<u-back-top :scroll-top="scrollTop" top=0></u-back-top>
 		<view class="content-box u-m-t-20" @touchstart="closeListShow">
-			<view class="content-item">法律名称：{{lawContent.title}}</view>
+			<view class="content-item"><span>法律名称：</span>{{lawContent.title}}</view>
 			
-			<view class="content-item">法律类型：{{lawContent.lawtype}}</view>
-			<view class="content-item">关键词：
+			<view class="content-item"><span>法律类型：</span>{{lawContent.lawtype}}</view>
+			<view class="content-item"><span>关键词：</span>
 			<u-tag class="u-m-l-15" v-for="(item,index) in keyWord" :key="index"
 			 :text="item"
 			  type="info" 
@@ -29,13 +26,18 @@
 			</view>
 			<u-modal v-model="show" :content="content" :title="keyTitle"></u-modal>
 
-			<view class="content-item">释义阐明：{{lawContent.explaination}}</view>
+			<view class="content-item"><span>释义阐明：</span>{{lawContent.explaination}}</view>
 			</br>
-			<view class="content-item">罪名解析：{{lawContent.crime}}</view>
+			<view class="content-item"><span>罪名解析：</span>{{lawContent.crime}}</view>
 			
-			<view class="u-content u-m-t-20">
-				条文内容：<u-parse :html="lawContent.conten"></u-parse>
+			<view class="u-content content-item" >
+				<span >条文内容：</span>
+				<u-parse :html="lawContent.conten"></u-parse>
 				</view>
+		</view>
+		<view class="navbar-list" :style="listStyle">
+			<button type="primary" size="mini" @click="goLast(-1)">上一条</button>
+			<button type="primary" size="mini" @click="goLast(+1)">下一条</button>
 		</view>
 	</view>
 </template>
@@ -61,6 +63,7 @@ export default {
       notLast: true, //下一条判断是否为最后一条
       iscollection: false,
 	  curentId:0,
+	  isCollect:null
     };
   },
   onReady() {
@@ -88,8 +91,10 @@ export default {
       //获取法律条文
       const res = await this.$u.api.getlawContent(this.title);
       if (res.success) {
+		  this.isCollect = res.body.isCollect;
 		  this.curentId = res.body.id;
-        this.lawContent = res.body;
+		this.lawContent = res.body;
+		
         let keyWord = res.body.keyWord;
         for (let key in keyWord) {
           for (let item in keyWord[key]) {
@@ -157,6 +162,9 @@ export default {
           }
         });
       }
+	  uni.pageScrollTo({
+	  	scrollTop:1
+	  })
     },
     goLaw() {
       if (this.iscollection) {
@@ -175,20 +183,23 @@ export default {
 
 <style lang="scss" scoped>
 .navbar-list {
-  overflow: hidden;
-  position: fixed;
+  // overflow: hidden;
+  // position: fixed;
+  // display: flex;
+  // flex-direction: column;
+  // right: 0;
+  // background-color: #2979ff;
+  margin: 10rpx;
   display: flex;
-  flex-direction: column;
-  right: 0;
-  background-color: #2979ff;
-  color: #fff;
+	justify-content: space-between;
+	color: #fff;
 }
 .navbar-top {
   display: flex;
 }
 .box {
   width: 90%;
-  margin: 0 auto;
+  margin: 5rpx auto;
 }
 .mytop-box {
   display: flex;
@@ -207,7 +218,10 @@ export default {
 .content-item {
   margin-top: 15rpx;
 }
-.test {
-  height: 200rpx;
+
+.content-item span{
+	font-size: 30rpx;
+	font-weight: 600;
 }
+
 </style>
