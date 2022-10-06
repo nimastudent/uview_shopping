@@ -46,8 +46,12 @@
 		methods: {
 			async getCourseIntroduce(id) {
 				const res = await this.$u.api.getCourseIntroduce(id);
+				
 				if (res.success) {
-					this.introduce = `<h2>课程介绍：${res.body}</h2>`
+					if(res.body !== null){
+						console.log("123");
+						this.introduce = `<h2>课程介绍：${res.body}</h2>`
+					}
 				}
 			},
 			async getCourseByid(id){

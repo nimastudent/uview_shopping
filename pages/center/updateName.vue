@@ -69,8 +69,7 @@ export default {
         sizeType: ["original", "compressed"], //可以指定是原图还是压缩图，默认二者都有
         sourceType: ["album"], //从相册选择
         success: function (res) {
-          if (res.tempFiles[0].type == "image/jpeg") {
-			  
+          if (res.tempFiles[0].type == "image/jpeg" ) {
             uni.uploadFile({
 				// "http://20.105.0.113:84/xlfjxxqjxt/police/user/headPortrait/upload"
               url: `${baseUrl}/user/headPortrait/upload`,
@@ -91,7 +90,12 @@ export default {
               },
             });
           } else {
-            _this.$u.toast(res.body);
+			  
+           _this.$refs.uToast.show({
+           	title: '请选择 jpg 格式图片',
+           	type: 'error',
+           })
+		   
           }
         },
       });

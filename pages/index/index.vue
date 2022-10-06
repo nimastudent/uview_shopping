@@ -3,7 +3,7 @@
 		<u-navbar :is-back="false" title="主页" title-color="#000000"></u-navbar>	
 		
 		<view class="wrap">
-				<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperTest"></u-swiper>
+				<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperClick"></u-swiper>
 		</view>
 			
 		<!-- <view class="item u-border-bottom" v-for="(item,index) in consultList" :key="item.id">
@@ -83,7 +83,7 @@
 					this.swiperList = res.body
 				}
 			},
-			swiperTest(e){
+			swiperClick(e){
 				let id = this.swiperList[e].id
 				this.goConsultContent(id)
 			}

@@ -145,13 +145,6 @@
 			}
 
 		}, {
-			"path": "pages/center/errorBool",
-			"style": {
-				"navigationBarTitleText": "我的错题集",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
 			"path": "pages/learnning/exam",
 			"style": {
 				"navigationStyle": "custom", // 隐藏系统导航栏
@@ -181,7 +174,7 @@
 		}, {
 			"path": "pages/learnning/examList",
 			"style": {
-				"navigationBarTitleText": "考试列表",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
@@ -201,7 +194,16 @@
 
 		}
 
-	],
+	    ,{
+            "path" : "pages/learnning/score",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的成绩",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "学习强警",

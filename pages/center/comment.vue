@@ -13,14 +13,25 @@
 				</view>
 				
 			</view>
-			<view class="mid-content">
+			
+			<view class="mid-content" v-if="comment.parentNickName">
+				{{comment.toReplyContent}}
+			</view>
+			
+			<view class="mid-content" v-else>
 				{{comment.content}}
 			</view>
 			
-			<view class="mid-title u-line-1">
+			<view class="mid-title u-line-1" v-if="comment.parentNickName">
+				<text>{{comment.parentNickName}}&nbsp;:&nbsp;{{comment.content}}</text>
+				
+			</view>
+			
+			<view class="mid-title u-line-1" v-else>
 				{{comment.title}}
 				
 			</view>
+			
 			
 			<!-- <view class="bottom-icon">
 				<u-icon name="chat" size="40">分享</u-icon>
@@ -30,31 +41,7 @@
 			<!-- <u-line color="blur" /> -->
 		</view>
 		
-		<view class="item-comtinar" v-for="(comment,index) in reply" :key="index">
-			<view class="top-item" >
-				<u-avatar class="u-m-r-20" size="60" :src="avatar"></u-avatar>
-				<view class="text"> {{username}}
-				<view class="date">
-					{{comment.date}}
-				</view>
-				</view>
-			</view>
-			<view class="mid-content">
-				{{comment.content}}
-			</view>
-			
-			<view class="mid-title u-line-1">
-				{{comment.title}}
-				
-			</view>
-			
-			<!-- <view class="bottom-icon">
-				<u-icon name="chat" size="40">分享</u-icon>
-				<u-icon name="chat" size="40">评论</u-icon>
-				<u-icon name="star" size="40">点赞</u-icon>
-			</view> -->
-			<!-- <u-line color="blur" /> -->
-		</view>
+	
 	</view>
 </template>
 
@@ -79,10 +66,11 @@
 		},
 		methods: {
 			async getComment(){
+				this.comment = []
 				const res = await this.$u.api.getComment()
 				if(res != null){
 					this.comment = res.comment
-					this.reply = res.reply
+					this.comment= [...this.comment,...res.reply]
 					console.log(this.comment)
 				}
 			},
@@ -96,7 +84,7 @@
 	padding: 25rpx;
 	border-radius: 24rpx;
 	margin: 10rpx;
-	border: 1rpx solid black;
+	border: 1rpx solid #606266;
 	// box-shadow: #848484 2rpx 1rpx 2rpx 0rpx;
 		.top-item{
 			display: flex;

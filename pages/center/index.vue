@@ -102,7 +102,7 @@
 				this.$u.route('pages/center/collection')
 			},
 			goErrorBook(){
-				this.$u.route('pages/center/errorBool')
+				this.$u.route('/pages/learnning/errorBook')
 			},
 			goAboutUs(){
 				this.$u.route('pages/center/aboutUs')

@@ -1,6 +1,6 @@
 <template>
 	<view class="mockContinar"> 
-		<u-navbar title="模拟考"></u-navbar>
+		<!-- <u-navbar title="模拟考"></u-navbar> -->
 		<view class="container">
 			<view id="top-box" class="top-box">
 				<view class="action text-black u-flex">
@@ -94,7 +94,7 @@
 				<text>下一题</text>
 			</view>
 			<view class="">
-				<u-button @click="collectQuestion">收藏</u-button>
+				<!-- <u-button @click="collectQuestion">收藏</u-button> -->
 			</view>
 			<!-- 多选题 确定按钮 -->
 			<view><u-button type="primary" v-show="currentType===3"  @click="confirmMutiplid">确定</u-button></view>
@@ -179,6 +179,7 @@
 			})
 		},
 		onLoad() {
+			this.getErrorBook()
 			this.getMockQuestion()
 		},
 		computed: {
@@ -193,6 +194,46 @@
 			},
 		},
 		methods: {
+			// 获取错题本
+			async getErrorBook(){
+				const res = await this.$u.api.getErrorBook()
+				if(res.success){
+					// console.log(res.body);
+					// let {judgement,}
+					let judgement = this.typeAdd(res.body[0]['judgement'],1) 
+					let singleChoice =this.typeAdd(res.body[1]['singleChoice'],2)
+					let multipleChoice =this.typeAdd(res.body[2]['multipleChoice'],3)
+					this.questionList = [...judgement,...singleChoice,...multipleChoice]
+					// console.log(this.questionList);
+				}
+			},
+			typeAdd(arr,type){
+				arr.forEach((item,index) => {
+					if(type == 1){
+						item.option = [{id:'A',content:item.option_true},{id:'B',content:item.option_true}]
+					}else if(type == 2 || type == 3){
+						item.option = [{id:'A',content:item.option_a},{id:'B',content:item.option_a},{id:'C',content:item.option_c},{id:'D',content:item.option_d}]
+					}
+					item.type = type
+					item.checked = false
+				})
+				return arr
+			},
+			async getMockQuestion() { //获取模拟考试题
+				const res = await this.$u.api.getMockQuestion()
+				console.log(res)	
+				if (res.code === 200) {
+					// [this.questionList...,res.body.judgment...]
+					this.questionList = []
+					this.questionList = [ ...res.body.judgment, ...res.body.single, ...res.body.multiple
+					]
+					for (var i = 0; i < this.questionList.length; i++) {
+						this.$set(this.questionList[i], 'checked', false)
+					}
+			
+				}
+				console.log(this.questionList)
+			},
 			async submit() {
 				var ansList = [...this.singleAnsList, ...this.multipleAnsList, ...this.judgmentAnsList]
 				const res = await this.$u.api.computedScore({
@@ -288,21 +329,7 @@
 			openModal() { //开启模态框
 				this.showModal = true
 			},
-			async getMockQuestion() { //获取模拟考试题
-				const res = await this.$u.api.getMockQuestion()
-				console.log(res)
-				if (res.code === 200) {
-					// [this.questionList...,res.body.judgment...]
-					this.questionList = []
-					this.questionList = [ ...res.body.judgment, ...res.body.single, ...res.body.multiple
-					]
-					for (var i = 0; i < this.questionList.length; i++) {
-						this.$set(this.questionList[i], 'checked', false)
-					}
-
-				}
-				console.log(this.questionList)
-			},
+			
 			judgmentRadioChange(item) { //判断选中
 				// 在题目列表中找到该题
 				var problem = this.questionList[this.questionIndex]

@@ -1,14 +1,14 @@
 <template>
 	<view>
 		<u-navbar :is-back="false" title="大练兵" title-color="#000000"></u-navbar>
-		
+		<view class="swiper">
+			<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperClick"></u-swiper>
+		</view>
 				
-		<!-- <view class="u-flex u-m-t-30">
-			<button class="button-class u-flex" type="default" @click="goMock">模拟考</button>
-			<button class="button-class u-flex" type="default" @click="goExam">学法考试</button>
-		</view> -->
-		<view class="main-contianer" @click="goErrorBook">
-			<view class="block-contianer">
+		<u-divider type="priamry"></u-divider>
+
+		<view class="main-contianer" >
+			<view class="block-contianer" @click="goErrorBook">
 				<img src="../../static/img/cuoti.png" alt="">
 				<view class="right-contianer">
 					<view class="right-title">错题集</view>
@@ -52,12 +52,35 @@
 	export default {
 		data() {
 			return {
+				swiperList:[]
 			}
 		},
 		onLoad(){
-			
+			this.getSwiper()
 		},
 		methods: {
+			async getSwiper(){
+				const res = await this.$u.api.getIndexSwiper()
+				if(res.success){
+					res.body.forEach((item) => {
+						item.picture = 'data:image/jpeg;base64,' + item.picture
+					})
+					this.swiperList = res.body
+				}
+			},
+			swiperClick(e){
+				let id = this.swiperList[e].id
+				this.goConsultContent(id)
+			},
+			goConsultContent(id){
+				this.$u.route({
+					tyep:'navigateTo',
+					url:'pages/index/consult',
+					params:{
+						id:id
+					}
+				})
+			},
 			goMock(){
 				this.$u.route({
 					type:'navigateTo',
@@ -71,9 +94,16 @@
 				})
 			},
 			goScore(){
-				
+				this.$u.route({
+					type:'navigateTo',
+					url:'/pages/learnning/score'
+				})
 			},
 			goErrorBook(){
+				this.$u.route({
+					type:'navigateTo',
+					url:'/pages/learnning/errorBook'
+				})
 				
 			}
 		}
@@ -81,6 +111,9 @@
 </script>
 
 <style lang="scss" scoped>
+	.swiper{
+		margin: 30rpx;
+	}
 .button-class{
 	height: 320rpx;
 	width: 320rpx;
@@ -92,6 +125,7 @@
 }
 .main-contianer{
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 .block-contianer{

@@ -100,6 +100,8 @@
 				</u-modal>
 			</view>
 		</view>
+		
+		<u-modal v-model="backModalShow" :content="backContent" show-cancel-button @confirm="handleBackModalConfirm" @cancel="handleBackModalCancel"></u-modal>
 
 <u-toast ref="uToast" />
 
@@ -134,7 +136,9 @@
 				},
 				scroe: 0,
 				scoreContent: '',
-				examId: undefined //试卷ID
+				examId: undefined, //试卷ID
+				backModalShow:false, //返回试卷模态框 
+				backContent:"您还有题目没有做完，请确认是否返回？" //返回试卷列表 模态框内容 
 			}
 		},
 		onReady() {
@@ -181,6 +185,10 @@
 		},
 		methods: {
 			async submit() {
+				console.log("123",this.finishNum);
+				console.log("judgmentAnsList",this.judgmentAnsList);
+				console.log("multipleAnsList",this.multipleAnsList.length);
+				console.log("singleAnsList",this.singleAnsList.length);
 				// 判断是否做完所有题目
 				if(this.finishNum > 0){
 					this.showModal = false
@@ -201,18 +209,14 @@
 						this.scoreContent = "您已完成该试卷！无法再次提交"
 						this.showSocreModal = true
 						setTimeout(() => {
-							uni.navigateBack({
-								delta: 2
-							});
+							this.routerGo()
 						}, 2000)
 					} else {
 						this.scroe = res.body
 						this.scoreContent = "您的分数为" + parseInt(this.scroe);
 						this.showSocreModal = true;
 						setTimeout(() => {
-							uni.navigateBack({
-								delta: 2
-							});
+							this.routerGo()
 						}, 2000)
 
 					}
@@ -225,13 +229,6 @@
 					url: '/pages/learnning/examList'
 				});
 			},
-			// swiperChange(e) { //滑动事件
-			// 	let index = e.target.current;
-			// 	if (index != undefined) {
-			// 		this.questionIndex = index;
-			// 		this.currentType = this.questionList[index].type;
-			// 	}
-			// },
 			timeUp() {
 				this.submit()
 			},
@@ -290,9 +287,9 @@
 				if (flag) {
 					this.judgmentAnsList.push(judegment)
 				}
-				if (this.autoRadioNext && this.questionIndex < this.questionList.length - 1) {
-					this.questionIndex += 1;
-				};
+				// if (this.autoRadioNext && this.questionIndex < this.questionList.length - 1) {
+				// 	this.questionIndex += 1;
+				// };
 			},
 			radioGroupChange(e) { //单选选中
 				// e为选项内容
@@ -321,9 +318,9 @@
 				if (flag) {
 					this.singleAnsList.push(singleAns)
 				}
-				if (this.autoRadioNext && this.questionIndex < this.questionList.length - 1) {
-					this.questionIndex += 1;
-				};
+				// if (this.autoRadioNext && this.questionIndex < this.questionList.length - 1) {
+				// 	this.questionIndex += 1;
+				// };
 			},
 			checkboxGroupChange(e) { //多选选中
 			// 获取当前题目
@@ -370,6 +367,8 @@
 										})
 					}
 				}
+				console.log(this.questionList[this.questionIndex]);
+				this.currentType = this.questionList[this.questionIndex].type
 			},
 			showTika() { //题卡
 				this.tikaModalShow = true
@@ -384,11 +383,17 @@
 				// /pages/learnning/examList
 				console.log(this.finishNum);
 				if(this.finishNum > 0){
-					
+					this.backModalShow = true
 				}else{
 					this.$u.route('/pages/learnning/examList');
 				}
 				// this.$u.route('/pages/learnning/examList');
+			},
+			handleBackModalCancel(){
+				this.backModalShow = false
+			},
+			handleBackModalConfirm(){
+				this.$u.route('/pages/learnning/examList');
 			}
 		}
 	}

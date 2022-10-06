@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<u-navbar title="考试列表" title-color="#000000" :custom-back="handleBack"></u-navbar>
 		<u-cell-group>
 			<u-cell-item v-for="(item,index) in examList" :key="index"  :title="item.title" :arrow="false" @click="handleExamClick(item)">
 				<u-icon v-if="item.finish" slot="right-icon" size="32" name="checkbox-mark" color='#13ce66'></u-icon>
@@ -22,7 +23,7 @@
 		},
 		computed:{
 			scoreContent(){
-				return "你的分数是:" +Math.floor() 
+				return "你的分数是:" +Math.floor(this.score) 
 			}
 		},
 		created() {
@@ -40,7 +41,6 @@
 				console.log(item);
 				if(item.finish){
 					this.$u.api.getscoreById(item.id).then(res => {
-						
 						this.score = res.body.score
 						this.showSocreModal = true
 					}
@@ -58,6 +58,11 @@
 			},
 			handleCloseModal(){
 				this.showSocreModal = false
+			},
+			handleBack(){
+				uni.switchTab({
+					url:"/pages/learnning/index"
+				})
 			}
 		}
 	}

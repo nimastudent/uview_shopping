@@ -73,6 +73,8 @@ const install = (Vue, vm) => {
 	
 	// 获取已经考过试卷的分数 id
 	let getscoreById = id => vm.$u.get(`/paper/exam/score/${id}`)
+	// 获取我的成绩
+	let getMyScore = () => vm.$u.get('/paper/getHistory')
 	// exam end ----------------------------------------------------
 	
 	
@@ -165,7 +167,8 @@ const install = (Vue, vm) => {
 		submitExamById,
 		getscoreById,
 		getAllCourseId,
-		cancleCollect
+		cancleCollect,
+		getMyScore
 	};
 }
 
