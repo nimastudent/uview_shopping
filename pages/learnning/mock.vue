@@ -380,11 +380,22 @@
 				}
 			},
 			moveQuestion(e) {
-				if (e === -1 && this.questionIndex != 0) {
-					this.questionIndex -= 1;
-				}
-				if (e === 1 && this.questionIndex < this.questionList.length - 1) {
-					this.questionIndex += 1;
+				if (e === -1) {
+                    if(this.questionIndex != 0) {this.questionIndex -= 1;}
+					else{ 
+                        uni.showToast({
+					    title:'这是第一题！',
+                        duration: 2000
+                        })
+                    }              
+                }else if (e === 1) {
+					if(this.questionIndex < this.questionList.length - 1) {this.questionIndex += 1;}
+                    else { 
+                        uni.showToast({
+					    title:'这是最后一题！',
+                        duration: 2000
+                        })
+                    }
 				}
 				this.currentType = this.questionList[this.questionIndex].type
 			},

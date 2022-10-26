@@ -37,7 +37,7 @@
 		<!-- <view class="bottomText" @click="test()">添加评论</view> -->
 
 		<u-popup v-model="show" mode="bottom">
-			<u-field label-width="0" v-model="data.content" type="textarea" placeholder="请填写评论" focus>
+			<u-field maxlength='50'  label-width="0" v-model="data.content" type="textarea" placeholder="请填写评论" focus>
 				<button size="mini" type="primary" slot="right" @click="submintComment">提交</button>
 			</u-field>
 		</u-popup>
@@ -85,8 +85,8 @@
 			},
 			async submintComment() {
 				// 资讯评论
+                
 				if(this.isConsultComment){
-					console.log(123)
 					const res = await this.$u.api.commentConsult(this.data)
 					if (res.success) {
 						this.$u.toast('评论成功！');
@@ -199,6 +199,10 @@
 						font-size: 24rpx;
 						color: #999999;
 					}
+                    
+                    .text{
+                        word-break: break-all;
+                    }
 				}
 
 				.all-reply {
