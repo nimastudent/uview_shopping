@@ -101,22 +101,11 @@
 			
 			<view class="qusetionCard">
 				<u-button type="success" @click="showTika">题卡</u-button>
-				<u-modal v-model="tikaModalShow" width="85%" :show-title="false" :mask-close-able="true"
-					:show-confirm-button="false">
-
-					<view class="tikaContinar">
-						<view class="tikaTitle">
-							题卡
-						</view>
-						<u-divider :half-width="fengexian" :use-slot="false"></u-divider>
-						<view class="tika-btn-continar">
-							<view class="tika-butoon" v-for="(item,index) in this.questionList" :key="index">
-								<button class="abtn" :type="item.checked?'primary':'default'"
-									:custom-style="customStyle" @click="goIndexQuestion(index)">{{index+1}}</button>
-							</view>
-						</view>
-					</view>
-				</u-modal>
+				<Tika
+				 :tikaModalShow.sync = "tikaModalShow"
+				 :questionList="questionList"
+				 @goIndex = "goIndexQuestion"
+				 />
 			</view>
 		</view>
 
@@ -125,7 +114,11 @@
 </template>
 
 <script>
+	import Tika from '../../components/Tika.vue'
 	export default {
+		components:{
+			Tika
+		},
 		data() {
 			return {
 				hour: 0,

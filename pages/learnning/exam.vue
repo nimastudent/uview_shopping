@@ -47,10 +47,8 @@
 
 					<view class="u-m-t-20" v-else-if="currentType===3">
 						<u-checkbox-group :wrap="true" @change="checkboxGroupChange">
-
 							<u-checkbox v-for="(item, index) in question.option" :key="index" :name="item.id"
 								v-model="item.check">{{item.id}} .{{item.content}}</u-checkbox>
-
 						</u-checkbox-group>
 					</view>
 
@@ -82,7 +80,8 @@
 			</view>
 			<view class="qusetionCard">
 				<u-button type="success" @click="showTika">题卡</u-button>
-				<u-modal v-model="tikaModalShow" width="85%" :show-title="false" :mask-close-able="true"
+				<Tika :tikaModalShow.sync="tikaModalShow" :questionList="questionList" @goIndex="goIndexQuestion" />
+				<!-- <u-modal v-model="tikaModalShow" width="85%" :show-title="false" :mask-close-able="true"
 					:show-confirm-button="false">
 
 					<view class="tikaContinar">
@@ -97,7 +96,7 @@
 							</view>
 						</view>
 					</view>
-				</u-modal>
+				</u-modal> -->
 			</view>
 		</view>
 		
@@ -109,7 +108,11 @@
 </template>
 
 <script>
+	import Tika from '../../components/Tika.vue'
 	export default {
+		components: {
+			Tika
+		},
 		data() {
 			return {
 				hour: 0,

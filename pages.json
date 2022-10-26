@@ -193,12 +193,28 @@
 			}
 
 		}
-
 	    ,{
             "path" : "pages/learnning/score",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "我的成绩",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/test/test",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/learnning/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "选择练习",
                 "enablePullDownRefresh": false
             }
             

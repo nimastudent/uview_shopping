@@ -42,8 +42,16 @@ const install = (Vue, vm) => {
 	
 	
 	// exam start----------------------------------------------------
+	
+	
+	//顺序练习
+	let getOrderQusetion = data => vm.$u.post('/sequential/get',data) 
+	
+	//获取顺序练习进度
+	let getOrderProgress = () =>vm.$u.post('/sequential/get/progress')
+	
 	//获取模拟考试题 
-	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample?single=5&multiple=5&judgment=5')
+	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample')
 	
 	// 获取考试试题
 	let fetchExamQuestion = () => vm.$u.get('/exam/getExam')
@@ -168,7 +176,9 @@ const install = (Vue, vm) => {
 		getscoreById,
 		getAllCourseId,
 		cancleCollect,
-		getMyScore
+		getMyScore,
+		getOrderQusetion,
+		getOrderProgress
 	};
 }
 

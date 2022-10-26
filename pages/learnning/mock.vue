@@ -1,6 +1,6 @@
 <template>
-	<view class="mockContinar"> 
-		<u-navbar title="模拟考"></u-navbar>
+	<view class="mockContinar">
+		<u-navbar :title="navbarTitle"></u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
 				<view class="action text-black u-flex">
@@ -21,36 +21,31 @@
 				</view>
 			</view>
 
-
-
 			<swiper :current="questionIndex" class="swiper-box" :disable-touch="true" :style="{'height':'850rpx'}">
 				<swiper-item class="u-m-10" v-for="(question,index) in questionList" :key="index">
-
 					<!-- 题目 -->
 					<view class="problem">
 						<view class="action qusetion">
-							<text></text>{{index+1}}.{{question.problem}}
+							<text>{{index+1}}.{{question.problem}}</text>
 						</view>
 					</view>
 					<!-- 判断 -->
-
 					<!-- 单选 -->
 					<view class="u-m-t-20" v-if="currentType===2">
 						<u-radio-group @change="radioGroupChange" :wrap="true">
-							<u-radio v-for="(item, index) in question.option" :key="index" :name="item.id"
-								:disabled="question.checked">
+							<u-radio class="u-p-20" v-for="(item, index) in question.option" :key="index"
+								:name="item.id" :disabled="question.checked">
 								{{item.id}}.{{item.content}}
 							</u-radio>
 						</u-radio-group>
 					</view>
-
 					<!-- 多选 -->
-
 					<view class="u-m-t-20" v-else-if="currentType===3">
 						<u-checkbox-group :wrap="true" @change="checkboxGroupChange">
 
-							<u-checkbox v-for="(item, index) in question.option" :key="index" :name="item.id"
-								:disabled="question.checked" v-model="item.check">{{item.id}} .{{item.content}}
+							<u-checkbox class="u-p-20" v-for="(item, index) in question.option" :key="index"
+								:name="item.id" :disabled="question.checked" v-model="item.check">{{item.id}}
+								.{{item.content}}
 							</u-checkbox>
 
 						</u-checkbox-group>
@@ -59,16 +54,18 @@
 					<!-- 判断题 -->
 					<view class="u-m-t-20" v-else-if="currentType === 1">
 						<u-radio-group :wrap="true">
-							<u-radio @change="judgmentRadioChange(item)" v-for="(item, index) in question.option"
-								:key="index" :name="item.content" :value="item.id" :disabled="question.checked">
+							<u-radio class="u-p-20" @change="judgmentRadioChange(item)"
+								v-for="(item, index) in question.option" :key="index" :name="item.content"
+								:value="item.id" :disabled="question.checked">
 								{{item.id}}.{{item.content}}
 							</u-radio>
 						</u-radio-group>
 					</view>
 
 					<view class="questionAnswer" v-show="question.checked" v-if="currentType === 1">
-						正确答案：{{question.answer === 0 ? 'A' : 'B'}}
+						正确答案：{{question.answer === '1' ? 'A' : 'B'}}
 					</view>
+
 					<view class="questionAnswer" v-show="question.checked" v-else>
 						正确答案：{{question.answer}}
 					</view>
@@ -77,7 +74,7 @@
 		</view>
 
 
-		
+
 
 
 		<view id="foot-box" class="foot-box">
@@ -96,27 +93,12 @@
 			<view class="">
 				<u-button @click="collectQuestion">收藏</u-button>
 			</view>
-			<!-- 多选题 确定按钮 -->
-			<view><u-button type="primary" v-show="currentType===3"  @click="confirmMutiplid">确定</u-button></view>
-			
+			<view>
+				<u-button type="primary" v-show="currentType===3" @click="confirmMutiplid">确定</u-button>
+			</view>
 			<view class="qusetionCard">
 				<u-button type="success" @click="showTika">题卡</u-button>
-				<u-modal v-model="tikaModalShow" width="85%" :show-title="false" :mask-close-able="true"
-					:show-confirm-button="false">
-
-					<view class="tikaContinar">
-						<view class="tikaTitle">
-							题卡
-						</view>
-						<u-divider :half-width="fengexian" :use-slot="false"></u-divider>
-						<view class="tika-btn-continar">
-							<view class="tika-butoon" v-for="(item,index) in this.questionList" :key="index">
-								<button class="abtn" :type="item.checked?'primary':'default'"
-									:custom-style="customStyle" @click="goIndexQuestion(index)">{{index+1}}</button>
-							</view>
-						</view>
-					</view>
-				</u-modal>
+				<Tika :tikaModalShow.sync="tikaModalShow" :questionList="questionList" @goIndex="goIndexQuestion" :hasType="tikaType" />
 			</view>
 		</view>
 
@@ -125,9 +107,14 @@
 </template>
 
 <script>
+	import Tika from '../../components/Tika.vue'
 	export default {
+		components: {
+			Tika
+		},
 		data() {
 			return {
+				navbarTitle:'模拟考', // 页面标题
 				hour: 0,
 				minute: 30,
 				second: 0,
@@ -136,7 +123,12 @@
 				hiddeBtnAndTime: true, //隐藏时间和提交按钮
 				totalQuestionNumber: 1, //总题数
 				showModal: false, //模态框
-				tikaModalShow: false,
+				tikaModalShow: false, //题卡是否显示
+				tikaType:{
+					jud:true,
+					single:true,
+					mutil:true
+				}, // 题卡里是否有 单选 判断 多选 
 				questionIndex: 0, //跳转问题索引
 				swiperHeight: '800',
 				questionList: [], //题目列表
@@ -151,7 +143,7 @@
 				},
 				scroe: 0,
 				multipleAnswer: '',
-				currentType:1
+				currentType: 1
 			}
 		},
 		onReady() {
@@ -178,8 +170,13 @@
 				}
 			})
 		},
-		onLoad() {
-			this.getMockQuestion()
+		onLoad(e) {
+			if (e.type === 'mock') {
+				this.getMockQuestion()
+			} else {
+				this.navbarTitle = '选择练习'
+				this.getOrderQuestion(e.type,e.count)
+			}
 		},
 		computed: {
 			content() {
@@ -193,6 +190,64 @@
 			},
 		},
 		methods: {
+			async getMockQuestion() { //获取模拟考试题
+				const res = await this.$u.api.getMockQuestion()
+				window.localStorage.setItem('question', JSON.stringify(res.body))
+				if (res.code === 200) {
+					// [this.questionList...,res.body.judgment...]
+					this.questionList = []
+					this.questionList = [...res.body.judgment, ...res.body.single, ...res.body.multiple]
+					for (var i = 0; i < this.questionList.length; i++) {
+						this.$set(this.questionList[i], 'checked', false)
+					}
+
+				}
+			},
+			//选择练习  
+			async getOrderQuestion(type,count) {
+				// 设定选择参数
+				let postData = {
+					mul: 0,
+					jud: 0,
+					sin: 0
+				}
+				switch (type) {
+					case 'sin':
+						postData.sin = count
+						this.tikaType.jud = false
+						this.tikaType.mutil = false
+						break;
+					case 'jud':
+						postData.jud = count
+						this.tikaType.single = false
+						this.tikaType.mutil = false
+						break;
+					case 'mul':
+						postData.mul = count
+						this.tikaType.jud = false
+						this.tikaType.single = false
+						break;
+					default:
+						postData = {
+							mul: count,
+							jud: count,
+							sin: count
+						}
+						break;
+				}
+				//发送请求
+				this.$u.api.getOrderQusetion(postData).then(res => {
+					//获取列表
+					let list = JSON.parse(JSON.stringify(res.body.question))
+					list = [...list['j'],...list['s'],...list['m']]
+					//给列表添加 checked字段
+					list = list.map(item => Object.assign({},item,{checked:false}))
+					this.questionList = list
+					//设定currentType
+					this.currentType = list[0].type
+				})
+
+			},
 			async submit() {
 				var ansList = [...this.singleAnsList, ...this.multipleAnsList, ...this.judgmentAnsList]
 				const res = await this.$u.api.computedScore({
@@ -203,62 +258,6 @@
 				}
 				console.log(ansList)
 			},
-			radioChangeSingle(e) {
-				// console.log(e)
-			},
-			swiperChange(e) { //滑动事件
-				let index = e.target.current;
-				
-				if (index != undefined) {
-
-					this.questionIndex = index;
-					this.currentType = this.questionList[index].type;
-					let currentItem = this.questionList[index];
-					// 判断题
-					// if(currentItem.type == 1){
-					// 	let hasChecked = false;
-					// 	for(let i =0; i < this.judgmentAnsList.length;i++){
-					// 		if(currentItem.id === this.judgmentAnsList[i].id){
-					// 			hasChecked = true
-					// 			break;
-					// 		}
-					// 	}
-					// 	if(!hasChecked){
-					// 		this.$refs.uToast.show({
-					// 			title: `第${index + 1}题未做！`,
-					// 			type: 'info',
-					// 		})
-					// 	}
-					// }else if(currentItem.type == 2)  { //单选题
-						
-					// }else if(currentItem.type == 3){  //多选题
-						
-					// }
-					
-					// 判断是否为判断题
-					// if (this.questionList[index].type == 3) {
-					// 	console.log(1);
-					// 	// 判断多选题答案是否为0 0的话直接返回
-					// 	if (this.multipleAnsList.length == 0) {
-					// 		return
-					// 		// 多选题答案长度大于0 
-					// 	} else if (this.multipleAnsList.length > 0) {
-					// 		// 当前问题id
-					// 		let id = this.questionList[index].id;
-					// 		// 在多选题答案列表中 对比是否有当前问题 id
-					// 		for (var i = 0; i < this.multipleAnsList.length; i++) {
-					// 			if (this.multipleAnsList[i].id == id) {
-					// 				// 滑动 将改问题checked改为 true
-					// 				this.questionList[index].checked = true;
-					// 				break
-					// 			}
-					// 		}
-					// 	}
-
-					// }
-				}
-				// console.log(this.questionList[index].type)
-			},
 			collectQuestion() {
 				let item = this.questionList[this.questionIndex]
 				console.log(item)
@@ -267,18 +266,18 @@
 					questionId: item.id
 				}
 				this.$u.api.colllectQuestion(obj).then(res => {
-					if(res.success){
+					if (res.success) {
 						this.$refs.uToast.show({
 							title: '收藏成功',
 							type: 'success',
 						})
-					}else if(res.body === 'exist'){
+					} else if (res.body === 'exist') {
 						this.$refs.uToast.show({
-							title:'已收藏',
-							type:'error'
+							title: '已收藏',
+							type: 'error'
 						})
 					}
-					
+
 				})
 
 			},
@@ -287,21 +286,6 @@
 			},
 			openModal() { //开启模态框
 				this.showModal = true
-			},
-			async getMockQuestion() { //获取模拟考试题
-				const res = await this.$u.api.getMockQuestion()
-				console.log(res)
-				if (res.code === 200) {
-					// [this.questionList...,res.body.judgment...]
-					this.questionList = []
-					this.questionList = [ ...res.body.judgment, ...res.body.single, ...res.body.multiple
-					]
-					for (var i = 0; i < this.questionList.length; i++) {
-						this.$set(this.questionList[i], 'checked', false)
-					}
-
-				}
-				console.log(this.questionList)
 			},
 			judgmentRadioChange(item) { //判断选中
 				// 在题目列表中找到该题
@@ -320,7 +304,6 @@
 					answer: ans,
 					type: 1
 				}
-
 				if (item.answer = judegment.answer) {
 
 				}
@@ -397,7 +380,6 @@
 				}
 			},
 			moveQuestion(e) {
-				
 				if (e === -1 && this.questionIndex != 0) {
 					this.questionIndex -= 1;
 				}
@@ -419,7 +401,7 @@
 				console.log(res)
 			},
 			// 多选题确定
-			confirmMutiplid(){
+			confirmMutiplid() {
 				console.log(this.questionList[this.questionIndex])
 				let ques = this.questionList[this.questionIndex]
 				ques.checked = true
@@ -465,31 +447,6 @@
 		align-items: center;
 	}
 
-	.tikaContinar {
-		min-height: 800rpx;
-		margin: 50rpx;
-	}
-
-	.tikaTitle {
-		margin: 10rpx;
-		text-align: center;
-	}
-
-	.tika-btn-continar {
-		width: 100%;
-		margin: 0 auto;
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	.tika-butoon {
-		width: 18%;
-	}
-
-	.abtn {
-		margin: 10rpx;
-		border-radius: 60%;
-	}
 
 	.questionAnswer {
 		margin-top: 20px;
