@@ -47,7 +47,7 @@
 					<!-- 多选 -->
 
 					<view class="u-m-t-20" v-else-if="currentType===3">
-						<u-checkbox-group :wrap="true" @change="checkboxGroupChange">
+						<u-checkbox-group :wrap="true" @change="checkboxGroupChange"  >
 
 							<u-checkbox v-for="(item, index) in question.option" :key="index" :name="item.id"
 								:disabled="question.checked" v-model="item.check">{{item.id}} .{{item.content}}
@@ -173,7 +173,7 @@
 		},
 		onLoad() {
 			this.getErrorBook()
-			this.getMockQuestion()
+			// this.getMockQuestion()
 		},
 		computed: {
 			content() {
@@ -191,13 +191,11 @@
 			async getErrorBook(){
 				const res = await this.$u.api.getErrorBook()
 				if(res.success){
-					// console.log(res.body);
-					// let {judgement,}
-					let judgement = this.typeAdd(res.body[0]['judgement'],1) 
-					let singleChoice =this.typeAdd(res.body[1]['singleChoice'],2)
-					let multipleChoice =this.typeAdd(res.body[2]['multipleChoice'],3)
-					this.questionList = [...judgement,...singleChoice,...multipleChoice]
-					// console.log(this.questionList);
+					let {judgment,single,multiple} =res.body
+					let list = [...res.body.judgement,...res.body.single,...res.body.multiple]
+					list = list.map(item => Object.assign({},item,{checked:false}))
+					this.questionList = list
+					console.log(this.questionList);
 				}
 			},
 			typeAdd(arr,type){
@@ -213,7 +211,7 @@
 				return arr
 			},
 			async getMockQuestion() { //获取模拟考试题
-				const res = await this.$u.api.getMockQuestion()
+				const res = await this.$u.api.getErrorBook()
 				console.log(res)	
 				if (res.code === 200) {
 					// [this.questionList...,res.body.judgment...]

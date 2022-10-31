@@ -208,6 +208,8 @@
 		overflow: hidden;
 		user-select: none;
 		line-height: 1.8;
+		display: flex;
+		align-items: baseline;
 		
 		&__icon-wrap {
 			color: $u-content-color;

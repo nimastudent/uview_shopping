@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      action: "http://20.105.0.113:84/xlfjxxqjxt/police/user/headPortrait/upload",
+      action: "",
       header: { "Content-Type": "multipart/form-data" },
       file: {},
       token: "",
@@ -35,6 +35,7 @@ export default {
     beforeUpload(index, list) {
       this.file = list[0].file;
       console.log(list[0].file);
+	  return false
     },
     submit() {
      const res =  this.$refs.uUpload.upload();

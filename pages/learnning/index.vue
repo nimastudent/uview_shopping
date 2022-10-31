@@ -250,7 +250,7 @@
 		.right{
 			img{
 				width: 50upx;
-				height: 70upx;
+				
 			}
 		}
 		

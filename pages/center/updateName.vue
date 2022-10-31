@@ -69,7 +69,8 @@ export default {
         sizeType: ["original", "compressed"], //可以指定是原图还是压缩图，默认二者都有
         sourceType: ["album"], //从相册选择
         success: function (res) {
-          if (res.tempFiles[0].type == "image/jpeg" ) {
+			const reg2 = /^(\s|\S)+(jpg|JPG)+$/;
+          if (reg2.test(res.tempFiles[0].name)) {
             uni.uploadFile({
 				// "http://20.105.0.113:84/xlfjxxqjxt/police/user/headPortrait/upload"
               url: `${baseUrl}/user/headPortrait/upload`,
