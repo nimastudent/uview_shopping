@@ -50,7 +50,7 @@
 				</view>
 			</view>
 			
-			<view class="container" @click="goScore">
+			<view class="container" @click="goScore('')">
 				<view class="left">
 					<span class="title">我的成绩</span>
 					<span class="content">查看您的成绩</span>
@@ -60,46 +60,16 @@
 				</view>
 			</view>
 			
-			<view class="container" style="background-color: #fff;">
-				
-			</view>
-			
-			<!-- <view class="block-contianer" @click="goErrorBook">
-				<img src="../../static/img/cuoti.png" alt="">
-				<view class="right-contianer">
-					<view class="right-title">错题集</view>
-					<view class="right-content">
-						所有错题在这看
-					</view>
+			<view class="container" @click="goScore('mock')">
+				<view class="left">
+					<span class="title">模拟考记录</span>
+					<span class="content">查看模拟考分数</span>
+				</view>
+				<view class="right" style="height: 30px;">
+					<img src="../../static/img/score.png" alt="">
 				</view>
 			</view>
-			<view class="block-contianer" @click="goExam">
-				<img src="../../static/img/exam.png" alt="">
-				<view class="right-contianer">
-					<view class="right-title">学法考试</view>
-					<view class="right-content">
-						开始考试！
-					</view>
-				</view>
-			</view>
-			<view class="block-contianer" @click="goMock">
-				<img src="../../static/img/mockExam.png" alt="">
-				<view class="right-contianer">
-					<view class="right-title">模拟考</view>
-					<view class="right-content">
-						这里有题库
-					</view>
-				</view>
-			</view>
-			<view class="block-contianer" @click="goScore">
-				<img src="../../static/img/score.png" alt="">
-				<view class="right-contianer">
-					<view class="right-title">我的成绩</view>
-					<view class="right-content">
-						查看您的成绩
-					</view>
-				</view>
-			</view> -->
+		
 		</view>
 	</view>
 </template>
@@ -115,6 +85,9 @@
 		onLoad(){
 			this.getSwiper()
 			this.getOrderProgress()
+			this.$u.api.getMockRecord().then(res =>{
+				console.log(res);
+			})
 		},
 		computed:{
 			finishedCount(){
@@ -178,10 +151,13 @@
 					url:'/pages/learnning/examList'
 				})
 			},
-			goScore(){
+			goScore(type){
 				this.$u.route({
 					type:'navigateTo',
-					url:'/pages/learnning/score'
+					url:'/pages/learnning/score',
+					params:{
+						type
+					}
 				})
 			},
 			goErrorBook(){

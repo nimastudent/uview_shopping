@@ -50,6 +50,15 @@ const install = (Vue, vm) => {
 	//获取顺序练习进度
 	let getOrderProgress = () =>vm.$u.post('/sequential/get/progress')
 	
+	//获取模拟考题型分数
+	let getMockTypeScore =() =>vm.$u.get('/simulation/get/settings')
+	
+	// 发送模拟考分数
+	let sendMockScore = (data) => vm.$u.post('/simulation/put/record',data)
+	
+	// 获取模拟考记录
+	let getMockRecord = () => vm.$u.get('/simulation/get/user/record')
+	
 	//获取模拟考试题 
 	let getMockQuestion = (params = {} ) => vm.$u.get('/mock/sample')
 	
@@ -178,7 +187,10 @@ const install = (Vue, vm) => {
 		cancleCollect,
 		getMyScore,
 		getOrderQusetion,
-		getOrderProgress
+		getOrderProgress,
+		getMockTypeScore,
+		sendMockScore,
+		getMockRecord
 	};
 }
 

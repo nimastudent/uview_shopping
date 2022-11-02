@@ -1,6 +1,7 @@
 <template>
 	<view class="mockContinar">
-		<u-navbar title="学法考试" title-color="#000000" :custom-back="handleCustomBack"></u-navbar>
+		<!-- :custom-back="handleCustomBack" -->
+		<u-navbar title="学法考试" title-color="#000000" ></u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
 				<view class="action text-black u-flex">

@@ -37,7 +37,7 @@
 		<!-- <view class="bottomText" @click="test()">添加评论</view> -->
 
 		<u-popup v-model="show" mode="bottom">
-			<u-field label-width="0" v-model="data.content" type="textarea" placeholder="请填写评论" focus>
+			<u-field maxlength="50" label-width="0" v-model="data.content" type="textarea" placeholder="请填写评论" focus>
 				<button size="mini" type="primary" slot="right" @click="submintComment">提交</button>
 			</u-field>
 		</u-popup>
@@ -190,6 +190,7 @@
 			.reply-box {
 				background-color: rgb(242, 242, 242);
 				border-radius: 12rpx;
+				width: 100%;
 
 				.item {
 					padding: 20rpx;
@@ -198,6 +199,11 @@
 					.username {
 						font-size: 24rpx;
 						color: #999999;
+					}
+					
+					.text{
+						word-wrap: break-word;
+						word-break: break-word;
 					}
 				}
 
