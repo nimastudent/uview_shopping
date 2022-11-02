@@ -38,7 +38,7 @@
 					<!-- 单选 -->
 					<view class="u-m-t-20" v-if="currentType===2">
 						<u-radio-group @change="radioGroupChange" :wrap="true">
-							<u-radio v-for="(item, index) in question.option" :key="index" :name="item.id">
+							<u-radio class="u-p-20" v-for="(item, index) in question.option" :key="index" :name="item.id">
 								{{item.id}}.{{item.content}}
 							</u-radio>
 						</u-radio-group>
@@ -48,7 +48,7 @@
 
 					<view class="u-m-t-20" v-else-if="currentType===3">
 						<u-checkbox-group :wrap="true" @change="checkboxGroupChange">
-							<u-checkbox v-for="(item, index) in question.option" :key="index" :name="item.id"
+							<u-checkbox class="u-p-20" v-for="(item, index) in question.option" :key="index" :name="item.id"
 								v-model="item.check">{{item.id}} .{{item.content}}</u-checkbox>
 						</u-checkbox-group>
 					</view>
@@ -56,7 +56,7 @@
 					<!-- 判断 -->
 					<view class="u-m-t-20" v-else-if="currentType === 1">
 						<u-radio-group :wrap="true">
-							<u-radio @change="judgmentRadioChange(item)" v-for="(item, index) in question.option"
+							<u-radio class="u-p-20" @change="judgmentRadioChange(item)" v-for="(item, index) in question.option"
 								:key="index" :name="item.content" :value="item.id">
 								{{item.id}}.{{item.content}}
 							</u-radio>
@@ -355,21 +355,37 @@
 			// 上一题 下一题
 			moveQuestion(e) {
 				// 上一题
-				if (e === -1 && this.questionIndex != 0) {
-					this.questionIndex -= 1;
-				}
+				if (e === -1 ) {
+                    if(this.questionIndex != 0){
+                        this.questionIndex -= 1;
+                    }else{
+                        uni.showToast({
+                        title:'这是第一题！',
+                        duration: 2000
+                        })
+                    }
+				}else if(e === 1){
+                    if(this.questionIndex < this.questionList.length - 1){
+                        if(this.questionList[this.questionIndex].checked){
+                        	this.questionIndex += 1;
+                        }else{
+                        	this.$refs.uToast.show({
+                        						title: '请答题',
+                        						type: 'warning',
+                        						
+                        					})
+                        }
+                    }else{
+                        uni.showToast({
+                        title:'这是最后一题！',
+                        duration: 2000
+                        })
+                    }
+                }
 				// 下一题
-				if (e === 1 && this.questionIndex < this.questionList.length - 1) {
+				if (e === 1 ) {
 					// 判断用户是否答题
-					if(this.questionList[this.questionIndex].checked){
-						this.questionIndex += 1;
-					}else{
-						this.$refs.uToast.show({
-											title: '请答题',
-											type: 'warning',
-											
-										})
-					}
+					
 				}
 				console.log(this.questionList[this.questionIndex]);
 				this.currentType = this.questionList[this.questionIndex].type

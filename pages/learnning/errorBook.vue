@@ -37,7 +37,7 @@
 					<!-- 单选 -->
 					<view class="u-m-t-20" v-if="currentType===2">
 						<u-radio-group @change="radioGroupChange" :wrap="true">
-							<u-radio v-for="(item, index) in question.option" :key="index" :name="item.id"
+							<u-radio class="u-p-20" v-for="(item, index) in question.option" :key="index" :name="item.id"
 								:disabled="question.checked">
 								{{item.id}}.{{item.content}}
 							</u-radio>
@@ -49,7 +49,7 @@
 					<view class="u-m-t-20" v-else-if="currentType===3">
 						<u-checkbox-group :wrap="true" @change="checkboxGroupChange"  >
 
-							<u-checkbox v-for="(item, index) in question.option" :key="index" :name="item.id"
+							<u-checkbox class="u-p-20" v-for="(item, index) in question.option" :key="index" :name="item.id"
 								:disabled="question.checked" v-model="item.check">{{item.id}} .{{item.content}}
 							</u-checkbox>
 
@@ -59,7 +59,7 @@
 					<!-- 判断题 -->
 					<view class="u-m-t-20" v-else-if="currentType === 1">
 						<u-radio-group :wrap="true">
-							<u-radio @change="judgmentRadioChange(item)" v-for="(item, index) in question.option"
+							<u-radio class="u-p-20" @change="judgmentRadioChange(item)" v-for="(item, index) in question.option"
 								:key="index" :name="item.content" :value="item.id" :disabled="question.checked">
 								{{item.id}}.{{item.content}}
 							</u-radio>
@@ -75,10 +75,7 @@
 				</swiper-item>
 			</swiper>
 		</view>
-
-
 		
-
 
 		<view id="foot-box" class="foot-box">
 			<view class="left foot-btn" @click="moveQuestion(-1)">
@@ -173,7 +170,10 @@
 		},
 		onLoad() {
 			this.getErrorBook()
+<<<<<<< HEAD
 			// this.getMockQuestion()
+=======
+>>>>>>> e64e5f93d518f2c1b7142a3010e95e2bb6ba2041
 		},
 		computed: {
 			content() {
@@ -415,12 +415,22 @@
 				}
 			},
 			moveQuestion(e) {
-				
-				if (e === -1 && this.questionIndex != 0) {
-					this.questionIndex -= 1;
-				}
-				if (e === 1 && this.questionIndex < this.questionList.length - 1) {
-					this.questionIndex += 1;
+				if (e === -1) {
+			        if(this.questionIndex != 0) {this.questionIndex -= 1;}
+					else{ 
+			            uni.showToast({
+					    title:'这是第一题！',
+			            duration: 2000
+			            })
+			        }              
+			    }else if (e === 1) {
+					if(this.questionIndex < this.questionList.length - 1) {this.questionIndex += 1;}
+			        else { 
+			            uni.showToast({
+					    title:'这是最后一题！',
+			            duration: 2000
+			            })
+			        }
 				}
 				this.currentType = this.questionList[this.questionIndex].type
 			},
