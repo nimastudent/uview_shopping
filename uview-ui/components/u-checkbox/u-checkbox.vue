@@ -219,15 +219,9 @@
 		align-items: center;
 		overflow: hidden;
 		user-select: none;
-<<<<<<< HEAD
-		line-height: 1.8;
-		    display: flex;
-		    align-items: baseline;
-=======
 		line-height: 1.8;
         display: flex;
         align-items: baseline;
->>>>>>> e64e5f93d518f2c1b7142a3010e95e2bb6ba2041
 		
 		&__icon-wrap {
 			color: $u-content-color;

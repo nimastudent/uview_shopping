@@ -11,10 +11,9 @@
 			<view class="content">
 				<u-parse :html="ruleContent.content"></u-parse>
 				
-				
 			</view>
 			<collect :collectType="collectType" :curentId="consultId" :isCollect="ruleContent.isCollect" @update="getNewRuleContent" ></collect>
-			<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getNewRuleComment"></comment>
+			<comment  :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getNewRuleComment"></comment>
 		</view>
 
 	</view>
@@ -63,8 +62,9 @@
 
 <style lang="scss" scoped>
 	.container {
-		width: 90%;
+		width: 100%;
 		margin: 0 auto;
+		padding: 0 20rpx;
 		position: relative;
 	}
 
@@ -82,7 +82,7 @@
 	}
 
 	.content {
-		margin: 50rpx 0 ;
+		margin: 50rpx 0 20rpx 0 ;
 		text-indent: 1rem;
 		line-height: 45rpx;
 		letter-spacing: 1.5rpx;

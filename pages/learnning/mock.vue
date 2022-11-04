@@ -4,13 +4,12 @@
 		</u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
-				<view class="action text-black u-flex">
-					<!-- 题型判断 -->
+				<!-- 题型判断 -->
+				<!-- <view class="action text-black u-flex">
 					<text v-if="currentType===1">判断题</text>
 					<text v-else-if="currentType===2">单选题</text>
 					<text v-else-if="currentType===3">多选题 </text>
-
-				</view>
+				</view> -->
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime" class="u-flex" v-show="showSubmit">
 					<u-count-down :timestamp="timestamp" separator="zh" @end="timeUp"></u-count-down>
@@ -28,7 +27,8 @@
 					<!-- 题目 -->
 					<view class="problem">
 						<view class="action qusetion">
-							<text>{{index+1}}.{{question.problem}}</text>
+							<u-tag :text="tagText" type="primary" size="mini" />
+							<text class="u-m-l-15">{{index+1}}.{{question.problem}}</text>
 						</view>
 					</view>
 					<!-- 判断 -->
@@ -196,6 +196,23 @@
 			btnDisabled() {
 				console.log(this.questionList);
 				return true
+			},
+			tagText() {
+				let res = "";
+				switch (this.currentType) {
+					case 1:
+						res = '判断题'
+						break;
+					case 2:
+						res = '单选题'
+						break;
+					case 3:
+						res = '多选题'
+						break;
+					default:
+						break;
+				}
+				return res
 			}
 		},
 		methods: {
@@ -272,20 +289,26 @@
 				const rigthSingle = this.singleAnsList.filter((item) => item.isRight).length
 				const rightMul = this.multipleAnsList.filter(item => item.isRight).length
 				const rightJud = this.judgmentAnsList.filter(item => item.isRight).length
-				const {mul_score,jud_score,sin_score} = this.scroeSetting
+				const {
+					mul_score,
+					jud_score,
+					sin_score
+				} = this.scroeSetting
 				const score = rigthSingle * sin_score + rightMul * mul_score + rightJud * jud_score
 				console.log(score);
-				this.$u.api.sendMockScore({score}).then(res => {
-					if(res.success){
+				this.$u.api.sendMockScore({
+					score
+				}).then(res => {
+					if (res.success) {
 						this.showModal = false
 						uni.showModal({
 							title: '',
 							content: '您的分数是' + score,
-							success: function (res) {
+							success: function(res) {
 								uni.navigateBack()
 							}
 						})
-					}else{
+					} else {
 						uni.navigateBack()
 					}
 				})
@@ -415,21 +438,23 @@
 			},
 			moveQuestion(e) {
 				if (e === -1) {
-                    if(this.questionIndex != 0) {this.questionIndex -= 1;}
-					else{ 
-                        uni.showToast({
-					    title:'这是第一题！',
-                        duration: 2000
-                        })
-                    }              
-                }else if (e === 1) {
-					if(this.questionIndex < this.questionList.length - 1) {this.questionIndex += 1;}
-                    else { 
-                        uni.showToast({
-					    title:'这是最后一题！',
-                        duration: 2000
-                        })
-                    }
+					if (this.questionIndex != 0) {
+						this.questionIndex -= 1;
+					} else {
+						uni.showToast({
+							title: '这是第一题！',
+							duration: 2000
+						})
+					}
+				} else if (e === 1) {
+					if (this.questionIndex < this.questionList.length - 1) {
+						this.questionIndex += 1;
+					} else {
+						uni.showToast({
+							title: '这是最后一题！',
+							duration: 2000
+						})
+					}
 				}
 				this.currentType = this.questionList[this.questionIndex].type
 			},
@@ -460,7 +485,8 @@
 	.top-box {
 		min-height: 90rpx;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
+		margin: 0 20upx;
 	}
 
 	.swiper-box {

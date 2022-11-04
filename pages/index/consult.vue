@@ -72,15 +72,21 @@
 
 <style lang="scss" scoped>
 	.container {
-		width: 90%;
+		width: 100%;
 		margin: 0 auto;
-		position: relative;
+		box-sizing: border-box;
+		padding: 0 20upx;
+		position: absolute;
+		
+		.img{
+			width: 100%;
+		}
 	}
 
 	.title {
 		margin: 15rpx;
 		font-weight: 800;
-		font-size: 30rpx;
+		font-size: 40rpx;
 		text-align: center;
 	}
 
@@ -91,8 +97,8 @@
 		right: 20rpx;
 	}
 
-	image {
-		padding: 20rpx;
+	image{
+		width: 100%;
 	}
 
 	.content {
@@ -100,6 +106,10 @@
 		margin: 40rpx 0;
 		line-height: 40rpx;
 		letter-spacing: 1.5rpx;
-
+		border-bottom: 1px solid #dbdbdb;
+		
+			.collect-contianer{
+				margin-top: 10upx;
+			}
 	}
 </style>

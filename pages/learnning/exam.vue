@@ -4,8 +4,8 @@
 		<u-navbar title="学法考试" title-color="#000000" ></u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
+				<!-- 题型判断 -->
 				<view class="action text-black u-flex">
-					<!-- 题型判断 -->
 					<text v-if="currentType===1">判断题</text>
 					<text v-else-if="currentType===2">单选题</text>
 					<text v-else-if="currentType===3">多选题</text>

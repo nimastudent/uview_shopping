@@ -2,11 +2,11 @@
 	<view class="comment-contianer">
 		<view class="comment-title">
 			<text class="comment-area">评论区</text>
-			<text class="edit-comment" @click="showPop()">写留言</text>
+			<u-tag text="写留言" @click="showPop()" size="mini" />
 		</view>
 		<view class="comment" v-for="(res, index) in list" :key="index">
 			<view class="left">
-				<image src="../static/center-avatar.png" mode="aspectFill"></image>
+				<image src="../static/user.png" mode="aspectFill"></image>
 			</view>
 			<view class="right">
 				<view class="top">
@@ -34,14 +34,14 @@
 				</view>
 			</view>
 		</view>
-		<!-- <view class="bottomText" @click="test()">添加评论</view> -->
+		<view class="" v-if="!list.length">
+			评论区为空！
+		</view>
+	
 
 		<u-popup v-model="show" mode="bottom">
-<<<<<<< HEAD
-			<u-field maxlength="50" label-width="0" v-model="data.content" type="textarea" placeholder="请填写评论" focus>
-=======
+
 			<u-field maxlength='50'  label-width="0" v-model="data.content" type="textarea" placeholder="请填写评论" focus>
->>>>>>> e64e5f93d518f2c1b7142a3010e95e2bb6ba2041
 				<button size="mini" type="primary" slot="right" @click="submintComment">提交</button>
 			</u-field>
 		</u-popup>
@@ -118,9 +118,7 @@
 
 <style lang="scss" scoped>
 	.comment-contianer {
-
 		border-radius: 6rpx;
-		background-color: #e7e7e7;
 
 		.comment-title {
 			padding: 10rpx;
@@ -128,7 +126,8 @@
 			justify-content: space-between;
 
 			.comment-area {
-				color: #74777e;
+				color: #212224;
+				font-weight: 600;
 			}
 
 			.edit-comment {
@@ -139,7 +138,7 @@
 
 	.comment {
 		display: flex;
-		padding: 30rpx;
+		padding: 15rpx;
 
 
 		.left {
@@ -160,10 +159,11 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				margin-bottom: 10rpx;
+				margin-bottom: 5rpx;
 
 				.name {
-					color: #5677fc;
+					font-size: 28rpx;
+					color: #3f3f3f;
 				}
 
 				.like {
@@ -188,7 +188,8 @@
 			}
 
 			.content {
-				margin-bottom: 10rpx;
+				margin-bottom: 5rpx;
+				font-size: 34rpx;
 			}
 
 			.reply-box {
@@ -208,6 +209,7 @@
                     
                     .text{
                         word-break: break-all;
+						color: #17181a;
                     }
 				}
 
@@ -224,7 +226,7 @@
 			}
 
 			.bottom {
-				margin-top: 20rpx;
+				margin-top: 15rpx;
 				display: flex;
 				font-size: 24rpx;
 				color: #9a9a9a;

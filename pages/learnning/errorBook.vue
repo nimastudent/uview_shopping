@@ -170,10 +170,7 @@
 		},
 		onLoad() {
 			this.getErrorBook()
-<<<<<<< HEAD
-			// this.getMockQuestion()
-=======
->>>>>>> e64e5f93d518f2c1b7142a3010e95e2bb6ba2041
+
 		},
 		computed: {
 			content() {

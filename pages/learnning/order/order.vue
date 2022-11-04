@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="check">
-			<text class="checktext">选择题目数量</text>
+			<text class="checktext">本次考试题数：</text>
 			<u-number-box :step='5' :input-height="70" :min="1" :max="45" v-model="value" @change="valChange">
 			</u-number-box>
 		</view>
@@ -24,14 +24,15 @@
 		},
 		computed: {
 			allValue(){
-				const list = this.progressList
-				let all = 0
-				let finished = 0
-					for(let item of Object.entries(list)){
-						all += item[1].all
-						finished += item[1].finished
-					}
-				return `${finished}/${all}`
+					const list = this.progressList
+					let all = 0
+					let finished = 0
+						for(let item of Object.entries(list)){
+							all += item[1].all
+							finished += item[1].finished
+						}
+					return `${finished}/${all}`
+				
 			}
 		},
 		onLoad() {
