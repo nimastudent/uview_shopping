@@ -4,12 +4,7 @@
 		</u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
-				<!-- 题型判断 -->
-				<!-- <view class="action text-black u-flex">
-					<text v-if="currentType===1">判断题</text>
-					<text v-else-if="currentType===2">单选题</text>
-					<text v-else-if="currentType===3">多选题 </text>
-				</view> -->
+				
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime" class="u-flex" v-show="showSubmit">
 					<u-count-down :timestamp="timestamp" separator="zh" @end="timeUp"></u-count-down>
@@ -93,13 +88,13 @@
 				<text>下一题</text>
 			</view>
 			<view>
-				<u-button @click="collectQuestion">收藏</u-button>
+				<u-button  @click="collectQuestion">收藏</u-button>
 			</view>
 			<view>
-				<u-button type="primary" v-show="currentType===3" @click="confirmMutiplid">确定</u-button>
+				<u-button   type="primary" v-show="currentType===3" @click="confirmMutiplid">确定</u-button>
 			</view>
 			<view class="qusetionCard">
-				<u-button type="success" @click="showTika">题卡</u-button>
+				<u-button type="success" @click="showTika" >题卡</u-button>
 				<Tika :tikaModalShow.sync="tikaModalShow" :questionList="questionList" @goIndex="goIndexQuestion"
 					:hasType="tikaType" />
 			</view>
@@ -295,7 +290,7 @@
 					sin_score
 				} = this.scroeSetting
 				const score = rigthSingle * sin_score + rightMul * mul_score + rightJud * jud_score
-				console.log(score);
+				this.addErrorBook();
 				this.$u.api.sendMockScore({
 					score
 				}).then(res => {
@@ -312,6 +307,26 @@
 						uni.navigateBack()
 					}
 				})
+			},
+			// 添加错题
+			async addErrorBook(){
+				const errorList =  [
+					...this.findErrorQues(this.singleAnsList),
+					...this.findErrorQues(this.multipleAnsList),
+					...this.findErrorQues(this.judgmentAnsList)
+				]
+				await this.$u.api.addErrorBook(errorList)
+			},
+			findErrorQues(arr){
+				let res = []
+				arr.forEach(item => {
+					if(!item.isRight){
+						res.push({
+							type:item.type,
+						questionId:item.id})
+					}
+				})
+				return res;
 			},
 			//收藏题目
 			collectQuestion() {

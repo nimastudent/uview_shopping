@@ -230,11 +230,8 @@
 				if (res.success) {
 					this.scroe = res.body.total
 				}
-				console.log(ansList)
 			},
-			radioChangeSingle(e) {
-				// console.log(e)
-			},
+			
 			swiperChange(e) { //滑动事件
 				let index = e.target.current;
 				

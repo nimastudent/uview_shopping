@@ -6,9 +6,9 @@
 			<view id="top-box" class="top-box">
 				<!-- 题型判断 -->
 				<view class="action text-black u-flex">
-					<text v-if="currentType===1">判断题</text>
+					<!-- <text v-if="currentType===1">判断题</text>
 					<text v-else-if="currentType===2">单选题</text>
-					<text v-else-if="currentType===3">多选题</text>
+					<text v-else-if="currentType===3">多选题</text> -->
 				</view>
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime" class="u-flex">
@@ -29,7 +29,8 @@
 
 					<view class="problem">
 						<view class="action qusetion">
-							<text></text>{{index+1}}.{{question.problem}}
+							<u-tag :text="tagText" type="primary" size="mini" />
+							<text class="u-m-l-15">{{index+1}}.{{question.problem}}</text>
 						</view>
 					</view>
 					<!-- 判断 -->
@@ -185,14 +186,27 @@
 					return '还有' + num + '题没做, 无法提交'
 				}
 			},
+			tagText() {
+				let res = "";
+				switch (this.currentType) {
+					case 1:
+						res = '判断题'
+						break;
+					case 2:
+						res = '单选题'
+						break;
+					case 3:
+						res = '多选题'
+						break;
+					default:
+						break;
+				}
+				return res
+			}
 
 		},
 		methods: {
 			async submit() {
-				console.log("123",this.finishNum);
-				console.log("judgmentAnsList",this.judgmentAnsList);
-				console.log("multipleAnsList",this.multipleAnsList.length);
-				console.log("singleAnsList",this.singleAnsList.length);
 				// 判断是否做完所有题目
 				if(this.finishNum > 0){
 					this.showModal = false
@@ -216,16 +230,30 @@
 							this.routerGo()
 						}, 2000)
 					} else {
+						this.addErrorBook(ansList);
 						this.scroe = res.body
 						this.scoreContent = "您的分数为" + parseInt(this.scroe);
 						this.showSocreModal = true;
 						setTimeout(() => {
 							this.routerGo()
 						}, 2000)
-
 					}
-
 				}
+			},
+			// 添加错题
+			async addErrorBook(errorList){
+				await this.$u.api.addErrorBook(errorList)
+			},
+			findErrorQues(arr){
+				let res = []
+				arr.forEach(item => {
+					if(!item.isRight){
+						res.push({
+							type:item.type,
+						questionId:item.id})
+					}
+				})
+				return res;
 			},
 			// 路由跳转回主页
 			routerGo() {

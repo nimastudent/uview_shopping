@@ -65,8 +65,11 @@ const install = (Vue, vm) => {
 	// 获取考试试题
 	let fetchExamQuestion = () => vm.$u.get('/exam/getExam')
 	
-	// 添加错题集
+	// 收集错题集
 	let colllectQuestion = params => vm.$u.post('/errorBook/add',params)
+	
+	// 添加错题集
+	let addErrorBook = (data) => vm.$u.post('/errorBook/add/some',data)
 	
 	// 模拟考多选题 判断
 	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
@@ -190,7 +193,8 @@ const install = (Vue, vm) => {
 		getOrderProgress,
 		getMockTypeScore,
 		sendMockScore,
-		getMockRecord
+		getMockRecord,
+		addErrorBook
 	};
 }
 
