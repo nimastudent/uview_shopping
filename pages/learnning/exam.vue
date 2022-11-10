@@ -6,9 +6,7 @@
 			<view id="top-box" class="top-box">
 				<!-- 题型判断 -->
 				<view class="action text-black u-flex">
-					<!-- <text v-if="currentType===1">判断题</text>
-					<text v-else-if="currentType===2">单选题</text>
-					<text v-else-if="currentType===3">多选题</text> -->
+				
 				</view>
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime" class="u-flex">
@@ -24,7 +22,7 @@
 				</view>
 			</view>
 
-			<swiper :current="questionIndex" class="swiper-box" :style="{'height':'850rpx'}" :disable-touch="true">
+			<swiper :current="questionIndex" class="swiper-box"  :disable-touch="true">
 				<swiper-item class="u-m-10" v-for="(question,index) in questionList" :key="index">
 
 					<view class="problem">
@@ -83,22 +81,6 @@
 			<view class="qusetionCard">
 				<u-button type="success" @click="showTika">题卡</u-button>
 				<Tika :tikaModalShow.sync="tikaModalShow" :questionList="questionList" @goIndex="goIndexQuestion" />
-				<!-- <u-modal v-model="tikaModalShow" width="85%" :show-title="false" :mask-close-able="true"
-					:show-confirm-button="false">
-
-					<view class="tikaContinar">
-						<view class="tikaTitle">
-							题卡
-						</view>
-						<u-divider :half-width="fengexian" :use-slot="false"></u-divider>
-						<view class="tika-btn-continar">
-							<view class="tika-butoon" v-for="(item,index) in this.questionList" :key="index">
-								<button class="abtn" :type="item.checked?'primary':'default'"
-									:custom-style="customStyle" @click="goIndexQuestion(index)">{{index+1}}</button>
-							</view>
-						</view>
-					</view>
-				</u-modal> -->
 			</view>
 		</view>
 		
@@ -242,7 +224,8 @@
 			},
 			// 添加错题
 			async addErrorBook(errorList){
-				await this.$u.api.addErrorBook(errorList)
+				const postData = errorList.map(item => {return {type:item.type,questionId:item.id}})
+				await this.$u.api.addErrorBook(postData)
 			},
 			findErrorQues(arr){
 				let res = []
@@ -270,6 +253,7 @@
 			async getExamById(id) { //需要id 后的 考试列表方法
 				const res = await this.$u.api.getExamById(id)
 				console.log(res);
+				this.timestamp = res.body.time
 				const {
 					question
 				} = res.body
@@ -451,6 +435,11 @@
 	.container {
 		position: relative;
 		letter-spacing: 4rpx;
+	}
+	
+	.swiper-box {
+		height: 80vh;
+		overflow: auto;
 	}
 
 	.top-box {

@@ -4,7 +4,7 @@
 		</u-navbar>
 		<view class="container">
 			<view id="top-box" class="top-box">
-				
+
 				<!-- 时间显示 -->
 				<view id="time" v-if="hiddeBtnAndTime" class="u-flex" v-show="showSubmit">
 					<u-count-down :timestamp="timestamp" separator="zh" @end="timeUp"></u-count-down>
@@ -88,13 +88,13 @@
 				<text>下一题</text>
 			</view>
 			<view>
-				<u-button  @click="collectQuestion">收藏</u-button>
+				<u-button @click="collectQuestion">收藏</u-button>
 			</view>
 			<view>
-				<u-button   type="primary" v-show="currentType===3" @click="confirmMutiplid">确定</u-button>
+				<u-button type="primary" v-show="currentType===3" @click="confirmMutiplid">确定</u-button>
 			</view>
 			<view class="qusetionCard">
-				<u-button type="success" @click="showTika" >题卡</u-button>
+				<u-button type="success" @click="showTika">题卡</u-button>
 				<Tika :tikaModalShow.sync="tikaModalShow" :questionList="questionList" @goIndex="goIndexQuestion"
 					:hasType="tikaType" />
 			</view>
@@ -187,10 +187,6 @@
 				} else {
 					return '还有' + num + '题没做, 请确认是否提交'
 				}
-			},
-			btnDisabled() {
-				console.log(this.questionList);
-				return true
 			},
 			tagText() {
 				let res = "";
@@ -309,21 +305,22 @@
 				})
 			},
 			// 添加错题
-			async addErrorBook(){
-				const errorList =  [
+			async addErrorBook() {
+				const errorList = [
 					...this.findErrorQues(this.singleAnsList),
 					...this.findErrorQues(this.multipleAnsList),
 					...this.findErrorQues(this.judgmentAnsList)
 				]
 				await this.$u.api.addErrorBook(errorList)
 			},
-			findErrorQues(arr){
+			findErrorQues(arr) {
 				let res = []
 				arr.forEach(item => {
-					if(!item.isRight){
+					if (!item.isRight) {
 						res.push({
-							type:item.type,
-						questionId:item.id})
+							type: item.type,
+							questionId: item.id
+						})
 					}
 				})
 				return res;

@@ -2,34 +2,18 @@
 	<view class="mockContinar"> 
 		<!-- <u-navbar title="模拟考"></u-navbar> -->
 		<view class="container">
-			<view id="top-box" class="top-box">
-				<view class="action text-black u-flex">
-					<!-- 题型判断 -->
-					<text v-if="currentType===1">判断题</text>
-					<text v-else-if="currentType===2">单选题</text>
-					<text v-else-if="currentType===3">多选题 </text>
-				</view>
-				<!-- 时间显示 -->
-				<view id="time" v-if="hiddeBtnAndTime" class="u-flex" v-show="false">
-					<u-count-down :timestamp="timestamp" separator="zh" @end="timeUp"></u-count-down>
-				</view>
-				<!-- 提交按钮 -->
-				<view class="action u-flex" v-if="hiddeBtnAndTime" v-show="false">
-					<button type="primary" @click="openModal()" size="mini">提交</button>
-					<u-modal v-model="showModal" :content="content" :show-cancel-button="true" :async-close="true"
-						@confirm="submit"></u-modal>
-				</view>
-			</view>
+			
 
 
 
-			<swiper :current="questionIndex" class="swiper-box" :disable-touch="true" :style="{'height':'850rpx'}">
+			<swiper :current="questionIndex" class="swiper-box" :disable-touch="true" >
 				<swiper-item class="u-m-10" v-for="(question,index) in questionList" :key="index">
 
 					<!-- 题目 -->
 					<view class="problem">
 						<view class="action qusetion">
-							<text></text>{{index+1}}.{{question.problem}}
+							<u-tag :text="tagText" type="primary" size="mini" />
+							<text>{{index+1}}.{{question.problem}}</text>
 						</view>
 					</view>
 					<!-- 判断 -->
@@ -170,7 +154,6 @@
 		},
 		onLoad() {
 			this.getErrorBook()
-
 		},
 		computed: {
 			content() {
@@ -182,6 +165,23 @@
 					return '还有' + num + '题没做, 请确认是否提交'
 				}
 			},
+			tagText() {
+				let res = "";
+				switch (this.currentType) {
+					case 1:
+						res = '判断题'
+						break;
+					case 2:
+						res = '单选题'
+						break;
+					case 3:
+						res = '多选题'
+						break;
+					default:
+						break;
+				}
+				return res
+			}
 		},
 		methods: {
 			// 获取错题本
@@ -454,6 +454,11 @@
 	.container {
 		position: relative;
 		letter-spacing: 4rpx;
+	}
+	
+	.swiper-box {
+		height: 80vh;
+		overflow: auto;
 	}
 
 	.top-box {
