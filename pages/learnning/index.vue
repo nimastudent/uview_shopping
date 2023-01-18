@@ -79,15 +79,11 @@
 		data() {
 			return {
 				swiperList:[],
-				progressList:[]
 			}
 		},
 		onLoad(){
 			this.getSwiper()
 			this.getOrderProgress()
-			this.$u.api.getMockRecord().then(res =>{
-				console.log(res);
-			})
 		},
 		computed:{
 			finishedCount(){
@@ -105,6 +101,9 @@
 						all += item[1].all
 					}
 				return all
+			},
+			progressList(){
+				return this.vuex_orderProgress 
 			}
 		},
 		methods: {
@@ -120,7 +119,7 @@
 			//获取考试进度
 			getOrderProgress(){
 				this.$u.api.getOrderProgress().then(res => {
-					this.progressList = res.body
+					this.$u.vuex('vuex_orderProgress',res.body) 
 				})
 			},
 			swiperClick(e){

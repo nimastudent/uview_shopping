@@ -43,7 +43,8 @@ const store = new Vuex.Store({
 		vuex_cookies: '',
 		vuex_avatar:lifeData.vuex_avatar?lifeData.vuex_avatar : '',
 		// 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
-		vuex_pkiInfo:lifeData.vuex_pkiInfo ? lifeData.vuex_pkiInfo : {}
+		vuex_pkiInfo:lifeData.vuex_pkiInfo ? lifeData.vuex_pkiInfo : {},
+		vuex_orderProgress:lifeData.vuex_orderProgress ? lifeData.vuex_orderProgress : {},
 	},
 	mutations: {
 		$uStore(state, payload) {

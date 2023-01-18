@@ -15,6 +15,7 @@
 						<view class="tika-butoon" v-for="(item,key) in this.judList" :key="key">
 							<button class="abtn" :type="item.checked?'primary':'default'" :custom-style="customStyle"
 								@click="handleClick(key)">{{parseInt(key)+1}}</button>
+							<i  v-if="isErroBook" @click="handleDelete(item)">&times;</i>
 						</view>
 					</view>
 				</view>
@@ -32,6 +33,7 @@
 						<view class="tika-butoon" v-for="(item,key) in this.singleList" :key="key">
 							<button class="abtn" :type="item.checked?'primary':'default'" :custom-style="customStyle"
 								@click="handleClick(key)">{{parseInt(key)+1}}</button>
+							<i  v-if="isErroBook" @click="handleDelete(item)">&times;</i>
 						</view>
 					</view>
 				</view>
@@ -50,14 +52,18 @@
 						<view class="tika-butoon" v-for="(item,key) in this.mutiList" :key="key">
 							<button class="abtn" :type="item.checked?'primary':'default'" :custom-style="customStyle"
 								@click="handleClick(key)">{{parseInt(key)+1}}</button>
+							<i v-if="isErroBook" @click="handleDelete(item)">&times;</i>
 						</view>
 					</view>
 				</view>
-
-
-
 			</scroll-view>
 
+		</u-modal>
+
+		<u-modal v-model="deleteModalShow" show-cancel-button :async-close="true"  @confirm="deleteConfirm">
+			<view style="display: flex;justify-content: center;align-items: center;padding: 40upx;">
+				请确认是否删除该题？
+			</view>
 		</u-modal>
 	</view>
 </template>
@@ -71,16 +77,21 @@
 				type: Boolean
 			},
 			questionList: Array,
-			hasType:{
-				required:false,
-				type:Object,
-				default:function(){
+			hasType: {
+				required: false,
+				type: Object,
+				default: function() {
 					return {
-					jud:true,
-					single:true,
-					mutil:true
+						jud: true,
+						single: true,
+						mutil: true
+					}
 				}
-				}
+			},
+			isErroBook:{
+				required: false,
+				type:Boolean,
+				default:false
 			}
 		},
 		computed: {
@@ -111,11 +122,13 @@
 				customStyle: {
 					borderRadius: '50%'
 				},
+				deleteModalShow: false,
+				deleteItem:{}
 			};
 		},
 		methods: {
 			handleClick(index) {
-				console.log(index);
+				
 				this.$emit('goIndex', parseInt(index))
 			},
 			sliceQues(arr, type) {
@@ -128,6 +141,21 @@
 					}
 				}
 				return res;
+			},
+			handleDelete(item) {
+				this.deleteModalShow = true
+				this.deleteItem = item
+			},
+			deleteConfirm(){
+				this.$u.api.deleteErrorBooke({type:this.deleteItem.type,id:this.deleteItem.id}).then(res => {
+					if(res.success){
+						this.deleteModalShow = false
+						uni.showToast({
+							title:"删除成功，请重新进入错题集！",
+							duration:1500
+						})
+					}
+				})
 			}
 		}
 	}
@@ -167,14 +195,25 @@
 
 	.tika-butoon {
 		width: 18%;
+		position: relative;
+
+		i {
+			color: red;
+			font-size: 50upx;
+			position: absolute;
+			right: 1px;
+			top: -8px;
+		}
 	}
 
 	.abtn {
 		margin: 10rpx;
 		border-radius: 60%;
+
 	}
 
 	uni-button:after {
 		border: 1px solid #fff;
 	}
+	
 </style>

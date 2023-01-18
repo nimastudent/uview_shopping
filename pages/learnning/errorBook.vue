@@ -85,6 +85,7 @@
 				<Tika
 				 :tikaModalShow.sync = "tikaModalShow"
 				 :questionList="questionList"
+				 :isErroBook="true"
 				 @goIndex = "goIndexQuestion"
 				 />
 			</view>

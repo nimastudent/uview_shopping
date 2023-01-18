@@ -43,6 +43,8 @@ const install = (Vue, vm) => {
 	
 	// exam start----------------------------------------------------
 	
+	// 用户重置顺序答题或类型练习
+	let resSetOrder = data => vm.$u.post('/sequential/reset',data) 
 	
 	//顺序练习
 	let getOrderQusetion = data => vm.$u.post('/sequential/get',data) 
@@ -70,6 +72,9 @@ const install = (Vue, vm) => {
 	
 	// 添加错题集
 	let addErrorBook = (data) => vm.$u.post('/errorBook/add/some',data)
+	
+	// 删除错题集
+	let deleteErrorBooke = (params) => vm.$u.get('/errorBook/delete',params)
 	
 	// 模拟考多选题 判断
 	let sendMultipleAns = (params = {}) => vm.$u.post('/multipleChoice/check',params)
@@ -194,7 +199,9 @@ const install = (Vue, vm) => {
 		getMockTypeScore,
 		sendMockScore,
 		getMockRecord,
-		addErrorBook
+		addErrorBook,
+		resSetOrder,
+		deleteErrorBooke
 	};
 }
 
