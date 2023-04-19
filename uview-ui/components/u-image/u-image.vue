@@ -43,10 +43,10 @@
  * @tutorial https://uviewui.com/components/image.html
  * @property {String} src 图片地址
  * @property {String} mode 裁剪模式，见官网说明
- * @property {String | Number} width 宽度，单位任意，如果为数值，则为rpx单位（默认100%）
- * @property {String | Number} height 高度，单位任意，如果为数值，则为rpx单位（默认 auto）
+ * @property {String | Number} width 宽度，单位任意，如果为数值，则为upx单位（默认100%）
+ * @property {String | Number} height 高度，单位任意，如果为数值，则为upx单位（默认 auto）
  * @property {String} shape 图片形状，circle-圆形，square-方形（默认square）
- * @property {String | Number} border-radius 圆角值，单位任意，如果为数值，则为rpx单位（默认 0）
+ * @property {String | Number} border-radius 圆角值，单位任意，如果为数值，则为upx单位（默认 0）
  * @property {Boolean} lazy-load 是否懒加载，仅微信小程序、App、百度小程序、字节跳动小程序有效（默认 true）
  * @property {Boolean} show-menu-by-longpress 是否开启长按图片显示识别小程序码菜单，仅微信小程序有效（默认 false）
  * @property {String} loading-icon 加载中的图标，或者小图片（默认 photo）
@@ -61,7 +61,7 @@
  * @event {Function} click 点击图片时触发
  * @event {Function} error 图片加载失败时触发
  * @event {Function} load 图片加载成功时触发
- * @example <u-image width="100%" height="300rpx" :src="src"></u-image>
+ * @example <u-image width="100%" height="300upx" :src="src"></u-image>
  */
 export default {
 	name: 'u-image',
@@ -178,7 +178,7 @@ export default {
 	computed: {
 		wrapStyle() {
 			let style = {};
-			// 通过调用addUnit()方法，如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上rpx单位
+			// 通过调用addUnit()方法，如果有单位，如百分比，px单位等，直接返回，如果是纯粹的数值，则加上upx单位
 			style.width = this.$u.addUnit(this.width);
 			style.height = this.$u.addUnit(this.height);
 			// 如果是配置了圆形，设置50%的圆角，否则按照默认的配置值
@@ -260,7 +260,7 @@ export default {
 		justify-content: center;
 		background-color: $u-bg-color;
 		color: $u-tips-color;
-		font-size: 46rpx;
+		font-size: 46upx;
 	}
 }
 </style>

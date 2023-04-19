@@ -6,7 +6,7 @@
 			'u-input--error': validateState
 		}"
 		:style="{
-			padding: `0 ${border ? 20 : 0}rpx`,
+			padding: `0 ${border ? 20 : 0}upx`,
 			borderColor: borderColor,
 			textAlign: inputAlign
 		}"
@@ -97,7 +97,7 @@ import Emitter from '../../libs/util/emitter.js';
  * @property {Boolean} border 是否显示边框(默认false)
  * @property {String} border-color 输入框的边框颜色(默认#dcdfe6)
  * @property {Boolean} auto-height 是否自动增高输入区域，type为textarea时有效(默认true)
- * @property {String Number} height 高度，单位rpx(text类型时为70，textarea时为100)
+ * @property {String Number} height 高度，单位upx(text类型时为70，textarea时为100)
  * @example <u-input v-model="value" :type="type" :border="border" />
  */
 export default {
@@ -179,7 +179,7 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 高度，单位rpx
+		// 高度，单位upx
 		height: {
 			type: [Number, String],
 			default: ''
@@ -245,8 +245,8 @@ export default {
 		getStyle() {
 			let style = {};
 			// 如果没有自定义高度，就根据type为input还是textare来分配一个默认的高度
-			style.minHeight = this.height ? this.height + 'rpx' : this.type == 'textarea' ?
-				this.textareaHeight + 'rpx' : this.inputHeight + 'rpx';
+			style.minHeight = this.height ? this.height + 'upx' : this.type == 'textarea' ?
+				this.textareaHeight + 'upx' : this.inputHeight + 'upx';
 			style = Object.assign(style, this.customStyle);
 			return style;
 		},
@@ -345,22 +345,22 @@ export default {
 
 	&__input {
 		//height: $u-form-item-height;
-		font-size: 28rpx;
+		font-size: 28upx;
 		color: $u-main-color;
 		flex: 1;
 	}
 
 	&__textarea {
 		width: auto;
-		font-size: 28rpx;
+		font-size: 28upx;
 		color: $u-main-color;
-		padding: 10rpx 0;
+		padding: 10upx 0;
 		line-height: normal;
 		flex: 1;
 	}
 
 	&--border {
-		border-radius: 6rpx;
+		border-radius: 6upx;
 		border-radius: 4px;
 		border: 1px solid $u-form-item-border-color;
 	}
@@ -372,7 +372,7 @@ export default {
 	&__right-icon {
 
 		&__item {
-			margin-left: 10rpx;
+			margin-left: 10upx;
 		}
 
 		&--select {

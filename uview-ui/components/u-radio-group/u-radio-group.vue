@@ -11,9 +11,9 @@
 	 * @description 单选框用于有一个选择，用户只能选择其中一个的场景。搭配u-radio使用
 	 * @tutorial https://www.uviewui.com/components/radio.html
 	 * @property {Boolean} disabled 是否禁用所有radio（默认false）
-	 * @property {String Number} size 组件整体的大小，单位rpx（默认40）
+	 * @property {String Number} size 组件整体的大小，单位upx（默认40）
 	 * @property {String} active-color 选中时的颜色，应用到所有子Radio组件（默认#2979ff）
-	 * @property {String Number} icon-size 图标大小，单位rpx（默认20）
+	 * @property {String Number} icon-size 图标大小，单位upx（默认20）
 	 * @property {String} shape 外观形状，shape-方形，circle-圆形(默认circle)
 	 * @property {Boolean} label-disabled 是否禁止点击文本操作checkbox(默认false)
 	 * @property {String} width 宽度，需带单位
@@ -55,7 +55,7 @@
 				type: String,
 				default: 'circle'
 			},
-			// 图标的大小，单位rpx
+			// 图标的大小，单位upx
 			iconSize: {
 				type: [String, Number],
 				default: 20

@@ -3,13 +3,13 @@
 		<u-navbar :is-back="false" title="　" :border-bottom="false">
 			
 		</u-navbar>
-		<view class="u-flex user-box u-p-l-30 u-p-r-20 u-p-b-30">
+		<view class="u-flex user-box">
 			<view class="u-m-r-10">
 				<u-avatar :src="avatar" size="140"></u-avatar>
 			</view>
 			<view class="u-flex-1">
-				<view class="u-font-18 u-p-b-20">{{nickName}}</view>
-				<view class="u-font-14 u-tips-color">用户名:{{userName}}</view>
+				<view class="nickname">{{nickName}}</view>
+				<view class="username">用户名:{{userName}}</view>
 			</view>
 			
 			<!-- <view class="u-m-l-10 u-p-10">
@@ -23,6 +23,7 @@
 				<u-cell-item icon="file-text" title="我的评论" @click="goComment"></u-cell-item>
 				<u-cell-item icon="star" title="我的收藏"@click="goCollection"></u-cell-item>
 				<u-cell-item icon="order" title="我的错题集"@click="goErrorBook"></u-cell-item>
+				<u-cell-item icon="chat" title="我的交流"@click="goMyWork"></u-cell-item>
 				<u-cell-item  title="关于我们"@click="goAboutUs"></u-cell-item>
 			</u-cell-group>
 		</view>
@@ -30,11 +31,16 @@
 		<view class="u-m-t-20">
 			<u-button class="exitButton" type="error" @click="exit">退出登录</u-button>
 		</view>
+		<tab-bar />
 	</view>
 </template>
 
 <script>
+	import TabBar from '@/components/TabBar.vue'
 	export default {
+		components:{
+			TabBar
+		},
 		data() {
 			return {
 				pic:'https://uviewui.com/common/logo.png',
@@ -106,6 +112,9 @@
 			},
 			goAboutUs(){
 				this.$u.route('pages/center/aboutUs')
+			},
+			goMyWork(){
+				this.$u.route('pages/center/myWork')
 			}
 		}
 	}
@@ -116,11 +125,11 @@ page{
 	background-color: #ededed;
 }
 .exitButton{
-	width: 300rpx;
+	width: 300upx;
 }
 .camera{
-	width: 54px;
-	height: 44px;
+	width: 54upx;
+	height: 44upx;
 	
 	&:active{
 		background-color: #ededed;
@@ -128,5 +137,14 @@ page{
 }
 .user-box{
 	background-color: #fff;
+	padding: 30upx;
+	
+	.nickname{
+		font-size: 32upx;
+	}
+	
+	.username{
+		font-size: 38upx;
+	}
 }
 </style>

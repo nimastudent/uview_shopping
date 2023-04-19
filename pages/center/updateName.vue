@@ -134,7 +134,7 @@ export default {
 
 <style lang="scss" scoped>
 image {
-  height: 90rpx;
-  width: 90rpx;
+  height: 90upx;
+  width: 90upx;
 }
 </style>

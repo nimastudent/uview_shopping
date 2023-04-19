@@ -145,7 +145,7 @@
 							scrollOffset: true
 						}, (data) => {
 							tempHeight -= data.height;
-							_me.swiperHeight = tempHeight + 'rpx';
+							_me.swiperHeight = tempHeight + 'upx';
 						}).exec();
 
 					}).exec();
@@ -434,7 +434,7 @@
 <style lang="scss" scoped>
 	.container {
 		position: relative;
-		letter-spacing: 4rpx;
+		letter-spacing: 4upx;
 	}
 	
 	.swiper-box {
@@ -443,13 +443,13 @@
 	}
 
 	.top-box {
-		min-height: 90rpx;
+		min-height: 90upx;
 		display: flex;
 		justify-content: space-around;
 	}
 
 	.foot-box {
-		min-height: 90rpx;
+		min-height: 90upx;
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -457,13 +457,13 @@
 
 	#foot-box {
 		position: fixed;
-		bottom: 20rpx;
+		bottom: 20upx;
 	}
 
 	.qusetion {
-		padding: 10rpx;
+		padding: 10upx;
 		font-weight: 600;
-		font-size: 30rpx;
+		font-size: 30upx;
 	}
 
 	.foot-btn {
@@ -474,12 +474,12 @@
 	}
 
 	.tikaContinar {
-		min-height: 800rpx;
-		margin: 50rpx;
+		min-height: 800upx;
+		margin: 50upx;
 	}
 
 	.tikaTitle {
-		margin: 10rpx;
+		margin: 10upx;
 		text-align: center;
 	}
 
@@ -495,7 +495,7 @@
 	}
 
 	.abtn {
-		margin: 10rpx;
+		margin: 10upx;
 		border-radius: 60%;
 	}
 </style>

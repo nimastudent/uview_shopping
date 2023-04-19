@@ -10,7 +10,7 @@
 	 * @property {Object} model 表单数据对象
 	 * @property {Boolean} border-bottom 是否显示表单域的下划线边框
 	 * @property {String} label-position 表单域提示文字的位置，left-左侧，top-上方
-	 * @property {String Number} label-width 提示文字的宽度，单位rpx（默认90）
+	 * @property {String Number} label-width 提示文字的宽度，单位upx（默认90）
 	 * @property {Object} label-style lable的样式，对象形式
 	 * @property {String} label-align lable的对齐方式
 	 * @property {Object} rules 通过ref设置，见官网说明
@@ -53,7 +53,7 @@ export default {
 			type: String,
 			default: 'left'
 		},
-		// label的宽度，单位rpx
+		// label的宽度，单位upx
 		labelWidth: {
 			type: [String, Number],
 			default: 90

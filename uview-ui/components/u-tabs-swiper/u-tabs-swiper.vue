@@ -29,21 +29,21 @@
 	 * @property {Boolean} is-scroll tabs是否可以左右拖动（默认true）
 	 * @property {Array} list 标签数组，元素为对象，如[{name: '推荐'}]
 	 * @property {String Number} current 指定哪个tab为激活状态（默认0）
-	 * @property {String Number} height 导航栏的高度，单位rpx（默认80）
-	 * @property {String Number} font-size tab文字大小，单位rpx（默认30）
-	 * @property {String Number} swiper-width tabs组件外部swiper的宽度，默认为屏幕宽度，单位rpx（默认750）
+	 * @property {String Number} height 导航栏的高度，单位upx（默认80）
+	 * @property {String Number} font-size tab文字大小，单位upx（默认30）
+	 * @property {String Number} swiper-width tabs组件外部swiper的宽度，默认为屏幕宽度，单位upx（默认750）
 	 * @property {String} active-color 滑块和激活tab文字的颜色（默认#2979ff）
 	 * @property {String} inactive-color tabs文字颜色（默认#303133）
-	 * @property {String Number} bar-width 滑块宽度，单位rpx（默认40）
-	 * @property {String Number} bar-height 滑块高度，单位rpx（默认6）
+	 * @property {String Number} bar-width 滑块宽度，单位upx（默认40）
+	 * @property {String Number} bar-height 滑块高度，单位upx（默认6）
 	 * @property {Object} bar-style 底部滑块的样式，对象形式
 	 * @property {Object} active-item-style 活动tabs item的样式，对象形式
 	 * @property {Boolean} show-bar 是否显示底部的滑块（默认true）
-	 * @property {String Number} gutter 单个tab标签的左右内边距之和，单位rpx（默认40）
+	 * @property {String Number} gutter 单个tab标签的左右内边距之和，单位upx（默认40）
 	 * @property {String} bg-color tabs导航栏的背景颜色（默认#ffffff）
 	 * @property {String} name 组件内部读取的list参数中的属性名，见官网说明（默认name）
 	 * @property {String} count 组件内部读取的list参数中的属性名（badge徽标数），同name属性的使用，见官网说明（默认count）
-	 * @property {Array} offset 设置badge徽标数的位置偏移，格式为 [x, y]，也即设置的为top和right的值，单位rpx（默认[5, 20]）
+	 * @property {Array} offset 设置badge徽标数的位置偏移，格式为 [x, y]，也即设置的为top和right的值，单位upx（默认[5, 20]）
 	 * @property {Boolean} bold 激活选项的字体是否加粗（默认true）
 	 * @event {Function} change 点击标签时触发
 	 * @example <u-tabs-swiper ref="tabs" :list="list" :is-scroll="false"></u-tabs-swiper>
@@ -68,12 +68,12 @@
 				type: [Number, String],
 				default: 0
 			},
-			// 导航栏的高度和行高，单位rpx
+			// 导航栏的高度和行高，单位upx
 			height: {
 				type: [Number, String],
 				default: 80
 			},
-			// 字体大小，单位rpx
+			// 字体大小，单位upx
 			fontSize: {
 				type: [Number, String],
 				default: 30
@@ -84,7 +84,7 @@
 			// 	default: 0.5
 			// },
 			swiperWidth: {
-				//line3生效, 外部swiper的宽度, 单位rpx
+				//line3生效, 外部swiper的宽度, 单位upx
 				type: [String, Number],
 				default: 750
 			},
@@ -98,7 +98,7 @@
 				type: String,
 				default: '#303133'
 			},
-			// 菜单底部移动的bar的宽度，单位rpx
+			// 菜单底部移动的bar的宽度，单位upx
 			barWidth: {
 				type: [Number, String],
 				default: 40
@@ -108,7 +108,7 @@
 				type: [Number, String],
 				default: 6
 			},
-			// 单个tab的左或右内边距（各占一半），单位rpx
+			// 单个tab的左或右内边距（各占一半），单位upx
 			gutter: {
 				type: [Number, String],
 				default: 40
@@ -213,11 +213,11 @@
 			tabItemStyle() {
 				return (index) => {
 					let style = {
-						height: this.height + 'rpx',
-						lineHeight: this.height + 'rpx',
-						padding: `0 ${this.gutter / 2}rpx`,
+						height: this.height + 'upx',
+						lineHeight: this.height + 'upx',
+						padding: `0 ${this.gutter / 2}upx`,
 						color: this.tabsInfo.length > 0 ? (this.tabsInfo[index] ? this.tabsInfo[index].color : this.activeColor) : this.inactiveColor,
-						fontSize: this.fontSize + 'rpx',
+						fontSize: this.fontSize + 'upx',
 						zIndex: this.zIndex + 2,
 						fontWeight: (index == this.getCurrent && this.bold) ? 'bold' : 'normal'
 					};
@@ -232,7 +232,7 @@
 			tabBarStyle() {
 				let style = {
 					width: this.barWidthPx + 'px',
-					height: this.barHeight + 'rpx',
+					height: this.barHeight + 'upx',
 					borderRadius: '100px',
 					backgroundColor: this.activeColor,
 					left: this.scrollBarLeft + 'px'
@@ -293,7 +293,7 @@
 				if (tab) this.line3Dx = tab.left + tab.width / 2 - this.barWidthPx / 2 - this.tabsInfo[0].left;
 			},
 			countPx() {
-				// swiper宽度由rpx转为px单位，因为dx等，都是px单位
+				// swiper宽度由upx转为px单位，因为dx等，都是px单位
 				this.sW = uni.upx2px(Number(this.swiperWidth));
 			},
 			emit(index) {
@@ -483,6 +483,6 @@
 
 	.u-scroll-bar {
 		position: absolute;
-		bottom: 4rpx;
+		bottom: 4upx;
 	}
 </style>

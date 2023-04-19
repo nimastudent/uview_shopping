@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-navbar back-text="返回" title="新规内容"></u-navbar>
+		<u-navbar back-text="返回" title="新规内容"  ></u-navbar>
 		<view class="container">
 			<view class="title">
 				{{ruleContent.title}}
@@ -64,27 +64,27 @@
 	.container {
 		width: 100%;
 		margin: 0 auto;
-		padding: 0 20rpx;
+		padding: 0 20upx;
 		position: relative;
 	}
 
 	.title {
-		margin: 15rpx;
+		margin: 15upx;
 		font-weight: 800;
-		font-size: 30rpx;
+		font-size: 30upx;
 		text-align: center;
 	}
 
 	.date {
 		color: #676767;
 		position: absolute;
-		right: 20rpx;
+		right: 20upx;
 	}
 
 	.content {
-		margin: 50rpx 0 20rpx 0 ;
+		margin: 50upx 0 20upx 0 ;
 		text-indent: 1rem;
-		line-height: 45rpx;
-		letter-spacing: 1.5rpx;
+		line-height: 45upx;
+		letter-spacing: 1.5upx;
 	}
 </style>

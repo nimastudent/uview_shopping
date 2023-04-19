@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="办案大全" title-color="#000000"></u-navbar>
-		<u-cell-group>
+		<u-navbar :is-back="false" title="执法工具箱" title-color="#000000" height="100"></u-navbar>
+		<!-- <u-cell-group>
 			<u-cell-item
 			title="新规"
 			@click="goNewRule"
@@ -12,58 +12,151 @@
 			@click="goRuleList"
 			>
 			</u-cell-item>
-			<!-- <u-cell-item 
-			v-for="(item,index) in lawArray"
-			 :name="index" 
-			 :title="item" 
-			 :arrow="true" 
-			 arrow-direction="right"
-			 @click="goLaw(item)"
-			 ></u-cell-item> -->
-		</u-cell-group>
+			<u-cell-item
+			title="司法解释"
+			@click="goType(1)"
+			/>
+			<u-cell-item
+			title="案例分析"
+			@click="goType(2)"
+			/>
+			<u-cell-item
+			title="应用场景"
+			@click="goType(3)"
+			/>
+		</u-cell-group> -->
+
+		<view class="item-container">
+			<view class="item" v-for="item in typeArr" :key="item.id" @click="handleClick(item)">
+				<view class="left">
+					<span>{{item.name.slice(0,1)}}</span>
+					{{item.name.slice(1,2)}}
+				</view>
+				<view class="right">
+					{{item.name}}
+				</view>
+			</view>
+		</view>
+
+		<tab-bar />
 	</view>
 </template>
 
 <script>
+	import TabBar from '@/components/TabBar.vue'
 	export default {
+		components: {
+			TabBar
+		},
 		data() {
 			return {
-				lawArray:[],
+				lawArray: [],
+				typeArr: [{
+					id: 'falv',
+					name: '法律'
+				}, {
+					id: 'xingui',
+					name: '新规'
+				}]
 			}
 		},
-		onLoad(){
+		onLoad() {
+			this.getType()
 		},
 		methods: {
-			async getLaw(){
-				const res = await this.$u.api.getLaw()
-				this.lawArray = res.body.lawTypes
-				console.log(this.lawArray)
+			async getType() {
+				const res = await this.$u.api.getAllType()
+				res.body.forEach(item => {
+					this.typeArr.push(item)
+				})
+				// this.lawArray = res.body.lawTypes
+				// console.log(this.lawArray)
 			},
-			goLaw(item){
+			handleClick(item) {
+				switch (item.id) {
+					case 'falv':
+						this.goRuleList();
+						break;
+					case 'xingui':
+						this.goNewRule();
+						break;
+					default:
+						this.goType(item);
+						break;
+				}
+			},
+			goNewRule() {
 				this.$u.route({
-					type:'navigateTo',
-					url:'pages/action/law',
-					params:{
-						lawtype:item
-					}
+					type: 'navigateTo',
+					url: 'pages/action/newRule',
 				})
 			},
-			goNewRule(){
+			goRuleList() {
 				this.$u.route({
-					type:'navigateTo',
-					url:'pages/action/newRule',
+					type: 'navigateTo',
+					url: 'pages/action/lawList',
 				})
 			},
-			goRuleList(){
-				this.$u.route({
-					type:'navigateTo',
-					url:'pages/action/lawList',
-				})
+			goType(item) {
+				console.log(item);
+				if(item.children && item.children.length > 0){
+					this.$u.route({
+						type: 'navigateTo',
+						url: 'pages/action/Sifa/sifaList',
+						params: {
+							item:JSON.stringify(item)
+						}
+					})
+				}else{
+					this.$u.route({
+						type: 'navigateTo',
+						url: 'pages/action/Sifa/Sifa',
+						params: {
+							type:item.id,
+							title:item.name
+						}
+					})
+				}
 			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
+	.item {
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		width: 100%;
+		border-bottom: 1px solid #dcdfe6;
+		padding: 10upx;
+		display: flex;
+	}
 
+
+
+	.left {
+		width: 100upx;
+		height: 100upx;
+		line-height: 100upx;
+		background-color: #0f4aa6;
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: 600;
+
+		span {
+			letter-spacing: 8upx;
+		}
+	}
+
+	.right {
+		margin-left: 20upx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: 600;
+		letter-spacing: 4upx;
+		color: #f34a0d;
+	}
 </style>

@@ -4,7 +4,7 @@
 		@tap.stop="click"
 		:class="{ 'u-border': border, 'u-card-full': full, 'u-card--border': borderRadius > 0 }"
 		:style="{
-			borderRadius: borderRadius + 'rpx',
+			borderRadius: borderRadius + 'upx',
 			margin: margin,
 			boxShadow: boxShadow
 		}"
@@ -12,7 +12,7 @@
 		<view
 			v-if="showHead"
 			class="u-card__head"
-			:style="[{padding: padding + 'rpx'}, headStyle]"
+			:style="[{padding: padding + 'upx'}, headStyle]"
 			:class="{
 				'u-border-bottom': headBorderBottom
 			}"
@@ -26,15 +26,15 @@
 						mode="aspectfull"
 						v-if="thumb"
 						:style="{ 
-							height: thumbWidth + 'rpx', 
-							width: thumbWidth + 'rpx', 
-							borderRadius: thumbCircle ? '100rpx' : '6rpx' 
+							height: thumbWidth + 'upx', 
+							width: thumbWidth + 'upx', 
+							borderRadius: thumbCircle ? '100upx' : '6upx' 
 						}"
 					></image>
 					<text
 						class="u-card__head--left__title u-line-1"
 						:style="{
-							fontSize: titleSize + 'rpx',
+							fontSize: titleSize + 'upx',
 							color: titleColor
 						}"
 					>
@@ -45,7 +45,7 @@
 					<text
 						class="u-card__head__title__text"
 						:style="{
-							fontSize: subTitleSize + 'rpx',
+							fontSize: subTitleSize + 'upx',
 							color: subTitleColor
 						}"
 					>
@@ -55,12 +55,12 @@
 			</view>
 			<slot name="head" v-else />
 		</view>
-		<view @tap="bodyClick" class="u-card__body" :style="[{padding: padding + 'rpx'}, bodyStyle]"><slot name="body" /></view>
+		<view @tap="bodyClick" class="u-card__body" :style="[{padding: padding + 'upx'}, bodyStyle]"><slot name="body" /></view>
 		<view
 			v-if="showFoot"
 			class="u-card__foot"
 			 @tap="footClick"
-			:style="[{padding: $slots.foot ? padding + 'rpx' : 0}, footStyle]"
+			:style="[{padding: $slots.foot ? padding + 'upx' : 0}, footStyle]"
 			:class="{
 				'u-border-top': footBorderTop
 			}"
@@ -78,15 +78,15 @@
  * @property {Boolean} full 卡片与屏幕两侧是否留空隙（默认false）
  * @property {String} title 头部左边的标题
  * @property {String} title-color 标题颜色（默认#303133）
- * @property {String | Number} title-size 标题字体大小，单位rpx（默认30）
+ * @property {String | Number} title-size 标题字体大小，单位upx（默认30）
  * @property {String} sub-title 头部右边的副标题
  * @property {String} sub-title-color 副标题颜色（默认#909399）
  * @property {String | Number} sub-title-size 副标题字体大小（默认26）
  * @property {Boolean} border 是否显示边框（默认true）
  * @property {String | Number} index 用于标识点击了第几个卡片
  * @property {String} box-shadow 卡片外围阴影，字符串形式（默认none）
- * @property {String} margin 卡片与屏幕两边和上下元素的间距，需带单位，如"30rpx 20rpx"（默认30rpx）
- * @property {String | Number} border-radius 卡片整体的圆角值，单位rpx（默认16）
+ * @property {String} margin 卡片与屏幕两边和上下元素的间距，需带单位，如"30upx 20upx"（默认30upx）
+ * @property {String | Number} border-radius 卡片整体的圆角值，单位upx（默认16）
  * @property {Object} head-style 头部自定义样式，对象形式
  * @property {Object} body-style 中部自定义样式，对象形式
  * @property {Object} foot-style 底部自定义样式，对象形式
@@ -95,7 +95,7 @@
  * @property {Boolean} show-head 是否显示头部（默认true）
  * @property {Boolean} show-head 是否显示尾部（默认true）
  * @property {String} thumb 缩略图路径，如设置将显示在标题的左边，不建议使用相对路径
- * @property {String | Number} thumb-width 缩略图的宽度，高等于宽，单位rpx（默认60）
+ * @property {String | Number} thumb-width 缩略图的宽度，高等于宽，单位upx（默认60）
  * @property {Boolean} thumb-circle 缩略图是否为圆形（默认false）
  * @event {Function} click 整个卡片任意位置被点击时触发
  * @event {Function} head-click 卡片头部被点击时触发
@@ -121,7 +121,7 @@ export default {
 			type: String,
 			default: '#303133'
 		},
-		// 标题字体大小，单位rpx
+		// 标题字体大小，单位upx
 		titleSize: {
 			type: [Number, String],
 			default: '30'
@@ -136,7 +136,7 @@ export default {
 			type: String,
 			default: '#909399'
 		},
-		// 副标题字体大小，单位rpx
+		// 副标题字体大小，单位upx
 		subTitleSize: {
 			type: [Number, String],
 			default: '26'
@@ -151,10 +151,10 @@ export default {
 			type: [Number, String, Object],
 			default: ''
 		},
-		// 用于隔开上下左右的边距，带单位的写法，如："30rpx 30rpx"，"20rpx 20rpx 30rpx 30rpx"
+		// 用于隔开上下左右的边距，带单位的写法，如："30upx 30upx"，"20upx 20upx 30upx 30upx"
 		margin: {
 			type: String,
-			default: '30rpx'
+			default: '30upx'
 		},
 		// card卡片的圆角
 		borderRadius: {
@@ -197,7 +197,7 @@ export default {
 			type: String,
 			default: ''
 		},
-		// 缩略图宽高，单位rpx
+		// 缩略图宽高，单位upx
 		thumbWidth: {
 			type: [String, Number],
 			default: '60'
@@ -254,7 +254,7 @@ export default {
 .u-card {
 	position: relative;
 	overflow: hidden;
-	font-size: 28rpx;
+	font-size: 28upx;
 	background-color: #ffffff;
 	box-sizing: border-box;
 	
@@ -266,7 +266,7 @@ export default {
 	}
 	
 	&--border:after {
-		border-radius: 16rpx;
+		border-radius: 16upx;
 	}
 
 	&__head {
@@ -274,17 +274,17 @@ export default {
 			color: $u-main-color;
 			
 			&__thumb {
-				margin-right: 16rpx;
+				margin-right: 16upx;
 			}
 			
 			&__title {
-				max-width: 400rpx;
+				max-width: 400upx;
 			}
 		}
 
 		&--right {
 			color: $u-tips-color;
-			margin-left: 6rpx;
+			margin-left: 6upx;
 		}
 	}
 

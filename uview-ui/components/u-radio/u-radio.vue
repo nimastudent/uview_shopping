@@ -20,8 +20,8 @@
 	 * radio 单选框
 	 * @description 单选框用于有一个选择，用户只能选择其中一个的场景。搭配u-radio-group使用
 	 * @tutorial https://www.uviewui.com/components/radio.html
-	 * @property {String Number} icon-size 图标大小，单位rpx（默认24）
-	 * @property {String Number} label-size label字体大小，单位rpx（默认28）
+	 * @property {String Number} icon-size 图标大小，单位upx（默认24）
+	 * @property {String Number} label-size label字体大小，单位upx（默认28）
 	 * @property {String Number} name radio组件的标示符
 	 * @property {String} shape 形状，见上方说明（默认circle）
 	 * @property {Boolean} disabled 是否禁用（默认false）
@@ -58,12 +58,12 @@
 				type: String,
 				default: ''
 			},
-			// 图标的大小，单位rpx
+			// 图标的大小，单位upx
 			iconSize: {
 				type: [String, Number],
 				default: ''
 			},
-			// label的字体大小，rpx单位
+			// label的字体大小，upx单位
 			labelSize: {
 				type: [String, Number],
 				default: ''
@@ -102,7 +102,7 @@
 			elLabelDisabled() {
 				return this.labelDisabled !== '' ? this.labelDisabled : this.parentData.labelDisabled !== null ? this.parentData.labelDisabled : false;
 			},
-			// 组件尺寸，对应size的值，默认值为34rpx
+			// 组件尺寸，对应size的值，默认值为34upx
 			elSize() {
 				return this.size ? this.size : (this.parentData.size ? this.parentData.size : 34);
 			},
@@ -219,8 +219,8 @@
 			align-items: center;
 			justify-content: center;
 			box-sizing: border-box;
-			width: 42rpx;
-			height: 42rpx;
+			width: 42upx;
+			height: 42upx;
 			color: transparent;
 			text-align: center;
 			transition-property: color, border-color, background-color;
@@ -261,10 +261,10 @@
 		
 		&__label {
 			word-wrap: break-word;
-			margin-left: 10rpx;
-			margin-right: 24rpx;
+			margin-left: 10upx;
+			margin-right: 24upx;
 			color: $u-content-color;
-			font-size: 30rpx;
+			font-size: 30upx;
 			
 			&--disabled {
 				color: #c8c9cc;

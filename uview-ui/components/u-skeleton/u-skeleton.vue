@@ -31,7 +31,7 @@
 			width: item.width + 'px', 
 			height: item.height + 'px', 
 			backgroundColor: elColor, 
-			borderRadius: borderRadius + 'rpx', 
+			borderRadius: borderRadius + 'upx', 
 			position: 'absolute', 
 			left: (item.left - left) + 'px',
 			top: (item.top - top) + 'px'
@@ -47,7 +47,7 @@
 	 * @property {String} el-color 骨架块状元素的背景颜色（默认#e5e5e5）
 	 * @property {String} bg-color 骨架组件背景颜色（默认#ffffff）
 	 * @property {Boolean} animation 骨架块是否显示动画效果（默认false）
-	 * @property {String Number} border-radius u-skeleton-fillet类名元素，对应的骨架块的圆角大小，单位rpx（默认10）
+	 * @property {String Number} border-radius u-skeleton-fillet类名元素，对应的骨架块的圆角大小，单位upx（默认10）
 	 * @property {Boolean} loading 是否显示骨架组件，请求完成后，将此值设置为false（默认true）
 	 * @example <u-skeleton :loading="true" :animation="true"></u-skeleton>
 	 */

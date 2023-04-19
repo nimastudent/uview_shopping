@@ -1,18 +1,18 @@
 <template>
 	<view class="u-swiper-wrap" :style="{
-		borderRadius: `${borderRadius}rpx`
+		borderRadius: `${borderRadius}upx`
 	}">
 		<swiper :current="elCurrent" @change="change" @animationfinish="animationfinish" :interval="interval" :circular="circular" :duration="duration" :autoplay="autoplay"
-		 :previous-margin="effect3d ? effect3dPreviousMargin + 'rpx' : '0'" :next-margin="effect3d ? effect3dPreviousMargin + 'rpx' : '0'"
+		 :previous-margin="effect3d ? effect3dPreviousMargin + 'upx' : '0'" :next-margin="effect3d ? effect3dPreviousMargin + 'upx' : '0'"
 		 :style="{
-				height: height + 'rpx',
+				height: height + 'upx',
 				backgroundColor: bgColor
 			}">
 			<swiper-item class="u-swiper-item" v-for="(item, index) in list" :key="index">
 				<view class="u-list-image-wrap" @tap.stop.prevent="listClick(index)" :class="[uCurrent != index ? 'u-list-scale' : '']" :style="{
-						borderRadius: `${borderRadius}rpx`,
+						borderRadius: `${borderRadius}upx`,
 						transform: effect3d && uCurrent != index ? 'scaleY(0.9)' : 'scaleY(1)',
-						margin: effect3d && uCurrent != index ? '0 20rpx' : 0,
+						margin: effect3d && uCurrent != index ? '0 20upx' : 0,
 					}">
 					<image class="u-swiper-image" :src="item[name] || item" :mode="imgMode"></image>
 					<view v-if="title && item.title" class="u-swiper-title u-line-1" :style="[{
@@ -24,10 +24,10 @@
 			</swiper-item>
 		</swiper>
 		<view class="u-swiper-indicator" :style="{
-				top: indicatorPos == 'topLeft' || indicatorPos == 'topCenter' || indicatorPos == 'topRight' ? '12rpx' : 'auto',
-				bottom: indicatorPos == 'bottomLeft' || indicatorPos == 'bottomCenter' || indicatorPos == 'bottomRight' ? '12rpx' : 'auto',
+				top: indicatorPos == 'topLeft' || indicatorPos == 'topCenter' || indicatorPos == 'topRight' ? '12upx' : 'auto',
+				bottom: indicatorPos == 'bottomLeft' || indicatorPos == 'bottomCenter' || indicatorPos == 'bottomRight' ? '12upx' : 'auto',
 				justifyContent: justifyContent,
-				padding: `0 ${effect3d ? '74rpx' : '24rpx'}`
+				padding: `0 ${effect3d ? '74upx' : '24upx'}`
 			}">
 			<block v-if="mode == 'rect'">
 				<view class="u-indicator-item-rect" :class="{ 'u-indicator-item-rect-active': index == uCurrent }" v-for="(item, index) in list"
@@ -56,16 +56,16 @@
 	 * @property {Array} list 轮播图数据，见官网"基本使用"说明
 	 * @property {Boolean} title 是否显示标题文字，需要配合list参数，见官网说明（默认false）
 	 * @property {String} mode 指示器模式，见官网说明（默认round）
-	 * @property {String Number} height 轮播图组件高度，单位rpx（默认250）
+	 * @property {String Number} height 轮播图组件高度，单位upx（默认250）
 	 * @property {String} indicator-pos 指示器的位置（默认bottomCenter）
 	 * @property {Boolean} effect3d 是否开启3D效果（默认false）
 	 * @property {Boolean} autoplay 是否自动播放（默认true）
 	 * @property {String Number} interval 自动轮播时间间隔，单位ms（默认2500）
 	 * @property {Boolean} circular 是否衔接播放，见官网说明（默认true）
 	 * @property {String} bg-color 背景颜色（默认#f3f4f6）
-	 * @property {String Number} border-radius 轮播图圆角值，单位rpx（默认8）
+	 * @property {String Number} border-radius 轮播图圆角值，单位upx（默认8）
 	 * @property {Object} title-style 自定义标题样式
-	 * @property {String Number} effect3d-previous-margin mode = true模式的情况下，激活项与前后项之间的距离，单位rpx（默认50）
+	 * @property {String Number} effect3d-previous-margin mode = true模式的情况下，激活项与前后项之间的距离，单位upx（默认50）
 	 * @property {String} img-mode 图片的裁剪模式，详见image组件裁剪模式（默认aspectFill）
 	 * @event {Function} click 点击轮播图时触发
 	 * @example <u-swiper :list="list" mode="dot" indicator-pos="bottomRight"></u-swiper>
@@ -107,7 +107,7 @@
 				type: String,
 				default: 'round'
 			},
-			// list的高度，单位rpx
+			// list的高度，单位upx
 			height: {
 				type: [Number, String],
 				default: 250
@@ -122,7 +122,7 @@
 				type: Boolean,
 				default: false
 			},
-			// 3D模式的情况下，激活item与前后item之间的距离，单位rpx
+			// 3D模式的情况下，激活item与前后item之间的距离，单位upx
 			effect3dPreviousMargin: {
 				type: [Number, String],
 				default: 50
@@ -194,13 +194,13 @@
 			},
 			titlePaddingBottom() {
 				let tmp = 0;
-				if (this.mode == 'none') return '12rpx';
+				if (this.mode == 'none') return '12upx';
 				if (['bottomLeft', 'bottomCenter', 'bottomRight'].indexOf(this.indicatorPos) >= 0 && this.mode == 'number') {
-					tmp = '60rpx';
+					tmp = '60upx';
 				} else if (['bottomLeft', 'bottomCenter', 'bottomRight'].indexOf(this.indicatorPos) >= 0 && this.mode != 'number') {
-					tmp = '40rpx';
+					tmp = '40upx';
 				} else {
-					tmp = '12rpx';
+					tmp = '12upx';
 				}
 				return tmp;
 			},
@@ -252,7 +252,7 @@
 	}
 
 	.u-swiper-indicator {
-		padding: 0 24rpx;
+		padding: 0 24upx;
 		position: absolute;
 		@include vue-flex;
 		width: 100%;
@@ -260,9 +260,9 @@
 	}
 
 	.u-indicator-item-rect {
-		width: 26rpx;
-		height: 8rpx;
-		margin: 0 6rpx;
+		width: 26upx;
+		height: 8upx;
+		margin: 0 6upx;
 		transition: all 0.5s;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
@@ -272,10 +272,10 @@
 	}
 
 	.u-indicator-item-dot {
-		width: 14rpx;
-		height: 14rpx;
-		margin: 0 6rpx;
-		border-radius: 20rpx;
+		width: 14upx;
+		height: 14upx;
+		margin: 0 6upx;
+		border-radius: 20upx;
 		transition: all 0.5s;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
@@ -285,25 +285,25 @@
 	}
 
 	.u-indicator-item-round {
-		width: 14rpx;
-		height: 14rpx;
-		margin: 0 6rpx;
-		border-radius: 20rpx;
+		width: 14upx;
+		height: 14upx;
+		margin: 0 6upx;
+		border-radius: 20upx;
 		transition: all 0.5s;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 
 	.u-indicator-item-round-active {
-		width: 34rpx;
+		width: 34upx;
 		background-color: rgba(255, 255, 255, 0.8);
 	}
 
 	.u-indicator-item-number {
-		padding: 6rpx 16rpx;
+		padding: 6upx 16upx;
 		line-height: 1;
 		background-color: rgba(0, 0, 0, 0.3);
-		border-radius: 100rpx;
-		font-size: 26rpx;
+		border-radius: 100upx;
+		font-size: 26upx;
 		color: rgba(255, 255, 255, 0.8);
 	}
 
@@ -327,8 +327,8 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		font-size: 28rpx;
-		padding: 12rpx 24rpx;
+		font-size: 28upx;
+		padding: 12upx 24upx;
 		color: rgba(255, 255, 255, 0.9);
 	}
 

@@ -12,8 +12,8 @@
 	 * @property {String} border-color 表格边框的颜色（默认#e4e7ed）
 	 * @property {String} bg-color 表格的背景颜色（默认#ffffff）
 	 * @property {String} align 单元格的内容对齐方式，作用类似css的text-align（默认center）
-	 * @property {String} padding 单元格的内边距，同css的padding写法（默认10rpx 0）
-	 * @property {String Number} font-size 单元格字体大小，单位rpx（默认28）
+	 * @property {String} padding 单元格的内边距，同css的padding写法（默认10upx 0）
+	 * @property {String Number} font-size 单元格字体大小，单位upx（默认28）
 	 * @property {String} color 单元格字体颜色（默认#606266）
 	 * @property {Object} th-style th单元格的样式，对象形式(将th所需参数放在table组件，是为了避免每一个th组件要写一遍）
 	 * @event {Function} click 点击组件时触发
@@ -34,7 +34,7 @@
 			// td的内边距
 			padding: {
 				type: String,
-				default: '10rpx 6rpx'
+				default: '10upx 6upx'
 			},
 			// 字体大小
 			fontSize: {

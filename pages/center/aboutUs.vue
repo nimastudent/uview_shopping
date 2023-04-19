@@ -36,6 +36,6 @@
 
 <style scoped>
 text{
-	font-size: 30rpx;
+	font-size: 30upx;
 }
 </style>

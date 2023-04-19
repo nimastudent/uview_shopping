@@ -16,7 +16,7 @@
 	 * @tutorial https://www.uviewui.com/components/cell.html
 	 * @property {String} title 分组标题
 	 * @property {Boolean} border 是否显示外边框（默认true）
-	 * @property {Object} title-style 分组标题的的样式，对象形式，如{'font-size': '24rpx'} 或 {'fontSize': '24rpx'}
+	 * @property {Object} title-style 分组标题的的样式，对象形式，如{'font-size': '24upx'} 或 {'fontSize': '24upx'}
 	 * @example <u-cell-group title="设置喜好">
 	 */
 	export default {
@@ -33,7 +33,7 @@
 				default: true
 			},
 			// 分组标题的样式，对象形式，注意驼峰属性写法
-			// 类似 {'font-size': '24rpx'} 和 {'fontSize': '24rpx'}
+			// 类似 {'font-size': '24upx'} 和 {'fontSize': '24upx'}
 			titleStyle: {
 				type: Object,
 				default () {
@@ -57,8 +57,8 @@
 	}
 
 	.u-cell-title {
-		padding: 30rpx 32rpx 10rpx 32rpx;
-		font-size: 30rpx;
+		padding: 30upx 32upx 10upx 32upx;
+		font-size: 30upx;
 		text-align: left;
 		color: $u-tips-color;
 	}

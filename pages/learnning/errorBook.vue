@@ -146,7 +146,7 @@
 							scrollOffset: true
 						}, (data) => {
 							tempHeight -= data.height;
-							_me.swiperHeight = tempHeight + 'rpx';
+							_me.swiperHeight = tempHeight + 'upx';
 						}).exec();
 
 					}).exec();
@@ -199,9 +199,9 @@
 			typeAdd(arr,type){
 				arr.forEach((item,index) => {
 					if(type == 1){
-						item.option = [{id:'A',content:item.option_true},{id:'B',content:item.option_true}]
+						item.option = [{id:'A',content:item.optionTrue},{id:'B',content:item.optionFalse}]
 					}else if(type == 2 || type == 3){
-						item.option = [{id:'A',content:item.option_a},{id:'B',content:item.option_a},{id:'C',content:item.option_c},{id:'D',content:item.option_d}]
+						item.option = [{id:'A',content:item.optionA},{id:'B',content:item.optionB},{id:'C',content:item.optionC},{id:'D',content:item.optionD}]
 					}
 					item.type = type
 					item.checked = false
@@ -454,7 +454,7 @@
 <style lang="scss" scoped>
 	.container {
 		position: relative;
-		letter-spacing: 4rpx;
+		letter-spacing: 4upx;
 	}
 	
 	.swiper-box {
@@ -463,13 +463,13 @@
 	}
 
 	.top-box {
-		min-height: 90rpx;
+		min-height: 90upx;
 		display: flex;
 		justify-content: space-around;
 	}
 
 	.foot-box {
-		min-height: 90rpx;
+		min-height: 90upx;
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -477,13 +477,13 @@
 
 	#foot-box {
 		position: fixed;
-		bottom: 20rpx;
+		bottom: 20upx;
 	}
 
 	.qusetion {
-		padding: 10rpx;
+		padding: 10upx;
 		font-weight: 600;
-		font-size: 30rpx;
+		font-size: 30upx;
 	}
 
 	.foot-btn {
@@ -494,12 +494,12 @@
 	}
 
 	.tikaContinar {
-		min-height: 800rpx;
-		margin: 50rpx;
+		min-height: 800upx;
+		margin: 50upx;
 	}
 
 	.tikaTitle {
-		margin: 10rpx;
+		margin: 10upx;
 		text-align: center;
 	}
 
@@ -515,7 +515,7 @@
 	}
 
 	.abtn {
-		margin: 10rpx;
+		margin: 10upx;
 		border-radius: 60%;
 	}
 

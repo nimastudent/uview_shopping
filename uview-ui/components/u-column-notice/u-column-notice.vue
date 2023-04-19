@@ -86,7 +86,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 字体大小，单位rpx
+		// 字体大小，单位upx
 		fontSize: {
 			type: [Number, String],
 			default: 26
@@ -101,7 +101,7 @@ export default {
 			type: [Number, String],
 			default: 34
 		},
-		// 水平滚动时的滚动速度，即每秒滚动多少rpx，这有利于控制文字无论多少时，都能有一个恒定的速度
+		// 水平滚动时的滚动速度，即每秒滚动多少upx，这有利于控制文字无论多少时，都能有一个恒定的速度
 		speed: {
 			type: Number,
 			default: 160
@@ -130,7 +130,7 @@ export default {
 		// 通知的边距
 		padding: {
 			type: [Number, String],
-			default: '18rpx 24rpx'
+			default: '18upx 24upx'
 		}
 	},
 	computed: {
@@ -146,7 +146,7 @@ export default {
 			let style = {};
 			if (this.color) style.color = this.color;
 			else if(this.type == 'none') style.color = '#606266';
-			style.fontSize = this.fontSize + 'rpx';
+			style.fontSize = this.fontSize + 'upx';
 			return style;
 		},
 		// 垂直或者水平滚动
@@ -197,17 +197,17 @@ export default {
 	align-items: center;
 	justify-content: center;
 	flex-wrap: nowrap;
-	padding: 18rpx 24rpx;
+	padding: 18upx 24upx;
 	overflow: hidden;
 }
 
 .u-swiper {
-	font-size: 26rpx;
-	height: 32rpx;
+	font-size: 26upx;
+	height: 32upx;
 	@include vue-flex;
 	align-items: center;
 	flex: 1;
-	margin-left: 12rpx;
+	margin-left: 12upx;
 }
 
 .u-swiper-item {
@@ -221,7 +221,7 @@ export default {
 }
 
 .u-right-icon {
-	margin-left: 12rpx;
+	margin-left: 12upx;
 	/* #ifndef APP-NVUE */
 	display: inline-flex;		
 	/* #endif */

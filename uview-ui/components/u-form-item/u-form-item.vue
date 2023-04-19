@@ -7,7 +7,7 @@
 			<view class="u-form-item--left" :style="{
 				width: uLabelWidth,
 				flex: `0 0 ${uLabelWidth}`,
-				marginBottom: elLabelPosition == 'left' ? 0 : '10rpx',
+				marginBottom: elLabelPosition == 'left' ? 0 : '10upx',
 			}">
 				<!-- 为了块对齐 -->
 				<view class="u-form-item--left__content" v-if="required || leftIcon || label">
@@ -55,7 +55,7 @@
 	 * @property {Object} prop 表单域model对象的属性名，在使用 validate、resetFields 方法的情况下，该属性是必填的
 	 * @property {Boolean} border-bottom 是否显示表单域的下划线边框
 	 * @property {String} label-position 表单域提示文字的位置，left-左侧，top-上方
-	 * @property {String Number} label-width 提示文字的宽度，单位rpx（默认90）
+	 * @property {String Number} label-width 提示文字的宽度，单位upx（默认90）
 	 * @property {Object} label-style lable的样式，对象形式
 	 * @property {String} label-align lable的对齐方式
 	 * @property {String} right-icon 右侧自定义字体图标(限uView内置图标)或图片地址
@@ -97,7 +97,7 @@
 				type: String,
 				default: ''
 			},
-			// label的宽度，单位rpx
+			// label的宽度，单位upx
 			labelWidth: {
 				type: [String, Number],
 				default: ''
@@ -351,8 +351,8 @@
 	.u-form-item {
 		@include vue-flex;
 		// align-items: flex-start;
-		padding: 20rpx 0;
-		font-size: 28rpx;
+		padding: 20upx 0;
+		font-size: 28upx;
 		color: $u-main-color;
 		box-sizing: border-box;
 		line-height: $u-form-item-height;
@@ -374,19 +374,19 @@
 				position: relative;
 				@include vue-flex;
 				align-items: center;
-				padding-right: 10rpx;
+				padding-right: 10upx;
 				flex: 1;
 
 				&__icon {
-					margin-right: 8rpx;
+					margin-right: 8upx;
 				}
 
 				&--required {
 					position: absolute;
-					left: -16rpx;
+					left: -16upx;
 					vertical-align: middle;
 					color: $u-type-error;
-					padding-top: 6rpx;
+					padding-top: 6upx;
 				}
 
 				&__label {
@@ -414,18 +414,18 @@
 				}
 
 				&__icon {
-					margin-left: 10rpx;
+					margin-left: 10upx;
 					color: $u-light-color;
-					font-size: 30rpx;
+					font-size: 30upx;
 				}
 			}
 		}
 
 		&__message {
-			font-size: 24rpx;
-			line-height: 24rpx;
+			font-size: 24upx;
+			line-height: 24upx;
 			color: $u-type-error;
-			margin-top: 12rpx;
+			margin-top: 12upx;
 		}
 	}
 </style>

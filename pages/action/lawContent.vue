@@ -189,7 +189,7 @@ export default {
   // flex-direction: column;
   // right: 0;
   // background-color: #2979ff;
-  margin: 10rpx;
+  margin: 10upx;
   display: flex;
 	justify-content: space-between;
 	color: #fff;
@@ -199,7 +199,7 @@ export default {
 }
 .box {
   width: 90%;
-  margin: 5rpx auto;
+  margin: 5upx auto;
 }
 .mytop-box {
   display: flex;
@@ -216,11 +216,11 @@ export default {
   // }
 }
 .content-item {
-  margin-top: 15rpx;
+  margin-top: 15upx;
 }
 
 .content-item span{
-	font-size: 30rpx;
+	font-size: 30upx;
 	font-weight: 600;
 }
 

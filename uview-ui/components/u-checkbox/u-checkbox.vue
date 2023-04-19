@@ -16,8 +16,8 @@
 	 * checkbox 复选框
 	 * @description 该组件需要搭配checkboxGroup组件使用，以便用户进行操作时，获得当前复选框组的选中情况。
 	 * @tutorial https://www.uviewui.com/components/checkbox.html
-	 * @property {String Number} icon-size 图标大小，单位rpx（默认20）
-	 * @property {String Number} label-size label字体大小，单位rpx（默认28）
+	 * @property {String Number} icon-size 图标大小，单位upx（默认20）
+	 * @property {String Number} label-size label字体大小，单位upx（默认28）
 	 * @property {String Number} name checkbox组件的标示符
 	 * @property {String} shape 形状，见官网说明（默认circle）
 	 * @property {Boolean} disabled 是否禁用
@@ -59,12 +59,12 @@
 				type: String,
 				default: ''
 			},
-			// 图标的大小，单位rpx
+			// 图标的大小，单位upx
 			iconSize: {
 				type: [String, Number],
 				default: ''
 			},
-			// label的字体大小，rpx单位
+			// label的字体大小，upx单位
 			labelSize: {
 				type: [String, Number],
 				default: ''
@@ -96,7 +96,7 @@
 			isLabelDisabled() {
 				return this.labelDisabled !== '' ? this.labelDisabled : this.parent ? this.parent.labelDisabled : false;
 			},
-			// 组件尺寸，对应size的值，默认值为34rpx
+			// 组件尺寸，对应size的值，默认值为34upx
 			checkboxSize() {
 				return this.size ? this.size : (this.parent ? this.parent.size : 34);
 			},
@@ -231,8 +231,8 @@
 			align-items: center;
 			justify-content: center;
 			box-sizing: border-box;
-			width: 42rpx;
-			height: 42rpx;
+			width: 42upx;
+			height: 42upx;
 			color: transparent;
 			text-align: center;
 			transition-property: color, border-color, background-color;
@@ -252,7 +252,7 @@
 			}
 			
 			&--square {
-				border-radius: 6rpx;
+				border-radius: 6upx;
 			}
 			
 			&--checked {
@@ -273,10 +273,10 @@
 	
 		&__label {
 			word-wrap: break-word;
-			margin-left: 10rpx;
-			margin-right: 24rpx;
+			margin-left: 10upx;
+			margin-right: 24upx;
 			color: $u-content-color;
-			font-size: 30rpx;
+			font-size: 30upx;
 			
 			&--disabled {
 				color: #c8c9cc;

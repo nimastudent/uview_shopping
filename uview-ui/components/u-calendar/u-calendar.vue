@@ -71,7 +71,7 @@
 	 * @property {String Number} min-year 最小可选日期(默认1950)
 	 * @property {String Number} min-date 可切换的最小年份(默认1950-01-01)
 	 * @property {String Number} max-date 最大可选日期(默认当前日期)
-	 * @property {String Number} 弹窗顶部左右两边的圆角值，单位rpx(默认20)
+	 * @property {String Number} 弹窗顶部左右两边的圆角值，单位upx(默认20)
 	 * @property {Boolean} mask-close-able 是否允许通过点击遮罩关闭日历(默认true)
 	 * @property {String} month-arrow-color 月份切换按钮箭头颜色(默认#606266)
 	 * @property {String} year-arrow-color 年份切换按钮箭头颜色(默认#909399)
@@ -495,13 +495,13 @@
 		&__header {
 			width: 100%;
 			box-sizing: border-box;
-			font-size: 30rpx;
+			font-size: 30upx;
 			background-color: #fff;
 			color: $u-main-color;
 			
 			&__text {
-				margin-top: 30rpx;
-				padding: 0 60rpx;
+				margin-top: 30upx;
+				padding: 0 60upx;
 				@include vue-flex;
 				justify-content: center;
 				align-items: center;
@@ -509,17 +509,17 @@
 		}
 		
 		&__action {
-			padding: 40rpx 0 40rpx 0;
+			padding: 40upx 0 40upx 0;
 			
 			&__icon {
-				margin: 0 16rpx;
+				margin: 0 16upx;
 			}
 			
 			&__text {
-				padding: 0 16rpx;
+				padding: 0 16upx;
 				color: $u-main-color;
-				font-size: 32rpx;
-				line-height: 32rpx;
+				font-size: 32upx;
+				line-height: 32upx;
 				font-weight: bold;
 			}
 		}
@@ -547,13 +547,13 @@
 			position: relative;
 			
 			&--end-date {
-				border-top-right-radius: 8rpx;
-				border-bottom-right-radius: 8rpx;
+				border-top-right-radius: 8upx;
+				border-bottom-right-radius: 8upx;
 			}
 			
 			&--start-date {
-				border-top-left-radius: 8rpx;
-				border-bottom-left-radius: 8rpx;
+				border-top-left-radius: 8upx;
+				border-bottom-left-radius: 8upx;
 			}
 			
 			&__item {
@@ -567,38 +567,38 @@
 				z-index: 2;
 				
 				&__inner {
-					height: 84rpx;
+					height: 84upx;
 					@include vue-flex;
 					align-items: center;
 					justify-content: center;
 					flex-direction: column;
-					font-size: 32rpx;
+					font-size: 32upx;
 					position: relative;
 					border-radius: 50%;
 					
 					&__desc {
 						width: 100%;
-						font-size: 24rpx;
-						line-height: 24rpx;
+						font-size: 24upx;
+						line-height: 24upx;
 						transform: scale(0.75);
 						transform-origin: center center;
 						position: absolute;
 						left: 0;
 						text-align: center;
-						bottom: 2rpx;
+						bottom: 2upx;
 					}
 				}
 				
 				&__tips {
 					width: 100%;
-					font-size: 24rpx;
-					line-height: 24rpx;
+					font-size: 24upx;
+					line-height: 24upx;
 					position: absolute;
 					left: 0;
 					transform: scale(0.8);
 					transform-origin: center center;
 					text-align: center;
-					bottom: 8rpx;
+					bottom: 8upx;
 					z-index: 2;
 				}
 			}
@@ -622,13 +622,13 @@
 			justify-content: center;
 			flex-direction: column;
 			background-color: #fff;
-			padding: 0 40rpx 30rpx;
+			padding: 0 40upx 30upx;
 			box-sizing: border-box;
-			font-size: 24rpx;
+			font-size: 24upx;
 			color: $u-tips-color;
 			
 			&__choose {
-				height: 50rpx;
+				height: 50upx;
 			}
 			
 			&__btn {

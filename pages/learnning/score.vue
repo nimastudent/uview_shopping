@@ -70,14 +70,14 @@
 
 <style scoped>
 	.top {
-		font-size: 32rpx;
-		letter-spacing: 2rpx;
+		font-size: 32upx;
+		letter-spacing: 2upx;
 		color: #000;
 	}
 
 	.score {
-		width: 200rpx;
-		font-size: 24rpx;
+		width: 200upx;
+		font-size: 24upx;
 		display: flex;
 		justify-content: center;
 	}

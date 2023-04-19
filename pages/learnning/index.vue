@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="大练兵" title-color="#000000"></u-navbar>
+		<u-navbar :is-back="false" title="实战大练兵" title-color="#000000"></u-navbar>
 		<view class="swiper">
 			<u-swiper :list="swiperList" name="picture"  @click="swiperClick"></u-swiper>
 		</view>
@@ -71,11 +71,15 @@
 			</view>
 		
 		</view>
+		
+		<tab-bar />
 	</view>
 </template>
 
 <script>
+	import TabBar from '@/components/TabBar.vue'
 	export default {
+		components:{TabBar},
 		data() {
 			return {
 				swiperList:[],
@@ -178,16 +182,16 @@
 
 <style lang="scss" scoped>
 	.swiper{
-		margin: 30rpx;
+		margin: 30upx;
 	}
 .button-class{
-	height: 320rpx;
-	width: 320rpx;
+	height: 320upx;
+	width: 320upx;
 	justify-content: center;
 	background-color: #009deb;
 	color: #FFFFFF;
-	border-radius: 30rpx;
-	font-size: 40rpx;
+	border-radius: 30upx;
+	font-size: 40upx;
 }
 .main-contianer{
 	display: flex;
@@ -212,20 +216,19 @@
 			flex-direction: column;
 			
 			.title{
-				font-size: 28upx;
+				font-size: 32upx;
 				font-weight: 600;
 			}
 			
 			.content{
 				color: rgb(157, 162, 166);
-				font-size: 20upx;
+				font-size: 26upx;
 			}
 		}
 		
 		.right{
 			img{
-				width: 50upx;
-				
+				width: 60upx;
 			}
 		}
 		
@@ -233,23 +236,23 @@
 	}
 }
 // .block-contianer{
-// 	width: 320rpx;
-// 	height: 180rpx;
-// 	margin: 15rpx 25rpx;
+// 	width: 320upx;
+// 	height: 180upx;
+// 	margin: 15upx 25upx;
 // 	background-color: #ececec;
 // 	display: flex;
 // 	justify-content: center;	
 // 	align-items: center;
 // }
 // .block-contianer img{
-// 	width: 60rpx;
-// 	height: 70rpx;
+// 	width: 60upx;
+// 	height: 70upx;
 // }
 // .right-contianer{
-// 	margin-left: 10rpx;
+// 	margin-left: 10upx;
 // }
 // .right-title{
-// 	font-size: 36rpx;
+// 	font-size: 36upx;
 	
 // }
 // .right-content{

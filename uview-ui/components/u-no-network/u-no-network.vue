@@ -199,30 +199,30 @@
 
 	.u-tips {
 		color: $u-tips-color;
-		font-size: 28rpx;
-		padding: 30rpx 0;
+		font-size: 28upx;
+		padding: 30upx 0;
 	}
 
 	.u-error-icon {
-		width: 300rpx;
+		width: 300upx;
 	}
 
 	.u-to-setting {
 		color: $u-light-color;
-		font-size: 26rpx;
+		font-size: 26upx;
 	}
 
 	.u-setting-btn {
-		font-size: 26rpx;
+		font-size: 26upx;
 		color: $u-type-primary;
 	}
 
 	.u-retry {
-		margin-top: 30rpx;
+		margin-top: 30upx;
 		border: 1px solid $u-tips-color;
 		color: $u-tips-color;
-		font-size: 28rpx;
-		padding: 6rpx 30rpx;
+		font-size: 28upx;
+		padding: 6upx 30upx;
 		border-radius: 3px;
 	}
 

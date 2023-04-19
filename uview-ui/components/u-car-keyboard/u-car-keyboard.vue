@@ -171,7 +171,7 @@
 
 	.u-keyboard-grids {
 		background: rgb(215, 215, 217);
-		padding: 24rpx 0;
+		padding: 24upx 0;
 		position: relative;
 	}
 
@@ -183,19 +183,19 @@
 
 	.u-keyboard-grids-btn {
 		text-decoration: none;
-		width: 62rpx;
-		flex: 0 0 64rpx;
-		height: 80rpx;
+		width: 62upx;
+		flex: 0 0 64upx;
+		height: 80upx;
 		/* #ifndef APP-NVUE */
 		display: inline-flex;		
 		/* #endif */
-		font-size: 36rpx;
+		font-size: 36upx;
 		text-align: center;
-		line-height: 80rpx;
+		line-height: 80upx;
 		background-color: #fff;
-		margin: 8rpx 5rpx;
-		border-radius: 8rpx;
-		box-shadow: 0 2rpx 0rpx #888992;
+		margin: 8upx 5upx;
+		border-radius: 8upx;
+		box-shadow: 0 2upx 0upx #888992;
 		font-weight: 500;
 		justify-content: center;
 	}
@@ -206,52 +206,52 @@
 
 	.u-keyboard-back {
 		position: absolute;
-		width: 96rpx;
-		right: 22rpx;
-		bottom: 32rpx;
-		height: 80rpx;
+		width: 96upx;
+		right: 22upx;
+		bottom: 32upx;
+		height: 80upx;
 		background-color: rgb(185, 188, 195);
 		@include vue-flex;
 		align-items: center;
-		border-radius: 8rpx;
+		border-radius: 8upx;
 		justify-content: center;
-		box-shadow: 0 2rpx 0rpx #888992;
+		box-shadow: 0 2upx 0upx #888992;
 	}
 
 	.u-keyboard-change {
-		font-size: 24rpx;
-		box-shadow: 0 2rpx 0rpx #888992;
+		font-size: 24upx;
+		box-shadow: 0 2upx 0upx #888992;
 		position: absolute;
-		width: 96rpx;
-		left: 22rpx;
+		width: 96upx;
+		left: 22upx;
 		line-height: 1;
-		bottom: 32rpx;
-		height: 80rpx;
+		bottom: 32upx;
+		height: 80upx;
 		background-color: #ffffff;
 		@include vue-flex;
 		align-items: center;
-		border-radius: 8rpx;
+		border-radius: 8upx;
 		justify-content: center;
 	}
 
 	.u-keyboard-change .inactive.zh {
-		transform: scale(0.85) translateY(-10rpx);
+		transform: scale(0.85) translateY(-10upx);
 	}
 
 	.u-keyboard-change .inactive.en {
-		transform: scale(0.85) translateY(10rpx);
+		transform: scale(0.85) translateY(10upx);
 	}
 
 	.u-keyboard-change .active {
 		color: rgb(237, 112, 64);
-		font-size: 30rpx;
+		font-size: 30upx;
 	}
 
 	.u-keyboard-change .zh {
-		transform: translateY(-10rpx);
+		transform: translateY(-10upx);
 	}
 
 	.u-keyboard-change .en {
-		transform: translateY(10rpx);
+		transform: translateY(10upx);
 	}
 </style>

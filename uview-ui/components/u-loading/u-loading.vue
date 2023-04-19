@@ -10,7 +10,7 @@
 	 * @tutorial https://www.uviewui.com/components/loading.html
 	 * @property {String} mode 模式选择，见官网说明（默认circle）
 	 * @property {String} color 动画活动区域的颜色，只对 mode = flower 模式有效（默认#c7c7c7）
-	 * @property {String Number} size 加载图标的大小，单位rpx（默认34）
+	 * @property {String Number} size 加载图标的大小，单位upx（默认34）
 	 * @property {Boolean} show 是否显示动画（默认true）
 	 * @example <u-loading mode="circle"></u-loading>
 	 */
@@ -27,7 +27,7 @@
 				type: String,
 				default: '#c7c7c7'
 			},
-			// 加载图标的大小，单位rpx
+			// 加载图标的大小，单位upx
 			size: {
 				type: [String, Number],
 				default: '34'
@@ -42,8 +42,8 @@
 			// 加载中圆圈动画的样式
 			cricleStyle() {
 				let style = {};
-				style.width = this.size + 'rpx';
-				style.height = this.size + 'rpx';
+				style.width = this.size + 'upx';
+				style.height = this.size + 'upx';
 				if (this.mode == 'circle') style.borderColor = `#e4e4e4 #e4e4e4 #e4e4e4 ${this.color ? this.color : '#c7c7c7'}`;
 				return style;
 			},
@@ -59,8 +59,8 @@
 		display: inline-flex;
 		/* #endif */
 		vertical-align: middle;
-		width: 28rpx;
-		height: 28rpx;
+		width: 28upx;
+		height: 28upx;
 		background: 0 0;
 		border-radius: 50%;
 		border: 2px solid;

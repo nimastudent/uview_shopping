@@ -39,7 +39,7 @@
 				type: Object,
 				default() {
 					return {
-						padding: '30rpx 0'
+						padding: '30upx 0'
 					}
 				}
 			}
@@ -114,7 +114,7 @@
 	}
 
 	.u-grid-item-box {
-		padding: 30rpx 0;
+		padding: 30upx 0;
 		@include vue-flex;
 		align-items: center;
 		justify-content: center;

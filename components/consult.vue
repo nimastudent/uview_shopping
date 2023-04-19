@@ -42,18 +42,18 @@
 <style lang="scss" scoped>
 .item {
 	display: flex;
-	padding: 20rpx;
+	padding: 20upx;
 }
 
 image {
-	width: 120rpx;
-	flex: 0 0 120rpx;
-	height: 120rpx;
-	margin-right: 20rpx;
-	border-radius: 12rpx;
+	width: 120upx;
+	flex: 0 0 120upx;
+	height: 120upx;
+	margin-right: 20upx;
+	border-radius: 12upx;
 }
 .wrap{
-	margin: 30rpx;
+	margin: 30upx;
 }
 .title-wrap{
 	width: 95%;

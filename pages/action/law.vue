@@ -5,6 +5,12 @@
 				<u-icon name="list" size="38" class="my-icon" @click="Popshow = true"></u-icon>
 			</view>
 		</u-navbar>
+		
+		
+		<view class="search">
+				<u-input  placeholder="请输入搜索关键字" v-model="title" type="text" :border="true" />
+				<u-button type="primary" style="margin: 0 10px;" @click="getLawCatalogue">搜索</u-button>
+		</view>
 		<u-cell-group>
 			<u-cell-item  class="cell-item"
 			v-for="(item,index) in titleArr"
@@ -46,6 +52,7 @@
 					'font-wight':'600'
 				},
 				lawtype:'',
+				title:"",
 				titleArr:[],
 			}
 		},
@@ -57,7 +64,10 @@
 		},
 		methods: {
 			async getLawCatalogue(){
-				const res = await this.$u.api.getLawCatalogue(this.lawtype)
+				const res = await this.$u.api.getLawCatalogue({
+					lawtype:this.lawtype,
+					title:this.title
+				})
 				console.log(res)
 				if(res.success){
 					this.titleArr = res.body.title
@@ -76,8 +86,8 @@
 			},
 			backNav(){
 				this.$u.route({
-					type:'switchTab',
-					url:'pages/action/action'
+					type:'navigateBack',
+					delta:1
 				})
 			},
 			showPop(){
@@ -94,11 +104,18 @@
 	background-color: blue($color: #000000);
 } 
 .my-icon{
-	padding: 15rpx;
-	margin: 10rpx;
+	padding: 15upx;
+	margin: 10upx;
 }
 .popItem{
-	padding: 10rpx;
-	border: 1rpx solid #000000;
+	padding: 10upx;
+	border: 1upx solid #000000;
 }
+.search {
+		width:99%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin: 0;
+	}
 </style>

@@ -56,7 +56,7 @@
 					<text>如密码遗忘，请联系管理员</text>
 
 
-					<button style="margin-top: 30rpx;" @tap="submit()">登 录</button>
+					<button style="margin-top: 30upx;" @tap="submit()">登 录</button>
 					<view class="reg" @tap="getUserInfor()">pki登录</view>
 				</u-form>
 			</view>
@@ -77,8 +77,8 @@
 				border: true,
 				btnLoading: false,
 				form: {
-					username: '',
-					password: '',
+					username: 'admin',
+					password: '123456',
 				},
 				rules: {
 					username: [{
@@ -99,7 +99,9 @@
 		onReady() {
 			this.$refs.uForm.setRules(this.rules);
 		},
-		onLoad() {},
+		onLoad() {
+			// this.getUserInfor();
+		},
 		computed: {
 			inputStyle() {
 				let style = {};
@@ -183,62 +185,62 @@
 
 <style lang="scss" scoped>
 	.txt {
-		font-size: 32rpx;
+		font-size: 32upx;
 		font-weight: bold;
 		color: #333333;
 	}
 
 	.img-a {
 		width: 100%;
-		height: 450rpx;
+		height: 450upx;
 		background-image: url(@/static/img/head.png);
 		background-size: 100%;
 	}
 
 	.reg {
-		font-size: 28rpx;
+		font-size: 28upx;
 		color: #fff;
-		height: 90rpx;
-		line-height: 90rpx;
-		border-radius: 50rpx;
+		height: 90upx;
+		line-height: 90upx;
+		border-radius: 50upx;
 		font-weight: bold;
 		background: #f5f6fa;
 		color: #000000;
 		text-align: center;
-		margin-top: 30rpx;
+		margin-top: 30upx;
 	}
 
 	.login-view {
 		width: 100%;
 		position: relative;
-		margin-top: -120rpx;
+		margin-top: -120upx;
 		background-color: #ffffff;
 		border-radius: 8% 8% 0% 0;
 	}
 
 	.t-login {
-		width: 600rpx;
+		width: 600upx;
 		margin: 0 auto;
-		font-size: 28rpx;
-		padding-top: 80rpx;
+		font-size: 28upx;
+		padding-top: 80upx;
 	}
 
 	.t-login button {
-		font-size: 28rpx;
+		font-size: 28upx;
 		background: #2796f2;
 		color: #fff;
-		height: 90rpx;
-		line-height: 90rpx;
-		border-radius: 50rpx;
+		height: 90upx;
+		line-height: 90upx;
+		border-radius: 50upx;
 		font-weight: bold;
 	}
 
 	.t-login input {
-		height: 90rpx;
-		line-height: 90rpx;
-		margin-bottom: 50rpx;
+		height: 90upx;
+		line-height: 90upx;
+		margin-bottom: 50upx;
 		border-bottom: 1px solid #e9e9e9;
-		font-size: 28rpx;
+		font-size: 28upx;
 	}
 
 	.t-login .t-a {
@@ -247,36 +249,36 @@
 
 	.t-b {
 		text-align: left;
-		font-size: 42rpx;
+		font-size: 42upx;
 		color: #ffffff;
-		padding: 130rpx 0 0 70rpx;
+		padding: 130upx 0 0 70upx;
 		font-weight: bold;
-		line-height: 70rpx;
+		line-height: 70upx;
 	}
 
 	.t-login .t-c {
 		position: absolute;
-		right: 22rpx;
-		top: 22rpx;
+		right: 22upx;
+		top: 22upx;
 		background: #5677fc;
 		color: #fff;
-		font-size: 24rpx;
-		border-radius: 50rpx;
-		height: 50rpx;
-		line-height: 50rpx;
-		padding: 0 25rpx;
+		font-size: 24upx;
+		border-radius: 50upx;
+		height: 50upx;
+		line-height: 50upx;
+		padding: 0 25upx;
 	}
 
 	.t-login .t-d {
 		text-align: center;
 		color: #999;
-		margin: 80rpx 0;
+		margin: 80upx 0;
 	}
 
 	.t-login .t-e {
 		text-align: center;
-		width: 250rpx;
-		margin: 80rpx auto 0;
+		width: 250upx;
+		margin: 80upx auto 0;
 	}
 
 	.t-login .t-g {
@@ -285,20 +287,20 @@
 	}
 
 	.t-login .t-e image {
-		width: 50rpx;
-		height: 50rpx;
+		width: 50upx;
+		height: 50upx;
 	}
 
 	.t-login .t-f {
 		text-align: center;
-		margin: 150rpx 0 0 0;
+		margin: 150upx 0 0 0;
 		color: #666;
 	}
 
 	.t-login .t-f text {
-		margin-left: 20rpx;
+		margin-left: 20upx;
 		color: #aaaaaa;
-		font-size: 27rpx;
+		font-size: 27upx;
 	}
 
 	.t-login .uni-input-placeholder {

@@ -41,7 +41,7 @@
 import WeCropper from './weCropper.js';
 export default {
 	props: {
-		// 裁剪矩形框的样式，其中可包含的属性为lineWidth-边框宽度(单位rpx)，color: 边框颜色，
+		// 裁剪矩形框的样式，其中可包含的属性为lineWidth-边框宽度(单位upx)，color: 边框颜色，
 		// mask-遮罩颜色，一般设置为一个rgba的透明度，如"rgba(0, 0, 0, 0.35)"
 		boundStyle: {
 			type: Object,
@@ -53,22 +53,22 @@ export default {
 				};
 			}
 		}
-		// // 裁剪框宽度，单位rpx
+		// // 裁剪框宽度，单位upx
 		// rectWidth: {
 		// 	type: [String, Number],
 		// 	default: 400
 		// },
-		// // 裁剪框高度，单位rpx
+		// // 裁剪框高度，单位upx
 		// rectHeight: {
 		// 	type: [String, Number],
 		// 	default: 400
 		// },
-		// // 输出图片宽度，单位rpx
+		// // 输出图片宽度，单位upx
 		// destWidth: {
 		// 	type: [String, Number],
 		// 	default: 400
 		// },
-		// // 输出图片高度，单位rpx
+		// // 输出图片高度，单位upx
 		// destHeight: {
 		// 	type: [String, Number],
 		// 	default: 400
@@ -269,7 +269,7 @@ export default {
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	font-size: 28rpx;
+	font-size: 28upx;
 }
 
 .cropper-buttons .upload,
@@ -280,11 +280,11 @@ export default {
 
 .cropper-buttons .upload {
 	text-align: left;
-	padding-left: 50rpx;
+	padding-left: 50upx;
 }
 
 .cropper-buttons .getCropperImage {
 	text-align: right;
-	padding-right: 50rpx;
+	padding-right: 50upx;
 }
 </style>

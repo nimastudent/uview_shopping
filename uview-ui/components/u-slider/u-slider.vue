@@ -7,7 +7,7 @@
 			:style="[
 				barStyle,
 				{
-					height: height + 'rpx',
+					height: height + 'upx',
 					backgroundColor: activeColor
 				}
 			]"
@@ -17,8 +17,8 @@
 				@touchcancel="onTouchEnd">
 				<slot v-if="$slots.default  || $slots.$default"/>
 				<view v-else class="u-slider__button" :style="[blockStyle, {
-					height: blockWidth + 'rpx',
-					width: blockWidth + 'rpx',
+					height: blockWidth + 'upx',
+					width: blockWidth + 'upx',
 					backgroundColor: blockColor
 				}]"></view>
 			</view>
@@ -35,7 +35,7 @@
  * @property {Number | String} max 最大值（默认100）
  * @property {Number | String} step 步长（默认1）
  * @property {Number | String} blockWidth 滑块宽度，高等于宽（30）
- * @property {Number | String} height 滑块条高度，单位rpx（默认6）
+ * @property {Number | String} height 滑块条高度，单位upx（默认6）
  * @property {String} inactiveColor 底部条背景颜色（默认#c0c4cc）
  * @property {String} activeColor 底部选择部分的背景颜色（默认#2979ff）
  * @property {String} blockColor 滑块颜色（默认#ffffff）
@@ -59,7 +59,7 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 滑块宽度，高等于宽，单位rpx
+		// 滑块宽度，高等于宽，单位upx
 		blockWidth: {
 			type: [Number, String],
 			default: 30
@@ -79,7 +79,7 @@ export default {
 			type: [Number, String],
 			default: 1
 		},
-		// 滑块条高度，单位rpx
+		// 滑块条高度，单位upx
 		height: {
 			type: [Number, String],
 			default: 6

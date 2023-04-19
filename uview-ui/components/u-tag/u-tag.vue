@@ -123,8 +123,8 @@
 			iconStyle() {
 				if(!this.closeable) return ;
 				let style = {};
-				if(this.size == 'mini') style.fontSize = '20rpx';
-				else style.fontSize = '22rpx';
+				if(this.size == 'mini') style.fontSize = '20upx';
+				else style.fontSize = '22upx';
 				if(this.mode == 'plain' || this.mode == 'light') style.color = this.type;
 				else if(this.mode == 'dark')  style.color = "#ffffff";
 				if(this.closeColor) style.color = this.closeColor;
@@ -163,7 +163,7 @@
 	.u-tag {
 		box-sizing: border-box;
 		align-items: center;
-		border-radius: 6rpx;
+		border-radius: 6upx;
 		/* #ifndef APP-NVUE */
 		display: inline-block;
 		/* #endif */
@@ -171,13 +171,13 @@
 	}
 	
 	.u-size-default {
-		font-size: 22rpx;
-		padding: 12rpx 22rpx;
+		font-size: 22upx;
+		padding: 12upx 22upx;
 	}
 	
 	.u-size-mini {
-		font-size: 20rpx;
-		padding: 6rpx 12rpx;
+		font-size: 20upx;
+		padding: 6upx 12upx;
 	}
 
 	.u-mode-light-primary {
@@ -270,20 +270,20 @@
 	}
 
 	.u-shape-circle {
-		border-radius: 100rpx;
+		border-radius: 100upx;
 	}
 	
 	.u-shape-circleRight {
-		border-radius:  0 100rpx 100rpx 0;
+		border-radius:  0 100upx 100upx 0;
 	}
 
 	.u-shape-circleLeft {
-		border-radius: 100rpx 0 0 100rpx;
+		border-radius: 100upx 0 0 100upx;
 	}
 	
 	.u-close-icon {
-		margin-left: 14rpx;
-		font-size: 22rpx;
+		margin-left: 14upx;
+		font-size: 22upx;
 		color: $u-type-success;
 	}
 	

@@ -59,7 +59,7 @@
 				lawArr: [],
 				consultArr: [],
 				newRuleArr: [],
-				swiperHeight: '800rpx'
+				swiperHeight: '800upx'
 			}
 		},
 		onLoad() {
@@ -150,7 +150,7 @@
 	.swiper-item {}
 
 	.my-swiper {
-		height: 1200rpx;
+		height: 1200upx;
 		flex: 1;
 	}
 </style>

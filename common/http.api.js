@@ -1,7 +1,6 @@
 // /common/http.api.js
 
 // 如果没有通过拦截器配置域名的话，可以在这里写上完整的URL(加上域名部分)
-let hotSearchUrl = '/ebapi/store_api/hot_search';
 // let indexUrl = '/api/index';
 
 // 此处第二个参数vm，就是我们在页面使用的this，你可以通过vm获取vuex等操作，更多内容详见uView对拦截器的介绍部分：
@@ -36,10 +35,21 @@ const install = (Vue, vm) => {
 	// 获取课程介绍
 	let getCourseIntroduce = params => vm.$u.get('/course/introduce?id='+params)
 	// 根据id获取课程
-	let getCourseById = id => vm.$u.get(`/teach/getById?id=${id}`)
+	let getCourseById = id => vm.$u.get(`/course/content/get/id?id=${id}`)
 	// 获取课程id
 	let getAllCourseId = () => vm.$u.get('/course/all')
 	
+	// 9、检查课程内容是否学习完成
+	let checkCourseIsFinished = (data) => vm.$u.get('/course/question/check/finish',data)
+	
+	// 获取课程内容下的题目
+	let getQuesById = (data) => vm.$u.get('/course/question/get',data)
+	
+	// 提交用户做的题
+	let submitUserQues = (data) => vm.$u.post('/course/question/submit',data)
+	
+	//提交用户学习时长
+	let submitUserTime = (data) => vm.$u.post('/course/content/submit/learn/time',data)
 	
 	// exam start----------------------------------------------------
 	
@@ -103,6 +113,17 @@ const install = (Vue, vm) => {
 	// exam end ----------------------------------------------------
 	
 	
+	// 司法 相关
+	let getAllType = () => vm.$u.get("/tool/type/all")
+	
+	let getSifaList = (params) => vm.$u.get('/tool/all',params)
+	
+	let getSifaById = (params) => vm.$u.get('/tool/getById',params)
+	
+	
+	
+	
+	
 	// 收藏资讯 type=1 法律 type = 2 新规 type = 3
 	let collect = params => vm.$u.post('/collect/add ',params)
 	// 删除收藏 type=1 法律 type = 2 新规 type = 3
@@ -112,7 +133,7 @@ const install = (Vue, vm) => {
 	//获取法律目录
 	let getLaw = params => vm.$u.get('/law')
 	
-	let getLawCatalogue = parmas => vm.$u.get('/law/catalogue?lawtype='+parmas)
+	let getLawCatalogue = parmas => vm.$u.get('/law/catalogue',parmas)
 	
 	let getlawContent = parmas => vm.$u.get('/law/content?title='+parmas)
 	
@@ -147,6 +168,30 @@ const install = (Vue, vm) => {
 	let getColleLaw = () => vm.$u.get('/collect/myLaw')
 	// 获取收藏新规
 	let getColleNewRule = () => vm.$u.get('/collect/myRule')
+	
+	
+	//工作交流
+	let getWorkList = (params) => vm.$u.get('/topic/list',params)
+	
+	// 4、根据id返回具体信息
+	let getWorkContentById = (params) => vm.$u.get('/topic/getById',params)
+	
+	//1、用户发布交流
+	let insertWork = (data) => vm.$u.post('/topic/publish',data)
+	
+	let commetWork = (data) => vm.$u.post('/topic/comment/publish',data)
+	
+	//采纳评论
+	let acceptComment = (params) => vm.$u.get('/topic/comment/accept',params)
+	
+	//取消采纳
+	let cancleComment = (params) => vm.$u.get('/topic/comment/cancel/accept',params)
+	
+	// 用户获取自己发布的工作交流
+	let getMyWork = () => vm.$u.get('/topic/my/list')
+	
+	// 用户删除自己发布的工作交流
+	let userDeleteWork = (params) => vm.$u.get('/topic/delete',params)
 	
 	// 此处使用了传入的params参数，一切自定义即可
 	
@@ -201,7 +246,22 @@ const install = (Vue, vm) => {
 		getMockRecord,
 		addErrorBook,
 		resSetOrder,
-		deleteErrorBooke
+		deleteErrorBooke,
+		getSifaList,
+		getSifaById,
+		getWorkList,
+		getWorkContentById,
+		insertWork,
+		commetWork,
+		checkCourseIsFinished,
+		getMyWork,
+		userDeleteWork,
+		acceptComment,
+		cancleComment,
+		getQuesById,
+		submitUserQues,
+		getAllType,
+		submitUserTime
 	};
 }
 

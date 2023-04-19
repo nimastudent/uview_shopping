@@ -608,13 +608,13 @@ export default {
 
 .u-picker-header {
 	width: 100%;
-	height: 90rpx;
-	padding: 0 40rpx;
+	height: 90upx;
+	padding: 0 40upx;
 	@include vue-flex;
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
-	font-size: 30rpx;
+	font-size: 30upx;
 	background: #fff;
 	position: relative;
 }
@@ -622,7 +622,7 @@ export default {
 .u-picker-header::after {
 	content: '';
 	position: absolute;
-	border-bottom: 1rpx solid #eaeef1;
+	border-bottom: 1upx solid #eaeef1;
 	-webkit-transform: scaleY(0.5);
 	transform: scaleY(0.5);
 	bottom: 0;
@@ -636,7 +636,7 @@ export default {
 
 .u-picker-body {
 	width: 100%;
-	height: 500rpx;
+	height: 500upx;
 	overflow: hidden;
 	background-color: #fff;
 }
@@ -645,18 +645,18 @@ export default {
 	@include vue-flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 32rpx;
+	font-size: 32upx;
 	color: $u-main-color;
-	padding: 0 8rpx;
+	padding: 0 8upx;
 }
 
 .u-text {
-	font-size: 24rpx;
-	padding-left: 8rpx;
+	font-size: 24upx;
+	padding-left: 8upx;
 }
 
 .u-btn-picker {
-	padding: 16rpx;
+	padding: 16upx;
 	box-sizing: border-box;
 	text-align: center;
 	text-decoration: none;

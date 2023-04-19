@@ -286,20 +286,20 @@
 
 	.u-index-bar__index {
 		font-weight: 500;
-		padding: 8rpx 18rpx;
-		font-size: 22rpx;
+		padding: 8upx 18upx;
+		font-size: 22upx;
 		line-height: 1
 	}
 
 	.u-indexed-list-alert {
 		position: fixed;
-		width: 120rpx;
-		height: 120rpx;
-		right: 90rpx;
+		width: 120upx;
+		height: 120upx;
+		right: 90upx;
 		top: 50%;
-		margin-top: -60rpx;
-		border-radius: 24rpx;
-		font-size: 50rpx;
+		margin-top: -60upx;
+		border-radius: 24upx;
+		font-size: 50upx;
 		color: #fff;
 		background-color: rgba(0, 0, 0, 0.65);
 		@include vue-flex;
@@ -310,6 +310,6 @@
 	}
 
 	.u-indexed-list-alert text {
-		line-height: 50rpx;
+		line-height: 50upx;
 	}
 </style>

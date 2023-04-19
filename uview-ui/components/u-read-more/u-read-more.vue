@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<view class="u-content" :class="[elId]" :style="{ 
-			height: isLongContent && !showMore ? showHeight + 'rpx' : 'auto',
+			height: isLongContent && !showMore ? showHeight + 'upx' : 'auto',
 			textIndent: textIndent
 		}">
 			<slot></slot>
@@ -10,7 +10,7 @@
 		    :class="{ 'u-content__show-more': showMore }"
 		    :style="[innerShadowStyle]">
 			<text class="u-content__showmore-wrap__readmore-btn" :style="{
-				fontSize: fontSize + 'rpx',
+				fontSize: fontSize + 'upx',
 				color: color
 			}">
 				{{ showMore ? openText : closeText }}
@@ -27,10 +27,10 @@
 	 * readMore 阅读更多
 	 * @description 该组件一般用于内容较长，预先收起一部分，点击展开全部内容的场景。
 	 * @tutorial https://www.uviewui.com/components/readMore.html
-	 * @property {String Number} show-height 内容超出此高度才会显示展开全文按钮，单位rpx（默认400）
+	 * @property {String Number} show-height 内容超出此高度才会显示展开全文按钮，单位upx（默认400）
 	 * @property {Boolean} toggle 展开后是否显示收起按钮（默认false）
 	 * @property {String} close-text 关闭时的提示文字（默认“展开阅读全文”）
-	 * @property {String Number} font-size 提示文字的大小，单位rpx（默认28）
+	 * @property {String Number} font-size 提示文字的大小，单位upx（默认28）
 	 * @property {String} text-indent 段落首行缩进的字符个数（默认2em）
 	 * @property {String} open-text 展开时的提示文字（默认“收起”）
 	 * @property {String} color 提示文字的颜色（默认#2979ff）
@@ -39,7 +39,7 @@
 	export default {
 		name: "u-read-more",
 		props: {
-			// 默认的显示占位高度，单位为rpx
+			// 默认的显示占位高度，单位为upx
 			showHeight: {
 				type: [Number, String],
 				default: 400
@@ -75,8 +75,8 @@
 				default () {
 					return {
 						backgroundImage: "linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%)",
-						paddingTop: "300rpx",
-						marginTop: "-300rpx"
+						paddingTop: "300upx",
+						marginTop: "-300upx"
 					}
 				}
 			},
@@ -144,7 +144,7 @@
 	@import "../../libs/css/style.components.scss";
 
 	.u-content {
-		font-size: 30rpx;
+		font-size: 30upx;
 		color: $u-content-color;
 		line-height: 1.8;
 		text-align: left;
@@ -153,13 +153,13 @@
 		&__show-more {
 			padding-top: 0;
 			background: none;
-			margin-top: 20rpx;
+			margin-top: 20upx;
 		}
 
 		&__showmore-wrap {
 			position: relative;
 			width: 100%;
-			padding-bottom: 26rpx;
+			padding-bottom: 26upx;
 			@include vue-flex;
 			align-items: center;
 			justify-content: center;
@@ -171,7 +171,7 @@
 				line-height: 1;
 
 				&__icon {
-					margin-left: 14rpx;
+					margin-left: 14upx;
 				}
 			}
 		}

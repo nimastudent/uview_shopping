@@ -14,7 +14,7 @@
 	 * row 行布局
 	 * @description 通过基础的 12 分栏，迅速简便地创建布局。
 	 * @tutorial https://www.uviewui.com/components/layout.html#row-props
-	 * @property {String Number} gutter 栅格间隔，左右各为此值的一半，单位rpx（默认0）
+	 * @property {String Number} gutter 栅格间隔，左右各为此值的一半，单位upx（默认0）
 	 * @property {String} justify 水平排列方式(微信小程序暂不支持)默认（start(或flex-start)）
 	 * @property {String} align 垂直排列方式（默认center）
 	 * @example <u-row gutter="16"></u-row>

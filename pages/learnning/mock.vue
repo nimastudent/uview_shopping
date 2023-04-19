@@ -161,7 +161,7 @@
 							scrollOffset: true
 						}, (data) => {
 							tempHeight -= data.height;
-							_me.swiperHeight = tempHeight + 'rpx';
+							_me.swiperHeight = tempHeight + 'upx';
 						}).exec();
 
 					}).exec();
@@ -491,11 +491,11 @@
 <style lang="scss" scoped>
 	.container {
 		position: relative;
-		letter-spacing: 4rpx;
+		letter-spacing: 4upx;
 	}
 
 	.top-box {
-		min-height: 90rpx;
+		min-height: 90upx;
 		display: flex;
 		justify-content: space-between;
 		margin: 0 20upx;
@@ -507,7 +507,7 @@
 	}
 
 	.foot-box {
-		min-height: 90rpx;
+		min-height: 90upx;
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -515,13 +515,13 @@
 
 	#foot-box {
 		position: fixed;
-		bottom: 20rpx;
+		bottom: 20upx;
 	}
 
 	.qusetion {
-		padding: 10rpx;
+		padding: 10upx;
 		font-weight: 600;
-		font-size: 30rpx;
+		font-size: 30upx;
 	}
 
 	.foot-btn {

@@ -3,7 +3,7 @@
 		<view class="u-icon-minus" @touchstart.stop.prevent="btnTouchStart('minus')" @touchend.stop.prevent="clearTimer" :class="{ 'u-icon-disabled': disabled || inputVal <= min }"
 		    :style="{
 				background: bgColor,
-				height: inputHeight + 'rpx',
+				height: inputHeight + 'upx',
 				color: color
 			}">
 			<u-icon name="minus" :size="size"></u-icon>
@@ -12,15 +12,15 @@
 		    v-model="inputVal" class="u-number-input" @blur="onBlur" @focus="onFocus"
 		    type="number" :style="{
 				color: color,
-				fontSize: size + 'rpx',
+				fontSize: size + 'upx',
 				background: bgColor,
-				height: inputHeight + 'rpx',
-				width: inputWidth + 'rpx'
+				height: inputHeight + 'upx',
+				width: inputWidth + 'upx'
 			}" />
 		<view class="u-icon-plus" @touchstart.stop.prevent="btnTouchStart('plus')" @touchend.stop.prevent="clearTimer" :class="{ 'u-icon-disabled': disabled || inputVal >= max }"
 		    :style="{
 				background: bgColor,
-				height: inputHeight + 'rpx',
+				height: inputHeight + 'upx',
 				color: color
 			}">
 			<u-icon name="plus" :size="size"></u-icon>
@@ -41,14 +41,14 @@
 	 * @property {Boolean} disabled 是否禁用操作，禁用后无法加减或手动修改输入框的值（默认false）
 	 * @property {Boolean} disabled-input 是否禁止输入框手动输入值（默认false）
 	 * @property {Boolean} positive-integer 是否只能输入正整数（默认true）
-	 * @property {String | Number} size 输入框文字和按钮字体大小，单位rpx（默认26）
+	 * @property {String | Number} size 输入框文字和按钮字体大小，单位upx（默认26）
 	 * @property {String} color 输入框文字和加减按钮图标的颜色（默认#323233）
-	 * @property {String | Number} input-width 输入框宽度，单位rpx（默认80）
-	 * @property {String | Number} input-height 输入框和按钮的高度，单位rpx（默认50）
+	 * @property {String | Number} input-width 输入框宽度，单位upx（默认80）
+	 * @property {String | Number} input-height 输入框和按钮的高度，单位upx（默认50）
 	 * @property {String | Number} index 事件回调时用以区分当前发生变化的是哪个输入框
 	 * @property {Boolean} long-press 是否开启长按连续递增或递减(默认true)
 	 * @property {String | Number} press-time 开启长按触发后，每触发一次需要多久，单位ms(默认250)
-	 * @property {String | Number} cursor-spacing 指定光标于键盘的距离，避免键盘遮挡输入框，单位rpx（默认200）
+	 * @property {String | Number} cursor-spacing 指定光标于键盘的距离，避免键盘遮挡输入框，单位upx（默认200）
 	 * @event {Function} change 输入框内容发生变化时触发，对象形式
 	 * @event {Function} blur 输入框失去焦点时触发，对象形式
 	 * @event {Function} minus 点击减少按钮时触发(按钮可点击情况下)，对象形式
@@ -88,7 +88,7 @@
 				type: Boolean,
 				default: false
 			},
-			// input的字体大小，单位rpx
+			// input的字体大小，单位upx
 			size: {
 				type: [Number, String],
 				default: 26
@@ -98,12 +98,12 @@
 				type: String,
 				default: '#323233'
 			},
-			// input宽度，单位rpx
+			// input宽度，单位upx
 			inputWidth: {
 				type: [Number, String],
 				default: 80
 			},
-			// input高度，单位rpx
+			// input高度，单位upx
 			inputHeight: {
 				type: [Number, String],
 				default: 50
@@ -329,7 +329,7 @@
 		position: relative;
 		text-align: center;
 		padding: 0;
-		margin: 0 6rpx;
+		margin: 0 6upx;
 		@include vue-flex;
 		align-items: center;
 		justify-content: center;
@@ -337,18 +337,18 @@
 
 	.u-icon-plus,
 	.u-icon-minus {
-		width: 60rpx;
+		width: 60upx;
 		@include vue-flex;
 		justify-content: center;
 		align-items: center;
 	}
 
 	.u-icon-plus {
-		border-radius: 0 8rpx 8rpx 0;
+		border-radius: 0 8upx 8upx 0;
 	}
 
 	.u-icon-minus {
-		border-radius: 8rpx 0 0 8rpx;
+		border-radius: 8upx 0 0 8upx;
 	}
 
 	.u-icon-disabled {

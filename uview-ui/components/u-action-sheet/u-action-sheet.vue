@@ -33,7 +33,7 @@
 	 * @property {Object} tips 顶部的提示文字，见官方文档示例
 	 * @property {String} cancel-text 取消按钮的提示文字
 	 * @property {Boolean} cancel-btn 是否显示底部的取消按钮（默认true）
-	 * @property {Number String} border-radius 弹出部分顶部左右的圆角值，单位rpx（默认0）
+	 * @property {Number String} border-radius 弹出部分顶部左右的圆角值，单位upx（默认0）
 	 * @property {Boolean} mask-close-able 点击遮罩是否可以关闭（默认true）
 	 * @property {Boolean} safe-area-inset-bottom 是否开启底部安全区适配（默认false）
 	 * @property {Number String} z-index z-index值（默认1075）
@@ -50,7 +50,7 @@
 				type: Boolean,
 				default: true
 			},
-			// 按钮的文字数组，可以自定义颜色和字体大小，字体单位为rpx
+			// 按钮的文字数组，可以自定义颜色和字体大小，字体单位为upx
 			list: {
 				type: Array,
 				default () {
@@ -110,7 +110,7 @@
 			tipsStyle() {
 				let style = {};
 				if (this.tips.color) style.color = this.tips.color;
-				if (this.tips.fontSize) style.fontSize = this.tips.fontSize + 'rpx';
+				if (this.tips.fontSize) style.fontSize = this.tips.fontSize + 'upx';
 				return style;
 			},
 			// 操作项目的样式
@@ -118,7 +118,7 @@
 				return (index) => {
 					let style = {};
 					if (this.list[index].color) style.color = this.list[index].color;
-					if (this.list[index].fontSize) style.fontSize = this.list[index].fontSize + 'rpx';
+					if (this.list[index].fontSize) style.fontSize = this.list[index].fontSize + 'upx';
 					// 选项被禁用的样式
 					if (this.list[index].disabled) style.color = '#c0c4cc';
 					return style;
@@ -156,9 +156,9 @@
 	@import "../../libs/css/style.components.scss";
 
 	.u-tips {
-		font-size: 26rpx;
+		font-size: 26upx;
 		text-align: center;
-		padding: 34rpx 0;
+		padding: 34upx 0;
 		line-height: 1;
 		color: $u-tips-color;
 	}
@@ -168,19 +168,19 @@
 		line-height: 1;
 		justify-content: center;
 		align-items: center;
-		font-size: 32rpx;
-		padding: 34rpx 0;
+		font-size: 32upx;
+		padding: 34upx 0;
 		flex-direction: column;
 	}
 	
 	.u-action-sheet-item__subtext {
-		font-size: 24rpx;
+		font-size: 24upx;
 		color: $u-tips-color;
-		margin-top: 20rpx;
+		margin-top: 20upx;
 	}
 
 	.u-gab {
-		height: 12rpx;
+		height: 12upx;
 		background-color: rgb(234, 234, 236);
 	}
 

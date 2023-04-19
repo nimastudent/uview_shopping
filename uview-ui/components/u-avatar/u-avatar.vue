@@ -9,7 +9,7 @@
 			:mode="imgMode"
 		></image>
 		<text class="u-line-1" v-else-if="uText" :style="{
-			fontSize: '38rpx'
+			fontSize: '38upx'
 		}">{{uText}}</text>
 		<slot v-else></slot>
 		<view class="u-avatar__sex" v-if="showSex" :class="['u-avatar__sex--' + sexIcon]" :style="[uSexStyle]">
@@ -29,7 +29,7 @@
 	 * @tutorial https://www.uviewui.com/components/avatar.html
 	 * @property {String} bg-color 背景颜色，一般显示文字时用（默认#ffffff）
 	 * @property {String} src 头像路径，如加载失败，将会显示默认头像
-	 * @property {String Number} size 头像尺寸，可以为指定字符串(large, default, mini)，或者数值，单位rpx（默认default）
+	 * @property {String Number} size 头像尺寸，可以为指定字符串(large, default, mini)，或者数值，单位upx（默认default）
 	 * @property {String} mode 显示类型，见上方说明（默认circle）
 	 * @property {String} sex-icon 性别图标，man-男，woman-女（默认man）
 	 * @property {String} level-icon 等级图标（默认level）
@@ -55,7 +55,7 @@
 				type: String,
 				default: ''
 			},
-			// 尺寸，large-大，default-中等，mini-小，如果为数值，则单位为rpx
+			// 尺寸，large-大，default-中等，mini-小，如果为数值，则单位为upx
 			// 宽度等于高度
 			size: {
 				type: [String, Number],
@@ -135,13 +135,13 @@
 		computed: {
 			wrapStyle() {
 				let style = {};  
-				style.height = this.size == 'large' ? '120rpx' : this.size == 'default' ?
-				'90rpx' : this.size == 'mini' ? '70rpx' : this.size + 'rpx';
+				style.height = this.size == 'large' ? '120upx' : this.size == 'default' ?
+				'90upx' : this.size == 'mini' ? '70upx' : this.size + 'upx';
 				style.width = style.height;
 				style.flex = `0 0 ${style.height}`;
 				style.backgroundColor = this.bgColor;
 				style.borderRadius = this.mode == 'circle' ? '500px' : '5px';
-				if(this.text) style.padding = `0 6rpx`;
+				if(this.text) style.padding = `0 6upx`;
 				return style;
 			},
 			imgStyle() {
@@ -188,7 +188,7 @@
 		/* #endif */
 		align-items: center;
 		justify-content: center;
-		font-size: 28rpx;
+		font-size: 28upx;
 		color: $u-content-color;
 		border-radius: 10px;
 		position: relative;
@@ -200,13 +200,13 @@
 		
 		&__sex {
 			position: absolute;
-			width: 32rpx;
+			width: 32upx;
 			color: #ffffff;
-			height: 32rpx;
+			height: 32upx;
 			@include vue-flex;
 			justify-content: center;
 			align-items: center;
-			border-radius: 100rpx;
+			border-radius: 100upx;
 			top: 5%;
 			z-index: 1;
 			right: -7%;
@@ -227,13 +227,13 @@
 		
 		&__level {
 			position: absolute;
-			width: 32rpx;
+			width: 32upx;
 			color: #ffffff;
-			height: 32rpx;
+			height: 32upx;
 			@include vue-flex;
 			justify-content: center;
 			align-items: center;
-			border-radius: 100rpx;
+			border-radius: 100upx;
 			bottom: 5%; 
 			z-index: 1;
 			right: -7%;

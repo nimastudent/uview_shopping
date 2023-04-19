@@ -71,11 +71,11 @@
 	
 	.u-index-anchor {
 		box-sizing: border-box;
-		padding: 14rpx 24rpx;
+		padding: 14upx 24upx;
 		color: #606266;
 		width: 100%;
 		font-weight: 500;
-		font-size: 28rpx;
+		font-size: 28upx;
 		line-height: 1.2;
 		background-color: rgb(245, 245, 245);
 	}

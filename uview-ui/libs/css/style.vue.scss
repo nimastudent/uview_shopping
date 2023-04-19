@@ -1,6 +1,6 @@
 page {
 	color: $u-main-color;
-	font-size: 28rpx;
+	font-size: 28upx;
 }
 
 /* start--去除webkit的默认样式--start */
@@ -142,7 +142,7 @@ page {
 
 /* start--高斯模糊tabbar底部处理--start */
 .u-blur-effect-inset {
-	width: 750rpx;  
+	width: 750upx;  
 	height: var(--window-bottom);   
 	background-color: #FFFFFF;  
 }

@@ -1,8 +1,8 @@
 <template>
 	<view class="u-load-more-wrap" :style="{
 		backgroundColor: bgColor,
-		marginBottom: marginBottom + 'rpx',
-		marginTop: marginTop + 'rpx',
+		marginBottom: marginBottom + 'upx',
+		marginTop: marginTop + 'upx',
 		height: $u.addUnit(height)
 	}">
 		<u-line color="#d4d4d4" length="50"></u-line>
@@ -102,7 +102,7 @@
 				type: [String, Number],
 				default: 0
 			},
-			// 高度，单位rpx
+			// 高度，单位upx
 			height: {
 				type: [String, Number],
 				default: 'auto'
@@ -119,7 +119,7 @@
 			loadTextStyle() {
 				return {
 					color: this.color,
-					fontSize: this.fontSize + 'rpx',
+					fontSize: this.fontSize + 'upx',
 					position: 'relative',
 					zIndex: 1,
 					backgroundColor: this.bgColor,
@@ -178,7 +178,7 @@
 		@include vue-flex;
 		justify-content: center;
 		align-items: center;
-		padding: 0 12rpx;
+		padding: 0 12upx;
 	}
 	
 	.u-more {
@@ -188,11 +188,11 @@
 	}
 	
 	.u-dot-text {
-		font-size: 28rpx;
+		font-size: 28upx;
 	}
 	
 	.u-loadmore-icon-wrap {
-		margin-right: 8rpx;
+		margin-right: 8upx;
 	}
 	
 	.u-loadmore-icon {

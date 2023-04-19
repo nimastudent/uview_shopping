@@ -38,8 +38,8 @@
  * @property {String Number} percent 圆环进度百分比值，为数值类型，0-100
  * @property {String} inactive-color 圆环的底色，默认为灰色(该值无法动态变更)（默认#ececec）
  * @property {String} active-color 圆环激活部分的颜色(该值无法动态变更)（默认#19be6b）
- * @property {String Number} width 整个圆环组件的宽度，高度默认等于宽度值，单位rpx（默认200）
- * @property {String Number} border-width 圆环的边框宽度，单位rpx（默认14）
+ * @property {String Number} width 整个圆环组件的宽度，高度默认等于宽度值，单位upx（默认200）
+ * @property {String Number} border-width 圆环的边框宽度，单位upx（默认14）
  * @property {String Number} duration 整个圆环执行一圈的时间，单位ms（默认呢1500）
  * @property {String} type 如设置，active-color值将会失效
  * @property {String} bg-color 整个组件背景颜色，默认为白色
@@ -67,12 +67,12 @@ export default {
 			type: String,
 			default: '#19be6b'
 		},
-		// 圆环线条的宽度，单位rpx
+		// 圆环线条的宽度，单位upx
 		borderWidth: {
 			type: [Number, String],
 			default: 14
 		},
-		// 整个圆形的宽度，单位rpx
+		// 整个圆形的宽度，单位upx
 		width: {
 			type: [Number, String],
 			default: 200

@@ -7,15 +7,15 @@
 				charArrLength === index && mode == 'box' ? 'u-box-active' : '',
 				mode === 'box' ? 'u-box' : '']" :style="{
 					fontWeight: bold ? 'bold' : 'normal',
-					fontSize: fontSize + 'rpx',
-					width: width + 'rpx',
-					height: width + 'rpx',
+					fontSize: fontSize + 'upx',
+					width: width + 'upx',
+					height: width + 'upx',
 					color: inactiveColor,
 					borderColor: charArrLength === index && mode == 'box' ? activeColor : inactiveColor
 				}">
 					<view class="u-placeholder-line" :style="{
 							display: charArrLength === index ? 'block' : 'none',
-							height: width * 0.5 +'rpx'
+							height: width * 0.5 +'upx'
 						}"
 						v-if="mode !== 'middleLine'"
 					></view>
@@ -45,10 +45,10 @@
 	 * @property {Boolean} breathe 是否开启呼吸效果，见上方说明（默认true）
 	 * @property {Boolean} focus 是否自动获取焦点（默认false）
 	 * @property {Boolean} bold 字体和输入横线是否加粗（默认true）
-	 * @property {String Number} font-size 字体大小，单位rpx（默认60）
+	 * @property {String Number} font-size 字体大小，单位upx（默认60）
 	 * @property {String} active-color 当前激活输入框的样式（默认#2979ff）
 	 * @property {String} inactive-color 非激活输入框的样式，文字颜色同此值（默认#606266）
-	 * @property {String | Number} width 输入框宽度，单位rpx，高等于宽（默认80）
+	 * @property {String | Number} width 输入框宽度，单位upx，高等于宽（默认80）
 	 * @property {Boolean} disabled-keyboard 禁止点击输入框唤起系统键盘（默认false）
 	 * @event {Function} change 输入内容发生改变时触发，具体见官网说明
 	 * @event {Function} finish 输入字符个数达maxlength值时触发，见官网说明
@@ -107,7 +107,7 @@
 				type: String,
 				default: '#606266'
 			},
-			// 输入框的大小，单位rpx，宽等于高
+			// 输入框的大小，单位upx，宽等于高
 			width: {
 				type: [Number, String],
 				default: '80'
@@ -221,13 +221,13 @@
 
 	.u-char-item {
 		position: relative;
-		width: 90rpx;
-		height: 90rpx;
-		margin: 10rpx 10rpx;
-		font-size: 60rpx;
+		width: 90upx;
+		height: 90upx;
+		margin: 10upx 10upx;
+		font-size: 60upx;
 		font-weight: bold;
 		color: $u-main-color;
-		line-height: 90rpx;
+		line-height: 90upx;
 		@include vue-flex;
 		justify-content: center;
 		align-items: center;
@@ -239,8 +239,8 @@
 
 	.u-box {
 		box-sizing: border-box;
-		border: 2rpx solid #cccccc;
-		border-radius: 6rpx;
+		border: 2upx solid #cccccc;
+		border-radius: 6upx;
 	}
 
 	.u-box-active {
@@ -249,7 +249,7 @@
 		animation-duration: 1500ms;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
-		border: 2rpx solid $u-type-primary;
+		border: 2upx solid $u-type-primary;
 	}
 
 	.u-middle-line-active {
@@ -268,8 +268,8 @@
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		width: 2rpx;
-		height: 40rpx;
+		width: 2upx;
+		height: 40upx;
 		background: #333333;
 		animation: twinkling 1.5s infinite ease;
 	}
@@ -279,8 +279,8 @@
 	}
 
 	.u-dot {
-		font-size: 34rpx;
-		line-height: 34rpx;
+		font-size: 34upx;
+		line-height: 34upx;
 	}
 
 	.u-middle-line {

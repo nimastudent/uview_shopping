@@ -81,38 +81,38 @@
 <style lang="scss" scoped>
 .item-comtinar{
 	background-color: #fff;
-	padding: 25rpx;
-	border-radius: 24rpx;
-	margin: 10rpx;
-	border: 1rpx solid #606266;
-	// box-shadow: #848484 2rpx 1rpx 2rpx 0rpx;
+	padding: 25upx;
+	border-radius: 24upx;
+	margin: 10upx;
+	border: 1upx solid #606266;
+	// box-shadow: #848484 2upx 1upx 2upx 0upx;
 		.top-item{
 			display: flex;
 			.text{
-				line-height: 40rpx;
+				line-height: 40upx;
 				font-weight: 600;
-				font-size: 35rpx;
+				font-size: 35upx;
 			}
 			.date{
-				line-height: 25rpx;
+				line-height: 25upx;
 				color: #A4A4A4;
-				font-size: 24rpx;
+				font-size: 24upx;
 			}
 		}
 }
 .mid-content{
-	margin: 15rpx 0;
+	margin: 15upx 0;
 }
 .mid-title{
 	background-color: #F2F2F2;
-	line-height: 100rpx;
-	font-size: 30rpx;
-	padding: 0 10rpx;
+	line-height: 100upx;
+	font-size: 30upx;
+	padding: 0 10upx;
 	text-wrap: none;
-	border-radius: 8rpx;
+	border-radius: 8upx;
 }
 .bottom-icon{
-	padding: 8rpx;
+	padding: 8upx;
 	display: flex;
 	justify-content: space-between;
 }

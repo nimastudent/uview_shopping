@@ -111,6 +111,7 @@
 		}, {
 			"path": "pages/consult/course",
 			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
@@ -192,29 +193,80 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/learnning/score",
+			"style": {
+				"navigationBarTitleText": "我的成绩",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/test/test",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/learnning/order/order",
+			"style": {
+				"navigationBarTitleText": "选择练习",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/work/work",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}, {
+			"path": "pages/work/workAdd",
+			"style": {
+				"navigationBarTitleText": "新增交流",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/action/Sifa/Sifa",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/action/Sifa/sifaContent",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	    ,{
-            "path" : "pages/learnning/score",
+            "path" : "pages/work/workContent",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "我的成绩",
-                "enablePullDownRefresh": false
-            }
-        }
-        ,{
-            "path" : "pages/test/test",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "工作交流",
                 "enablePullDownRefresh": false
             }
             
         }
         ,{
-            "path" : "pages/learnning/order/order",
+            "path" : "pages/center/myWork",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "选择练习",
+                "navigationBarTitleText": "我的交流",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/action/Sifa/sifaList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
@@ -224,9 +276,12 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "学习强警",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"rpxCalcBaseDeviceWidth":1150
+		// "rpxCalcMaxDeviceWidth": 0
 	},
 	"tabBar": {
+		"height": "70",
 		"color": "#000000",
 		"selectedColor": "#f34a0d",
 		"borderStyle": "black",
@@ -235,28 +290,58 @@
 				"pagePath": "pages/index/index",
 				"iconPath": "static/tabbarIcon/i.png",
 				"selectedIconPath": "static/tabbarIcon/ic.png",
-				"text": "首页"
+				"text": "首页123",
+				"iconfont": {
+					"fontSize": "17px",
+					"selectedColor": "#f34a0d"
+				}
 			}, {
 				"pagePath": "pages/consult/index",
 				"iconPath": "static/tabbarIcon/x.png",
 				"selectedIconPath": "static/tabbarIcon/xc.png",
-				"text": "课程学习"
+				"text": "课程学习",
+				"iconfont": {
+					"fontSize": "17px",
+					"selectedColor": "#f34a0d"
+				}
 			}, {
 				"pagePath": "pages/learnning/index",
 				"iconPath": "static/tabbarIcon/l.png",
 				"selectedIconPath": "static/tabbarIcon/lc.png",
-				"text": "大练兵"
+				"text": "实战大练兵",
+				"iconfont": {
+					"fontSize": "17px",
+					"selectedColor": "#f34a0d"
+				}
+			},
+			{
+				"pagePath": "pages/work/work",
+				"iconPath": "static/tabbarIcon/work.png",
+				"selectedIconPath": "static/tabbarIcon/wc.png",
+				"text": "工作交流",
+				"iconfont": {
+					"fontSize": "17px",
+					"selectedColor": "#f34a0d"
+				}
 			},
 			{
 				"pagePath": "pages/action/action",
 				"iconPath": "static/tabbarIcon/f.png",
 				"selectedIconPath": "static/tabbarIcon/fc.png",
-				"text": "办案大全"
+				"text": "办案大全",
+				"iconfont": {
+					"fontSize": "17upx",
+					"selectedColor": "#f34a0d"
+				}
 			}, {
 				"pagePath": "pages/center/index",
 				"iconPath": "static/tabbarIcon/c.png",
 				"selectedIconPath": "static/tabbarIcon/cc.png",
-				"text": "个人中心"
+				"text": "个人中心",
+				"iconfont": {
+					"fontSize": "17px",
+					"selectedColor": "#f34a0d"
+				}
 			}
 		]
 	}

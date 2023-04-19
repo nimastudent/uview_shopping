@@ -17,7 +17,7 @@
 			class="u-cell_title"
 			:style="[
 				{
-					width: titleWidth ? titleWidth + 'rpx' : 'auto'
+					width: titleWidth ? titleWidth + 'upx' : 'auto'
 				},
 				titleStyle
 			]"
@@ -65,7 +65,7 @@
  * @property {Object} label-style 标题下方描述信息的样式，对象形式
  * @property {String} bg-color 背景颜色（默认transparent）
  * @property {String Number} index 用于在click事件回调中返回，标识当前是第几个Item
- * @property {String Number} title-width 标题的宽度，单位rpx
+ * @property {String Number} title-width 标题的宽度，单位upx
  * @example <u-cell-item icon="integral-fill" title="会员等级" value="新版本"></u-cell-item>
  */
 export default {
@@ -127,7 +127,7 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 标题的宽度，单位rpx
+		// 标题的宽度，单位upx
 		titleWidth: {
 			type: [Number, String],
 			default: ''
@@ -173,7 +173,7 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 左边图标的大小，单位rpx，只对传入icon字段时有效
+		// 左边图标的大小，单位upx，只对传入icon字段时有效
 		iconSize: {
 			type: [Number, String],
 			default: 34
@@ -218,34 +218,34 @@ export default {
 	box-sizing: border-box;
 	/* #endif */
 	width: 100%;
-	padding: 26rpx 32rpx;
-	font-size: 28rpx;
-	line-height: 54rpx;
+	padding: 26upx 32upx;
+	font-size: 28upx;
+	line-height: 54upx;
 	color: $u-content-color;
 	background-color: #fff;
 	text-align: left;
 }
 
 .u-cell_title {
-	font-size: 28rpx;
+	font-size: 28upx;
 }
 
 .u-cell__left-icon-wrap {
-	margin-right: 10rpx;
-	font-size: 32rpx;
+	margin-right: 10upx;
+	font-size: 32upx;
 }
 
 .u-cell__right-icon-wrap {
-	margin-left: 10rpx;
+	margin-left: 10upx;
 	color: #969799;
-	font-size: 28rpx;
+	font-size: 28upx;
 }
 
 .u-cell__left-icon-wrap,
 .u-cell__right-icon-wrap {
 	@include vue-flex;
 	align-items: center;
-	height: 48rpx;
+	height: 48upx;
 }
 
 .u-cell-border:after {
@@ -267,9 +267,9 @@ export default {
 }
 
 .u-cell__label {
-	margin-top: 6rpx;
-	font-size: 26rpx;
-	line-height: 36rpx;
+	margin-top: 6upx;
+	font-size: 26upx;
+	line-height: 36upx;
 	color: $u-tips-color;
 	/* #ifndef APP-NVUE */
 	word-wrap: break-word;
@@ -283,7 +283,7 @@ export default {
 	vertical-align: middle;
 	/* #endif */
 	color: $u-tips-color;
-	font-size: 26rpx;
+	font-size: 26upx;
 }
 
 .u-cell__title,
@@ -305,7 +305,7 @@ export default {
 	content: '*';
 	/* #endif */
 	left: 8px;
-	margin-top: 4rpx;
+	margin-top: 4upx;
 	font-size: 14px;
 	color: $u-type-error;
 }

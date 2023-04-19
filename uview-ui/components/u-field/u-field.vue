@@ -3,7 +3,7 @@
 		<view class="u-field-inner" :class="[type == 'textarea' ? 'u-textarea-inner' : '', 'u-label-postion-' + labelPosition]">
 			<view class="u-label" :class="[required ? 'u-required' : '']" :style="{
 				justifyContent: justifyContent, 
-				flex: labelPosition == 'left' ? `0 0 ${labelWidth}rpx` : '1'
+				flex: labelPosition == 'left' ? `0 0 ${labelWidth}upx` : '1'
 			}">
 				<view class="u-icon-wrap" v-if="icon">
 					<u-icon size="32" :custom-style="iconStyle" :name="icon" :color="iconColor" class="u-icon"></u-icon>
@@ -43,7 +43,7 @@
 			</view>
 		</view>
 		<view v-if="errorMessage !== false && errorMessage != ''" class="u-error-message" :style="{
-			paddingLeft: labelWidth + 'rpx'
+			paddingLeft: labelWidth + 'upx'
 		}">{{ errorMessage }}</view>
 	</view>
 </template>
@@ -61,10 +61,10 @@
  * @property {String} label 输入框左边的文字提示
  * @property {Boolean} password 是否密码输入方式(用点替换文字)，type为text时有效（默认false）
  * @property {Boolean} clearable 是否显示右侧清空内容的图标控件(输入框有内容，且获得焦点时才显示)，点击可清空输入框内容（默认true）
- * @property {Number String} label-width label的宽度，单位rpx（默认130）
+ * @property {Number String} label-width label的宽度，单位upx（默认130）
  * @property {String} label-align label的文字对齐方式（默认left）
  * @property {Object} field-style 自定义输入框的样式，对象形式
- * @property {Number | String} clear-size 清除图标的大小，单位rpx（默认30）
+ * @property {Number | String} clear-size 清除图标的大小，单位upx（默认30）
  * @property {String} input-align 输入框内容对齐方式（默认left）
  * @property {Boolean} border-bottom 是否显示field的下边框（默认true）
  * @property {Boolean} border-top 是否显示field的上边框（默认false）
@@ -102,7 +102,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 左边标题的宽度单位rpx
+		// 左边标题的宽度单位upx
 		labelWidth: {
 			type: [Number, String],
 			default: 130
@@ -201,10 +201,10 @@ export default {
 			style.textAlign = this.inputAlign;
 			// 判断lable的位置，如果是left的话，让input左边两边有间隙
 			if(this.labelPosition == 'left') {
-				style.margin = `0 8rpx`;
+				style.margin = `0 8upx`;
 			} else {
 				// 如果lable是top的，input的左边就没必要有间隙了
-				style.marginRight = `8rpx`;
+				style.marginRight = `8upx`;
 			}
 			return style;
 		},
@@ -284,8 +284,8 @@ export default {
 @import "../../libs/css/style.components.scss";
 	
 .u-field {
-	font-size: 28rpx;
-	padding: 20rpx 28rpx;
+	font-size: 28upx;
+	padding: 20upx 28upx;
 	text-align: left;
 	position: relative;
 	color: $u-main-color;
@@ -301,9 +301,9 @@ export default {
 }
 
 .u-textarea-class {
-	min-height: 96rpx;
+	min-height: 96upx;
 	width: auto;
-	font-size: 28rpx;
+	font-size: 28upx;
 }
 
 .fild-body {
@@ -313,7 +313,7 @@ export default {
 }
 
 .u-arror-right {
-	margin-left: 8rpx;
+	margin-left: 8upx;
 }
 
 .u-label-text {
@@ -323,7 +323,7 @@ export default {
 }
 
 .u-label-left-gap {
-	margin-left: 6rpx;
+	margin-left: 6upx;
 }
 
 .u-label-postion-top {
@@ -332,8 +332,8 @@ export default {
 }
 
 .u-label {
-	width: 130rpx;
-	flex: 1 1 130rpx;
+	width: 130upx;
+	flex: 1 1 130upx;
 	text-align: left;
 	position: relative;
 	@include vue-flex;
@@ -343,7 +343,7 @@ export default {
 .u-required::before {
 	content: '*';
 	position: absolute;
-	left: -16rpx;
+	left: -16upx;
 	font-size: 14px;
 	color: $u-type-error;
 	height: 9px;
@@ -353,8 +353,8 @@ export default {
 .u-field__input-wrap {
 	position: relative;
 	overflow: hidden;
-	font-size: 28rpx;
-	height: 48rpx;
+	font-size: 28upx;
+	height: 48upx;
 	flex: 1;
 	width: auto;
 }
@@ -366,7 +366,7 @@ export default {
 
 .u-error-message {
 	color: $u-type-error;
-	font-size: 26rpx;
+	font-size: 26upx;
 	text-align: left;
 }
 
@@ -375,10 +375,10 @@ export default {
 }
 
 .u-input-class {
-	font-size: 28rpx;
+	font-size: 28upx;
 }
 
 .u-button-wrap {
-	margin-left: 8rpx;
+	margin-left: 8upx;
 }
 </style>

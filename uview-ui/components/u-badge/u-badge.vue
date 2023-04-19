@@ -4,9 +4,9 @@
 			size == 'mini' ? 'u-badge-mini' : '',
 			type ? 'u-badge--bg--' + type : ''
 		]" :style="[{
-			top: offset[0] + 'rpx',
-			right: offset[1] + 'rpx',
-			fontSize: fontSize + 'rpx',
+			top: offset[0] + 'upx',
+			right: offset[1] + 'upx',
+			fontSize: fontSize + 'upx',
 			position: absolute ? 'absolute' : 'static',
 			color: color,
 			backgroundColor: bgColor
@@ -28,7 +28,7 @@
 	 * @property {String} type 使用预设的背景颜色（默认error）
 	 * @property {Boolean} show-zero 当数值为 0 时，是否展示 Badge（默认false）
 	 * @property {String} size Badge的尺寸，设为mini会得到小一号的Badge（默认default）
-	 * @property {Array} offset 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，单位rpx。absolute为true时有效（默认[20, 20]）
+	 * @property {Array} offset 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，单位upx。absolute为true时有效（默认[20, 20]）
 	 * @property {String} color 字体颜色（默认#ffffff）
 	 * @property {String} bgColor 背景颜色，优先级比type高，如设置，type参数会失效
 	 * @property {Boolean} is-center 组件中心点是否和父组件右上角重合，优先级比offset高，如设置，offset参数会失效（默认false）
@@ -109,8 +109,8 @@
 					// Y轴-50%，意味着badge向上移动了badge自身高度一半，X轴50%，意味着向右移动了自身宽度一半
 					style.transform = "translateY(-50%) translateX(50%)";
 				} else {
-					style.top = this.offset[0] + 'rpx';
-					style.right = this.offset[1] + 'rpx';
+					style.top = this.offset[0] + 'upx';
+					style.right = this.offset[1] + 'upx';
 					style.transform = "translateY(0) translateX(0)";
 				}
 				// 如果尺寸为mini，后接上scal()
@@ -146,9 +146,9 @@
 		/* #endif */
 		justify-content: center;
 		align-items: center;
-		line-height: 24rpx;
-		padding: 4rpx 8rpx;
-		border-radius: 100rpx;
+		line-height: 24upx;
+		padding: 4upx 8upx;
+		border-radius: 100upx;
 		z-index: 9;
 		
 		&--bg--primary {
@@ -173,9 +173,9 @@
 	}
 	
 	.u-badge-dot {
-		height: 16rpx;
-		width: 16rpx;
-		border-radius: 100rpx;
+		height: 16upx;
+		width: 16upx;
+		border-radius: 100upx;
 		line-height: 1;
 	}
 	

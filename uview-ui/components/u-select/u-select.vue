@@ -361,7 +361,7 @@ export default {
 
 		&__icon {
 			position: absolute;
-			right: 20rpx;
+			right: 20upx;
 			top: 50%;
 			transition: transform .4s;
 			transform: translateY(-50%);
@@ -380,7 +380,7 @@ export default {
 	}
 
 	&--border {
-		border-radius: 6rpx;
+		border-radius: 6upx;
 		border-radius: 4px;
 		border: 1px solid $u-form-item-border-color;
 	}
@@ -389,13 +389,13 @@ export default {
 		@include vue-flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 80rpx;
-		padding: 0 40rpx;
+		height: 80upx;
+		padding: 0 40upx;
 	}
 
 	&__body {
 		width: 100%;
-		height: 500rpx;
+		height: 500upx;
 		overflow: hidden;
 		background-color: #fff;
 
@@ -407,9 +407,9 @@ export default {
 				@include vue-flex;
 				align-items: center;
 				justify-content: center;
-				font-size: 32rpx;
+				font-size: 32upx;
 				color: $u-main-color;
-				padding: 0 8rpx;
+				padding: 0 8upx;
 			}
 		}
 	}

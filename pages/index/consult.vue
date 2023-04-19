@@ -16,7 +16,7 @@
 			</view>
 		</view>
 		<u-toast ref="uToast" />
-		<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getConsultInfo"></comment>
+		<comment :commentList="commentList" :consultId="consultId" :isConsult="isConsult" @update="getConsultInfo" ></comment>
 	</view>
 </template>
 
@@ -66,6 +66,7 @@
 					console.log(this.commentList)
 				}
 			},
+			
 		}
 	}
 </script>
@@ -84,17 +85,17 @@
 	}
 
 	.title {
-		margin: 15rpx;
+		margin: 15upx;
 		font-weight: 800;
-		font-size: 40rpx;
+		font-size: 40upx;
 		text-align: center;
 	}
 
 	.date {
 		float: right;
-		height: 40rpx;
+		height: 40upx;
 		color: #676767;
-		right: 20rpx;
+		right: 20upx;
 	}
 
 	image{
@@ -103,9 +104,9 @@
 
 	.content {
 		// text-indent: 1rem;
-		margin: 40rpx 0;
-		line-height: 40rpx;
-		letter-spacing: 1.5rpx;
+		margin: 40upx 0;
+		line-height: 40upx;
+		letter-spacing: 1.5upx;
 		border-bottom: 1px solid #dbdbdb;
 		
 			.collect-contianer{

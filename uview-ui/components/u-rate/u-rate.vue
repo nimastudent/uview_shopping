@@ -6,8 +6,8 @@
 				@click="click(index + 1, $event)"
 				:color="activeIndex > index ? elActiveColor : inactiveColor"
 				:custom-style="{
-					fontSize: size + 'rpx',
-					padding: `0 ${gutter / 2 + 'rpx'}`
+					fontSize: size + 'upx',
+					padding: `0 ${gutter / 2 + 'upx'}`
 				}"
 				:custom-prefix="customPrefix"
 				:show-decimal-icon="showDecimalIcon(index)"
@@ -25,7 +25,7 @@
  * @property {String Number} count 最多可选的星星数量（默认5）
  * @property {String Number} current 默认选中的星星数量（默认0）
  * @property {Boolean} disabled 是否禁止用户操作（默认false）
- * @property {String Number} size 星星的大小，单位rpx（默认32）
+ * @property {String Number} size 星星的大小，单位upx（默认32）
  * @property {String} inactive-color 未选中星星的颜色（默认#b2b2b2）
  * @property {String} active-color 选中的星星颜色（默认#FA3534）
  * @property {String} active-icon 选中时的图标名，只能为uView的内置图标（默认star-fill）
@@ -62,7 +62,7 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 星星的大小，单位rpx
+		// 星星的大小，单位upx
 		size: {
 			type: [Number, String],
 			default: 32
@@ -77,7 +77,7 @@ export default {
 			type: String,
 			default: '#FA3534'
 		},
-		// 星星之间的间距，单位rpx
+		// 星星之间的间距，单位upx
 		gutter: {
 			type: [Number, String],
 			default: 10

@@ -79,9 +79,9 @@
 		width: 100%;
 		position: fixed;
 		z-index: 1;
-		padding: 20rpx 30rpx;
+		padding: 20upx 30upx;
 		color: #FFFFFF;
-		font-size: 28rpx;
+		font-size: 28upx;
 		left: 0;
 		right: 0;
 		@include vue-flex;

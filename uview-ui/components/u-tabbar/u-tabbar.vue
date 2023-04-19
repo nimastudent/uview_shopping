@@ -40,9 +40,9 @@
 			}">
 			</view>
 		</view>
-		<!-- 这里加上一个48rpx的高度,是为了增高有凸起按钮时的防塌陷高度(也即按钮凸出来部分的高度) -->
+		<!-- 这里加上一个48upx的高度,是为了增高有凸起按钮时的防塌陷高度(也即按钮凸出来部分的高度) -->
 		<view class="u-fixed-placeholder safe-area-inset-bottom" :style="{
-				height: `calc(${$u.addUnit(height)} + ${midButton ? 48 : 0}rpx)`,
+				height: `calc(${$u.addUnit(height)} + ${midButton ? 48 : 0}upx)`,
 			}"></view>
 	</view>
 </template>
@@ -65,17 +65,17 @@
 				type: String,
 				default: '#ffffff'
 			},
-			// tabbar的高度，默认50px，单位任意，如果为数值，则为rpx单位
+			// tabbar的高度，默认50px，单位任意，如果为数值，则为upx单位
 			height: {
 				type: [String, Number],
 				default: '50px'
 			},
-			// 非凸起图标的大小，单位任意，数值默认rpx
+			// 非凸起图标的大小，单位任意，数值默认upx
 			iconSize: {
 				type: [String, Number],
 				default: 40
 			},
-			// 凸起的图标的大小，单位任意，数值默认rpx
+			// 凸起的图标的大小，单位任意，数值默认upx
 			midButtonSize: {
 				type: [String, Number],
 				default: 90
@@ -254,9 +254,9 @@
 
 			&__circle__border {
 				border-radius: 100%;
-				width: 110rpx;
-				height: 110rpx;
-				top: -48rpx;
+				width: 110upx;
+				height: 110upx;
+				top: -48upx;
 				position: absolute;
 				z-index: 4;
 				background-color: #ffffff;
@@ -274,7 +274,7 @@
 				flex: 1;
 				justify-content: center;
 				height: 100%;
-				padding: 12rpx 0;
+				padding: 12upx 0;
 				@include vue-flex;
 				flex-direction: column;
 				align-items: center;
@@ -282,17 +282,17 @@
 
 				&__button {
 					position: absolute;
-					top: 14rpx;
+					top: 14upx;
 					left: 50%;
 					transform: translateX(-50%);
 				}
 
 				&__text {
 					color: $u-content-color;
-					font-size: 26rpx;
-					line-height: 28rpx;
+					font-size: 26upx;
+					line-height: 28upx;
 					position: absolute;
-					bottom: 14rpx;
+					bottom: 14upx;
 					left: 50%;
 					transform: translateX(-50%);
 					width: 100%;
@@ -311,15 +311,15 @@
 				/* #endif */
 
 				&__button {
-					width: 90rpx;
-					height: 90rpx;
+					width: 90upx;
+					height: 90upx;
 					border-radius: 100%;
 					@include vue-flex;
 					justify-content: center;
 					align-items: center;
 					position: absolute;
 					background-color: #ffffff;
-					top: -40rpx;
+					top: -40upx;
 					left: 50%;
 					z-index: 6;
 					transform: translateX(-50%);

@@ -168,9 +168,9 @@
 		justify-content: space-between;
 		align-items: center;
 		color: $u-main-color;
-		font-size: 30rpx;
+		font-size: 30upx;
 		line-height: 1;
-		padding: 24rpx 0;
+		padding: 24upx 0;
 		text-align: left;
 	}
 
@@ -181,8 +181,8 @@
 
 	.u-arrow-down-icon {
 		transition: all 0.3s;
-		margin-right: 20rpx;
-		margin-left: 14rpx;
+		margin-right: 20upx;
+		margin-left: 14upx;
 	}
 
 	.u-arrow-down-icon-active {
@@ -197,7 +197,7 @@
 
 	.u-collapse-content {
 		overflow: hidden;
-		font-size: 28rpx;
+		font-size: 28upx;
 		color: $u-tips-color;
 		text-align: left;
 	}

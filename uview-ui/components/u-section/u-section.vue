@@ -3,8 +3,8 @@
 		<view class="u-section__title" :style="{
 			fontWeight: bold ? 'bold' : 'normal',
 			color: color,
-			fontSize: fontSize + 'rpx',
-			paddingLeft: showLine ? (fontSize * 0.7) + 'rpx' : 0
+			fontSize: fontSize + 'upx',
+			paddingLeft: showLine ? (fontSize * 0.7) + 'upx' : 0
 		}" :class="{
 			'u-section--line': showLine
 		}">
@@ -102,8 +102,8 @@
 				// 由于安卓和iOS的，需要稍微调整绝对定位的top值，才能让左边的竖线和右边的文字垂直居中
 				return {
 					// 由于竖线为字体图标，具有比实际线宽更宽的宽度，所以也需要根据字体打下动态调整
-					left: -(Number(this.fontSize) * 0.9) + 'rpx',
-					top: -(Number(this.fontSize) * (this.$u.os() == 'ios' ? 0.14 : 0.15)) + 'rpx',
+					left: -(Number(this.fontSize) * 0.9) + 'upx',
+					top: -(Number(this.fontSize) * (this.$u.os() == 'ios' ? 0.14 : 0.15)) + 'upx',
 				}
 			}
 		},
@@ -126,8 +126,8 @@
 		
 		&__title {
 			position: relative;
-			font-size: 28rpx;
-			padding-left: 20rpx;
+			font-size: 28upx;
+			padding-left: 20upx;
 			@include vue-flex;
 			align-items: center;
 			
@@ -142,12 +142,12 @@
 		
 		&__right-info {
 			color: $u-tips-color;
-			font-size: 26rpx;
+			font-size: 26upx;
 			@include vue-flex;
 			align-items: center;
 			
 			&__icon-arrow {
-				margin-left: 6rpx;
+				margin-left: 6upx;
 			}
 		}
 	}

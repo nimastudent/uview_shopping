@@ -17,7 +17,7 @@
 	 * @tutorial https://www.uviewui.com/components/switch.html
 	 * @property {Boolean} loading 是否处于加载中（默认false）
 	 * @property {Boolean} disabled 是否禁用（默认false）
-	 * @property {String Number} size 开关尺寸，单位rpx（默认50）
+	 * @property {String Number} size 开关尺寸，单位upx（默认50）
 	 * @property {String} active-color 打开时的背景色（默认#2979ff）
 	 * @property {Boolean} inactive-color 关闭时的背景色（默认#ffffff）
 	 * @property {Boolean | Number | String} active-value 打开选择器时通过change事件发出的值（默认true）
@@ -38,7 +38,7 @@
 				type: Boolean,
 				default: false
 			},
-			// 开关尺寸，单位rpx
+			// 开关尺寸，单位upx
 			size: {
 				type: [Number, String],
 				default: 50
@@ -82,7 +82,7 @@
 		computed: {
 			switchStyle() {
 				let style = {};
-				style.fontSize = this.size + 'rpx';
+				style.fontSize = this.size + 'upx';
 				style.backgroundColor = this.value ? this.activeColor : this.inactiveColor;
 				return style;
 			},
@@ -121,7 +121,7 @@
 		border: 1px solid rgba(0, 0, 0, 0.1);
 		border-radius: 1em;
 		transition: background-color 0.3s;
-		font-size: 50rpx;
+		font-size: 50upx;
 	}
 
 	.u-switch__node {

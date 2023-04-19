@@ -14,7 +14,7 @@
 					    class="u-title u-line-1"
 					    :style="{
 							color: titleColor,
-							fontSize: titleSize + 'rpx',
+							fontSize: titleSize + 'upx',
 							fontWeight: titleBold ? 'bold' : 'normal'
 						}">
 						{{ title }}
@@ -48,13 +48,13 @@
 	 * @property {String Number} height 导航栏高度(不包括状态栏高度在内，内部自动加上)，注意这里的单位是px（默认44）
 	 * @property {String} back-icon-color 左边返回图标的颜色（默认#606266）
 	 * @property {String} back-icon-name 左边返回图标的名称，只能为uView自带的图标（默认arrow-left）
-	 * @property {String Number} back-icon-size 左边返回图标的大小，单位rpx（默认30）
+	 * @property {String Number} back-icon-size 左边返回图标的大小，单位upx（默认30）
 	 * @property {String} back-text 返回图标右边的辅助提示文字
 	 * @property {Object} back-text-style 返回图标右边的辅助提示文字的样式，对象形式（默认{ color: '#606266' }）
 	 * @property {String} title 导航栏标题，如设置为空字符，将会隐藏标题占位区域
-	 * @property {String Number} title-width 导航栏标题的最大宽度，内容超出会以省略号隐藏，单位rpx（默认250）
+	 * @property {String Number} title-width 导航栏标题的最大宽度，内容超出会以省略号隐藏，单位upx（默认250）
 	 * @property {String} title-color 标题的颜色（默认#606266）
-	 * @property {String Number} title-size 导航栏标题字体大小，单位rpx（默认32）
+	 * @property {String Number} title-size 导航栏标题字体大小，单位upx（默认32）
 	 * @property {Function} custom-back 自定义返回逻辑方法
 	 * @property {String Number} z-index 固定在顶部时的z-index值（默认980）
 	 * @property {Boolean} is-back 是否显示导航栏左边返回图标和辅助文字（默认true）
@@ -67,10 +67,10 @@
 	export default {
 		name: "u-navbar",
 		props: {
-			// 导航栏高度，单位px，非rpx
+			// 导航栏高度，单位px，非upx
 			height: {
 				type: [String, Number],
-				default: ''
+				default: '80'
 			},
 			// 返回箭头的颜色
 			backIconColor: {
@@ -82,7 +82,7 @@
 				type: String,
 				default: 'nav-back'
 			},
-			// 左边返回图标的大小，rpx
+			// 左边返回图标的大小，upx
 			backIconSize: {
 				type: [String, Number],
 				default: '44'
@@ -106,7 +106,7 @@
 				type: String,
 				default: ''
 			},
-			// 标题的宽度，如果需要自定义右侧内容，且右侧内容很多时，可能需要减少这个宽度，单位rpx
+			// 标题的宽度，如果需要自定义右侧内容，且右侧内容很多时，可能需要减少这个宽度，单位upx
 			titleWidth: {
 				type: [String, Number],
 				default: '250'
@@ -124,7 +124,7 @@
 			// 标题的字体大小
 			titleSize: {
 				type: [String, Number],
-				default: 32
+				default: 38
 			},
 			isBack: {
 				type: [Boolean, String],
@@ -269,12 +269,12 @@
 		align-items: center;
 		flex: 1;
 		flex-grow: 0;
-		padding: 14rpx 14rpx 14rpx 24rpx;
+		padding: 14upx 14upx 14upx 24upx;
 	}
 
 	.u-back-text {
-		padding-left: 4rpx;
-		font-size: 30rpx;
+		padding-left: 4upx;
+		font-size: 30upx;
 	}
 
 	.u-navbar-content-title {
@@ -285,7 +285,7 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 60rpx;
+		height: 60upx;
 		text-align: center;
 		flex-shrink: 0;
 	}
@@ -295,8 +295,8 @@
 	}
 
 	.u-title {
-		line-height: 60rpx;
-		font-size: 32rpx;
+		line-height: 60upx;
+		font-size: 32upx;
 		flex: 1;
 	}
 

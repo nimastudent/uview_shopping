@@ -5,24 +5,15 @@
 		<view class="wrap">
 				<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperClick"></u-swiper>
 		</view>
-			
-		<!-- <view class="item u-border-bottom" v-for="(item,index) in consultList" :key="item.id">
-						<view class="title-wrap" @click="goConsultContent(item.id)">
-							<view class="title">
-								{{ item.title }}
-							</view>
-							<view class="img-continar">
-								<image :src="item.picture" mode=""></image>
-							</view>
-						</view>
-		</view> -->
 		
 		<consult :consultList="consultList"></consult>
 		
+		<tab-bar />
 	</view>
 </template>
 
 <script>
+	import TabBar from '@/components/TabBar.vue'
 	import consult from '../../components/consult'
 	export default {
 		data() {
@@ -34,7 +25,8 @@
 			}
 		},
 		components:{
-			consult
+			consult,
+			TabBar
 		},
 		 onLoad() {
 			 console.log(this.$u.baseUrl)
@@ -94,18 +86,18 @@
 <style lang="scss" scoped>
 .item {
 	display: flex;
-	padding: 20rpx;
+	padding: 20upx;
 }
 
 image {
-	width: 120rpx;
-	flex: 0 0 120rpx;
-	height: 120rpx;
-	margin-right: 20rpx;
-	border-radius: 12rpx;
+	width: 120upx;
+	flex: 0 0 120upx;
+	height: 120upx;
+	margin-right: 20upx;
+	border-radius: 12upx;
 }
 .wrap{
-	margin: 30rpx;
+	margin: 30upx;
 }
 .title-wrap{
 	width: 95%;

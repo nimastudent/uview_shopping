@@ -26,22 +26,22 @@
 	 * @property {Boolean} is-scroll tabs是否可以左右拖动（默认true）
 	 * @property {Array} list 标签数组，元素为对象，如[{name: '推荐'}]
 	 * @property {String Number} current 指定哪个tab为激活状态（默认0）
-	 * @property {String Number} height 导航栏的高度，单位rpx（默认80）
-	 * @property {String Number} font-size tab文字大小，单位rpx（默认30）
+	 * @property {String Number} height 导航栏的高度，单位upx（默认80）
+	 * @property {String Number} font-size tab文字大小，单位upx（默认30）
 	 * @property {String Number} duration 滑块移动一次所需的时间，单位秒（默认0.5）
 	 * @property {String} active-color 滑块和激活tab文字的颜色（默认#2979ff）
 	 * @property {String} inactive-color tabs文字颜色（默认#303133）
-	 * @property {String Number} bar-width 滑块宽度，单位rpx（默认40）
+	 * @property {String Number} bar-width 滑块宽度，单位upx（默认40）
 	 * @property {Object} active-item-style 活动tabs item的样式，对象形式
 	 * @property {Object} bar-style 底部滑块的样式，对象形式
 	 * @property {Boolean} show-bar 是否显示底部的滑块（默认true）
-	 * @property {String Number} bar-height 滑块高度，单位rpx（默认6）
+	 * @property {String Number} bar-height 滑块高度，单位upx（默认6）
 	 * @property {String Number} item-width 标签的宽度（默认auto）
-	 * @property {String Number} gutter 单个tab标签的左右内边距之和，单位rpx（默认40）
+	 * @property {String Number} gutter 单个tab标签的左右内边距之和，单位upx（默认40）
 	 * @property {String} bg-color tabs导航栏的背景颜色（默认#ffffff）
 	 * @property {String} name 组件内部读取的list参数中的属性名（tab名称），见官网说明（默认name）
 	 * @property {String} count 组件内部读取的list参数中的属性名（badge徽标数），同name属性的使用，见官网说明（默认count）
-	 * @property {Array} offset 设置badge徽标数的位置偏移，格式为 [x, y]，也即设置的为top和right的值，单位rpx（默认[5, 20]）
+	 * @property {Array} offset 设置badge徽标数的位置偏移，格式为 [x, y]，也即设置的为top和right的值，单位upx（默认[5, 20]）
 	 * @property {Boolean} bold 激活选项的字体是否加粗（默认true）
 	 * @event {Function} change 点击标签时触发
 	 * @example <u-tabs ref="tabs" :list="list" :is-scroll="false"></u-tabs>
@@ -91,7 +91,7 @@
 				type: String,
 				default: '#303133'
 			},
-			// 菜单底部移动的bar的宽度，单位rpx
+			// 菜单底部移动的bar的宽度，单位upx
 			barWidth: {
 				type: [String, Number],
 				default: 40
@@ -196,12 +196,12 @@
 			// 移动bar的样式
 			tabBarStyle() {
 				let style = {
-					width: this.barWidth + 'rpx',
+					width: this.barWidth + 'upx',
 					transform: `translate(${this.scrollBarLeft}px, -100%)`,
 					// 滑块在页面渲染后第一次滑动时，无需动画效果
 					'transition-duration': `${this.barFirstTimeMove ? 0 : this.duration }s`,
 					'background-color': this.activeColor,
-					height: this.barHeight + 'rpx',
+					height: this.barHeight + 'upx',
 					// 设置一个很大的值，它会自动取能用的最大值，不用高度的一半，是因为高度可能是单数，会有小数出现
 					'border-radius': `${this.barHeight / 2}px`
 				};
@@ -212,11 +212,11 @@
 			tabItemStyle() {
 				return (index) => {
 					let style = {
-						height: this.height + 'rpx',
-						'line-height': this.height + 'rpx',
-						'font-size': this.fontSize + 'rpx',
+						height: this.height + 'upx',
+						'line-height': this.height + 'upx',
+						'font-size': this.fontSize + 'upx',
 						'transition-duration': `${this.duration}s`,
-						padding: this.isScroll ? `0 ${this.gutter}rpx` : '',
+						padding: this.isScroll ? `0 ${this.gutter}upx` : '',
 						flex: this.isScroll ? 'auto' : '1',
 						width: this.$u.addUnit(this.itemWidth)
 					};

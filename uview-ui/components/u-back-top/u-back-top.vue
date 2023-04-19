@@ -1,8 +1,8 @@
 <template>
 	<view @tap="backToTop" class="u-back-top" :class="['u-back-top--mode--' + mode]" :style="[{
-		bottom: bottom + 'rpx',
-		right: right + 'rpx',
-		borderRadius: mode == 'circle' ? '10000rpx' : '8rpx',
+		bottom: bottom + 'upx',
+		right: right + 'upx',
+		borderRadius: mode == 'circle' ? '10000upx' : '8upx',
 		zIndex: uZIndex,
 		opacity: opacity
 	}, customStyle]">
@@ -45,17 +45,17 @@
 				type: [Number, String],
 				default: 0
 			},
-			// 距离顶部多少距离显示，单位rpx
+			// 距离顶部多少距离显示，单位upx
 			top: {
 				type: [Number, String],
 				default: 400
 			},
-			// 返回顶部按钮到底部的距离，单位rpx
+			// 返回顶部按钮到底部的距离，单位upx
 			bottom: {
 				type: [Number, String],
 				default: 200
 			},
-			// 返回顶部按钮到右边的距离，单位rpx
+			// 返回顶部按钮到右边的距离，单位upx
 			right: {
 				type: [Number, String],
 				default: 40
@@ -71,7 +71,7 @@
 				default() {
 					return {
 						color: '#909399',
-						fontSize: '38rpx'
+						fontSize: '38upx'
 					}
 				}
 			},
@@ -98,7 +98,7 @@
 		},
 		computed: {
 			showBackTop() {
-				// 由于scrollTop为页面的滚动距离，默认为px单位，这里将用于传入的top(rpx)值
+				// 由于scrollTop为页面的滚动距离，默认为px单位，这里将用于传入的top(upx)值
 				// 转为px用于比较，如果滚动条到顶的距离大于设定的距离，就显示返回顶部的按钮
 				return this.scrollTop > uni.upx2px(this.top);
 			},
@@ -126,8 +126,8 @@
 	@import "../../libs/css/style.components.scss";
 	
 	.u-back-top {
-		width: 80rpx;
-		height: 80rpx;
+		width: 80upx;
+		height: 80upx;
 		position: fixed;
 		z-index: 9;
 		@include vue-flex;
@@ -144,7 +144,7 @@
 			align-items: center;
 			
 			&__tips {
-				font-size: 24rpx;
+				font-size: 24upx;
 				transform: scale(0.8);
 				line-height: 1;
 			}

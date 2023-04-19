@@ -110,8 +110,8 @@ export default {
 <style lang="scss" scoped>
 @import '../../libs/css/style.components.scss';
 
-$u-steps-item-number-width: 44rpx;
-$u-steps-item-dot-width: 20rpx;
+$u-steps-item-number-width: 44upx;
+$u-steps-item-dot-width: 20upx;
 
 .u-steps {
 	@include vue-flex;
@@ -120,8 +120,8 @@ $u-steps-item-dot-width: 20rpx;
 		flex: 1;
 		text-align: center;
 		position: relative;
-		min-width: 100rpx;
-		font-size: 26rpx;
+		min-width: 100upx;
+		font-size: 26upx;
 		color: #8799a3;
 		@include vue-flex;
 		justify-content: center;
@@ -152,7 +152,7 @@ $u-steps-item-dot-width: 20rpx;
 			@include vue-flex;
 			flex-direction: row;
 			justify-content: flex-start;
-			min-height: 120rpx;
+			min-height: 120upx;
 			
 			.u-steps__item__line {
 				position: absolute;
@@ -189,11 +189,11 @@ $u-steps-item-dot-width: 20rpx;
 		}
 		
 		&__text--row {
-			margin-top: 14rpx;
+			margin-top: 14upx;
 		}
 		
 		&__text--column {
-			margin-left: 14rpx;
+			margin-left: 14upx;
 		}
 	}
 }

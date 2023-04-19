@@ -7,43 +7,43 @@
 		</view>
 		<view
 			class="u-countdown-colon"
-			:style="{fontSize: separatorSize + 'rpx', color: separatorColor, paddingBottom: separator == 'colon' ? '4rpx' : 0}"
+			:style="{fontSize: separatorSize + 'upx', color: separatorColor, paddingBottom: separator == 'colon' ? '4upx' : 0}"
 			v-if="showDays && (hideZeroDay || (!hideZeroDay && d != '00'))"
 		>
 			{{ separator == 'colon' ? ':' : '天' }}
 		</view>
 		<view class="u-countdown-item" :style="[itemStyle]" v-if="showHours">
-			<view class="u-countdown-time" :style="{ fontSize: fontSize + 'rpx', color: color}">
+			<view class="u-countdown-time" :style="{ fontSize: fontSize + 'upx', color: color}">
 				{{ h }}
 			</view>
 		</view>
 		<view
 			class="u-countdown-colon"
-			:style="{fontSize: separatorSize + 'rpx', color: separatorColor, paddingBottom: separator == 'colon' ? '4rpx' : 0}"
+			:style="{fontSize: separatorSize + 'upx', color: separatorColor, paddingBottom: separator == 'colon' ? '4upx' : 0}"
 			v-if="showHours"
 		>
 			{{ separator == 'colon' ? ':' : '时' }}
 		</view>
 		<view class="u-countdown-item" :style="[itemStyle]" v-if="showMinutes">
-			<view class="u-countdown-time" :style="{ fontSize: fontSize + 'rpx', color: color}">
+			<view class="u-countdown-time" :style="{ fontSize: fontSize + 'upx', color: color}">
 				{{ i }}
 			</view>
 		</view>
 		<view
 			class="u-countdown-colon"
-			:style="{fontSize: separatorSize + 'rpx', color: separatorColor, paddingBottom: separator == 'colon' ? '4rpx' : 0}"
+			:style="{fontSize: separatorSize + 'upx', color: separatorColor, paddingBottom: separator == 'colon' ? '4upx' : 0}"
 			v-if="showMinutes"
 		>
 			{{ separator == 'colon' ? ':' : '分' }}
 		</view>
 		<view class="u-countdown-item" :style="[itemStyle]" v-if="showSeconds">
-			<view class="u-countdown-time" :style="{ fontSize: fontSize + 'rpx', color: color}">
+			<view class="u-countdown-time" :style="{ fontSize: fontSize + 'upx', color: color}">
 				{{ s }}
 			</view>
 		</view>
 		<view
 			class="u-countdown-colon"
-			:style="{fontSize: separatorSize + 'rpx', color: separatorColor, paddingBottom: separator == 'colon' ? '4rpx' : 0}"
+			:style="{fontSize: separatorSize + 'upx', color: separatorColor, paddingBottom: separator == 'colon' ? '4upx' : 0}"
 			v-if="showSeconds && separator == 'zh'"
 		>
 			秒
@@ -59,15 +59,15 @@
  * @property {String Number} timestamp 倒计时，单位为秒
  * @property {Boolean} autoplay 是否自动开始倒计时，如果为false，需手动调用开始方法。见官网说明（默认true）
  * @property {String} separator 分隔符，colon为英文冒号，zh为中文（默认colon）
- * @property {String Number} separator-size 分隔符的字体大小，单位rpx（默认30）
+ * @property {String Number} separator-size 分隔符的字体大小，单位upx（默认30）
  * @property {String} separator-color 分隔符的颜色（默认#303133）
- * @property {String Number} font-size 倒计时字体大小，单位rpx（默认30）
+ * @property {String Number} font-size 倒计时字体大小，单位upx（默认30）
  * @property {Boolean} show-border 是否显示倒计时数字的边框（默认false）
  * @property {Boolean} hide-zero-day 当"天"的部分为0时，隐藏该字段 （默认true）
  * @property {String} border-color 数字边框的颜色（默认#303133）
  * @property {String} bg-color 倒计时数字的背景颜色（默认#ffffff）
  * @property {String} color 倒计时数字的颜色（默认#303133）
- * @property {String} height 数字高度值(宽度等同此值)，设置边框时看情况是否需要设置此值，单位rpx（默认auto）
+ * @property {String} height 数字高度值(宽度等同此值)，设置边框时看情况是否需要设置此值，单位upx（默认auto）
  * @property {Boolean} show-days 是否显示倒计时的"天"部分（默认true）
  * @property {Boolean} show-hours 是否显示倒计时的"时"部分（默认true）
  * @property {Boolean} show-minutes 是否显示倒计时的"分"部分（默认true）
@@ -94,7 +94,7 @@ export default {
 			type: String,
 			default: 'colon'
 		},
-		// 分隔符的大小，单位rpx
+		// 分隔符的大小，单位upx
 		separatorSize: {
 			type: [Number, String],
 			default: 30
@@ -109,7 +109,7 @@ export default {
 			type: String,
 			default: '#303133'
 		},
-		// 字体大小，单位rpx
+		// 字体大小，单位upx
 		fontSize: {
 			type: [Number, String],
 			default: 30
@@ -119,7 +119,7 @@ export default {
 			type: String,
 			default: '#fff'
 		},
-		// 数字框高度，单位rpx
+		// 数字框高度，单位upx
 		height: {
 			type: [Number, String],
 			default: 'auto'
@@ -183,8 +183,8 @@ export default {
 		itemStyle() {
 			let style = {};
 			if(this.height) {
-				style.height = this.height + 'rpx';
-				style.width = this.height + 'rpx';
+				style.height = this.height + 'upx';
+				style.width = this.height + 'upx';
 			}
 			if(this.showBorder) {
 				style.borderStyle = 'solid';
@@ -199,7 +199,7 @@ export default {
 		// 倒计时数字的样式
 		letterStyle() {
 			let style = {};
-			if(this.fontSize) style.fontSize = this.fontSize +  'rpx';
+			if(this.fontSize) style.fontSize = this.fontSize +  'upx';
 			if(this.color) style.color = this.color;
 			return style;
 		}
@@ -290,8 +290,8 @@ export default {
 		@include vue-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 2rpx;
-		border-radius: 6rpx;
+		padding: 2upx;
+		border-radius: 6upx;
 		white-space: nowrap;
 		transform: translateZ(0);
 	}
@@ -305,10 +305,10 @@ export default {
 	.u-countdown-colon {
 		@include vue-flex;
 		justify-content: center;
-		padding: 0 5rpx;
+		padding: 0 5upx;
 		line-height: 1;
 		align-items: center;
-		padding-bottom: 4rpx;
+		padding-bottom: 4upx;
 	}
 
 	.u-countdown-scale {

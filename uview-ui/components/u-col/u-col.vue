@@ -2,7 +2,7 @@
 	<view class="u-col" :class="[
 		'u-col-' + span
 	]" :style="{
-		padding: `0 ${Number(gutter)/2 + 'rpx'}`,
+		padding: `0 ${Number(gutter)/2 + 'upx'}`,
 		marginLeft: 100 / 12 * offset + '%',
 		flex: `0 0 ${100 / 12 * span}%`,
 		alignItems: uAlignItem,

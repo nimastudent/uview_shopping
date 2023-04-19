@@ -270,9 +270,9 @@ MpHtmlParser.prototype.setNode = function() {
 					value = value.substr(0, j) + this.getUrl(value.substr(j));
 				}
 			}
-			// 转换 rpx
-			else if (value.includes('rpx'))
-				value = value.replace(/[0-9.]+\s*rpx/g, $ => parseFloat($) * windowWidth / 750 + 'px');
+			// 转换 upx
+			else if (value.includes('upx'))
+				value = value.replace(/[0-9.]+\s*upx/g, $ => parseFloat($) * windowWidth / 750 + 'px');
 			else if (key == 'white-space' && value.includes('pre') && !close)
 				this.pre = node.pre = true;
 			style += `;${key}:${value}`;

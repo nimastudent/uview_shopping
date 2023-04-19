@@ -3,13 +3,14 @@
 
 const install = (Vue, vm) => {
 	// 此为自定义配置参数，具体参数见上方说明
-	Vue.prototype.$u.baseUrl = 'http://cool.ldqc.xyz:9435'
+	Vue.prototype.$u.baseUrl = 'http://20.105.0.113:84/ly-police'
 	
 	Vue.prototype.$u.http.setConfig({
 		
 		// http://20.105.0.113:84/xlfjxxqjxt/police
 		// http://ldqc.xyz:5880
 		// http://cool.ldqc.xyz:9088/
+		// http://20.105.0.113:84/xlfjxxqjxt
 		baseUrl:'http://cool.ldqc.xyz:9435',
 		loadingText: '努力加载中~',
 		loadingTime: 800,
@@ -41,10 +42,13 @@ const install = (Vue, vm) => {
 		}
 		if(config.url == '/multipleChoice/check') config.header['Content-Type'] = 'application/json';
 		
-		if(config.url == '/user/headPortrait/upload') config.header['Content-Type'] = 'multipart/form-data';
 		
 		if(config.url == '/exam/getExam/calculate') {
 			config.header['Content-Type'] = 'application/json';
+		}
+		
+		if(config.url == '/course/question/submit'){
+			config.header['Content-Type'] = 'application/x-www-form-urlencoded';
 		}
 		
 		// 最后需要将config进行return
@@ -74,6 +78,7 @@ const install = (Vue, vm) => {
 				}, 1500)
 			}else if(data.code == -1){
 				vm.$u.toast(data.body);
+				
 			}
 			return data;
 		} else if(statusCode == 501) {

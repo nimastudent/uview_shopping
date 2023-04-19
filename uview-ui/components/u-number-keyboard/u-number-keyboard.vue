@@ -135,12 +135,12 @@
 	.u-keyboard-grids-item {
 		flex: 0 0 33.3333333333%;
 		text-align: center;
-		font-size: 50rpx;
+		font-size: 50upx;
 		color: #333;
 		@include vue-flex;
 		align-items: center;
 		justify-content: center;
-		height: 110rpx;
+		height: 110upx;
 		font-weight: 500;
 	}
 
@@ -149,7 +149,7 @@
 	}
 
 	.u-keyboard-back {
-		font-size: 36rpx;
+		font-size: 36upx;
 	}
 
 	.u-keyboard-hover {

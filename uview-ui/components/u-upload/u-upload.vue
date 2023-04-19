@@ -569,13 +569,13 @@ export default {
 }
 
 .u-list-item {
-	width: 200rpx;
-	height: 200rpx;
+	width: 200upx;
+	height: 200upx;
 	overflow: hidden;
-	margin: 10rpx;
+	margin: 10upx;
 	background: rgb(244, 245, 246);
 	position: relative;
-	border-radius: 10rpx;
+	border-radius: 10upx;
 	/* #ifndef APP-NVUE */
 	display: flex;
 	/* #endif */
@@ -590,12 +590,12 @@ export default {
 .u-add-wrap {
 	flex-direction: column;
 	color: $u-content-color;
-	font-size: 26rpx;
+	font-size: 26upx;
 }
 
 .u-add-tips {
-	margin-top: 20rpx;
-	line-height: 40rpx;
+	margin-top: 20upx;
+	line-height: 40upx;
 }
 
 .u-add-wrap__hover {
@@ -606,18 +606,18 @@ export default {
 	display: block;
 	width: 100%;
 	height: 100%;
-	border-radius: 10rpx;
+	border-radius: 10upx;
 }
 
 .u-delete-icon {
 	position: absolute;
-	top: 10rpx;
-	right: 10rpx;
+	top: 10upx;
+	right: 10upx;
 	z-index: 10;
 	background-color: $u-type-error;
-	border-radius: 100rpx;
-	width: 44rpx;
-	height: 44rpx;
+	border-radius: 100upx;
+	width: 44upx;
+	height: 44upx;
 	@include vue-flex;
 	align-items: center;
 	justify-content: center;
@@ -631,9 +631,9 @@ export default {
 
 .u-progress {
 	position: absolute;
-	bottom: 10rpx;
-	left: 8rpx;
-	right: 8rpx;
+	bottom: 10upx;
+	left: 8upx;
+	right: 8upx;
 	z-index: 9;
 	width: auto;
 }
@@ -641,7 +641,7 @@ export default {
 .u-error-btn {
 	color: #ffffff;
 	background-color: $u-type-error;
-	font-size: 20rpx;
+	font-size: 20upx;
 	padding: 4px 0;
 	text-align: center;
 	position: absolute;

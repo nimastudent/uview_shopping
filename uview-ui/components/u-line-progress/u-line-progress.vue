@@ -1,7 +1,7 @@
 <template>
 	<view class="u-progress" :style="{
-		borderRadius: round ? '100rpx' : 0,
-		height: height + 'rpx',
+		borderRadius: round ? '100upx' : 0,
+		height: height + 'upx',
 		backgroundColor: inactiveColor
 	}">
 		<view :class="[
@@ -28,7 +28,7 @@
 	 * @property {String} active-color 进度条激活部分的颜色（默认#19be6b）
 	 * @property {String} inactive-color 进度条的底色（默认#ececec）
 	 * @property {Boolean} show-percent 是否在进度条内部显示当前的百分比值数值（默认true）
-	 * @property {String Number} height 进度条的高度，单位rpx（默认28）
+	 * @property {String Number} height 进度条的高度，单位upx（默认28）
 	 * @property {Boolean} striped 是否显示进度条激活部分的条纹（默认false）
 	 * @property {Boolean} striped-active 条纹是否具有动态效果（默认false）
 	 * @example <u-line-progress :percent="70" :show-percent="true"></u-line-progress>
@@ -65,7 +65,7 @@
 				type: Boolean,
 				default: true
 			},
-			// 进度条的高度，单位rpx
+			// 进度条的高度，单位upx
 			height: {
 				type: [Number, String],
 				default: 28
@@ -111,7 +111,7 @@
 		/* #endif */
 		align-items: center;
 		width: 100%;
-		border-radius: 100rpx;
+		border-radius: 100upx;
 	}
 
 	.u-active {
@@ -121,7 +121,7 @@
 		@include vue-flex;
 		justify-items: flex-end;
 		justify-content: space-around;
-		font-size: 20rpx;
+		font-size: 20upx;
 		color: #ffffff;
 		transition: all 0.4s ease;
 	}

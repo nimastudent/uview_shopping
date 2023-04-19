@@ -46,7 +46,7 @@
 	 * @property {String | Number} height 标题菜单的高度，单位任意（默认80）
 	 * @property {String | Number} border-radius 菜单展开内容下方的圆角值，单位任意（默认0）
 	 * @property {Boolean} border-bottom 标题菜单是否显示下边框（默认false）
-	 * @property {String | Number} title-size 标题的字体大小，单位任意，数值默认为rpx单位（默认28）
+	 * @property {String | Number} title-size 标题的字体大小，单位任意，数值默认为upx单位（默认28）
 	 * @event {Function} open 下拉菜单被打开时触发
 	 * @event {Function} close 下拉菜单被关闭时触发
 	 * @example <u-dropdown></u-dropdown>
@@ -79,7 +79,7 @@
 				type: [Number, String],
 				default: 300
 			},
-			// 标题菜单的高度，单位任意，数值默认为rpx单位
+			// 标题菜单的高度，单位任意，数值默认为upx单位
 			height: {
 				type: [Number, String],
 				default: 80
@@ -240,7 +240,7 @@
 			@include vue-flex;
 			position: relative;
 			z-index: 11;
-			height: 80rpx;
+			height: 80upx;
 
 			&__item {
 				flex: 1;
@@ -249,12 +249,12 @@
 				align-items: center;
 
 				&__text {
-					font-size: 28rpx;
+					font-size: 28upx;
 					color: $u-content-color;
 				}
 
 				&__arrow {
-					margin-left: 6rpx;
+					margin-left: 6upx;
 					transition: transform .3s;
 					align-items: center;
 					@include vue-flex;

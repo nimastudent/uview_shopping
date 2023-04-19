@@ -64,7 +64,7 @@
  * @property {String} close-icon 关闭图标的名称，只能uView的内置图标
  * @property {String} close-icon-pos 自定义关闭图标位置（默认top-right）
  * @property {String} close-icon-color 关闭图标的颜色（默认#909399）
- * @property {Number | String} close-icon-size 关闭图标的大小，单位rpx（默认30）
+ * @property {Number | String} close-icon-size 关闭图标的大小，单位upx（默认30）
  * @event {Function} open 弹出层打开
  * @event {Function} close 弹出层收起
  * @example <u-popup v-model="show"><view>出淤泥而不染，濯清涟而不妖</view></u-popup>
@@ -93,7 +93,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 抽屉的宽度(mode=left|right)，或者高度(mode=top|bottom)，单位rpx，或者"auto"
+		// 抽屉的宽度(mode=left|right)，或者高度(mode=top|bottom)，单位upx，或者"auto"
 		// 或者百分比"50%"，表示由内容撑开高度或者宽度
 		length: {
 			type: [Number, String],
@@ -131,7 +131,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		// 显示显示弹窗的圆角，单位rpx
+		// 显示显示弹窗的圆角，单位upx
 		borderRadius: {
 			type: [Number, String],
 			default: 0
@@ -160,18 +160,18 @@ export default {
 			type: String,
 			default: '#909399'
 		},
-		// 关闭图标的大小，单位rpx
+		// 关闭图标的大小，单位upx
 		closeIconSize: {
 			type: [String, Number],
 			default: '30'
 		},
-		// 宽度，只对左，右，中部弹出时起作用，单位rpx，或者"auto"
+		// 宽度，只对左，右，中部弹出时起作用，单位upx，或者"auto"
 		// 或者百分比"50%"，表示由内容撑开高度或者宽度，优先级高于length参数
 		width: {
 			type: String,
 			default: ''
 		},
-		// 高度，只对上，下，中部弹出时起作用，单位rpx，或者"auto"
+		// 高度，只对上，下，中部弹出时起作用，单位upx，或者"auto"
 		// 或者百分比"50%"，表示由内容撑开高度或者宽度，优先级高于length参数
 		height: {
 			type: String,
@@ -226,16 +226,16 @@ export default {
 			if (this.borderRadius) {
 				switch (this.mode) {
 					case 'left':
-						style.borderRadius = `0 ${this.borderRadius}rpx ${this.borderRadius}rpx 0`;
+						style.borderRadius = `0 ${this.borderRadius}upx ${this.borderRadius}upx 0`;
 						break;
 					case 'top':
-						style.borderRadius = `0 0 ${this.borderRadius}rpx ${this.borderRadius}rpx`;
+						style.borderRadius = `0 0 ${this.borderRadius}upx ${this.borderRadius}upx`;
 						break;
 					case 'right':
-						style.borderRadius = `${this.borderRadius}rpx 0 0 ${this.borderRadius}rpx`;
+						style.borderRadius = `${this.borderRadius}upx 0 0 ${this.borderRadius}upx`;
 						break;
 					case 'bottom':
-						style.borderRadius = `${this.borderRadius}rpx ${this.borderRadius}rpx 0 0`;
+						style.borderRadius = `${this.borderRadius}upx ${this.borderRadius}upx 0 0`;
 						break;
 					default:
 				}
@@ -254,7 +254,7 @@ export default {
 			style.zIndex = this.uZindex;
 			style.marginTop = `-${this.$u.addUnit(this.negativeTop)}`;
 			if (this.borderRadius) {
-				style.borderRadius = `${this.borderRadius}rpx`;
+				style.borderRadius = `${this.borderRadius}upx`;
 				// 不加可能圆角无效
 				style.overflow = 'hidden';
 			}
@@ -280,10 +280,10 @@ export default {
 		this.value && this.open();
 	},
     methods: {
-		// 判断传入的值，是否带有单位，如果没有，就默认用rpx单位
+		// 判断传入的值，是否带有单位，如果没有，就默认用upx单位
 		getUnitValue(val) {
-			if(/(%|px|rpx|auto)$/.test(val)) return val;
-			else return val + 'rpx'
+			if(/(%|px|upx|auto)$/.test(val)) return val;
+			else return val + 'upx'
 		},
 		// 遮罩被点击
 		maskClick() {
@@ -407,8 +407,8 @@ export default {
 }
 
 .u-mode-center-box {
-	min-width: 100rpx;
-	min-height: 100rpx;
+	min-width: 100upx;
+	min-height: 100upx;
 	/* #ifndef APP-NVUE */
 	display: block;
 	/* #endif */
@@ -435,22 +435,22 @@ export default {
 }
 
 .u-close--top-left {
-	top: 30rpx;
-	left: 30rpx;
+	top: 30upx;
+	left: 30upx;
 }
 
 .u-close--top-right {
-	top: 30rpx;
-	right: 30rpx;
+	top: 30upx;
+	right: 30upx;
 }
 
 .u-close--bottom-left {
-	bottom: 30rpx;
-	left: 30rpx;
+	bottom: 30upx;
+	left: 30upx;
 }
 
 .u-close--bottom-right {
-	right: 30rpx;
-	bottom: 30rpx;
+	right: 30upx;
+	bottom: 30upx;
 }
 </style>

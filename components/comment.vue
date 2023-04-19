@@ -11,11 +11,6 @@
 			<view class="right">
 				<view class="top">
 					<view class="name">{{ res.comment.nickName }}</view>
-					<!-- <view class="like" :class="{ highlight: res.isLike }">
-   					<view class="num">{{ res.likeNum }}</view>
-   					<u-icon v-if="!res.isLike" name="thumb-up" :size="30" color="#9a9a9a" @click="getLike(index)"></u-icon>
-   					<u-icon v-if="res.isLike" name="thumb-up-fill" :size="30" @click="getLike(index)"></u-icon>
-   				</view> -->
 				</view>
 				<view class="content">{{ res.comment.content }}</view>
 				<view class="reply-box" v-if="res.secondComment.length > 0">
@@ -23,10 +18,6 @@
 						<view class="username">{{ item.nickName }}</view>
 						<view class="text">{{ item.content }}</view>
 					</view>
-					<!-- <view class="all-reply" @tap="toAllReply" v-if="res.replyList != undefined">
-   					共{{ res.allReply }}条回复
-   					<u-icon class="more" name="arrow-right" :size="26"></u-icon>
-   				</view> -->
 				</view>
 				<view class="bottom">
 					{{ res.comment.date }}
@@ -89,7 +80,6 @@
 			},
 			async submintComment() {
 				// 资讯评论
-                
 				if(this.isConsultComment){
 					const res = await this.$u.api.commentConsult(this.data)
 					if (res.success) {
@@ -118,10 +108,10 @@
 
 <style lang="scss" scoped>
 	.comment-contianer {
-		border-radius: 6rpx;
+		border-radius: 6upx;
 
 		.comment-title {
-			padding: 10rpx;
+			padding: 10upx;
 			display: flex;
 			justify-content: space-between;
 
@@ -138,13 +128,13 @@
 
 	.comment {
 		display: flex;
-		padding: 15rpx;
+		padding: 15upx;
 
 
 		.left {
 			image {
-				width: 64rpx;
-				height: 64rpx;
+				width: 64upx;
+				height: 64upx;
 				border-radius: 50%;
 				background-color: #f2f2f2;
 			}
@@ -152,17 +142,17 @@
 
 		.right {
 			flex: 1;
-			padding-left: 20rpx;
-			font-size: 30rpx;
+			padding-left: 20upx;
+			font-size: 30upx;
 
 			.top {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				margin-bottom: 5rpx;
+				margin-bottom: 5upx;
 
 				.name {
-					font-size: 28rpx;
+					font-size: 28upx;
 					color: #3f3f3f;
 				}
 
@@ -170,10 +160,10 @@
 					display: flex;
 					align-items: center;
 					color: #9a9a9a;
-					font-size: 26rpx;
+					font-size: 26upx;
 
 					.num {
-						margin-right: 4rpx;
+						margin-right: 4upx;
 						color: #9a9a9a;
 					}
 				}
@@ -188,21 +178,21 @@
 			}
 
 			.content {
-				margin-bottom: 5rpx;
-				font-size: 34rpx;
+				margin-bottom: 5upx;
+				font-size: 34upx;
 			}
 
 			.reply-box {
 				background-color: rgb(242, 242, 242);
-				border-radius: 12rpx;
+				border-radius: 12upx;
 				width: 100%;
 
 				.item {
-					padding: 20rpx;
-					border-bottom: solid 2rpx $u-border-color;
+					padding: 20upx;
+					border-bottom: solid 2upx $u-border-color;
 
 					.username {
-						font-size: 24rpx;
+						font-size: 24upx;
 						color: #999999;
 					}
 					
@@ -214,26 +204,26 @@
 				}
 
 				.all-reply {
-					padding: 20rpx;
+					padding: 20upx;
 					display: flex;
 					color: #5677fc;
 					align-items: center;
 
 					.more {
-						margin-left: 6rpx;
+						margin-left: 6upx;
 					}
 				}
 			}
 
 			.bottom {
-				margin-top: 15rpx;
+				margin-top: 15upx;
 				display: flex;
-				font-size: 24rpx;
+				font-size: 24upx;
 				color: #9a9a9a;
 
 				.reply {
 					color: #5677fc;
-					margin-left: 10rpx;
+					margin-left: 10upx;
 				}
 			}
 
@@ -243,6 +233,6 @@
 	.bottomText {
 		color: #1c27fc;
 		text-align: center;
-		height: 60rpx;
+		height: 60upx;
 	}
 </style>

@@ -51,7 +51,7 @@
 	 * @property {String} cancel-text 取消按钮的文字内容（默认"取消"）
 	 * @property {String} cancel-color 取消按钮的颜色（默认"#606266"）
 	 * @property {String} confirm-color 确认按钮的文字内容（默认"#2979ff"）
-	 * @property {String | Number} border-radius 模态框圆角值，单位rpx（默认16）
+	 * @property {String | Number} border-radius 模态框圆角值，单位upx（默认16）
 	 * @property {Object} title-style 自定义标题样式，对象形式
 	 * @property {Object} content-style 自定义内容样式，对象形式
 	 * @property {Object} cancel-style 自定义取消按钮样式，对象形式
@@ -79,7 +79,7 @@
 				type: [String],
 				default: '提示'
 			},
-			// 弹窗宽度，可以是数值(rpx)，百分比，auto等
+			// 弹窗宽度，可以是数值(upx)，百分比，auto等
 			width: {
 				type: [Number, String],
 				default: 600
@@ -242,7 +242,7 @@
 	.u-model {
 		height: auto;
 		overflow: hidden;
-		font-size: 32rpx;
+		font-size: 32upx;
 		background-color: #fff;
 
 		&__btn--hover {
@@ -250,7 +250,7 @@
 		}
 
 		&__title {
-			padding-top: 48rpx;
+			padding-top: 48upx;
 			font-weight: 500;
 			text-align: center;
 			color: $u-main-color;
@@ -258,8 +258,8 @@
 
 		&__content {
 			&__message {
-				padding: 48rpx;
-				font-size: 30rpx;
+				padding: 48upx;
+				font-size: 30upx;
 				text-align: center;
 				color: $u-content-color;
 			}
@@ -270,13 +270,13 @@
 
 			&__button {
 				flex: 1;
-				height: 100rpx;
-				line-height: 100rpx;
-				font-size: 32rpx;
+				height: 100upx;
+				line-height: 100upx;
+				font-size: 32upx;
 				box-sizing: border-box;
 				cursor: pointer;
 				text-align: center;
-				border-radius: 4rpx;
+				border-radius: 4upx;
 			}
 		}
 	}

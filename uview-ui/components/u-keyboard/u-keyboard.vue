@@ -187,15 +187,15 @@
 		color: #333333;
 		flex: 0 0 33.333333%;
 		text-align: center;
-		padding: 20rpx 10rpx;
-		font-size: 28rpx;
+		padding: 20upx 10upx;
+		font-size: 28upx;
 	}
 
 	.u-tooltips-submit {
 		text-align: right;
 		flex-grow: 1;
 		flex-wrap: 0;
-		padding-right: 40rpx;
+		padding-right: 40upx;
 		color: $u-type-primary;
 	}
 
@@ -203,7 +203,7 @@
 		text-align: left;
 		flex-grow: 1;
 		flex-wrap: 0;
-		padding-left: 40rpx;
+		padding-left: 40upx;
 		color: #888888;
 	}
 

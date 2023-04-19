@@ -388,41 +388,41 @@
 
 <style lang="scss" scoped>
 	.hb-comment {
-		padding: 10rpx;
+		padding: 10upx;
 	}
 
 	.top-read {
-		font-size: 28rpx;
-		padding-left: 10rpx;
+		font-size: 28upx;
+		padding-left: 10upx;
 		color: #999999;
 	}
 
 	.seg_line_box {
 		display: flex;
-		height: 5rpx;
+		height: 5upx;
 		justify-content: space-between;
-		margin: 5rpx 0;
+		margin: 5upx 0;
 	}
 
 	.seg_line {
 		width: 45%;
-		border-bottom: 1rpx solid #e1e1e1;
+		border-bottom: 1upx solid #e1e1e1;
 	}
 
 	.seg_dot {
 		width: 8%;
-		border-bottom: 5rpx dotted #dbdbdb;
+		border-bottom: 5upx dotted #dbdbdb;
 	}
 
 	.comment-num {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 20rpx 0;
+		padding: 20upx 0;
 	}
 
 	.comment-box {
-		padding: 10rpx 0;
+		padding: 10upx 0;
 	}
 
 	.comment-box-item {
@@ -430,26 +430,26 @@
 	}
 
 	.comment-main {
-		padding-left: 20rpx;
+		padding-left: 20upx;
 	}
 
 	.comment-main-top {
-		width: 600rpx;
-		padding-top: 6rpx;
+		width: 600upx;
+		padding-top: 6upx;
 		display: flex;
 		justify-content: space-between;
 	}
 
 	.sub-comment-main-top {
-		width: 510rpx;
-		padding-top: 6rpx;
+		width: 510upx;
+		padding-top: 6upx;
 		display: flex;
 		justify-content: space-between;
 	}
 
 	.avatar {
-		width: 70rpx;
-		height: 70rpx;
+		width: 70upx;
+		height: 70upx;
 		border-radius: 50%;
 	}
 
@@ -459,10 +459,10 @@
 	}
 
 	.comLogo {
-		margin-right: 18rpx;
-		font-size: 22rpx;
-		border-radius: 10rpx;
-		padding: 5rpx 15rpx;
+		margin-right: 18upx;
+		font-size: 22upx;
+		border-radius: 10upx;
+		padding: 5upx 15upx;
 		color: #FFFFFF;
 	}
 
@@ -487,24 +487,24 @@
 	}
 
 	.isLike {
-		font-size: 28rpx;
-		padding-right: 10rpx;
+		font-size: 28upx;
+		padding-right: 10upx;
 		color: #2d8cf0;
 	}
 
 	.notLike {
-		font-size: 28rpx;
-		padding-right: 10rpx;
+		font-size: 28upx;
+		padding-right: 10upx;
 		color: #999999;
 	}
 
 	.comment-main-content {
-		padding: 10rpx 10rpx 10rpx 0;
+		padding: 10upx 10upx 10upx 0;
 	}
 
 	.comment-main-foot {
 		display: flex;
-		font-size: 22rpx;
+		font-size: 22upx;
 	}
 
 	.replayTag {
@@ -516,7 +516,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 16rpx;
+		font-size: 16upx;
 		padding: 5px 10px;
 	}
 
@@ -527,12 +527,12 @@
 	}
 
 	.foot-btn {
-		padding-left: 10rpx;
+		padding-left: 10upx;
 		color: #007AFF;
 	}
 
 	.comment-sub-box {
-		padding: 20rpx 0;
+		padding: 20upx 0;
 	}
 
 	.comment-sub-item {
@@ -540,7 +540,7 @@
 	}
 
 	.comment-none {
-		padding: 20rpx;
+		padding: 20upx;
 		width: 100%;
 		text-align: center;
 		color: #999999;
@@ -562,7 +562,7 @@
 		position: fixed;
 		background-color: #FFFFFF;
 		width: 100%;
-		padding: 5rpx;
+		padding: 5upx;
 		border: 1px solid #ddd;
 		transition: .3s;
 		-webkit-transition: .3s;
@@ -570,8 +570,8 @@
 
 	.btn-click {
 		color: #007AFF;
-		font-size: 28rpx;
-		padding: 10rpx;
+		font-size: 28upx;
+		padding: 10upx;
 	}
 
 	.cancel {
@@ -580,14 +580,14 @@
 
 	.textarea {
 		height: 100px;
-		padding: 16rpx;
+		padding: 16upx;
 		width: 100%;
 	}
 
 	.comment-submit {
-		padding: 5rpx 20rpx 0 20rpx;
+		padding: 5upx 20upx 0 20upx;
 		border-bottom: 1px dashed #ddd;
-		width: calc(100% - 40rpx);
+		width: calc(100% - 40upx);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

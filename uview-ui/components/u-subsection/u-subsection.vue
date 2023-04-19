@@ -18,8 +18,8 @@
 	 * @property {String} active-color 激活时的颜色，mode为subsection时固定为白色（默认#303133）
 	 * @property {String} inactive-color 未激活时字体的颜色，mode为subsection时无效（默认#606266）
 	 * @property {String} mode 模式选择，见官网"模式选择"说明（默认button）
-	 * @property {String Number} font-size 字体大小，单位rpx（默认28）
-	 * @property {String Number} height 组件高度，单位rpx（默认70）
+	 * @property {String Number} font-size 字体大小，单位upx（默认28）
+	 * @property {String Number} height 组件高度，单位upx（默认70）
 	 * @property {Boolean} animation 是否开启动画效果，见上方说明（默认true）
 	 * @property {Boolean} bold 激活选项的字体是否加粗（默认true）
 	 * @property {String} bg-color 组件背景颜色，mode为button时有效（默认#eeeeef）
@@ -57,7 +57,7 @@
 				type: String,
 				default: 'button'
 			},
-			// 字体大小，单位rpx
+			// 字体大小，单位upx
 			fontSize: {
 				type: [Number, String],
 				default: 28
@@ -67,7 +67,7 @@
 				type: Boolean,
 				default: true
 			},
-			// 组件的高度，单位rpx
+			// 组件的高度，单位upx
 			height: {
 				type: [Number, String],
 				default: 70
@@ -169,7 +169,7 @@
 					// 字体加粗
 					if (index == this.currentIndex && this.bold) style.fontWeight = 'bold';
 					// 文字大小
-					style.fontSize = this.fontSize + 'rpx';
+					style.fontSize = this.fontSize + 'upx';
 					return style;
 				};
 			},
@@ -315,13 +315,13 @@
 	.u-item {
 		flex: 1;
 		text-align: center;
-		font-size: 26rpx;
+		font-size: 26upx;
 		height: 100%;
 		@include vue-flex;
 		align-items: center;
 		justify-content: center;
 		color: $u-main-color;
-		padding: 0 6rpx;
+		padding: 0 6upx;
 	}
 
 	.u-item-bg {
@@ -335,13 +335,13 @@
 	}
 
 	.u-item-first {
-		border-top-left-radius: 8rpx;
-		border-bottom-left-radius: 8rpx;
+		border-top-left-radius: 8upx;
+		border-bottom-left-radius: 8upx;
 	}
 
 	.u-item-last {
-		border-top-right-radius: 8rpx;
-		border-bottom-right-radius: 8rpx;
+		border-top-right-radius: 8upx;
+		border-bottom-right-radius: 8upx;
 	}
 
 	.u-item-text {

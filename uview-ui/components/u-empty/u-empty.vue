@@ -1,6 +1,6 @@
 <template>
 	<view class="u-empty" v-if="show" :style="{
-		marginTop: marginTop + 'rpx'
+		marginTop: marginTop + 'upx'
 	}">
 		<u-icon
 			:name="src ? src : 'empty-' + mode"
@@ -27,10 +27,10 @@
 	 * @property {String} color 文字颜色（默认#c0c4cc）
 	 * @property {String} text 文字提示（默认“无内容”）
 	 * @property {String} src 自定义图标路径，如定义，mode参数会失效
-	 * @property {String Number} font-size 提示文字的大小，单位rpx（默认28）
+	 * @property {String Number} font-size 提示文字的大小，单位upx（默认28）
 	 * @property {String} mode 内置的图标，见官网说明（默认data）
-	 * @property {String Number} img-width 图标的宽度，单位rpx（默认240）
-	 * @property {String} img-height 图标的高度，单位rpx（默认auto）
+	 * @property {String Number} img-width 图标的宽度，单位upx（默认240）
+	 * @property {String} img-height 图标的高度，单位upx（默认auto）
 	 * @property {String Number} margin-top 组件距离上一个元素之间的距离（默认0）
 	 * @property {Boolean} show 是否显示组件（默认true）
 	 * @event {Function} click 点击组件时触发
@@ -65,7 +65,7 @@
 				type: [String, Number],
 				default: 120
 			},
-			// 文字大小，单位rpx
+			// 文字大小，单位upx
 			fontSize: {
 				type: [String, Number],
 				default: 26
@@ -75,12 +75,12 @@
 				type: String,
 				default: 'data'
 			},
-			//  图标宽度，单位rpx
+			//  图标宽度，单位upx
 			imgWidth: {
 				type: [String, Number],
 				default: 120
 			},
-			// 图标高度，单位rpx
+			// 图标高度，单位upx
 			imgHeight: {
 				type: [String, Number],
 				default: 'auto'
@@ -181,13 +181,13 @@
 	}
 
 	.u-image {
-		margin-bottom: 20rpx;
+		margin-bottom: 20upx;
 	}
 
 	.u-slot-wrap {
 		@include vue-flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 20rpx;
+		margin-top: 20upx;
 	}
 </style>

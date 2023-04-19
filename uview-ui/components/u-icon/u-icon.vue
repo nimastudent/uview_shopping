@@ -27,17 +27,17 @@
  * @tutorial https://www.uviewui.com/components/icon.html
  * @property {String} name 图标名称，见示例图标集
  * @property {String} color 图标颜色（默认inherit）
- * @property {String | Number} size 图标字体大小，单位rpx（默认32）
- * @property {String | Number} label-size label字体大小，单位rpx（默认28）
+ * @property {String | Number} size 图标字体大小，单位upx（默认32）
+ * @property {String | Number} label-size label字体大小，单位upx（默认28）
  * @property {String} label 图标右侧的label文字（默认28）
  * @property {String} label-pos label文字相对于图标的位置，只能right或bottom（默认right）
  * @property {String} label-color label字体颜色（默认#606266）
  * @property {Object} custom-style icon的样式，对象形式
  * @property {String} custom-prefix 自定义字体图标库时，需要写上此值
- * @property {String | Number} margin-left label在右侧时与图标的距离，单位rpx（默认6）
- * @property {String | Number} margin-top label在下方时与图标的距离，单位rpx（默认6）
- * @property {String | Number} margin-bottom label在上方时与图标的距离，单位rpx（默认6）
- * @property {String | Number} margin-right label在左侧时与图标的距离，单位rpx（默认6）
+ * @property {String | Number} margin-left label在右侧时与图标的距离，单位upx（默认6）
+ * @property {String | Number} margin-top label在下方时与图标的距离，单位upx（默认6）
+ * @property {String | Number} margin-bottom label在上方时与图标的距离，单位upx（默认6）
+ * @property {String | Number} margin-right label在左侧时与图标的距离，单位upx（默认6）
  * @property {String} label-pos label相对于图标的位置，只能right或bottom（默认right）
  * @property {String} index 一个用于区分多个图标的值，点击图标时通过click事件传出
  * @property {String} hover-class 图标按下去的样式类，用法同uni的view组件的hover-class参数，详情见官网
@@ -65,7 +65,7 @@ export default {
 			type: String,
 			default: ''
 		},
-		// 字体大小，单位rpx
+		// 字体大小，单位upx
 		size: {
 			type: [Number, String],
 			default: 'inherit'

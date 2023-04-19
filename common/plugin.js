@@ -10,7 +10,7 @@
 		}, false);
 	}
 }(this, function() {
-	var _BARCODE = 'AndroidBridge';
+	var optionABARCODE = 'AndroidBridge';
 	var plugintest = {
 		getNumber: function(num, successCallback, errorCallback) {
 			var success = typeof successCallback !== 'function' ? null : function(args) {
