@@ -5,14 +5,14 @@ import uView from 'uview-ui';
 import store from '@/store';
 import VConsole from 'vconsole';
 
-// const vConsole = new VConsole();
+const vConsole = new VConsole();
 
 
 Vue.config.productionTip = false
 
 App.mpType = 'app'
 
-// Vue.use(vConsole)
+Vue.use(vConsole)
 
 Vue.use(uView);
 

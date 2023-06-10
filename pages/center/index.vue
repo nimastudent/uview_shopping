@@ -1,8 +1,5 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="　" :border-bottom="false">
-			
-		</u-navbar>
 		<view class="u-flex user-box">
 			<view class="u-m-r-10">
 				<u-avatar :src="avatar" size="140"></u-avatar>

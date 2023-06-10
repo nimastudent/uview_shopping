@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<u-navbar title="我的收藏" />
 		<view class="">
 			<u-tabs-swiper ref="tabs" :list="list" :is-scroll="false" :current="current" @change="tabsChange">
 			</u-tabs-swiper>

@@ -1,30 +1,4 @@
 <template>
-	<!-- 	<view class="wrap">
-		<view class="top"></view>
-		<view class="content">
-			<view class="title">欢迎登录</view>
-			
-				<u-form :model="form" ref="uForm">
-							<u-form-item  prop="username">
-								<u-input :border="border" v-model="form.username" placeholder="请输入用户名" />
-							</u-form-item>
-							<u-form-item  prop="password">
-								<u-input :border="border" :type="type" v-model="form.password" placeholder="请输入密码" />
-							</u-form-item>
-						</u-form>
-					
-				<text>如密码遗忘，请联系管理员</text>
-				<button class="loginButton" type="primary" @click="submit" :loading="btnLoading" :disabled="btnDisabled">登录</button>
-				
-				<view class="pki-btn-contianer">
-					<u-button type="success" @click="getUserInfor">i闽警直接登录</u-button>
-				</view>
-				
-		</view>
-		
-		<u-toast ref="uToast" />
-	</view>
- -->
 
 	<view>
 		<view class="img-a">

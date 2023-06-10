@@ -1,30 +1,6 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="执法工具箱" title-color="#000000" height="100"></u-navbar>
-		<!-- <u-cell-group>
-			<u-cell-item
-			title="新规"
-			@click="goNewRule"
-			>
-			</u-cell-item>
-			<u-cell-item
-			title="法律"
-			@click="goRuleList"
-			>
-			</u-cell-item>
-			<u-cell-item
-			title="司法解释"
-			@click="goType(1)"
-			/>
-			<u-cell-item
-			title="案例分析"
-			@click="goType(2)"
-			/>
-			<u-cell-item
-			title="应用场景"
-			@click="goType(3)"
-			/>
-		</u-cell-group> -->
+		<u-navbar :is-back="false"  title-color="#000000" height="100"></u-navbar>
 
 		<view class="item-container">
 			<view class="item" v-for="item in typeArr" :key="item.id" @click="handleClick(item)">

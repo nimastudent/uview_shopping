@@ -3,20 +3,28 @@
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/auth/login",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"app-plus": {
-					"titleNView": false
-				}
-			}
+		// {
+		// 	"path": "pages/auth/login",
+		// 	"style": {
+		// 		"navigationBarTitleText": "",
+		// 		"enablePullDownRefresh": false,
+		// 		"app-plus": {
+		// 			"titleNView": false
+		// 		}
+		// 	}
+		// },
+	{
+		    "path" : "pages/auth/firstLogin",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "请填写信息",
+		        "enablePullDownRefresh": false
+		    }
+		    
 		},
 		{
 			"path": "pages/index/index",
 			"style": {
-				// "navigationBarTitleText": "首页"
 				"app-plus": {
 					"titleNView": false
 				}
@@ -25,7 +33,6 @@
 		{
 			"path": "pages/center/index",
 			"style": {
-				// "navigationBarTitleText": "首页"
 				"app-plus": {
 					"titleNView": false
 				}
@@ -66,7 +73,7 @@
 		}, {
 			"path": "pages/center/updateName",
 			"style": {
-				"navigationBarTitleText": "用户设置",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 
 			}
@@ -97,7 +104,7 @@
 		}, {
 			"path": "pages/index/consult",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
@@ -133,7 +140,7 @@
 		}, {
 			"path": "pages/center/comment",
 			"style": {
-				"navigationBarTitleText": "我的评论",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
@@ -141,7 +148,7 @@
 		{
 			"path": "pages/center/collection",
 			"style": {
-				"navigationBarTitleText": "我的收藏",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
@@ -155,7 +162,7 @@
 		}, {
 			"path": "pages/center/aboutUs",
 			"style": {
-				"navigationBarTitleText": "关于我们",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 		},
@@ -189,14 +196,14 @@
 		}, {
 			"path": "pages/learnning/errorBook",
 			"style": {
-				"navigationBarTitleText": "我的错题",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/learnning/score",
 			"style": {
-				"navigationBarTitleText": "我的成绩",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 		}, {
@@ -209,7 +216,7 @@
 		}, {
 			"path": "pages/learnning/order/order",
 			"style": {
-				"navigationBarTitleText": "选择练习",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
@@ -225,7 +232,7 @@
 		}, {
 			"path": "pages/work/workAdd",
 			"style": {
-				"navigationBarTitleText": "新增交流",
+				"navigationStyle": "custom", // 隐藏系统导航栏
 				"enablePullDownRefresh": false
 			}
 
@@ -248,7 +255,7 @@
             "path" : "pages/work/workContent",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "工作交流",
+				"navigationStyle": "custom", // 隐藏系统导航栏
                 "enablePullDownRefresh": false
             }
             
@@ -257,7 +264,7 @@
             "path" : "pages/center/myWork",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "我的交流",
+				"navigationStyle": "custom", // 隐藏系统导航栏
                 "enablePullDownRefresh": false
             }
             
@@ -267,6 +274,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/auth/firstLogin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "请填写信息",
                 "enablePullDownRefresh": false
             }
             

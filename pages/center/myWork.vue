@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<u-navbar title="我的错题" />
 		<work-list :consultList="alist" :isMine="true" ></work-list>
 	</view>
 </template>

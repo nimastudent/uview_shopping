@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<u-navbar title="咨询内容"/>
 		<view class="title">
 			{{consultRes.title}}
 		</view>

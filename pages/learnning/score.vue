@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<u-navbar title="我的成绩" />
 		<u-cell-group>
 			<u-cell-item :arrow="false" v-for="(item,index) in list" :key="index">
 				<!-- <u-icon slot="icon" size="32" name="search"></u-icon> -->

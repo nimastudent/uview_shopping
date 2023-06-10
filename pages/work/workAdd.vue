@@ -1,5 +1,7 @@
 <template>
 	<view class="container">
+		<u-navbar title="添加工作交流" />
+		
 		<view class="item">
 			<text>标题：</text>
 			<u-input placeholder="请输入标题" v-model="form.title" :maxlength="25" type="text" :border="true" />

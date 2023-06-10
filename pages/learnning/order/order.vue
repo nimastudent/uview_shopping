@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<u-navbar title="选择练习" />
 		<view class="check">
 			<text class="checktext">本次考试题数：</text>
 			<u-number-box :step='5' :input-height="70" :min="1" :max="45" v-model="value" @change="valChange">

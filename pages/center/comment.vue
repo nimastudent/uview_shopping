@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<u-navbar title="我的评论" />
 		<view v-if="comment.length === 0">
 			暂无内容
 		</view>

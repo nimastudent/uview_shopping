@@ -30,14 +30,17 @@
 					this.$u.vuex('vuex_userName',res.body.userName)
 					this.$u.vuex('vuex_nickName',res.body.nickName)
 				}
+				if(res.body.first_login){
+					uni.reLaunch({
+						url: '/pages/auth/firstLogin'
+					})
+				}else{
+					uni.switchTab({
+						url:"/pages/index/index"
+					})
+				}
 				
-				uni.switchTab({
-					url:"/pages/index/index"
-				})
 			})
-			
-			
-			
 		},
 		methods: {
 		}

@@ -1,17 +1,18 @@
 // 这里的vm，就是我们在vue文件里面的this，所以我们能在这里获取vuex的变量，比如存放在里面的token变量
-
+const BASEURL = 'http://cool.ldqc.xyz:9088'
 
 const install = (Vue, vm) => {
 	// 此为自定义配置参数，具体参数见上方说明
-	Vue.prototype.$u.baseUrl = 'http://20.105.0.113:84/ly-police'
-	
+	Vue.prototype.$u.baseUrl = BASEURL
+	// http://cool.ldqc.xyz:9435
+	// 		baseUrl:'http://20.105.0.113:84/ly-police',
 	Vue.prototype.$u.http.setConfig({
 		
 		// http://20.105.0.113:84/xlfjxxqjxt/police
 		// http://ldqc.xyz:5880
-		// http://cool.ldqc.xyz:9088/
+		// http://cool.ldqc.xyz:9088
 		// http://20.105.0.113:84/xlfjxxqjxt
-		baseUrl:'http://cool.ldqc.xyz:9435',
+		baseUrl:BASEURL,
 		loadingText: '努力加载中~',
 		loadingTime: 800,
 		originalData:true,

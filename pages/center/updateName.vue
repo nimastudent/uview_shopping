@@ -1,5 +1,6 @@
 <template>
   <view>
+	  <u-navbar title="用户设置" />
     <u-cell-group>
       <u-cell-item
         :title-style="style"

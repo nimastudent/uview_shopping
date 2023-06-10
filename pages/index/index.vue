@@ -1,6 +1,5 @@
 <template>
 	<view class="content">
-		<u-navbar :is-back="false" title="主页" title-color="#000000"></u-navbar>	
 		
 		<view class="wrap">
 				<u-swiper :list="swiperList" name="picture" :height="swiperHeight" @click="swiperClick"></u-swiper>
@@ -28,8 +27,7 @@
 			consult,
 			TabBar
 		},
-		 onLoad() {
-			 console.log(this.$u.baseUrl)
+		 onLoad() { 
 			var cookie = this.vuex_token;
 			if(!cookie){
 				this.$u.toast('请登录！')

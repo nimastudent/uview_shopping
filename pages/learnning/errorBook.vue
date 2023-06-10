@@ -1,5 +1,6 @@
 <template>
 	<view class="mockContinar"> 
+	<u-navbar title="我的成绩" />
 		<!-- <u-navbar title="模拟考"></u-navbar> -->
 		<view class="container">
 			

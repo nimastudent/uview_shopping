@@ -2,6 +2,7 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			getApp().globalData.rootFontSize = '20px';
 			uni.hideTabBar()
 		},
 		onShow: function() {
@@ -24,19 +25,54 @@
 <style lang="scss">
 	@import "uview-ui/index.scss";
 	
+	uni-toast .uni-toast {
+		font-size: 38rpx;
 	
-	.uni-tabbar__bd{
-		height: 60px !important;
 	}
 	
-	//导航栏字体
-		.uni-tabbar__bd .uni-page-head__title{
-			font-size: 30upx !important;
+	
+	.uni-page-head{
+		height: 60px;
+	}
+	
+	.uni-page-head__title{
+		font-size: 28rpx;
+	}
+	
+	// .uni-page-head{
+	// 	height: 100rpx;
+	// }
+	
+	uni-modal{
+		
+		
+		.uni-modal{
+			max-width:400rpx;
 		}
-		// tab图标
-		.uni-tabbar__bd .uni-tabbar__icon{
-			width: 25px !important;
-	        height: 25px !important;
+		
+		.uni-modal__title{
+			font-size:24rpx;
 		}
+		
+		.uni-modal__bd{
+			font-size:32rpx;
+		}
+		
+		.uni-modal__ft{
+			font-size:24rpx;
+			padding:5rpx;
+		}
+	}
+	
+	.u-collapse-title{
+		font-size: 58px;
+		
+		.u-cell_title{
+			font-size: 38px;
+		}
+	}
+	
+	
+
 	/*每个页面公共css */
 </style>

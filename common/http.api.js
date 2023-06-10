@@ -15,6 +15,8 @@ const install = (Vue, vm) => {
 	// i闽警登录
 	let iLogin = params => vm.$u.post('/user/login/app',params)
 	
+	// /first/login/reg/inf
+	let firstLogin = params => vm.$u.post('/first/login/reg/inf',params)
 	
 	//首页咨询
 	let getConsult = params  => vm.$u.get(`/information/all`)
@@ -199,6 +201,7 @@ const install = (Vue, vm) => {
 	vm.$u.api = {
 		authLogin,
 		iLogin,
+		firstLogin,
 		getConsult,
 		getConsultContent,
 		getIndexSwiper,

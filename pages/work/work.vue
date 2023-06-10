@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="工作交流" title-color="#000000"></u-navbar>
 		<view class="top-container">
 			<view class="search">
 					<u-input  placeholder="请输入搜索关键字" v-model="keyword" type="text" :border="true" />

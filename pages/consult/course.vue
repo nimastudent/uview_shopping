@@ -1,9 +1,6 @@
 <template>
 	<view class="">
-
-
-		<uni-nav-bar @clickLeft="handleClickClose" :title="title" left-icon="left"
-			backgroundColor="#f5f5f5"></uni-nav-bar>
+		<u-navbar title="课程内容" />
 		<view class="main-contianer">
 			<!-- 
 		<u-navbar :title="title">
@@ -88,7 +85,7 @@
 			}
 		},
 		onLoad(e) {
-			if(this.timer){
+			if (this.timer) {
 				clearInterval(this.timer)
 			}
 			console.log(e);
@@ -128,7 +125,7 @@
 					contentId
 				})
 				this.isFinished = res.body
-				if(!this.isFinished){
+				if (!this.isFinished) {
 					this.startTime()
 				}
 			},
@@ -151,36 +148,36 @@
 
 			},
 			handleFinished() {
-				if(this.proPercent >= 100 ){
+				if (this.proPercent >= 100) {
 					this.$u.api.submitUserTime({
-						courseId:this.courseId,
-						contentId:this.contentId,
-						learnTime:this.planTime + 100
+						courseId: this.courseId,
+						contentId: this.contentId,
+						learnTime: this.planTime + 100
 					}).then(res => {
-						if(res.success){
+						if (res.success) {
 							uni.showToast({
-								title:"已完成学习！",
-								icon:"success"
+								title: "已完成学习！",
+								icon: "success"
 							})
 							this.isFinished = true
-							if(this.quesList.length === 0){
+							if (this.quesList.length === 0) {
 								uni.showToast({
-									title:"暂无题目！"
+									title: "暂无题目！"
 								})
 								this.handleClickClose();
 								return;
-							}else{
+							} else {
 								this.popVisible = true
 							}
 						}
 						console.log(res);
 					})
-					
-					
-				}else{
+
+
+				} else {
 					uni.showToast({
-						title:"学习时长不足！",
-						icon:"error"
+						title: "学习时长不足！",
+						icon: "error"
 					})
 				}
 				// this.popVisible = true
@@ -240,21 +237,21 @@
 				const time = setInterval(() => {
 					if (this.proPercent <= 100) {
 						this.proPercent += 1;
-						 if(this.proPercent === 50){
+						if (this.proPercent === 50) {
 							clearInterval(time);
 							uni.showModal({
-								content:"请点击确认或取消！",
+								content: "请点击确认或取消！",
 								success() {
 									_this.startTime();
 								}
 							})
 						}
-					}else {
-						
+					} else {
+
 						clearInterval(time);
 					}
-					
-					
+
+
 				}, this.planTime * 10);
 				this.timer = time;
 			},

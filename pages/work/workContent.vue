@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<u-navbar title="工作交流" />
 		<view class="title">
 			{{workContent.title}}
 		</view>

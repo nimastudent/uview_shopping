@@ -1,5 +1,6 @@
 <template>
 	<view class="u-p-30">
+		<u-navbar title="关于我们" />
 		<text>全国注册备案号：{{num}}</text>
 	</view>
 </template>

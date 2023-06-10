@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="实战大练兵" title-color="#000000"></u-navbar>
 		<view class="swiper">
 			<u-swiper :list="swiperList" name="picture"  @click="swiperClick"></u-swiper>
 		</view>

@@ -1,7 +1,5 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="课程学习" title-color="#000000"></u-navbar>
-		
 		 <u-loading mode="flower" :show="loading"></u-loading>
 		
 		<u-collapse :item-style="style" v-show="!loading">

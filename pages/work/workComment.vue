@@ -1,5 +1,6 @@
 <template>
 	<view class="comment-contianer">
+		
 		<view class="comment-title">
 			<text class="comment-area">评论区</text>
 			<u-tag text="写留言" @click="showPop()" size="mini" />
